@@ -17,6 +17,12 @@
     },
     "Content": {
       "type": "richtext"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "sections"
     }
   }
 }
