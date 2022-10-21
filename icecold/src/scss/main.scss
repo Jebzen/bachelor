@@ -1,6 +1,7 @@
 @import "bootstrap/scss/bootstrap";
 //@import "mixins";
 $base-cool-grey-blue: #d0dce6;
+//background: linear-gradient(90deg, rgba(107,159,204,1) 0%, rgba(0,0,0,1) 50%, rgba(208,220,230,1) 100%)
 
 *{
     color: darken($base-cool-grey-blue, 50%) !important;
@@ -21,7 +22,8 @@ body{
 
 header{
     margin: 0.5rem;
-    background-color: transparentize($color: $base-cool-grey-blue, $amount: 0.5);
+    background: linear-gradient(-11deg, lighten($base-cool-grey-blue, 5%), lighten($base-cool-grey-blue, 10%));
+    //background-color: transparentize($color: $base-cool-grey-blue, $amount: 0.5);
     border-radius: 10px 0px;
     box-shadow: 0px 2px 5px darken($base-cool-grey-blue, 50%);
 
@@ -39,7 +41,8 @@ main.main{
 
     section{
         padding: 0.5rem;
-        background-color: transparentize($color: $base-cool-grey-blue, $amount: 0.5);
+        background: linear-gradient(-11deg, lighten($base-cool-grey-blue, 5%), lighten($base-cool-grey-blue, 10%));
+        //background-color: transparentize($color: $base-cool-grey-blue, $amount: 0.5);
         border-radius: 10px 0px;
         box-shadow: 0px 2px 5px darken($base-cool-grey-blue, 50%);
     }
@@ -47,7 +50,8 @@ main.main{
 
 footer{
     margin: 0.5rem;
-    background-color: transparentize($color: $base-cool-grey-blue, $amount: 0.5);
+    background: linear-gradient(-11deg, lighten($base-cool-grey-blue, 5%), lighten($base-cool-grey-blue, 10%));
+    //background-color: transparentize($color: $base-cool-grey-blue, $amount: 0.5);
     border-radius: 10px 0px;
     box-shadow: 0px 2px 5px darken($base-cool-grey-blue, 50%);
 
