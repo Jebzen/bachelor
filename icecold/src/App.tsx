@@ -12,10 +12,13 @@ function App() {
   return (
     <>
       <Routes>
+
         <Route element={<Layout/>}>
           <Route path='/' element={<Home/>}/>
-          <Route path='*' element={<NotFound/>}/>
         </Route>
+
+        <Route path='*' element={<NotFound/>}/>
+        
       </Routes>
     </>
   );

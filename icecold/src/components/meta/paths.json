@@ -1,0 +1,13 @@
+{
+    "paths":
+    [
+        {
+            "path": "/",
+            "title": "Home"
+        },
+        {
+            "path": "/about",
+            "title": "About"
+        }
+    ]
+}
