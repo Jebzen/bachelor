@@ -6,7 +6,7 @@ export function IndexLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<Header />
-			<main className="container">{children}</main>
+			<main>{children}</main>
 			<Footer />
 		</>
 	);

@@ -29,3 +29,25 @@ footer {
 		}
 	}
 }
+
+.carousel-item {
+	img {
+		height: 500px;
+		object-fit: cover;
+	}
+	.carousel-caption {
+		right: 0%;
+		left: auto;
+		.bannerCaptionBox {
+			justify-content: end;
+			padding: 1rem;
+			background-color: $fire-red;
+			text-transform: uppercase;
+			* {
+				line-height: 1rem;
+				margin-bottom: 0;
+				padding-bottom: 0;
+			}
+		}
+	}
+}

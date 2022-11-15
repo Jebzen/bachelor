@@ -1,5 +1,9 @@
 import Head from "next/head";
+import FrontBanner from "../components/frontBanner";
 import { IndexLayout } from "../layout";
+
+//Mock data
+import { data, BannerImage, BannerVideo } from "../json/mock/frontBanner";
 
 export default function Home() {
 	return (
@@ -12,7 +16,9 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<IndexLayout>bwah</IndexLayout>
+			<IndexLayout>
+				<FrontBanner data={data} />
+			</IndexLayout>
 		</>
 	);
 }
