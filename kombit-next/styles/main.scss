@@ -2,5 +2,30 @@
 @import "variables_typografi";
 
 * {
+	margin: 0;
+	padding: 0;
 	font-family: $main-font !important;
+}
+
+body {
+	background-color: $neutral-1 !important;
+}
+
+header {
+	background-color: $neutral-2;
+}
+
+.breadCrumbs {
+	background-color: $neutral-3;
+}
+
+footer {
+	background-color: $red-2;
+	a {
+		color: black;
+		text-decoration: none;
+		&:hover {
+			color: $red-1;
+		}
+	}
 }

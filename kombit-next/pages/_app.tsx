@@ -1,6 +1,5 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
-import "../styles/home.scss";
 import "../styles/main.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.scss";

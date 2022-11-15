@@ -1,9 +1,13 @@
 import React from "react";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
-export function IndexLayout({children}: {children: React.ReactNode}){
-    return(
-        <main>
-            {children}
-        </main>
-    )
+export function IndexLayout({ children }: { children: React.ReactNode }) {
+	return (
+		<>
+			<Header />
+			<main className="container">{children}</main>
+			<Footer />
+		</>
+	);
 }
