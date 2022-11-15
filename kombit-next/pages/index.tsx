@@ -17,11 +17,12 @@ export default function Home() {
 				<div className="container">
 					<main className="main">
 						<h1 className="title">
-							Welcome to <a href="https://nextjs.org">Next.js!</a>
+							Welcome to
+							<a href="https://nextjs.org">Next.js!</a>
 						</h1>
 
 						<p className="description">
-							Get started by editing{" "}
+							Get started by editing
 							<code className="code">pages/index.tsx</code>
 						</p>
 
