@@ -10,23 +10,24 @@ import { client } from "../components/contenful/main";
 import { BannerType, FrontPageFields } from "../interfaces/frontpage";
 import { BannerImage, BannerVideo } from "../interfaces/banner";
 
-export default function Home() {
-	const [banners, setBanners] = useState<BannerImage[] | BannerVideo[]>([]);
+export async function getServerSideProps() {
+	//Frontpage id
+	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
+	return {
+		props: {
+			banners: response.fields.banners.map((banner: any) => {
+				return {
+					media: banner.fields.bannerBillede.fields.file.url,
+					type: "Image",
+					title: banner.fields.cta,
+				} as BannerImage;
+			}) as BannerImage[],
+		},
+	};
+}
 
-	useEffect(() => {
-		client.getEntry("7fW3ZHZQgTQeFORANbS6Uk").then((response: any) => {
-			const thing = response.fields as FrontPageFields;
-			setBanners(
-				thing.banners.map((banner) => {
-					return {
-						media: banner.fields.bannerBillede.fields.file.url,
-						type: "Image",
-						title: banner.fields.cta,
-					} as BannerImage;
-				})
-			);
-		});
-	}, []);
+export default function Home(props: any) {
+	console.log(props);
 
 	return (
 		<>
@@ -39,7 +40,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<IndexLayout>
-				<FrontBanner banners={banners} />
+				<FrontBanner banners={props.banners} />
 			</IndexLayout>
 		</>
 	);

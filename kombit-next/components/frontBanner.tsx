@@ -1,13 +1,13 @@
 import { Carousel } from "react-bootstrap";
 import { BannerImage, BannerVideo } from "../interfaces/banner";
 
-export default function FrontBanner({ banners }: any) {
+export default function FrontBanner(props: any) {
 	return (
 		<>
 			<Carousel interval={10000} fade={true} indicators={false}>
-				{banners &&
-					banners.length > 0 &&
-					banners.map(
+				{props.banners &&
+					props.banners.length > 0 &&
+					props.banners.map(
 						(banner: BannerImage | BannerVideo, i: number) => {
 							return (
 								<Carousel.Item key={i}>
