@@ -8,10 +8,10 @@ import { useEffect, useState } from "react";
 //Contenful
 import { client } from "../components/contenful/main";
 import { BannerType, FrontPageFields } from "../interfaces/frontpage";
-import { BannerImage } from "../interfaces/banner";
+import { BannerImage, BannerVideo } from "../interfaces/banner";
 
 export default function Home() {
-	const [banners, setBanners] = useState({});
+	const [banners, setBanners] = useState<BannerImage[] | BannerVideo[]>([]);
 
 	useEffect(() => {
 		client.getEntry("7fW3ZHZQgTQeFORANbS6Uk").then((response: any) => {
@@ -39,7 +39,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<IndexLayout>
-				<FrontBanner data={banners} />
+				<FrontBanner banners={banners} />
 			</IndexLayout>
 		</>
 	);
