@@ -9,7 +9,6 @@ import { BannerType, FrontPageFields } from "../interfaces/frontpage";
 import { BannerImage, BannerVideo } from "../interfaces/banner";
 
 export async function getServerSideProps() {
-	//Frontpage id
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
 	console.log(response);
 	return {
