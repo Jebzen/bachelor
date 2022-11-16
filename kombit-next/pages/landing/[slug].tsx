@@ -3,10 +3,11 @@ import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
 import { IndexLayout } from "../../layout";
 
-export async function getStaticPaths() {
+export async function getServerSideProps(context: any) {
+	const { slug } = context.query;
 	const response = await (
 		await fetch(
-			"https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=landingPage",
+			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=landingPage&fields.slug=${slug}`,
 			{
 				headers: {
 					Authorization:
@@ -16,30 +17,6 @@ export async function getStaticPaths() {
 		)
 	).json();
 
-	return {
-		paths: response.items.map((item: any) => {
-			return {
-				params: {
-					slug: item.fields.slug,
-				},
-			};
-		}),
-		fallback: false,
-	};
-}
-
-export async function getStaticProps({ params }: any) {
-	const response = await (
-		await fetch(
-			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=landingPage&fields.slug=${params.slug}`,
-			{
-				headers: {
-					Authorization:
-						"Bearer EcZKFhLUFp3op1UWgVR3qouQ8iwYwIDf0ZEdjygBZKA",
-				},
-			}
-		)
-	).json();
 	const content = response.items.find((item: any) => {
 		return true;
 	});
@@ -54,7 +31,6 @@ export async function getStaticProps({ params }: any) {
 		props: {
 			content: content,
 		},
-		revalidate: 60,
 	};
 }
 

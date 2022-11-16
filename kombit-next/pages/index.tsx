@@ -1,8 +1,6 @@
 import Head from "next/head";
 import FrontBanner from "../components/frontBanner";
 import { IndexLayout } from "../layout";
-
-//Mock data
 import { useEffect, useState } from "react";
 
 //Contenful

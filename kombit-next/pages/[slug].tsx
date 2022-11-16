@@ -1,14 +1,13 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { client } from "../../components/contenful/main";
-import { IndexLayout } from "../../layout";
+import { client } from "../components/contenful/main";
+import { IndexLayout } from "../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
-
 	const response = await (
 		await fetch(
-			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=projekt&fields.slug=${slug}`,
+			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries`,
 			{
 				headers: {
 					Authorization:
@@ -19,7 +18,7 @@ export async function getServerSideProps(context: any) {
 	).json();
 
 	const content = response.items.find((item: any) => {
-		return true;
+		return item.fields.slug == slug;
 	});
 
 	if (content === undefined) {
@@ -35,7 +34,7 @@ export async function getServerSideProps(context: any) {
 	};
 }
 
-export default function ProjektPage({ content }: any) {
+export default function InfoPage({ content }: any) {
 	console.log(content);
 
 	return (
