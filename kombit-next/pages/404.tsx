@@ -1,10 +1,9 @@
-import { client } from "../components/contenful/main";
 import { IndexLayout } from "../layout";
 
 export default function Kontakt() {
 	return (
 		<>
-			<IndexLayout>Bwah</IndexLayout>
+			<IndexLayout>404</IndexLayout>
 		</>
 	);
 }

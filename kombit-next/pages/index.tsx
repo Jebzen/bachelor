@@ -13,6 +13,7 @@ import { BannerImage, BannerVideo } from "../interfaces/banner";
 export async function getServerSideProps() {
 	//Frontpage id
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
+	console.log(response);
 	return {
 		props: {
 			banners: response.fields.banners.map((banner: any) => {
@@ -37,10 +38,11 @@ export default function Home(props: any) {
 					name="description"
 					content="KOMBIT HEADLESS NEXTJS APPLICATION"
 				/>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<IndexLayout>
 				<FrontBanner banners={props.banners} />
+				<div>[Projekterbox]</div>
+				<div>[Nyhedsbox]</div>
 			</IndexLayout>
 		</>
 	);

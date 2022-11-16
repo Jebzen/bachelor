@@ -6,7 +6,7 @@ import { IndexLayout } from "../../layout";
 export async function getStaticPaths() {
 	const response = await (
 		await fetch(
-			"https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=infoSide",
+			"https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=landingPage",
 			{
 				headers: {
 					Authorization:
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
 	const response = await (
 		await fetch(
-			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=infoSide&fields.slug=${params.slug}`,
+			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=landingPage&fields.slug=${params.slug}`,
 			{
 				headers: {
 					Authorization:
@@ -58,7 +58,7 @@ export async function getStaticProps({ params }: any) {
 	};
 }
 
-export default function InfoPage({ content }: any) {
+export default function LandingPage({ content }: any) {
 	console.log(content);
 
 	return (
