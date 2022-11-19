@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
+import RichTextProject from "../../components/RichProjekt";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
@@ -45,14 +46,21 @@ export default function ProjektPage({ content }: any) {
 			</Head>
 			<IndexLayout>
 				<div>
-					<div>[Projekter]</div>
-					<div>[Beskrivelse for valgt projekt]</div>
+					<h1>{content.fields.title}</h1>
+					<div>
+						<h2>OM PROJEKTET:</h2>
+						<RichTextProject prop={content.fields.beskrivelse} />
+					</div>
 				</div>
 				<div>
-					<div>[MISSION]</div>
-					<div>[Forretningschef]</div>
+					<>Card 1</>
+					<>Card 2</>
+					<>Card 3</>
 				</div>
-				<div>[Nyhedsbox]</div>
+				<div>
+					<>Links</>
+					<>Projektleder</>
+				</div>
 			</IndexLayout>
 		</>
 	);

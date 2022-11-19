@@ -39,6 +39,7 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function InfoPage({ content }: any) {
+	//Type == content.sys.contentType.sys.id
 	console.log(content);
 
 	return (
@@ -47,15 +48,22 @@ export default function InfoPage({ content }: any) {
 				<title>{content.fields.title}</title>
 			</Head>
 			<IndexLayout>
-				<div>
-					<div>[Projekter]</div>
-					<div>[Beskrivelse for valgt projekt]</div>
-				</div>
-				<div>
-					<div>[MISSION]</div>
-					<div>[Forretningschef]</div>
-				</div>
-				<div>[Nyhedsbox]</div>
+				{content.sys.contentType.sys.id &&
+					content.sys.contentType.sys.id == "landingPage" && (
+						<>Landing side</>
+					)}
+				{content.sys.contentType.sys.id &&
+					content.sys.contentType.sys.id == "infoSide" && (
+						<>Info side</>
+					)}
+				{content.sys.contentType.sys.id &&
+					content.sys.contentType.sys.id == "projekt" && (
+						<>Projekt side</>
+					)}
+				{content.sys.contentType.sys.id &&
+					content.sys.contentType.sys.id == "nyheder" && (
+						<>Nyheder side</>
+					)}
 			</IndexLayout>
 		</>
 	);

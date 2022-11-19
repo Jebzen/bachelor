@@ -5,9 +5,10 @@ import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
+
 	const response = await (
 		await fetch(
-			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=infoSide&fields.slug=${slug}`,
+			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=nyheder&fields.slug=${slug}`,
 			{
 				headers: {
 					Authorization:
@@ -16,6 +17,9 @@ export async function getServerSideProps(context: any) {
 			}
 		)
 	).json();
+
+	console.log(response);
+
 	const content = response.items.find((item: any) => {
 		return true;
 	});
@@ -26,15 +30,17 @@ export async function getServerSideProps(context: any) {
 		};
 	}
 
+	//GIDER IKKE AT RENDERER BANNERE >:(
+	content.fields.banner = await client.getAsset(content.fields.banner.sys.id);
+
 	return {
 		props: {
 			content: content,
 		},
-		revalidate: 60,
 	};
 }
 
-export default function InfoPage({ content }: any) {
+export default function NewsPage({ content, sys }: any) {
 	console.log(content);
 
 	return (

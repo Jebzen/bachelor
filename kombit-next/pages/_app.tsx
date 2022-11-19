@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import "../styles/main.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.scss";
+import NProgress from "nprogress";
 
 export default function App({ Component, pageProps }: AppProps) {
 	return <Component {...pageProps} />;
