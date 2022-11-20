@@ -1,8 +1,9 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Accordion } from "react-bootstrap";
+import SoMeFeed from "./Feed2";
 
 export default function InfoComponent({ content }: any) {
-	console.log(content);
+	//console.log(content);
 
 	const NoPara = {
 		renderNode: {
@@ -27,7 +28,6 @@ export default function InfoComponent({ content }: any) {
 			},
 			//Lav dette til collapable
 			"embedded-entry-inline": (node: any, children: any) => {
-				console.log(node);
 				{
 					return (
 						<>
@@ -58,6 +58,7 @@ export default function InfoComponent({ content }: any) {
 				content.fields.beskrivelse,
 				renderOption
 			)}
+			<SoMeFeed />
 		</section>
 	);
 }
