@@ -31,7 +31,7 @@ export async function getServerSideProps(context: any) {
 
 export default function InfoPage({ content }: any) {
 	//Type == content.sys.contentType.sys.id
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>

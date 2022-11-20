@@ -6,6 +6,7 @@ export default function Feed() {
 	const [slide, setSlide] = useState("nyheder");
 	const [news, setNews] = useState([]);
 	const [calender, setCalender] = useState([]);
+	const [info, setInfo] = useState([]);
 
 	useEffect(() => {
 		client
@@ -16,7 +17,6 @@ export default function Feed() {
 			})
 			.then((reponse: any) => {
 				setNews(reponse);
-				console.log(reponse);
 			});
 		client
 			.getEntries({
@@ -26,7 +26,15 @@ export default function Feed() {
 			})
 			.then((response: any) => {
 				setCalender(response);
-				console.log(response);
+			});
+		client
+			.getEntries({
+				content_type: "infoSide",
+				limit: 3,
+				order: "sys.createdAt",
+			})
+			.then((response: any) => {
+				setInfo(response);
 			});
 	}, []);
 
@@ -82,6 +90,28 @@ export default function Feed() {
 									)}
 									<p className="text-end">
 										{event.sys.createdAt}
+									</p>
+								</div>
+							);
+						})}
+					{slide == "viden" &&
+						info?.items &&
+						info.items.length != 0 &&
+						info.items.map((infoSide: any, i: number) => {
+							return (
+								<div className="col-4" key={i}>
+									<a
+										href={
+											"kalender/" + infoSide.fields.slug
+										}
+									>
+										<h3>{infoSide.fields.title}</h3>
+									</a>
+									{documentToReactComponents(
+										infoSide.fields.abstrakt
+									)}
+									<p className="text-end">
+										{infoSide.sys.createdAt}
 									</p>
 								</div>
 							);
