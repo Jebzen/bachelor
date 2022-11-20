@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { client } from "../components/contenful/main";
 import { IndexLayout } from "../layout";
 import LandingPage from "../components/LandingPage";
+import NewsComponent from "../components/NewsComponent";
 
 export async function getServerSideProps(context: any) {
 	//Find the slug
@@ -50,7 +51,7 @@ export default function InfoPage({ content }: any) {
 				)}
 			{content.sys.contentType.sys.id &&
 				content.sys.contentType.sys.id == "nyheder" && (
-					<>Nyheder side</>
+					<NewsComponent content={content} />
 				)}
 		</>
 	);

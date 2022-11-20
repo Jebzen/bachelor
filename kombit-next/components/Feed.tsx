@@ -2,6 +2,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { useEffect, useState } from "react";
 import { client } from "./contenful/main";
 
+type entry = {};
+
 export default function Feed() {
 	const [slide, setSlide] = useState("nyheder");
 	const [news, setNews] = useState([]);

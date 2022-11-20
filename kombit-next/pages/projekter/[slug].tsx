@@ -1,7 +1,7 @@
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
-import RichTextProject from "../../components/RichProjekt";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
@@ -48,7 +48,7 @@ export default function ProjektPage({ content }: any) {
 				<h1>{content.fields.title}</h1>
 				<div>
 					<h2>OM PROJEKTET:</h2>
-					<RichTextProject prop={content.fields.beskrivelse} />
+					{documentToReactComponents(content.fields.beskrivelse)}
 				</div>
 			</div>
 			<div>

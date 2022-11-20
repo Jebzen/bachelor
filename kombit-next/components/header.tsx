@@ -7,7 +7,7 @@ export default function Header() {
 						<a href="/">
 							<img
 								className="logo"
-								src="logo-2.png"
+								src="/logo-2.png"
 								alt="Kombit Logo"
 							/>
 						</a>
