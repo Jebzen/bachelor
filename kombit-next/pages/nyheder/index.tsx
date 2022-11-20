@@ -19,9 +19,7 @@ export default function Home(props: any) {
 					content="KOMBIT HEADLESS NEXTJS APPLICATION"
 				/>
 			</Head>
-			<IndexLayout>
-				<p>Nyheder</p>
-			</IndexLayout>
+			<p>Nyheder</p>
 		</>
 	);
 }

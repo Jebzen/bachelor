@@ -48,17 +48,15 @@ export default function NewsPage({ content, sys }: any) {
 			<Head>
 				<title>{content.fields.title}</title>
 			</Head>
-			<IndexLayout>
-				<div>
-					<div>[Projekter]</div>
-					<div>[Beskrivelse for valgt projekt]</div>
-				</div>
-				<div>
-					<div>[MISSION]</div>
-					<div>[Forretningschef]</div>
-				</div>
-				<div>[Nyhedsbox]</div>
-			</IndexLayout>
+			<div>
+				<div>[Projekter]</div>
+				<div>[Beskrivelse for valgt projekt]</div>
+			</div>
+			<div>
+				<div>[MISSION]</div>
+				<div>[Forretningschef]</div>
+			</div>
+			<div>[Nyhedsbox]</div>
 		</>
 	);
 }

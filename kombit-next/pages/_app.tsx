@@ -4,9 +4,14 @@ import "../styles/main.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.scss";
 import NProgress from "nprogress";
+import { IndexLayout } from "../layout";
 
 export default function App({ Component, pageProps }: AppProps) {
-	return <Component {...pageProps} />;
+	return (
+		<IndexLayout>
+			<Component {...pageProps} />
+		</IndexLayout>
+	);
 }
 
 /* 

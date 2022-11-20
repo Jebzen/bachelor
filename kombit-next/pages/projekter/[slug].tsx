@@ -37,31 +37,29 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function ProjektPage({ content }: any) {
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>
 			<Head>
 				<title>{content.fields.title}</title>
 			</Head>
-			<IndexLayout>
+			<div>
+				<h1>{content.fields.title}</h1>
 				<div>
-					<h1>{content.fields.title}</h1>
-					<div>
-						<h2>OM PROJEKTET:</h2>
-						<RichTextProject prop={content.fields.beskrivelse} />
-					</div>
+					<h2>OM PROJEKTET:</h2>
+					<RichTextProject prop={content.fields.beskrivelse} />
 				</div>
-				<div>
-					<>Card 1</>
-					<>Card 2</>
-					<>Card 3</>
-				</div>
-				<div>
-					<>Links</>
-					<>Projektleder</>
-				</div>
-			</IndexLayout>
+			</div>
+			<div>
+				<>Card 1</>
+				<>Card 2</>
+				<>Card 3</>
+			</div>
+			<div>
+				<>Links</>
+				<>Projektleder</>
+			</div>
 		</>
 	);
 }

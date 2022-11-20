@@ -75,13 +75,11 @@ export default function Home(props: any) {
 					content="KOMBIT HEADLESS NEXTJS APPLICATION"
 				/>
 			</Head>
-			<IndexLayout>
-				<FrontBanner banners={props.banners} />
-				<h2>Projekter:</h2>
-				<ProjectBlobs projects={props.projects} />
-				<h2>Nyheder:</h2>
-				<NewsCards news={props.news} />
-			</IndexLayout>
+			<FrontBanner banners={props.banners} />
+			<h2>Projekter:</h2>
+			<ProjectBlobs projects={props.projects} />
+			<h2>Nyheder:</h2>
+			<NewsCards news={props.news} />
 		</>
 	);
 }
