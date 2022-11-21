@@ -1,31 +1,31 @@
 {
-  "name": "kombit-next",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@contentful/f36-components": "^4.22.0",
-    "@contentful/rich-text-react-renderer": "^15.12.1",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.8",
-    "bootstrap": "^5.2.2",
-    "bootstrap-icons": "^1.10.2",
-    "contentful": "^9.2.11",
-    "next": "13.0.3",
-    "nprogress": "^0.2.0",
-    "react": "18.2.0",
-    "react-bootstrap": "^2.6.0",
-    "react-dom": "18.2.0",
-    "sass": "^1.56.1",
-    "typescript": "4.8.4"
-  },
-  "devDependencies": {
-    "@types/nprogress": "^0.2.0"
-  }
+	"name": "kombit-next",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@contentful/f36-components": "^4.22.0",
+		"@contentful/rich-text-react-renderer": "^15.12.1",
+		"@types/node": "18.11.9",
+		"@types/react": "18.0.25",
+		"@types/react-dom": "18.0.8",
+		"bootstrap": "^5.2.2",
+		"bootstrap-icons": "^1.10.2",
+		"contentful": "^9.2.11",
+		"next": "13.0.3",
+		"nprogress": "^0.2.0",
+		"react": "18.2.0",
+		"react-bootstrap": "^2.6.0",
+		"react-dom": "18.2.0",
+		"sass": "^1.56.1",
+		"typescript": "4.8.4"
+	},
+	"devDependencies": {
+		"@types/nprogress": "^0.2.0"
+	}
 }
