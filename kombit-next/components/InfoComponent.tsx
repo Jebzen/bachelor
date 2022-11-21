@@ -1,6 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Accordion } from "react-bootstrap";
 import SoMeFeed from "./Feed2";
+import ShareButtons from "./ShareButtons";
 
 export default function InfoComponent({ content }: any) {
 	//console.log(content);
@@ -44,21 +45,25 @@ export default function InfoComponent({ content }: any) {
 	};
 	return (
 		<section className="container">
-			<h1>{content.fields.title}</h1>
-			{content.fields.media && (
-				<div className="text-center">
-					<img
-						src={content.fields.media.fields.file.url}
-						alt={content.fields.media.fields.title}
-					/>
-				</div>
-			)}
-			<small className="fsw-italic">{content.fields.abstrakt}</small>
-			{documentToReactComponents(
-				content.fields.beskrivelse,
-				renderOption
-			)}
-			<SoMeFeed />
+			<div className="d-flex flex-column">
+				<h1>{content.fields.title}</h1>
+				{content.fields.media && (
+					<div className="text-center">
+						<img
+							src={content.fields.media.fields.file.url}
+							alt={content.fields.media.fields.title}
+						/>
+					</div>
+				)}
+				<small className="fst-italic">{content.fields.abstrakt}</small>
+
+				<ShareButtons />
+				{documentToReactComponents(
+					content.fields.beskrivelse,
+					renderOption
+				)}
+				<SoMeFeed />
+			</div>
 		</section>
 	);
 }

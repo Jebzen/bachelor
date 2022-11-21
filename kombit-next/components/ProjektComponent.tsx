@@ -1,5 +1,6 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styles from "../styles/Projekt.module.css";
+import ShareButtons from "./ShareButtons";
 
 export default function ProjektComponent({ projekt }: any) {
 	const { title, beskrivelse, featuredImage, links, cards } = projekt.fields;
@@ -14,7 +15,10 @@ export default function ProjektComponent({ projekt }: any) {
 					</div>
 				</div>
 				<div className={styles.columns}>
-					<div>{documentToReactComponents(beskrivelse)}</div>
+					<div>
+						<ShareButtons />
+						{documentToReactComponents(beskrivelse)}
+					</div>
 					<div>
 						<img
 							alt={title}
