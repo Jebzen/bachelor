@@ -19,17 +19,23 @@ export default function Header() {
 							/>
 						</a>
 					</div>
-					<form className="searchBar" action="/soeg">
+					<form className="input-group mb-3" action="/soeg">
 						<input
-							className="form-control"
 							type="text"
+							className="form-control"
 							placeholder="Søg her..."
 							aria-label="Søgningsfelt"
 							name="term"
 							value={searchTerm}
-							readOnly={false}
 							onChange={(e) => setSearchTerm(e.target.value)}
 						/>
+						<button
+							className="input-group-text"
+							type="submit"
+							id="button-addon2"
+						>
+							Søg <i className="ms-1 bi bi-search"></i>
+						</button>
 					</form>
 				</div>
 				<div id="bottomBar">

@@ -55,3 +55,24 @@ footer {
 .respect-line {
 	white-space: pre-line;
 }
+
+.search-grid {
+	display: grid;
+	grid-template-columns: 2fr 2fr;
+	grid-template-rows: 1fr;
+	margin-bottom: 3rem;
+	> a {
+		margin: 0.5rem;
+		padding: 1rem;
+		background-color: $fire-red;
+		color: white;
+		text-decoration: none;
+		&:hover {
+			color: $red-2;
+		}
+	}
+}
+
+.container.h-100 {
+	min-height: 100vh;
+}
