@@ -76,3 +76,14 @@ footer {
 .container.h-100 {
 	min-height: 100vh;
 }
+
+.footerbox {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.kalenderGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	column-gap: 10px;
+}

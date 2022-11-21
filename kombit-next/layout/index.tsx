@@ -1,9 +1,10 @@
 import Head from "next/head";
 import React from "react";
+import { client } from "../components/contenful/main";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
-export function IndexLayout({ children }: any) {
+export function IndexLayout({ children, infoPages }: any) {
 	return (
 		<>
 			<Head>
