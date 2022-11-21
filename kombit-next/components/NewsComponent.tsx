@@ -1,4 +1,12 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import {
+	FacebookIcon,
+	FacebookShareButton,
+	TwitterIcon,
+	TwitterShareButton,
+	LinkedinShareButton,
+	LinkedinIcon,
+} from "react-share";
 
 export default function NewsComponent({ content }: any) {
 	return (
@@ -26,6 +34,22 @@ export default function NewsComponent({ content }: any) {
 					</span>
 				</p>
 			)}
+			<div className="d-flex">
+				<FacebookShareButton
+					quote="Se denne seje artikel"
+					hashtag="Kombit"
+					url={"https://kombit.dk" + location.pathname}
+					children={<FacebookIcon />}
+				/>
+				<TwitterShareButton
+					children={<TwitterIcon />}
+					url={"https://kombit.dk" + location.pathname}
+				/>
+				<LinkedinShareButton
+					children={<LinkedinIcon />}
+					url={"https://kombit.dk" + location.pathname}
+				/>
+			</div>
 			<p className="fst-italic">
 				<small>{content.fields.abstrakt}</small>
 			</p>
