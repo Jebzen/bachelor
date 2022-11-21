@@ -14,30 +14,15 @@ export async function getServerSideProps() {
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
 
 	//Hent projekter
-	const projects = await (
-		await fetch(
-			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=projekt`,
-			{
-				headers: {
-					Authorization:
-						"Bearer EcZKFhLUFp3op1UWgVR3qouQ8iwYwIDf0ZEdjygBZKA",
-				},
-			}
-		)
-	).json();
+	const projects = await client.getEntries({
+		content_type: "projekt",
+	});
 
 	//Hent nyheder
-	const news = await (
-		await fetch(
-			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=nyheder&limit=5`,
-			{
-				headers: {
-					Authorization:
-						"Bearer EcZKFhLUFp3op1UWgVR3qouQ8iwYwIDf0ZEdjygBZKA",
-				},
-			}
-		)
-	).json();
+	const news = await client.getEntries({
+		content_type: "nyheder",
+		limit: 5,
+	});
 	//Put billede links og info i fields
 	if (news.includes?.Asset) {
 		news.items.map((item: any, i: number) => {
@@ -63,7 +48,7 @@ export async function getServerSideProps() {
 	};
 }
 
-export default function Home(props: any) {
+export default function Home({ banners, news, projects }: any) {
 	//Alle props kommer ovenfra
 
 	return (
@@ -75,11 +60,13 @@ export default function Home(props: any) {
 					content="KOMBIT HEADLESS NEXTJS APPLICATION"
 				/>
 			</Head>
-			<FrontBanner banners={props.banners} />
-			<h2>Projekter:</h2>
-			<ProjectBlobs projects={props.projects} />
-			<h2>Nyheder:</h2>
-			<NewsCards news={props.news} />
+			<FrontBanner banners={banners} />
+			<section className="container">
+				<h2>Projekter:</h2>
+				<ProjectBlobs projects={projects} />
+				<h2>Nyheder:</h2>
+				<NewsCards news={news} />
+			</section>
 		</>
 	);
 }

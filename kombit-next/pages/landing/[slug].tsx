@@ -6,17 +6,11 @@ import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
-	const response = await (
-		await fetch(
-			`https://cdn.contentful.com/spaces/7mkgxnbudn0o/environments/master/entries?content_type=landingPage&fields.slug=${slug}`,
-			{
-				headers: {
-					Authorization:
-						"Bearer EcZKFhLUFp3op1UWgVR3qouQ8iwYwIDf0ZEdjygBZKA",
-				},
-			}
-		)
-	).json();
+
+	const response = await client.getEntries({
+		content_type: "landingPage",
+		"fields.slug": slug,
+	});
 
 	const content = response.items.find((item: any) => {
 		return true;
