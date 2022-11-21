@@ -3,7 +3,7 @@ import { MouseEventHandler, useEffect, useReducer, useState } from "react";
 import { client } from "./contenful/main";
 import Feed from "./Feed";
 
-export default function LandingPage({ content, children }: any) {
+export default function LandingComponent({ content, children }: any) {
 	const [slide, setSlide] = useState(null);
 
 	//console.log(slide);

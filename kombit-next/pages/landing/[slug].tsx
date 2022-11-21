@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
+import LandingComponent from "../../components/LandingComponent";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
@@ -42,17 +43,7 @@ export default function LandingPage({ content }: any) {
 			<Head>
 				<title>{content.fields.title}</title>
 			</Head>
-			<IndexLayout>
-				<div>
-					<div>[Projekter]</div>
-					<div>[Beskrivelse for valgt projekt]</div>
-				</div>
-				<div>
-					<div>[MISSION]</div>
-					<div>[Forretningschef]</div>
-				</div>
-				<div>[Nyhedsbox]</div>
-			</IndexLayout>
+			<LandingComponent content={content} />
 		</>
 	);
 }

@@ -2,8 +2,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../components/contenful/main";
 import { IndexLayout } from "../layout";
-import LandingPage from "../components/LandingPage";
+import LandingComponent from "../components/LandingComponent";
 import NewsComponent from "../components/NewsComponent";
+import InfoComponent from "../components/InfoComponent";
+import ProjektComponent from "../components/ProjektComponent";
 
 export async function getServerSideProps(context: any) {
 	//Find the slug
@@ -41,13 +43,15 @@ export default function InfoPage({ content }: any) {
 			</Head>
 			{content.sys.contentType.sys.id &&
 				content.sys.contentType.sys.id == "landingPage" && (
-					<LandingPage content={content} />
+					<LandingComponent content={content} />
 				)}
 			{content.sys.contentType.sys.id &&
-				content.sys.contentType.sys.id == "infoSide" && <>Info side</>}
+				content.sys.contentType.sys.id == "infoSide" && (
+					<InfoComponent content={content} />
+				)}
 			{content.sys.contentType.sys.id &&
 				content.sys.contentType.sys.id == "projekt" && (
-					<>Projekt side</>
+					<ProjektComponent projekt={content} />
 				)}
 			{content.sys.contentType.sys.id &&
 				content.sys.contentType.sys.id == "nyheder" && (
