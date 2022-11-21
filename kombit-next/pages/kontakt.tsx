@@ -2,6 +2,7 @@ import { client } from "../components/contenful/main";
 import { IndexLayout } from "../layout";
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import Head from "next/head";
 
 export default function Kontakt() {
 	const form: any = useRef();
@@ -26,23 +27,40 @@ export default function Kontakt() {
 			);
 	};
 	return (
-		<section className="container h-100">
-			<h1>Kontaktformular</h1>
-			<form ref={form} onSubmit={sendEmail}>
-				<div className="mb-3">
-					<label className="form-label">Navn</label>
-					<input type="text" name="name" className="form-control" />
-				</div>
-				<div className="mb-3">
-					<label className="form-label">Email</label>
-					<input type="email" name="email" className="form-control" />
-				</div>
-				<div className="mb-3">
-					<label className="form-label">Besked</label>
-					<textarea name="message" className="form-control" />
-				</div>
-				<input type="submit" value="Send" className="btn btn-primary" />
-			</form>
-		</section>
+		<>
+			<Head>
+				<title>Kontakt KOMBIT</title>
+			</Head>
+			<section className="container h-100">
+				<h1>Kontaktformular</h1>
+				<form ref={form} onSubmit={sendEmail}>
+					<div className="mb-3">
+						<label className="form-label">Navn</label>
+						<input
+							type="text"
+							name="name"
+							className="form-control"
+						/>
+					</div>
+					<div className="mb-3">
+						<label className="form-label">Email</label>
+						<input
+							type="email"
+							name="email"
+							className="form-control"
+						/>
+					</div>
+					<div className="mb-3">
+						<label className="form-label">Besked</label>
+						<textarea name="message" className="form-control" />
+					</div>
+					<input
+						type="submit"
+						value="Send"
+						className="btn btn-primary"
+					/>
+				</form>
+			</section>
+		</>
 	);
 }
