@@ -1,10 +1,33 @@
 import { useRouter } from "next/router";
+import React from "react";
 import { useEffect, useState } from "react";
+import { client } from "./contenful/main";
+import NavDropdownExample from "./Nav";
 
-export default function Header() {
+export default function Header({ PageTypes }: any) {
 	const router = useRouter();
 	const { term } = router.query;
 	const [searchTerm, setSearchTerm] = useState(term);
+
+	//Taget fra
+	//https://dev.to/dan_starner/building-dynamic-breadcrumbs-in-nextjs-17oa
+	const breadCrumbs = React.useMemo(
+		function generateBreadcrumbs() {
+			const asPathWithoutQuery = router.asPath.split("?")[0];
+			const asPathNestedRoutes = asPathWithoutQuery
+				.split("/")
+				.filter((v) => v.length > 0);
+
+			const crumblist = asPathNestedRoutes.map((subpath, idx) => {
+				const href =
+					"/" + asPathNestedRoutes.slice(0, idx + 1).join("/");
+				return { href, text: subpath };
+			});
+
+			return [{ href: "/", text: "Home" }, ...crumblist];
+		},
+		[router.asPath]
+	);
 
 	return (
 		<>
@@ -38,24 +61,20 @@ export default function Header() {
 						</button>
 					</form>
 				</div>
-				<div id="bottomBar">
-					<ul className="nav justify-content-end">
-						<li className="nav-item">
-							<a className="nav-link" href="#">
-								Karriere
-							</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">
-								Om os
-							</a>
-						</li>
-					</ul>
-				</div>
+
+				<NavDropdownExample PageTypes={PageTypes} />
 			</header>
-			<div className="p-2 breadCrumbs" id="breadCrumbs">
-				Something/something
-			</div>
+			{breadCrumbs.length != 0 && (
+				<div className="p-2 breadCrumbs" id="breadCrumbs">
+					{breadCrumbs.map((crumb: any, i: number) => {
+						return (
+							<a key={i} href={crumb.href}>
+								{crumb.text} /{" "}
+							</a>
+						);
+					})}
+				</div>
+			)}
 		</>
 	);
 }

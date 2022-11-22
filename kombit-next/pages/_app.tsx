@@ -9,36 +9,50 @@ import { client } from "../components/contenful/main";
 import { useEffect } from "react";
 
 let infoPagesPropsCache: any;
+let pageTypesCache: any;
 
 export default function App({
 	Component,
 	pageProps,
 	infoPages,
+	pageTypes,
 }: AppProps | any) {
 	useEffect(() => {
 		infoPagesPropsCache = infoPages;
+		pageTypesCache = pageTypes;
 	}, []);
 
 	return (
-		<IndexLayout infoPages={infoPages}>
+		<IndexLayout infoPages={infoPages} PageTypes={pageTypes}>
 			<Component {...pageProps} />
 		</IndexLayout>
 	);
 }
 
 App.getInitialProps = async () => {
+	//Footer info pages
 	if (infoPagesPropsCache != undefined) {
 		return { infoPages: infoPagesPropsCache };
 	}
-
 	const response = await client.getEntries({
 		content_type: "infoSide",
 	});
 	const infoPages = response.items;
 	if (infoPagesPropsCache != undefined) infoPagesPropsCache = infoPages;
 
+	//Header page types
+	const responsePageTypes = await client.getContentTypes();
+	const pageTypes = responsePageTypes.items.filter((item: any) => {
+		return item.fields.find((field: any) => {
+			return field.id == "slug";
+		});
+	});
+
+	if (pageTypesCache != undefined) pageTypesCache = pageTypes;
+
 	return {
 		infoPages,
+		pageTypes,
 	};
 };
 

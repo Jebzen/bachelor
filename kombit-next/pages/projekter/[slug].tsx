@@ -33,7 +33,7 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function ProjektPage({ projekt }: any) {
-	console.log(projekt);
+	//console.log(projekt);
 	return (
 		<>
 			<Head>
