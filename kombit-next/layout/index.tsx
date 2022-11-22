@@ -12,7 +12,7 @@ export function IndexLayout({ children, infoPages }: any) {
 			</Head>
 			<Header />
 			<main>{children}</main>
-			<Footer />
+			<Footer infoPages={infoPages} />
 		</>
 	);
 }

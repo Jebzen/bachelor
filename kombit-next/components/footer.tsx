@@ -27,19 +27,7 @@ export default function Footer() {
 }
 */
 
-export default function Footer() {
-	const [infoPages, setInfoPages] = useState([]);
-
-	useEffect(() => {
-		client
-			.getEntries({
-				content_type: "infoSide",
-			})
-			.then((response: any) => {
-				setInfoPages(response.items);
-			});
-	}, []);
-
+export default function Footer({ infoPages }: any) {
 	return (
 		<footer className="p-2 d-flex flex-column">
 			<h3>KOMBIT A/S</h3>
