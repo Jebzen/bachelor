@@ -93,3 +93,49 @@ footer {
 	grid-template-columns: 1fr 1fr;
 	font-size: 0.9em;
 }
+
+.news-box {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1000px;
+	display: grid;
+	grid-template-columns: repeat(4, 25%);
+	grid-auto-rows: 1fr;
+	grid-gap: 1rem;
+	img {
+		display: none;
+	}
+	.news-item {
+		display: flex;
+		flex-direction: column;
+		grid-row: span 1;
+		text-decoration: none !important;
+		color: black;
+		padding: 0.25rem;
+		h2 {
+			font-size: 1rem;
+			color: $fire-red;
+		}
+		p {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3; /* number of lines to show */
+		}
+		&:hover {
+			background-color: $red-3;
+		}
+	}
+	.box-1 {
+		grid-column: span 2;
+		grid-row: span 2;
+		img {
+			display: flex;
+			width: 100%;
+		}
+	}
+	.box-2 {
+		grid-column: span 2;
+	}
+}

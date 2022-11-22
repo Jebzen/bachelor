@@ -19,9 +19,11 @@ export default function NavDropdownExample({ PageTypes }: any) {
 					<Nav>
 						{PageTypes &&
 							PageTypes.length > 0 &&
-							PageTypes.map((type: any) => {
+							PageTypes.sort((a: any, b: any) => {
+								return a.name - b.name;
+							}).map((type: any, i: number) => {
 								return (
-									<Nav.Item className="text-end">
+									<Nav.Item className="text-end" key={i}>
 										<Nav.Link href={"/" + type.sys.id}>
 											{type.name}
 										</Nav.Link>
