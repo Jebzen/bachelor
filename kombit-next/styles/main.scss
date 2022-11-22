@@ -87,3 +87,9 @@ footer {
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	column-gap: 10px;
 }
+
+.footerbox-2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	font-size: 0.9em;
+}
