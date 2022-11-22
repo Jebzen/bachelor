@@ -86,37 +86,12 @@ export default function Search(props: any) {
 									(item: any, i: number) => {
 										//if (!item.fields.slug) return;
 										//Lav godt link
-										let link = item.fields.slug;
-										if (
-											item.sys.contentType.sys.id ==
-											"infoSide"
-										)
-											link =
-												"indhold/" + item.fields.slug;
-										if (
-											item.sys.contentType.sys.id ==
-											"nyheder"
-										)
-											link =
-												"nyheder/" + item.fields.slug;
-										if (
-											item.sys.contentType.sys.id ==
-											"projekt"
-										)
-											link =
-												"projekter/" + item.fields.slug;
-										if (
-											item.sys.contentType.sys.id ==
-											"kalender"
-										)
-											link =
-												"kalender/" + item.fields.slug;
-										if (
-											item.sys.contentType.sys.id ==
-											"landingPage"
-										)
-											link =
-												"landing/" + item.fields.slug;
+										let link = item?.sys?.contentType?.sys
+											?.id
+											? item.sys.contentType.sys.id +
+											  "/" +
+											  item.fields.slug
+											: item.fields.slug;
 
 										return (
 											<a
