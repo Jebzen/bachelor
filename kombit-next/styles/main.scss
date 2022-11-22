@@ -94,7 +94,9 @@ footer {
 	font-size: 0.9em;
 }
 
-.news-box {
+.news-box,
+.landing-box,
+.info-box {
 	margin-left: auto;
 	margin-right: auto;
 	width: 1000px;
@@ -137,5 +139,11 @@ footer {
 	}
 	.box-2 {
 		grid-column: span 2;
+	}
+}
+
+.landing-box.box-1 {
+	img {
+		display: none;
 	}
 }
