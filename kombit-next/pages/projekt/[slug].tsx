@@ -27,19 +27,26 @@ export async function getServerSideProps(context: any) {
 
 	return {
 		props: {
-			projekt: slugged,
+			content: slugged,
 		},
 	};
 }
 
-export default function ProjektPage({ projekt }: any) {
-	//console.log(projekt);
+export default function ProjektPage({ content }: any) {
+	//console.log(content);
+
 	return (
 		<>
 			<Head>
-				<title>{projekt.fields.title}</title>
+				<title>{content.fields.title}</title>
+				{content.fields?.abstrakt && (
+					<meta
+						name="description"
+						content={content.fields?.abstrakt}
+					/>
+				)}
 			</Head>
-			<ProjektComponent projekt={projekt} />
+			<ProjektComponent projekt={content} />
 		</>
 	);
 }

@@ -34,12 +34,18 @@ export async function getServerSideProps(context: any) {
 
 export default function InfoPage({ content }: any) {
 	//Type == content.sys.contentType.sys.id
-	//console.log(content);
+	console.log(content);
 
 	return (
 		<>
 			<Head>
 				<title>{content.fields.title}</title>
+				{content.fields?.abstrakt && (
+					<meta
+						name="description"
+						content={content.fields?.abstrakt}
+					/>
+				)}
 			</Head>
 			{content.sys.contentType.sys.id &&
 				content.sys.contentType.sys.id == "landingPage" && (

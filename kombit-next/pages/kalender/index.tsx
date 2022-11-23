@@ -15,7 +15,7 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function Kalender({ content }: any) {
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>

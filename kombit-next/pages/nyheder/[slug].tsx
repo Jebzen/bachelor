@@ -35,6 +35,12 @@ export default function NewsPage({ content, sys }: any) {
 		<>
 			<Head>
 				<title>{content.fields.title}</title>
+				{content.fields?.abstrakt && (
+					<meta
+						name="description"
+						content={content.fields?.abstrakt}
+					/>
+				)}
 			</Head>
 			<NewsComponent content={content} />
 		</>

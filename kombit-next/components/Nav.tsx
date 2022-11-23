@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 export default function NavDropdownExample({ PageTypes }: any) {
-	console.log(PageTypes);
+	//console.log(PageTypes);
 	return (
 		<>
 			<Navbar

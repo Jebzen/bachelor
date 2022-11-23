@@ -36,6 +36,12 @@ export default function LandingPage({ content }: any) {
 		<>
 			<Head>
 				<title>{content.fields.title}</title>
+				{content.fields?.abstrakt && (
+					<meta
+						name="description"
+						content={content.fields?.abstrakt}
+					/>
+				)}
 			</Head>
 			<LandingComponent content={content} />
 		</>
