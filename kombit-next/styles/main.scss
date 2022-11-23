@@ -1,5 +1,6 @@
 @import "variables_colors";
 @import "variables_typografi";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 * {
 	margin: 0;
@@ -145,5 +146,14 @@ footer {
 .landing-box.box-1 {
 	img {
 		display: none;
+	}
+}
+
+.kalender-main {
+	table {
+		@extend .table, .table-borderless;
+		tr:first-child {
+			@extend th;
+		}
 	}
 }

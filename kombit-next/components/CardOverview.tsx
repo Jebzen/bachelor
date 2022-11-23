@@ -1,7 +1,7 @@
 import styles from "../styles/Projekt.module.css";
 
 const CardOverview = ({ projekt, tab }: any) => {
-	console.log(projekt);
+	//console.log(projekt);
 	const { title, abstrakt, featuredImage, slug } = projekt.fields;
 
 	return (
@@ -12,7 +12,7 @@ const CardOverview = ({ projekt, tab }: any) => {
 			<div className={styles.cardText}>
 				<h3>{title}</h3>
 				<p className="text">{abstrakt}</p>
-				<a className="read-more" href={"/projekter/" + slug}>
+				<a className="read-more" href={"/projekt/" + slug}>
 					Read more
 				</a>
 			</div>

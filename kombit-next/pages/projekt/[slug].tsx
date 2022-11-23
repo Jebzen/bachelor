@@ -8,10 +8,10 @@ export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const response = await client.getEntries({
 		content_type: "projekt",
-		"fields.slug": slug,
 	});
 
 	const slugged = response.items.find((item: any) => {
+		//console.log(item);
 		return item?.fields?.slug == slug;
 	});
 

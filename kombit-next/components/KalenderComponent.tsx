@@ -3,17 +3,8 @@ import { Accordion } from "react-bootstrap";
 import SoMeFeed from "./Feed2";
 import ShareButtons from "./ShareButtons";
 
-export default function InfoComponent({ content }: any) {
-	//console.log(content);
-
-	const NoPara = {
-		renderNode: {
-			paragraph: (node: any, children: any) => {
-				//console.log(node);
-				return <>test</>;
-			},
-		},
-	};
+export default function KalenderComponent({ content }: any) {
+	console.log(content);
 
 	const renderOption = {
 		renderNode: {
@@ -41,20 +32,15 @@ export default function InfoComponent({ content }: any) {
 	return (
 		<section className="container">
 			<div className="d-flex flex-column">
-				<h1>{content.fields.title}</h1>
-				{content.fields.media && (
-					<div className="text-center">
-						<img
-							src={content.fields.media.fields.file.url}
-							alt={content.fields.media.fields.title}
-						/>
-					</div>
-				)}
-				<small className="fst-italic">{content.fields.abstrakt}</small>
-
-				<ShareButtons />
-				{documentToReactComponents(content.fields.beskrivelse, renderOption)}
-				<SoMeFeed />
+				<h1>
+					{content.fields.title} - {content.fields.dato}
+				</h1>
+				<small>
+					{documentToReactComponents(content.fields.abstrakt, renderOption)}
+				</small>
+				<div className="kalender-main">
+					{documentToReactComponents(content.fields.beskrivelse, renderOption)}
+				</div>
 			</div>
 		</section>
 	);

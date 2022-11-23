@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
-import InfoComponent from "../../components/InfoComponent";
+import KalenderComponent from "../../components/KalenderComponent";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
@@ -35,12 +35,10 @@ export default function KalenderPage({ content }: any) {
 			<Head>
 				<title>{content.fields.title}</title>
 				{content.fields?.abstrakt && (
-					<meta
-						name="description"
-						content={content.fields?.abstrakt}
-					/>
+					<meta name="description" content={content.fields?.abstrakt} />
 				)}
 			</Head>
+			<KalenderComponent content={content} />
 		</>
 	);
 }
