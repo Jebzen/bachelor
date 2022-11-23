@@ -12,14 +12,6 @@ body {
 	background-color: $neutral-1 !important;
 }
 
-header {
-	background-color: $neutral-2;
-}
-
-.breadCrumbs {
-	background-color: $neutral-3;
-}
-
 footer {
 	background-color: $red-2;
 	a {
@@ -154,6 +146,58 @@ footer {
 		@extend .table, .table-borderless;
 		tr:first-child {
 			@extend th;
+		}
+	}
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap; /* so they do not overlap each other if space too short */
+	background-color: $neutral-1;
+	> div,
+	> nav {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap; /* so they do not overlap each other if space too short */
+		flex: 2; /* 2 is minimum but plenty enough here  */
+	}
+	.nav-link {
+		font-weight: bold;
+		color: $red-1;
+		text-transform: uppercase;
+		&:hover {
+			color: $fire-red;
+		}
+	}
+	form.input-group {
+		input {
+			border-right: none;
+		}
+		button {
+			border-left: none;
+		}
+		input,
+		button {
+			border-color: $red-1;
+			background-color: $neutral-1;
+			border-width: 2px;
+		}
+	}
+}
+
+.breadCrumbs {
+	background-color: $neutral-1;
+	a {
+		text-decoration: none;
+		color: $red-1;
+		text-transform: capitalize;
+		&:hover,
+		&:focus {
+			color: $fire-red;
+		}
+		span {
+			font-weight: bold;
 		}
 	}
 }

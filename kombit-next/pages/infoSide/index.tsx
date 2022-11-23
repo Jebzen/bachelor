@@ -26,10 +26,7 @@ export default function InfoIndex({ content }: any) {
 		<>
 			<Head>
 				<title>KOMBIT APP</title>
-				<meta
-					name="description"
-					content="KOMBIT HEADLESS NEXTJS APPLICATION"
-				/>
+				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<section className="container">
 				<h1>Info pages</h1>
@@ -38,7 +35,7 @@ export default function InfoIndex({ content }: any) {
 				<hr />
 				<div className="info-box">
 					{content.map((item: any, i: number) => {
-						console.log(item);
+						//console.log(item);
 						return (
 							<a
 								href={"/nyheder/" + item.fields.slug}
@@ -46,16 +43,12 @@ export default function InfoIndex({ content }: any) {
 								key={i}
 							>
 								<h2>{item.fields.title}</h2>
-								<small className="fst-italic">
-									{item.sys.createdAt}
-								</small>
+								<small className="fst-italic">{item.sys.createdAt}</small>
 								<p>{item.fields.abstrakt}</p>
 								{item.fields.media && (
 									<img
 										src={item.fields.media.fields.file.url}
-										alt={
-											item.fields.media.fields.description
-										}
+										alt={item.fields.media.fields.description}
 									/>
 								)}
 							</a>

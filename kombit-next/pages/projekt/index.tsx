@@ -18,8 +18,8 @@ export async function getServerSideProps() {
 }
 export default function Projekter({ projekt, tag }: any) {
 	const [tab, setTab] = useState("arbejdsmarked");
-	console.log(projekt);
-	console.log(tag);
+	//console.log(projekt);
+	//console.log(tag);
 
 	return (
 		<div>
@@ -59,7 +59,7 @@ export default function Projekter({ projekt, tag }: any) {
 			</div>
 			<div className={styles.CardOverviewContaier}>
 				{projekt.map((pro: any, i: number) => {
-					console.log(pro);
+					//console.log(pro);
 					return pro.metadata.tags.map((tag: any, i: number) => {
 						if (tag.sys.id == "arbejdsmarked" && tab == "arbejdsmarked") {
 							return (

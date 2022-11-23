@@ -30,41 +30,44 @@ export default function Header({ PageTypes }: any) {
 
 	return (
 		<>
-			<header className="d-flex flex-column p-2 pb-0">
-				<div id="topBar" className="d-flex justify-content-between">
-					<div className="logo-parent">
-						<a href="/">
-							<img className="logo" src="/logo-2.png" alt="Kombit Logo" />
-						</a>
+			<header className="pt-2">
+				<div className="container d-flex flex-column ">
+					<div className="d-flex justify-content-between">
+						<div className="d-flex align-items-center">
+							<a href="/">
+								<img className="logo" src="/logo-2.png" alt="Kombit Logo" />
+							</a>
+						</div>
+						<div className="d-flex align-items-center">
+							<form className="input-group" action="/soeg">
+								<input
+									type="text"
+									className="form-control"
+									placeholder="Søg her..."
+									aria-label="Søgningsfelt"
+									name="term"
+									value={searchTerm}
+									onChange={(e) => setSearchTerm(e.target.value)}
+								/>
+								<button
+									className="input-group-text"
+									type="submit"
+									id="button-addon2"
+								>
+									<i className="bi bi-search"></i>
+								</button>
+							</form>
+						</div>
 					</div>
-					<form className="input-group mb-3" action="/soeg">
-						<input
-							type="text"
-							className="form-control"
-							placeholder="Søg her..."
-							aria-label="Søgningsfelt"
-							name="term"
-							value={searchTerm}
-							onChange={(e) => setSearchTerm(e.target.value)}
-						/>
-						<button
-							className="input-group-text"
-							type="submit"
-							id="button-addon2"
-						>
-							Søg <i className="ms-1 bi bi-search"></i>
-						</button>
-					</form>
+					<NavDropdownExample PageTypes={PageTypes} />
 				</div>
-
-				<NavDropdownExample PageTypes={PageTypes} />
 			</header>
-			{breadCrumbs.length != 0 && (
-				<div className="p-2 breadCrumbs" id="breadCrumbs">
+			{breadCrumbs.length > 1 && (
+				<div className="pb-2 breadCrumbs container" id="breadCrumbs">
 					{breadCrumbs.map((crumb: any, i: number) => {
 						return (
 							<a key={i} href={crumb.href}>
-								{crumb.text} /{" "}
+								{crumb.text} {breadCrumbs[i + 1] && <span>{">"} </span>}
 							</a>
 						);
 					})}

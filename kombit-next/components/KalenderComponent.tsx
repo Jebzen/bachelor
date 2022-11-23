@@ -4,7 +4,7 @@ import SoMeFeed from "./Feed2";
 import ShareButtons from "./ShareButtons";
 
 export default function KalenderComponent({ content }: any) {
-	console.log(content);
+	//console.log(content);
 
 	const renderOption = {
 		renderNode: {

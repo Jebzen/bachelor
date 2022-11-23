@@ -26,10 +26,7 @@ export default function LandingIndex({ content }: any) {
 		<>
 			<Head>
 				<title>KOMBIT APP</title>
-				<meta
-					name="description"
-					content="KOMBIT HEADLESS NEXTJS APPLICATION"
-				/>
+				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<section className="container">
 				<h1>Landing pages</h1>
@@ -38,7 +35,7 @@ export default function LandingIndex({ content }: any) {
 				<hr />
 				<div className="landing-box">
 					{content.map((item: any, i: number) => {
-						console.log(item);
+						//console.log(item);
 						return (
 							<a
 								href={"/nyheder/" + item.fields.slug}
@@ -46,9 +43,7 @@ export default function LandingIndex({ content }: any) {
 								key={i}
 							>
 								<h2>{item.fields.title}</h2>
-								<small className="fst-italic">
-									{item.sys.createdAt}
-								</small>
+								<small className="fst-italic">{item.sys.createdAt}</small>
 								<p>{item.fields.abstrakt}</p>
 							</a>
 						);
