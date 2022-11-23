@@ -30,7 +30,7 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function LandingPage({ content }: any) {
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>

@@ -9,6 +9,11 @@ export function IndexLayout({ children, infoPages, PageTypes }: any) {
 		<>
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
+				<title>Kombit app</title>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1"
+				/>
 			</Head>
 			<Header PageTypes={PageTypes} />
 			<main>{children}</main>

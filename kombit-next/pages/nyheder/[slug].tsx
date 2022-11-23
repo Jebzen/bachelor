@@ -29,7 +29,7 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function NewsPage({ content, sys }: any) {
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>

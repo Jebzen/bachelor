@@ -20,7 +20,7 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function NewsIndex({ content }: any) {
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>
