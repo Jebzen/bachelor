@@ -81,3 +81,103 @@
     margin: 30px 10%;
   }
 }
+
+.heroHeading {
+  text-align: center;
+  margin: 30px 0px;
+}
+
+/* tabs content */
+.CardOverviewContaier {
+  display: flex;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto 75px;
+  width: 85%;
+}
+
+.cardBody {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.2);
+  margin: 25px 0;
+  min-height: 500px;
+  overflow: hidden;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .CardOverviewContaier {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .cardBody {
+    margin: 25px 10px;
+    width: 45%;
+  }
+}
+@media (min-width: 1024px) {
+  .cardBody {
+    margin: 25px 15px;
+    width: 30%;
+  }
+}
+
+.cardImg {
+  border-bottom: 4px solid #c5252f;
+  height: 199px;
+  overflow: hidden;
+}
+
+.cardBody img {
+  height: 100%;
+  object-position: center center;
+  width: 100%;
+  object-fit: cover;
+}
+
+.cardText p {
+  font-family: "Lato", sans-serif;
+  font-size: 0.75rem;
+  color: #898989;
+  margin-top: 5.5vh;
+  text-transform: uppercase;
+}
+@media (min-width: 1024px) {
+  .cardText p {
+    margin-top: 3.5vh;
+  }
+}
+.cardText h3 {
+  font-size: 1.75rem;
+  margin-top: 25px;
+  text-align: center;
+}
+.cardText p {
+  font-size: 0.95rem;
+  margin: 20px auto;
+  text-align: center;
+  width: 85%;
+}
+
+.cardText a {
+  border: 2px solid #c5252f;
+  color: #c5252f;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 7.5px 25px;
+  transition: all 0.5s ease;
+  text-align: center;
+  display: flex;
+  width: 40%;
+  justify-content: center;
+}
+.cardText a:hover {
+  background-color: #c5252f;
+  color: #ffffff;
+  transform: scale(1.15);
+}

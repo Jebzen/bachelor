@@ -19,8 +19,7 @@ export default function Header({ PageTypes }: any) {
 				.filter((v) => v.length > 0);
 
 			const crumblist = asPathNestedRoutes.map((subpath, idx) => {
-				const href =
-					"/" + asPathNestedRoutes.slice(0, idx + 1).join("/");
+				const href = "/" + asPathNestedRoutes.slice(0, idx + 1).join("/");
 				return { href, text: subpath };
 			});
 
@@ -35,11 +34,7 @@ export default function Header({ PageTypes }: any) {
 				<div id="topBar" className="d-flex justify-content-between">
 					<div className="logo-parent">
 						<a href="/">
-							<img
-								className="logo"
-								src="/logo-2.png"
-								alt="Kombit Logo"
-							/>
+							<img className="logo" src="/logo-2.png" alt="Kombit Logo" />
 						</a>
 					</div>
 					<form className="input-group mb-3" action="/soeg">

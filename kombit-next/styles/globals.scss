@@ -32,3 +32,51 @@ a {
   right: 5rem;
   margin-top: 1%;
 }
+
+/* tabs */
+.tabsContainer {
+  width: 100%;
+}
+
+.tabsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  width: 76%;
+  margin: 0 auto;
+  flex-direction: row;
+}
+
+.tabLink {
+  width: 18%;
+  display: flex;
+  align-items: center;
+  margin: 60px 7.5px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #c5252f;
+}
+
+.tabLink {
+  color: #c5252f;
+}
+
+.active {
+  color: #fff;
+  background-color: #c5252f;
+}
+
+@media (min-width: 576px) {
+  .tabsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: row;
+  }
+}

@@ -1,12 +1,8 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Head from "next/head";
-import { createClient } from "contentful";
-import { IndexLayout } from "../../layout";
-import styles from "../../styles/Projekt.module.css";
-import Image from "next/image";
-import ProjectCards from "../../components/ProjectCard";
+import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
 import ProjektComponent from "../../components/ProjektComponent";
+import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
@@ -40,10 +36,7 @@ export default function ProjektPage({ content }: any) {
 			<Head>
 				<title>{content.fields.title}</title>
 				{content.fields?.abstrakt && (
-					<meta
-						name="description"
-						content={content.fields?.abstrakt}
-					/>
+					<meta name="description" content={content.fields?.abstrakt} />
 				)}
 			</Head>
 			<ProjektComponent projekt={content} />
