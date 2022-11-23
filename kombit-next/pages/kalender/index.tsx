@@ -26,9 +26,10 @@ export default function Kalender({ content }: any) {
 				<div className="kalenderGrid">
 					{content.items &&
 						content.items.length > 0 &&
-						content.items.map((item: any) => {
+						content.items.map((item: any, i: number) => {
 							return (
 								<a
+									key={i}
 									href={"/kalender/" + item.fields.slug}
 									className="text-decoration-none text-dark"
 								>
