@@ -69,8 +69,8 @@ export default function Header({ PageTypes }: any) {
 									className="form-check-label"
 									htmlFor="flexSwitchCheckDefault"
 								>
-									{true && <i className="bi bi-brightness-high-fill"></i>}
-									{false && <i className="bi bi-brightness-high"></i>}
+									{climate && <i className="bi bi-brightness-high-fill"></i>}
+									{!climate && <i className="bi bi-brightness-high"></i>}
 								</label>
 							</div>
 
