@@ -75,4 +75,29 @@
 			}
 		}
 	}
+
+	.tabLink {
+		color: $neutral-2-2 !important;
+		border-color: $neutral-2-2 !important;
+		&.active {
+			background-color: $neutral-3 !important;
+		}
+	}
+	.Projekt_cardImg__oPvaE {
+		border-color: $neutral-2-2 !important;
+	}
+	.read-more {
+		border-color: $neutral-2-2 !important;
+		color: $neutral-2-2 !important;
+		&:hover {
+			background-color: $neutral-2-2 !important;
+			color: $neutral-1 !important;
+		}
+	}
+	.Projekt_insideHero__4vBsw h2 {
+		color: $neutral-1;
+	}
+	.Projekt_columnsImg__Y_LuR {
+		border-color: $neutral-2-2;
+	}
 }
