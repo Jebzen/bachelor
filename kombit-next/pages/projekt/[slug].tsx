@@ -5,41 +5,43 @@ import ProjektComponent from "../../components/ProjektComponent";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
-	const { slug } = context.query;
-	const response = await client.getEntries({
-		content_type: "projekt",
-		"fields.slug": slug,
-	});
+  const { slug } = context.query;
+  const response = await client.getEntries({
+    content_type: "projekt",
+  });
 
-	const slugged = response.items.find((item: any) => {
-		return item?.fields?.slug == slug;
-	});
+  const slugged = response.items.find((item: any) => {
+    console.log(item);
+    return item?.fields?.slug == slug;
+  });
 
-	if (slugged === undefined) {
-		return {
-			notFound: true,
-		};
-	}
+  console.log("hej");
 
-	return {
-		props: {
-			content: slugged,
-		},
-	};
+  if (slugged === undefined) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      content: slugged,
+    },
+  };
 }
 
 export default function ProjektPage({ content }: any) {
-	//console.log(content);
+  //console.log(content);
 
-	return (
-		<>
-			<Head>
-				<title>{content.fields.title}</title>
-				{content.fields?.abstrakt && (
-					<meta name="description" content={content.fields?.abstrakt} />
-				)}
-			</Head>
-			<ProjektComponent projekt={content} />
-		</>
-	);
+  return (
+    <>
+      <Head>
+        <title>{content.fields.title}</title>
+        {content.fields?.abstrakt && (
+          <meta name="description" content={content.fields?.abstrakt} />
+        )}
+      </Head>
+      <ProjektComponent projekt={content} />
+    </>
+  );
 }

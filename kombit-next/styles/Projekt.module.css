@@ -114,6 +114,10 @@
   .cardBody {
     margin: 25px 10px;
     width: 45%;
+    min-height: 550px;
+  }
+  .cardText a {
+    width: 50%;
   }
 }
 @media (min-width: 1024px) {
@@ -180,4 +184,17 @@
   background-color: #c5252f;
   color: #ffffff;
   transform: scale(1.15);
+}
+
+@media (max-width: 500px) {
+  .cardText p {
+    font-size: 14px;
+  }
+
+  .cardBody {
+    height: auto;
+    min-height: auto;
+    padding-bottom: 30px;
+    margin-top: 30px;
+  }
 }
