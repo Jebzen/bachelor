@@ -15,8 +15,6 @@ export async function getServerSideProps(context: any) {
 		return item?.fields?.slug == slug;
 	});
 
-	console.log("hej");
-
 	if (slugged === undefined) {
 		return {
 			notFound: true,
