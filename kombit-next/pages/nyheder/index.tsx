@@ -6,30 +6,51 @@ import { useEffect, useState } from "react";
 import { client } from "../../components/contenful/main";
 import { BannerType, FrontPageFields } from "../../interfaces/frontpage";
 import { BannerImage, BannerVideo } from "../../interfaces/banner";
+import WPNewsBox from "../../components/WordPress/WPNewsBox";
 
 export async function getServerSideProps(context: any) {
-	const response = await client.getEntries({
-		content_type: "nyheder",
+	const res = await fetch("http://signepetersen.dk/graphql", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({
+			query: `
+      {
+        pages(where: {categoryName: "Nyhed"}) {
+          nodes {
+            date
+            excerpt
+            slug
+            title
+            featuredImage {
+              node {
+                altText
+                title
+                mediaItemUrl
+              }
+            }
+          }
+        }
+      }`,
+		}),
 	});
+
+	const json = await res.json();
 
 	return {
 		props: {
-			content: response.items,
+			content: json,
 		},
 	};
 }
 
 export default function NewsIndex({ content }: any) {
-	//console.log(content);
+	console.log(content.data.pages.nodes);
 
 	return (
 		<>
 			<Head>
 				<title>KOMBIT APP</title>
-				<meta
-					name="description"
-					content="KOMBIT HEADLESS NEXTJS APPLICATION"
-				/>
+				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<section className="container">
 				<h1>Nyheder</h1>
@@ -37,7 +58,8 @@ export default function NewsIndex({ content }: any) {
 				<p>Bar</p>
 				<hr />
 				<div className="news-box">
-					{content.map((item: any, i: number) => {
+					<WPNewsBox nodes={content.data.pages.nodes} />
+					{/*content.map((item: any, i: number) => {
 						return (
 							<a
 								href={"/nyheder/" + item.fields.slug}
@@ -55,7 +77,7 @@ export default function NewsIndex({ content }: any) {
 								/>
 							</a>
 						);
-					})}
+					})*/}
 				</div>
 			</section>
 		</>
