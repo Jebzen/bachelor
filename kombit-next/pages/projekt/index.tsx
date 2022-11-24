@@ -63,35 +63,35 @@ export default function Projekter({ projekt, tag }: any) {
 					return pro.metadata.tags.map((tag: any, i: number) => {
 						if (tag.sys.id == "arbejdsmarked" && tab == "arbejdsmarked") {
 							return (
-								<div className={styles.cardBody}>
+								<div className={styles.cardBody} key={i}>
 									<CardOverview projekt={pro} />
 								</div>
 							);
 						}
 						if (tag.sys.id == "kultur" && tab == "kultur") {
 							return (
-								<div className={styles.cardBody}>
+								<div className={styles.cardBody} key={i}>
 									<CardOverview projekt={pro} />
 								</div>
 							);
 						}
 						if (tag.sys.id == "kommuner" && tab == "kommuner") {
 							return (
-								<div className={styles.cardBody}>
+								<div className={styles.cardBody} key={i}>
 									<CardOverview projekt={pro} />
 								</div>
 							);
 						}
 						if (tag.sys.id == "teknik" && tab == "teknik") {
 							return (
-								<div className={styles.cardBody}>
+								<div className={styles.cardBody} key={i}>
 									<CardOverview projekt={pro} />
 								</div>
 							);
 						}
 						if (tag.sys.id == "data" && tab == "data") {
 							return (
-								<div className={styles.cardBody}>
+								<div className={styles.cardBody} key={i}>
 									<CardOverview projekt={pro} />
 								</div>
 							);
