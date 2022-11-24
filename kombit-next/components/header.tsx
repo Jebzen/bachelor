@@ -8,6 +8,7 @@ export default function Header({ PageTypes }: any) {
 	const router = useRouter();
 	const { term } = router.query;
 	const [searchTerm, setSearchTerm] = useState(term);
+	const [climate, setClimate] = useState(false);
 
 	//Taget fra
 	//https://dev.to/dan_starner/building-dynamic-breadcrumbs-in-nextjs-17oa
@@ -28,6 +29,22 @@ export default function Header({ PageTypes }: any) {
 		[router.asPath]
 	);
 
+	const handleChange = (e: any) => {
+		if (typeof window !== undefined) {
+			console.log(e.target.checked, "The checkbox was toggled");
+			localStorage.setItem("Climate-friendly", e.target.checked.toString());
+			console.log(localStorage.getItem("Climate-friendly"));
+
+			router.reload();
+		}
+	};
+
+	useEffect(() => {
+		if (typeof window !== undefined) {
+			setClimate(localStorage.getItem("Climate-friendly") == "true");
+		}
+	}, []);
+
 	return (
 		<>
 			<header className="pt-2">
@@ -39,6 +56,24 @@ export default function Header({ PageTypes }: any) {
 							</a>
 						</div>
 						<div className="d-flex align-items-center">
+							<div className="form-check form-switch me-3">
+								<input
+									className="form-check-input"
+									type="checkbox"
+									role="switch"
+									id="flexSwitchCheckDefault"
+									onChange={handleChange}
+									checked={climate}
+								/>
+								<label
+									className="form-check-label"
+									htmlFor="flexSwitchCheckDefault"
+								>
+									{true && <i className="bi bi-brightness-high-fill"></i>}
+									{false && <i className="bi bi-brightness-high"></i>}
+								</label>
+							</div>
+
 							<form className="input-group" action="/soeg">
 								<input
 									type="text"
