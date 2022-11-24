@@ -13,12 +13,13 @@ body {
 }
 
 footer {
-	background-color: $red-2;
+	background-color: $fire-red;
+	color: $neutral-2;
 	a {
-		color: black;
+		color: $neutral-2;
 		text-decoration: none;
 		&:hover {
-			color: $red-1;
+			color: $neutral-2-2;
 		}
 	}
 }
@@ -200,4 +201,9 @@ header {
 			font-weight: bold;
 		}
 	}
+}
+
+.indhold-sider {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }

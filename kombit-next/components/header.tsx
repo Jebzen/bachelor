@@ -32,7 +32,7 @@ export default function Header({ PageTypes }: any) {
 		<>
 			<header className="pt-2">
 				<div className="container d-flex flex-column ">
-					<div className="d-flex justify-content-between">
+					<div className="d-flex justify-content-between mb-3">
 						<div className="d-flex align-items-center">
 							<a href="/">
 								<img className="logo" src="/logo-2.png" alt="Kombit Logo" />
