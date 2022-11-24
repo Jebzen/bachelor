@@ -7,17 +7,17 @@ export default function WPFrontBanner(props: any) {
 			<Carousel interval={10000} fade={true} indicators={false}>
 				{props.banners &&
 					props.banners.length > 0 &&
-					props.banners.map((banner: BannerImage | BannerVideo, i: number) => {
+					props.banners.map((banner: any, i: number) => {
 						return (
 							<Carousel.Item key={i}>
 								<img
 									className="d-block w-100"
-									src={banner.media}
-									alt={banner.title}
+									src={banner.source_url}
+									alt={banner.title.rendered}
 								/>
 								<Carousel.Caption>
 									<div className="bannerCaptionBox">
-										<h3>{banner.title}</h3>
+										<h3>{banner.title.rendered}</h3>
 									</div>
 								</Carousel.Caption>
 							</Carousel.Item>

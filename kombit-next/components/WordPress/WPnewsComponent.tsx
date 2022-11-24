@@ -2,7 +2,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import ShareButtons from "../ShareButtons";
 
 export default function WPnewsComponent({ content }: any) {
-	console.log(content);
+	//console.log(content);
 	return (
 		<section className="container">
 			<h1>{content.title}</h1>
