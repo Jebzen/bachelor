@@ -13,21 +13,21 @@ export async function getServerSideProps(context: any) {
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
 			query: `
-                {
-                    page(id: "${slug}", idType: URI) {
-                    title
-                    excerpt
-                    featuredImage {
-                        node {
-                        altText
-                        description
-                        mediaItemUrl
-                        title
-                        }
-                    }
-                    content
-                    }
-                }`,
+				{
+					page(id: "${slug}", idType: URI) {
+					title
+					excerpt
+					featuredImage {
+							node {
+							altText
+							description
+							mediaItemUrl
+							title
+							}
+					}
+					content
+					}
+			}`,
 		}),
 	});
 

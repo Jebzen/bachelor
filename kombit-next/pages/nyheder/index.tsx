@@ -1,5 +1,5 @@
 import Head from "next/head";
-import WPNewsBox from "../../components/WordPress/WPNewsBox";
+import WPIndexes from "../../components/WordPress/WPIndexes";
 
 export async function getServerSideProps(context: any) {
 	const res = await fetch("http://signepetersen.dk/graphql", {
@@ -51,7 +51,7 @@ export default function NewsIndex({ content }: any) {
 				<p>Bar</p>
 				<hr />
 				<div className="news-box">
-					<WPNewsBox nodes={content.data.pages.nodes} />
+					<WPIndexes nodes={content.data.pages.nodes} parent="/nyheder" />
 				</div>
 			</section>
 		</>

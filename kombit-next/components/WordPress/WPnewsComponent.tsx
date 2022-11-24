@@ -8,8 +8,8 @@ export default function WPnewsComponent({ content }: any) {
 			<h1>{content.title}</h1>
 			<div className="text-center">
 				<img
-					src={content.featuredImage.node.mediaItemUrl}
-					alt={content.featuredImage.node.altText}
+					src={content.featuredImage?.node?.mediaItemUrl}
+					alt={content.featuredImage?.node?.altText}
 					className="img-fluid"
 				/>
 			</div>

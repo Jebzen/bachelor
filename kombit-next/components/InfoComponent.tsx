@@ -6,15 +6,6 @@ import ShareButtons from "./ShareButtons";
 export default function InfoComponent({ content }: any) {
 	//console.log(content);
 
-	const NoPara = {
-		renderNode: {
-			paragraph: (node: any, children: any) => {
-				//console.log(node);
-				return <>test</>;
-			},
-		},
-	};
-
 	const renderOption = {
 		renderNode: {
 			"embedded-asset-block": (node: any, children: any) => {
