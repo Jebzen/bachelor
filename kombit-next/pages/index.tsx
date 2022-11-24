@@ -9,57 +9,58 @@ import { BannerType, FrontPageFields } from "../interfaces/frontpage";
 import { BannerImage, BannerVideo } from "../interfaces/banner";
 import NewsCards from "../components/NewsCards";
 import ProjectBlobs from "../components/ProjekterBlobs";
+import WPFrontBanner from "../components/WordPress/WPFrontBanner";
 
-export async function getServerSideProps() {
-	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
-
-	//Hent projekter
-	const projects = await client.getEntries({
-		content_type: "projekt",
+export async function getStaticProps() {
+	const res = await fetch("http://signepetersen.dk/graphql", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({
+			query: `
+      {
+        page(idType: URI, id: "/") {
+          excerpt
+          content(format: RENDERED)
+          title
+          slug
+          featuredImage {
+            node {
+              altText
+              caption
+              link
+            }
+          }
+          tags {
+            nodes {
+              name
+            }
+          }
+        }
+      }`,
+		}),
 	});
 
-	//Hent nyheder
-	const news = await client.getEntries({
-		content_type: "nyheder",
-		limit: 5,
-	});
-	//Put billede links og info i fields
-	if (news.includes?.Asset) {
-		news.items.map((item: any, i: number) => {
-			item.fields.banner = news.includes.Asset.find((Asset: any) => {
-				return Asset.sys.id == item?.fields?.banner?.sys?.id;
-			});
-			return item;
-		});
-	}
+	const json = await res.json();
 
 	return {
 		props: {
-			banners: response.fields.banners.map((banner: any) => {
-				return {
-					media: banner.fields.bannerBillede.fields.file.url,
-					type: "Image",
-					title: banner.fields.cta,
-				} as BannerImage;
-			}) as BannerImage[],
-			news: news,
-			projects: projects,
+			json: json,
 		},
 	};
 }
 
-export default function Home({ banners, news, projects }: any) {
+export default function Home({ banners, news, projects, json }: any) {
 	//Alle props kommer ovenfra
+	console.log(json);
 
 	return (
 		<>
 			<Head>
 				<title>KOMBIT APP</title>
-				<meta
-					name="description"
-					content="KOMBIT HEADLESS NEXTJS APPLICATION"
-				/>
+				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
+			<div dangerouslySetInnerHTML={{ __html: json.data.page.content }} />
+			{/* 
 			<FrontBanner banners={banners} />
 			<section className="container">
 				<h2>Projekter:</h2>
@@ -67,6 +68,7 @@ export default function Home({ banners, news, projects }: any) {
 				<h2>Nyheder:</h2>
 				<NewsCards news={news} />
 			</section>
+      */}
 		</>
 	);
 }
