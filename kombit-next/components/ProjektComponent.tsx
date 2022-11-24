@@ -29,30 +29,30 @@ export default function ProjektComponent({ projekt }: any) {
 						/>
 					</div>
 				</div>
-				<div className={styles.cardContainer}>
-					{cards.map((item: any) => {
-						return (
-							<div className={styles.card} key={item.sys.id}>
-								<div className={styles.cardHeader}>
-									<h4>{item.fields.titel}</h4>
+				{cards && cards.length > 0 && (
+					<div className={styles.cardContainer}>
+						{cards.map((item: any) => {
+							return (
+								<div className={styles.card} key={item.sys.id}>
+									<div className={styles.cardHeader}>
+										<h4>{item.fields.titel}</h4>
+									</div>
+									{documentToReactComponents(item.fields.beskrivelse)}
 								</div>
-								{documentToReactComponents(
-									item.fields.beskrivelse
-								)}
-							</div>
-						);
-						// console.log(item.fields.titel);
-						// this creates a wierd error
+							);
+							// console.log(item.fields.titel);
+							// this creates a wierd error
 
-						// console.log(item.fields.beskrivelse);
-						// return ;
-						// return <ProjectCards key={item.sys.id} item={item} />;
-					})}
-					<span
-						aria-hidden="true"
-						className="carousel-control-next-icon arrow"
-					></span>
-				</div>
+							// console.log(item.fields.beskrivelse);
+							// return ;
+							// return <ProjectCards key={item.sys.id} item={item} />;
+						})}
+						<span
+							aria-hidden="true"
+							className="carousel-control-next-icon arrow"
+						></span>
+					</div>
+				)}
 				<div>
 					<>{documentToReactComponents(links)}</>
 				</div>
