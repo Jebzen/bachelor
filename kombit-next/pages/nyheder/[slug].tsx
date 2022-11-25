@@ -1,10 +1,5 @@
-import dynamic from "next/dynamic";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { client } from "../../components/contenful/main";
-import NewsComponent from "../../components/NewsComponent";
-import WPnewsComponent from "../../components/WordPress/WPnewsComponent";
-import { IndexLayout } from "../../layout";
+import WPnewsComponent from "../../components/WordPress/WPNewsComponent";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;

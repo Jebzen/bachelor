@@ -1,20 +1,37 @@
 import Head from "next/head";
-import { IndexLayout } from "../../layout";
-import { useEffect, useState } from "react";
-
-//Contenful
-import { client } from "../../components/contenful/main";
-import { BannerType, FrontPageFields } from "../../interfaces/frontpage";
-import { BannerImage, BannerVideo } from "../../interfaces/banner";
+import WPIndexes from "../../components/WordPress/WPIndexes";
 
 export async function getServerSideProps(context: any) {
-	const response = await client.getEntries({
-		content_type: "landingPage",
+	const res = await fetch("http://signepetersen.dk/graphql", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({
+			query: `
+      {
+				pages(where: {categoryName: "Landing"}) {
+					nodes {
+						date
+						excerpt
+						slug
+						title
+						featuredImage {
+							node {
+								altText
+								title
+								mediaItemUrl
+							}
+						}
+					}
+				}
+			}`,
+		}),
 	});
+
+	const json = await res.json();
 
 	return {
 		props: {
-			content: response.items,
+			content: json,
 		},
 	};
 }
@@ -34,20 +51,7 @@ export default function LandingIndex({ content }: any) {
 				<p>Bar</p>
 				<hr />
 				<div className="landing-box">
-					{content.map((item: any, i: number) => {
-						//console.log(item);
-						return (
-							<a
-								href={"/nyheder/" + item.fields.slug}
-								className={`box-${i + 1} news-item`}
-								key={i}
-							>
-								<h2>{item.fields.title}</h2>
-								<small className="fst-italic">{item.sys.createdAt}</small>
-								<p>{item.fields.abstrakt}</p>
-							</a>
-						);
-					})}
+					<WPIndexes nodes={content.data.pages.nodes} parent="/landingPage" />
 				</div>
 			</section>
 		</>
