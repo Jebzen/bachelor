@@ -13,15 +13,15 @@ export default function WPLandingFeed() {
 
 	useEffect(() => {
 		//Nyheder
-		GraphCatcher.getAllPagesLimitSort("Nyhed", 3).then(async (response) => {
+		GraphCatcher.getAllPagesLimitSort("nyheder", 3).then(async (response) => {
 			setNews(response.data.pages.nodes);
 		});
 		//Kalender
-		GraphCatcher.getAllPagesLimitSort("Projekt", 3).then(async (response) => {
+		GraphCatcher.getAllPagesLimitSort("projekt", 3).then(async (response) => {
 			setProjects(response.data.pages.nodes);
 		});
 		//Indhold
-		GraphCatcher.getAllPagesLimitSort("Indhold", 3).then(async (response) => {
+		GraphCatcher.getAllPagesLimitSort("infoside", 3).then(async (response) => {
 			setInfo(response.data.pages.nodes);
 		});
 	}, []);

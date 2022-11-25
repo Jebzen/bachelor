@@ -9,31 +9,8 @@ import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
-	const json = await (
-		await fetch("http://signepetersen.dk/graphql", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				query: `
-				{
-					page(id: "${slug}", idType: URI) {
-						pageId
-						title
-						excerpt
-						featuredImage {
-							node {
-								altText
-								description
-								mediaItemUrl
-								title
-							}
-						}
-						content
-					}
-				}`,
-			}),
-		})
-	).json();
+	const json = await GraphCatcher.getSinglePage(slug);
+	console.log(json.data.page);
 
 	//Hent sideindhold
 	const res_page_json = await (
@@ -44,24 +21,9 @@ export async function getServerSideProps(context: any) {
 	//console.log("1:", res_page_json);
 
 	//Hent KontaktPerson
-	const kontakt_person_json = await (
-		await fetch("http://signepetersen.dk/graphql", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				query: `
-				query MediaItem {
-					mediaItem(id: "${res_page_json.acf.kontakt_person}", idType: DATABASE_ID) {
-						altText
-						caption
-						description
-						mediaItemUrl
-						title
-					}
-				}`,
-			}),
-		})
-	).json();
+	const kontakt_person = await GraphCatcher.getMediaItem(
+		res_page_json.acf.kontakt_person
+	);
 
 	//Hent relateret projekter
 	const projekter: any[] = await Promise.all(
@@ -75,8 +37,7 @@ export async function getServerSideProps(context: any) {
 	return {
 		props: {
 			content: json,
-			res_page_json: res_page_json,
-			kontakt_person_json: kontakt_person_json,
+			kontakt_person: kontakt_person,
 			projekter: projekter,
 		},
 	};
@@ -84,8 +45,7 @@ export async function getServerSideProps(context: any) {
 
 export default function LandingPage({
 	content,
-	res_page_json,
-	kontakt_person_json,
+	kontakt_person,
 	projekter,
 }: any) {
 	const { page } = content.data;
@@ -98,7 +58,7 @@ export default function LandingPage({
 			</Head>
 			<WPLandingComponent
 				content={page}
-				person={kontakt_person_json}
+				person={kontakt_person}
 				projekter={projekter}
 			/>
 		</>

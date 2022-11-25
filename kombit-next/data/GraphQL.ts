@@ -2,7 +2,31 @@ import { json } from "stream/consumers";
 
 export class GraphCatcher {
 	static async getSinglePage(slug: string) {
-		return "test";
+		const res = await fetch("http://signepetersen.dk/graphql", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+          {
+            page(id: "${slug}", idType: URI) {
+              title
+              pageId
+              excerpt
+              featuredImage {
+                  node {
+                  altText
+                  description
+                  mediaItemUrl
+                  title
+                  }
+              }
+              content
+            }
+        }`,
+			}),
+		});
+
+		return await res.json();
 	}
 
 	static async getAllPages(categoryName: string) {
@@ -35,7 +59,24 @@ export class GraphCatcher {
 	}
 
 	static async getMediaItem(id: string) {
-		return "test";
+		const res = await fetch("http://signepetersen.dk/graphql", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+          query MediaItem {
+            mediaItem(id: "${id}", idType: DATABASE_ID) {
+              altText
+              caption
+              description
+              mediaItemUrl
+              title
+            }
+          }`,
+			}),
+		});
+
+		return await res.json();
 	}
 
 	static async getPageCard(id: string) {
