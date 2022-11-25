@@ -63,12 +63,12 @@ export default function Footer({ infoPages }: any) {
 					<div className="col-6">
 						<h4 className="fw-bold">Inhold</h4>
 						<div className="indhold-sider">
-							{infoPages &&
-								infoPages.length > 0 &&
-								infoPages.map((page: any, i: number) => {
+							{infoPages.data.pages.nodes &&
+								infoPages.data.pages.nodes.length > 0 &&
+								infoPages.data.pages.nodes.map((page: any, i: number) => {
 									return (
-										<a key={i} href={"/indhold/" + page.fields.slug}>
-											{page.fields.title}
+										<a key={i} href={"/indhold/" + page.slug}>
+											{page.title}
 										</a>
 									);
 								})}

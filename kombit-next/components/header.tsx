@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { client } from "./contenful/main";
 import NavDropdownExample from "./Nav";
+import WPNavLinks from "./WordPress/WPNavLinks";
 
 export default function Header({ PageTypes }: any) {
 	const router = useRouter();
@@ -31,9 +32,7 @@ export default function Header({ PageTypes }: any) {
 
 	const handleChange = (e: any) => {
 		if (typeof window !== undefined) {
-			console.log(e.target.checked, "The checkbox was toggled");
 			localStorage.setItem("Climate-friendly", e.target.checked.toString());
-			console.log(localStorage.getItem("Climate-friendly"));
 
 			router.reload();
 		}
@@ -94,7 +93,7 @@ export default function Header({ PageTypes }: any) {
 							</form>
 						</div>
 					</div>
-					<NavDropdownExample PageTypes={PageTypes} />
+					<WPNavLinks PageTypes={PageTypes} />
 				</div>
 			</header>
 			{breadCrumbs.length > 1 && (

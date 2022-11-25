@@ -7,23 +7,16 @@ import NProgress from "nprogress";
 import { IndexLayout } from "../layout";
 import { client } from "../components/contenful/main";
 import { useEffect } from "react";
-
-let infoPagesPropsCache: any;
-let pageTypesCache: any;
+import { GraphCatcher } from "../data/GraphQL";
 
 export default function App({
 	Component,
 	pageProps,
 	infoPages,
-	pageTypes,
+	PageTypes,
 }: AppProps | any) {
-	useEffect(() => {
-		infoPagesPropsCache = infoPages;
-		pageTypesCache = pageTypes;
-	}, []);
-
 	return (
-		<IndexLayout infoPages={infoPages} PageTypes={pageTypes}>
+		<IndexLayout infoPages={infoPages} PageTypes={PageTypes}>
 			<Component {...pageProps} />
 		</IndexLayout>
 	);
@@ -31,28 +24,15 @@ export default function App({
 
 App.getInitialProps = async () => {
 	//Footer info pages
-	if (infoPagesPropsCache != undefined) {
-		return { infoPages: infoPagesPropsCache };
-	}
-	const response = await client.getEntries({
-		content_type: "infoSide",
-	});
-	const infoPages = response.items;
-	if (infoPagesPropsCache != undefined) infoPagesPropsCache = infoPages;
+
+	const infoPages = await GraphCatcher.getAllPages("infoside");
 
 	//Header page types
-	const responsePageTypes = await client.getContentTypes();
-	const pageTypes = responsePageTypes.items.filter((item: any) => {
-		return item.fields.find((field: any) => {
-			return field.id == "slug";
-		});
-	});
-
-	if (pageTypesCache != undefined) pageTypesCache = pageTypes;
+	const PageTypes = (await GraphCatcher.getAllCategories()).data.categories;
 
 	return {
 		infoPages,
-		pageTypes,
+		PageTypes,
 	};
 };
 
