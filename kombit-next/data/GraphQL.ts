@@ -11,35 +11,62 @@ export class GraphCatcher {
 		return "test";
 	}
 	static async getPageCard(id: string) {
-		try {
-			const response = await fetch("http://signepetersen.dk/graphql", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					query: `
-            query PageCard {
-              page(id: "${id}", idType: DATABASE_ID) {
-                excerpt
+		const response = await fetch("http://signepetersen.dk/graphql", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+          query PageCard {
+            page(id: "${id}", idType: DATABASE_ID) {
+              excerpt
+              date
+              slug
+              title
+              featuredImage{
+                node{
+                  mediaItemUrl
+                  title
+                  description
+                  altText
+                }
+              }
+            }
+          }`,
+			}),
+		});
+
+		return await response.json();
+	}
+
+	static async getAllPagesLimitSort(categoryName: string, limit: number) {
+		const response = await fetch("http://signepetersen.dk/graphql", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+          query AllPagesLimitSort {
+            pages(
+              where: {categoryName: "${categoryName}", orderby: {field: DATE, order: DESC}}
+              first: ${limit}
+            ) {
+              nodes {
                 date
+                excerpt
                 slug
                 title
-                featuredImage{
-                  node{
-                    mediaItemUrl
-                    title
-                    description
+                featuredImage {
+                  node {
                     altText
+                    title
+                    mediaItemUrl
                   }
                 }
               }
-            }`,
-				}),
-			});
+            }
+          }`,
+			}),
+		});
 
-			return await response.json();
-		} catch (e) {
-			console.error("ERROR:", e);
-			return null;
-		}
+		return await response.json();
 	}
 }

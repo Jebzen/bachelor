@@ -6,11 +6,12 @@ type entry = {};
 
 export default function Feed() {
 	const [slide, setSlide] = useState("nyheder");
-	const [news, setNews] = useState([]);
-	const [calender, setCalender] = useState([]);
-	const [info, setInfo] = useState([]);
+	const [news, setNews] = useState<[] | any[]>([]);
+	const [calender, setCalender] = useState<[] | any[]>([]);
+	const [info, setInfo] = useState<[] | any[]>([]);
 
 	useEffect(() => {
+		//Nyheder
 		client
 			.getEntries({
 				content_type: "nyheder",
@@ -20,6 +21,7 @@ export default function Feed() {
 			.then((reponse: any) => {
 				setNews(reponse);
 			});
+		//Kalender
 		client
 			.getEntries({
 				content_type: "kalender",
@@ -29,6 +31,7 @@ export default function Feed() {
 			.then((response: any) => {
 				setCalender(response);
 			});
+		//Indhold
 		client
 			.getEntries({
 				content_type: "infoSide",
@@ -72,9 +75,7 @@ export default function Feed() {
 										<h3>{newss.fields.title}</h3>
 									</a>
 									<p>{newss.fields.abstrakt}</p>
-									<p className="text-end">
-										{newss.sys.createdAt}
-									</p>
+									<p className="text-end">{newss.sys.createdAt}</p>
 								</div>
 							);
 						})}
@@ -87,12 +88,8 @@ export default function Feed() {
 									<a href={"kalender/" + event.fields.slug}>
 										<h3>{event.fields.title}</h3>
 									</a>
-									{documentToReactComponents(
-										event.fields.abstrakt
-									)}
-									<p className="text-end">
-										{event.sys.createdAt}
-									</p>
+									{documentToReactComponents(event.fields.abstrakt)}
+									<p className="text-end">{event.sys.createdAt}</p>
 								</div>
 							);
 						})}
@@ -102,19 +99,11 @@ export default function Feed() {
 						info.items.map((infoSide: any, i: number) => {
 							return (
 								<div className="col-4" key={i}>
-									<a
-										href={
-											"kalender/" + infoSide.fields.slug
-										}
-									>
+									<a href={"kalender/" + infoSide.fields.slug}>
 										<h3>{infoSide.fields.title}</h3>
 									</a>
-									{documentToReactComponents(
-										infoSide.fields.abstrakt
-									)}
-									<p className="text-end">
-										{infoSide.sys.createdAt}
-									</p>
+									{documentToReactComponents(infoSide.fields.abstrakt)}
+									<p className="text-end">{infoSide.sys.createdAt}</p>
 								</div>
 							);
 						})}

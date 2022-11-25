@@ -2,13 +2,14 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { MouseEventHandler, useEffect, useReducer, useState } from "react";
 import { client } from "../contenful/main";
 import Feed from "../Feed";
+import WPLandingFeed from "./WPLandingFeed";
 
 export default function WPLandingComponent({
 	content,
 	person,
 	projekter,
 }: any) {
-	const [slide, setSlide] = useState(null);
+	const [slide, setSlide] = useState<any | null>(null);
 
 	function changeSlide(event: any) {
 		setSlide(projekter[event.currentTarget.dataset.id]);
@@ -92,7 +93,7 @@ export default function WPLandingComponent({
 				)}
 
 				<div className="col-12">
-					<Feed />
+					<WPLandingFeed />
 				</div>
 			</div>
 		</section>
