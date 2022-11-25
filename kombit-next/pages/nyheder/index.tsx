@@ -1,37 +1,13 @@
 import Head from "next/head";
 import WPIndexes from "../../components/WordPress/WPIndexes";
+import { GraphCatcher } from "../../data/GraphQL";
 
 export async function getServerSideProps(context: any) {
-	const res = await fetch("http://signepetersen.dk/graphql", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({
-			query: `
-      {
-        pages(where: {categoryName: "Nyhed"}) {
-          nodes {
-            date
-            excerpt
-            slug
-            title
-            featuredImage {
-              node {
-                altText
-                title
-                mediaItemUrl
-              }
-            }
-          }
-        }
-      }`,
-		}),
-	});
-
-	const json = await res.json();
+	const res = await GraphCatcher.getAllPages("nyheder");
 
 	return {
 		props: {
-			content: json,
+			content: res,
 		},
 	};
 }

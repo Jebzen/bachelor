@@ -1,37 +1,13 @@
 import Head from "next/head";
 import WPIndexes from "../../components/WordPress/WPIndexes";
+import { GraphCatcher } from "../../data/GraphQL";
 
 export async function getServerSideProps(context: any) {
-	const res = await fetch("http://signepetersen.dk/graphql", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({
-			query: `
-      {
-				pages(where: {categoryName: "Landing"}) {
-					nodes {
-						date
-						excerpt
-						slug
-						title
-						featuredImage {
-							node {
-								altText
-								title
-								mediaItemUrl
-							}
-						}
-					}
-				}
-			}`,
-		}),
-	});
-
-	const json = await res.json();
+	const res = await GraphCatcher.getAllPages("landingpage");
 
 	return {
 		props: {
-			content: json,
+			content: res,
 		},
 	};
 }
@@ -51,7 +27,7 @@ export default function LandingIndex({ content }: any) {
 				<p>Bar</p>
 				<hr />
 				<div className="landing-box">
-					<WPIndexes nodes={content.data.pages.nodes} parent="/landingPage" />
+					<WPIndexes nodes={content.data.pages.nodes} parent="/landingpage" />
 				</div>
 			</section>
 		</>

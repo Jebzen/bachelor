@@ -7,38 +7,14 @@ import { client } from "../../components/contenful/main";
 import { BannerType, FrontPageFields } from "../../interfaces/frontpage";
 import { BannerImage, BannerVideo } from "../../interfaces/banner";
 import WPIndexes from "../../components/WordPress/WPIndexes";
+import { GraphCatcher } from "../../data/GraphQL";
 
 export async function getServerSideProps(context: any) {
-	const res = await fetch("http://signepetersen.dk/graphql", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({
-			query: `
-      {
-				pages(where: {categoryName: "Indhold"}) {
-					nodes {
-						date
-						excerpt
-						slug
-						title
-						featuredImage {
-							node {
-								altText
-								title
-								mediaItemUrl
-							}
-						}
-					}
-				}
-			}`,
-		}),
-	});
-
-	const json = await res.json();
+	const res = await GraphCatcher.getAllPages("infoside");
 
 	return {
 		props: {
-			content: json,
+			content: res,
 		},
 	};
 }
@@ -58,7 +34,7 @@ export default function InfoIndex({ content }: any) {
 				<p>Bar</p>
 				<hr />
 				<div className="info-box">
-					<WPIndexes nodes={content.data.pages.nodes} parent="/infoSIde" />
+					<WPIndexes nodes={content.data.pages.nodes} parent="/infoside" />
 				</div>
 			</section>
 		</>
