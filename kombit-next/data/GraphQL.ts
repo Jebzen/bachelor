@@ -42,6 +42,7 @@ export class GraphCatcher {
               excerpt
               slug
               title
+              pageId
               featuredImage {
                 node {
                   altText

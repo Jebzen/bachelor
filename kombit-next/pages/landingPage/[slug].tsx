@@ -10,7 +10,7 @@ import { IndexLayout } from "../../layout";
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);
-	console.log(json.data.page);
+	//console.log(json.data.page);
 
 	//Hent sideindhold
 	const res_page_json = await (
