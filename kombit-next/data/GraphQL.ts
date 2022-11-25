@@ -4,12 +4,40 @@ export class GraphCatcher {
 	static async getSinglePage(slug: string) {
 		return "test";
 	}
+
 	static async getAllPages(categoryName: string) {
-		return "test";
+		const res = await fetch("http://signepetersen.dk/graphql", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+        {
+          pages(where: {categoryName: "${categoryName}"}) {
+            nodes {
+              date
+              excerpt
+              slug
+              title
+              featuredImage {
+                node {
+                  altText
+                  title
+                  mediaItemUrl
+                }
+              }
+            }
+          }
+        }`,
+			}),
+		});
+
+		return await res.json();
 	}
+
 	static async getMediaItem(id: string) {
 		return "test";
 	}
+
 	static async getPageCard(id: string) {
 		const response = await fetch("http://signepetersen.dk/graphql", {
 			method: "POST",
@@ -61,6 +89,26 @@ export class GraphCatcher {
                     mediaItemUrl
                   }
                 }
+              }
+            }
+          }`,
+			}),
+		});
+
+		return await response.json();
+	}
+
+	static async getAllCategories() {
+		const response = await fetch("http://signepetersen.dk/graphql", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				query: `
+          query AllCategories {
+            categories(where: {childless: true, exclude: "1"}) {
+              nodes {
+                name
+                slug
               }
             }
           }`,
