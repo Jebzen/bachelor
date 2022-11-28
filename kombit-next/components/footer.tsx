@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import InfoPageLink from "../interfaces/infoPageLink";
 import styles from "../styles/Home.module.css";
 import { client } from "./contenful/main";
 
@@ -27,7 +28,11 @@ export default function Footer() {
 }
 */
 
-export default function Footer({ infoPages }: any) {
+interface prop {
+	footerLinks: InfoPageLink[];
+}
+
+export default function Footer({ footerLinks }: prop) {
 	return (
 		<footer className="p-5 mt-auto">
 			<div className="container">
@@ -63,9 +68,9 @@ export default function Footer({ infoPages }: any) {
 					<div className="col-6">
 						<h4 className="fw-bold">Inhold</h4>
 						<div className="indhold-sider">
-							{infoPages.data.pages.nodes &&
-								infoPages.data.pages.nodes.length > 0 &&
-								infoPages.data.pages.nodes.map((page: any, i: number) => {
+							{footerLinks &&
+								footerLinks.length > 0 &&
+								footerLinks.map((page: any, i: number) => {
 									return (
 										<a key={i} href={"/indhold/" + page.slug}>
 											{page.title}

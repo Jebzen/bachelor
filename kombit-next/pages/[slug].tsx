@@ -39,6 +39,7 @@ export async function getServerSideProps(context: any) {
 				return thing;
 			})
 		);
+		//Kalender
 	} else if (json.data.page?.categories?.nodes[0]?.slug == "kalender") {
 		const res_page = await fetch(
 			`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
