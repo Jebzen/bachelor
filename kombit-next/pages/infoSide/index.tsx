@@ -38,7 +38,7 @@ export default function InfoIndex({ content }: any) {
 						//console.log(item);
 						return (
 							<a
-								href={"/nyheder/" + item.fields.slug}
+								href={"/infoSide/" + item.fields.slug}
 								className={`box-${i + 1} news-item`}
 								key={i}
 							>
