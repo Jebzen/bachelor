@@ -22,7 +22,9 @@
 .hero h2 {
   color: #c5252f;
 }
-.insideHero {
+.container {
+  margin: 60px auto;
+  width: 85%;
 }
 
 .columns {
@@ -197,4 +199,19 @@
     padding-bottom: 30px;
     margin-top: 30px;
   }
+}
+
+.tagActive {
+  position: absolute;
+  background-color: #c5252f;
+  color: #fff;
+  width: 25.5%;
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.projectContainer h2 {
 }
