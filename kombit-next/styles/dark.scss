@@ -3,13 +3,23 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 [data-theme="dark"] {
+	a {
+		color: $neutral-2-2 !important;
+		&:focus,
+		&:hover,
+		&:active,
+		&:target {
+			color: $neutral-3-2 !important;
+		}
+	}
+
 	footer {
-		background-color: $neutral-2-2;
-		color: $neutral-2;
+		background-color: $neutral-2-2 !important;
+		color: $neutral-2 !important;
 		a {
-			color: $neutral-2;
+			color: $neutral-2 !important;
 			&:hover {
-				color: $neutral-1;
+				color: $neutral-1 !important;
 			}
 		}
 	}
@@ -17,7 +27,7 @@
 	.carousel-item {
 		.carousel-caption {
 			.bannerCaptionBox {
-				background-color: $neutral-3-2;
+				background-color: $neutral-3-2 !important;
 			}
 		}
 	}
@@ -28,9 +38,9 @@
 
 	.search-grid {
 		> a {
-			background-color: $neutral-3-2;
+			background-color: $neutral-3-2 !important;
 			&:hover {
-				color: $neutral-2-2;
+				color: $neutral-2-2 !important;
 			}
 		}
 	}
@@ -40,38 +50,38 @@
 	.info-box {
 		.news-item {
 			h2 {
-				color: $neutral-3-2;
+				color: $neutral-3-2 !important;
 			}
 			&:hover {
-				background-color: $neutral-2;
+				background-color: $neutral-2 !important;
 			}
 		}
 	}
 
 	header {
-		background-color: $neutral-1;
+		background-color: $neutral-1 !important;
 		.nav-link {
-			color: $neutral-2-2;
+			color: $neutral-2-2 !important;
 			&:hover {
-				color: $neutral-3-2;
+				color: $neutral-3-2 !important;
 			}
 		}
 		form.input-group {
 			input,
 			button {
-				border-color: $neutral-2-2;
-				background-color: $neutral-1;
+				border-color: $neutral-2-2 !important;
+				background-color: $neutral-1 !important;
 			}
 		}
 	}
 
 	.breadCrumbs {
-		background-color: $neutral-1;
+		background-color: $neutral-1 !important;
 		a {
-			color: $neutral-2-2;
+			color: $neutral-2-2 !important;
 			&:hover,
 			&:focus {
-				color: $neutral-3-2;
+				color: $neutral-3-2 !important;
 			}
 		}
 	}
@@ -95,9 +105,16 @@
 		}
 	}
 	.Projekt_insideHero__4vBsw h2 {
-		color: $neutral-1;
+		color: $neutral-1 !important;
 	}
 	.Projekt_columnsImg__Y_LuR {
-		border-color: $neutral-2-2;
+		border-color: $neutral-2-2 !important;
+	}
+
+	.notFoundPage {
+		h1,
+		h2 {
+			color: $neutral-3-2;
+		}
 	}
 }

@@ -12,14 +12,28 @@ body > * {
 	background-color: $neutral-1 !important;
 }
 
+a {
+	color: $red-1 !important;
+	&:focus,
+	&:hover,
+	&:active,
+	&:target {
+		color: $fire-red !important;
+	}
+	p,
+	small {
+		color: $neutral-3-2 !important;
+	}
+}
+
 footer {
-	background-color: $red-1;
-	color: $neutral-2;
+	background-color: $red-1 !important;
+	color: $neutral-2 !important;
 	a {
-		color: $neutral-2;
+		color: $neutral-2 !important;
 		text-decoration: none;
 		&:hover {
-			color: $neutral-2-2;
+			color: $neutral-2-2 !important;
 		}
 	}
 }
@@ -222,15 +236,5 @@ header {
 	h1,
 	h2 {
 		color: $fire-red;
-	}
-}
-
-a {
-	color: $red-1 !important;
-	&:focus,
-	&:hover,
-	&:active,
-	&:target {
-		color: $fire-red !important;
 	}
 }
