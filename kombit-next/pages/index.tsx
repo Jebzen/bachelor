@@ -19,18 +19,18 @@ export async function getStaticProps() {
 			query: `
 				{
 					page(idType: URI, id: "/") {
-							excerpt
-							content(format: RENDERED)
-							title
-							slug
-							pageId
-							featuredImage {
-									node {
-									altText
-									caption
-									link
-									}
+						excerpt
+						content(format: RENDERED)
+						title
+						slug
+						pageId
+						featuredImage {
+							node {
+							altText
+							caption
+							link
 							}
+						}
 					}
 				}`,
 		}),
