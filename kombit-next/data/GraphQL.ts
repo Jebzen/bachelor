@@ -13,12 +13,18 @@ export class GraphCatcher {
               pageId
               excerpt
               featuredImage {
-                  node {
+                node {
                   altText
                   description
                   mediaItemUrl
                   title
-                  }
+                }
+              }
+              categories {
+                nodes {
+                  name
+                  slug
+                }
               }
               content
             }
