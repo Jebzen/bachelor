@@ -38,6 +38,13 @@ export default function Kalender({ content }: any) {
 					{content &&
 						content.length > 0 &&
 						content.map((item: any, i: number) => {
+							const date = `${item.datetime.substring(
+								0,
+								4
+							)}-${item.datetime.substring(4, 6)}-${item.datetime.substring(
+								6,
+								8
+							)}`;
 							return (
 								<a
 									key={i}
@@ -45,7 +52,7 @@ export default function Kalender({ content }: any) {
 									className="text-decoration-none text-dark"
 								>
 									<h2>
-										{item.datetime}
+										{date}
 										<i className="bi-arrow-right-short"></i>
 									</h2>
 									<hr />
