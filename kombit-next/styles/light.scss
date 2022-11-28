@@ -207,3 +207,30 @@ header {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
+
+.new-table {
+	table {
+		@extend .table;
+	}
+}
+
+.notFoundPage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	h1,
+	h2 {
+		color: $fire-red;
+	}
+}
+
+a {
+	color: $red-1 !important;
+	&:focus,
+	&:hover,
+	&:active,
+	&:target {
+		color: $fire-red !important;
+	}
+}

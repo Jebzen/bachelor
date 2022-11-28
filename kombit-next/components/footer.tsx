@@ -29,7 +29,7 @@ export default function Footer() {
 
 export default function Footer({ infoPages }: any) {
 	return (
-		<footer className="p-5">
+		<footer className="p-5 mt-auto">
 			<div className="container">
 				<div className="row">
 					<h3 className="fw-bold col-12">KOMBIT A/S</h3>

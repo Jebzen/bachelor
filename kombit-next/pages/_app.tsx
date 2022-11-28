@@ -8,6 +8,7 @@ import { IndexLayout } from "../layout";
 import { client } from "../components/contenful/main";
 import { useEffect } from "react";
 import { GraphCatcher } from "../data/GraphQL";
+import { useRouter } from "next/router";
 
 export default function App({
 	Component,
@@ -22,8 +23,13 @@ export default function App({
 	);
 }
 
-App.getInitialProps = async () => {
+App.getInitialProps = async (context: any) => {
 	//Footer info pages
+	if (context.router.asPath.split("/")[1] == "Wordpress") {
+		console.log("Wordpress Site!");
+	} else if (context.router.asPath.split("/")[1] == "Contenful") {
+		console.log("Contenful Site!");
+	}
 
 	const infoPages = await GraphCatcher.getAllPages("infoside");
 

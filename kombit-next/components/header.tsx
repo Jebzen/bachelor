@@ -46,55 +46,53 @@ export default function Header({ PageTypes }: any) {
 
 	return (
 		<>
-			<header className="pt-2">
-				<div className="container d-flex flex-column ">
-					<div className="d-flex justify-content-between mb-3">
-						<div className="d-flex align-items-center">
-							<a href="/">
-								<img className="logo" src="/logo-2.png" alt="Kombit Logo" />
-							</a>
-						</div>
-						<div className="d-flex align-items-center">
-							<div className="form-check form-switch me-3">
-								<input
-									className="form-check-input"
-									type="checkbox"
-									role="switch"
-									id="flexSwitchCheckDefault"
-									onChange={handleChange}
-									checked={climate}
-								/>
-								<label
-									className="form-check-label"
-									htmlFor="flexSwitchCheckDefault"
-								>
-									{climate && <i className="bi bi-brightness-high-fill"></i>}
-									{!climate && <i className="bi bi-brightness-high"></i>}
-								</label>
-							</div>
-
-							<form className="input-group" action="/soeg">
-								<input
-									type="text"
-									className="form-control"
-									placeholder="Søg her..."
-									aria-label="Søgningsfelt"
-									name="term"
-									value={searchTerm}
-									onChange={(e) => setSearchTerm(e.target.value)}
-								/>
-								<button
-									className="input-group-text"
-									type="submit"
-									id="button-addon2"
-								>
-									<i className="bi bi-search"></i>
-								</button>
-							</form>
-						</div>
+			<header className="pt-2 container d-flex flex-column ">
+				<div className="d-flex justify-content-between mb-3">
+					<div className="d-flex align-items-center">
+						<a href="/">
+							<img className="logo" src="/logo-2.png" alt="Kombit Logo" />
+						</a>
 					</div>
-					<WPNavLinks PageTypes={PageTypes} />
+					<div className="d-flex align-items-center">
+						<div className="form-check form-switch me-3">
+							<input
+								className="form-check-input"
+								type="checkbox"
+								role="switch"
+								id="flexSwitchCheckDefault"
+								onChange={handleChange}
+								checked={climate}
+							/>
+							<label
+								className="form-check-label"
+								htmlFor="flexSwitchCheckDefault"
+							>
+								{climate && <i className="bi bi-brightness-high-fill"></i>}
+								{!climate && <i className="bi bi-brightness-high"></i>}
+							</label>
+						</div>
+
+						<form className="input-group" action="/soeg">
+							<input
+								type="text"
+								className="form-control"
+								placeholder="Søg her..."
+								aria-label="Søgningsfelt"
+								name="term"
+								value={searchTerm}
+								onChange={(e) => setSearchTerm(e.target.value)}
+							/>
+							<button
+								className="input-group-text"
+								type="submit"
+								id="button-addon2"
+							>
+								<i className="bi bi-search"></i>
+							</button>
+						</form>
+					</div>
 				</div>
+				<WPNavLinks PageTypes={PageTypes} />
 			</header>
 			{breadCrumbs.length > 1 && (
 				<div className="pb-2 breadCrumbs container" id="breadCrumbs">

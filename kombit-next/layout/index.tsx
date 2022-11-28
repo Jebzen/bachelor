@@ -4,6 +4,7 @@ import { client } from "../components/contenful/main";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export function IndexLayout({ children, infoPages, PageTypes }: any) {
 	const [theme, setTheme] = useState(false);
@@ -21,7 +22,7 @@ export function IndexLayout({ children, infoPages, PageTypes }: any) {
 				<title>Kombit app</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<div data-theme={theme ? "dark" : ""}>
+			<div data-theme={theme ? "dark" : "light"}>
 				<Header PageTypes={PageTypes} />
 				<main>{children}</main>
 				<Footer infoPages={infoPages} />

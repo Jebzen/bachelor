@@ -2,27 +2,24 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
 import KalenderComponent from "../../components/KalenderComponent";
+import WPKalenderComponent from "../../components/WordPress/WPKalenderComponent";
+import { GraphCatcher } from "../../data/GraphQL";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
-	const response = await client.getEntries({
-		content_type: "kalender",
-	});
+	const json = await GraphCatcher.getSinglePage(slug);
 
-	const slugged = response.items.find((item: any) => {
-		return item?.fields?.slug == slug;
-	});
+	const res_page = await fetch(
+		`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
+	);
+	const res_page_json = await res_page.json();
 
-	if (slugged === undefined) {
-		return {
-			notFound: true,
-		};
-	}
+	json.data.page["datetime"] = res_page_json.acf.dato;
 
 	return {
 		props: {
-			content: slugged,
+			content: json,
 		},
 	};
 }
@@ -33,12 +30,12 @@ export default function KalenderPage({ content }: any) {
 	return (
 		<>
 			<Head>
-				<title>{content.fields.title}</title>
-				{content.fields?.abstrakt && (
-					<meta name="description" content={content.fields?.abstrakt} />
+				<title>{content.data.page.title}</title>
+				{content.data.page.excerpt && (
+					<meta name="description" content={content.data.page.excerpt} />
 				)}
 			</Head>
-			<KalenderComponent content={content} />
+			<WPKalenderComponent content={content.data.page} />
 		</>
 	);
 }
