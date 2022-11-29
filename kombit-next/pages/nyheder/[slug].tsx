@@ -1,10 +1,14 @@
 import Head from "next/head";
 import WPnewsComponent from "../../components/WordPress/WPNewsComponent";
 import { GraphCatcher } from "../../data/GraphQL";
+import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);
+
+	//TO DO
+	//Relatered nyheder / projekter
 
 	return {
 		props: {
@@ -13,7 +17,11 @@ export async function getServerSideProps(context: any) {
 	};
 }
 
-export default function NewsPage({ content }: any) {
+interface prop {
+	content: WPSinglePage;
+}
+
+export default function NewsPage({ content }: prop) {
 	const { page } = content.data;
 
 	return (

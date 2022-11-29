@@ -42,6 +42,8 @@ export interface WPSinglePage {
 			content: string;
 			modified: string;
 			datetime?: string;
+			kontakt_person?: any;
+			projekter?: WPPageCard[];
 		};
 	};
 }
@@ -86,9 +88,7 @@ export interface WPPageCard {
 			slug: string;
 			title: string;
 			featuredImage: {
-				node: {
-					node: featuredImage;
-				};
+				node: featuredImage;
 			};
 		};
 	};
@@ -143,7 +143,7 @@ export interface WPSearchPages {
 	};
 }
 
-interface featuredImage {
+export interface featuredImage {
 	altText: string;
 	caption: string;
 	description: string;

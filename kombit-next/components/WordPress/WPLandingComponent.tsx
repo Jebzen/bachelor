@@ -1,18 +1,17 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { MouseEventHandler, useEffect, useReducer, useState } from "react";
-import { client } from "../contenful/main";
-import Feed from "../Feed";
+import { useState } from "react";
+import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
 import WPLandingFeed from "./WPLandingFeed";
 
-export default function WPLandingComponent({
-	content,
-	person,
-	projekter,
-}: any) {
+interface prop {
+	content: WPSinglePage["data"]["page"];
+}
+
+export default function WPLandingComponent({ content }: prop) {
 	const [slide, setSlide] = useState<any | null>(null);
+	let { projekter, kontakt_person } = content;
 
 	function changeSlide(event: any) {
-		setSlide(projekter[event.currentTarget.dataset.id]);
+		setSlide(projekter ? projekter[event.currentTarget.dataset.id] : null);
 	}
 
 	//console.log(person);
@@ -24,7 +23,7 @@ export default function WPLandingComponent({
 					<>
 						<h2>Projekter</h2>
 						<div className="row">
-							{projekter.map((item: any, i: number) => {
+							{projekter.map((item, i: number) => {
 								return (
 									<div
 										key={i}
@@ -66,25 +65,25 @@ export default function WPLandingComponent({
 					<span dangerouslySetInnerHTML={{ __html: content.content }} />
 				</div>
 
-				{person && person.data.mediaItem && (
+				{kontakt_person && kontakt_person.data.mediaItem && (
 					<>
 						<div className="col-3">
 							<div className="d-flex justify-end flex-column">
 								<span
 									className="text-end fs-4"
 									dangerouslySetInnerHTML={{
-										__html: person.data.mediaItem.caption,
+										__html: kontakt_person.data.mediaItem.caption,
 									}}
 								/>
 								<img
 									className="img-fluid"
-									src={person.data.mediaItem.mediaItemUrl}
-									alt={person.data.mediaItem.altText}
+									src={kontakt_person.data.mediaItem.mediaItemUrl}
+									alt={kontakt_person.data.mediaItem.altText}
 								/>
-								<p>{person.data.mediaItem.title}</p>
+								<p>{kontakt_person.data.mediaItem.title}</p>
 								<span
 									dangerouslySetInnerHTML={{
-										__html: person.data.mediaItem.description,
+										__html: kontakt_person.data.mediaItem.description,
 									}}
 								/>
 							</div>

@@ -1,11 +1,7 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { client } from "../../components/contenful/main";
-import LandingComponent from "../../components/LandingComponent";
 import WPLandingComponent from "../../components/WordPress/WPLandingComponent";
 import { GraphCatcher } from "../../data/GraphQL";
-import { WPIndexes } from "../../interfaces/WPIndexes";
-import { IndexLayout } from "../../layout";
+import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
@@ -21,12 +17,12 @@ export async function getServerSideProps(context: any) {
 	//console.log("1:", res_page_json);
 
 	//Hent KontaktPerson
-	const kontakt_person = await GraphCatcher.getMediaItem(
+	json.data.page.kontakt_person = await GraphCatcher.getMediaItem(
 		res_page_json.acf.kontakt_person
 	);
 
 	//Hent relateret projekter
-	const projekter: any[] = await Promise.all(
+	json.data.page.projekter = await Promise.all(
 		res_page_json.acf.projekt.map(async (item: number) => {
 			const thing = await GraphCatcher.getPageCard(item.toString());
 			//console.log(thing.data.page);
@@ -37,17 +33,15 @@ export async function getServerSideProps(context: any) {
 	return {
 		props: {
 			content: json,
-			kontakt_person: kontakt_person,
-			projekter: projekter,
 		},
 	};
 }
 
-export default function LandingPage({
-	content,
-	kontakt_person,
-	projekter,
-}: any) {
+interface prop {
+	content: WPSinglePage;
+}
+
+export default function LandingPage({ content }: prop) {
 	const { page } = content.data;
 
 	return (
@@ -56,11 +50,7 @@ export default function LandingPage({
 				<title>{page.title}</title>
 				{page.excerpt && <meta name="description" content={page.excerpt} />}
 			</Head>
-			<WPLandingComponent
-				content={page}
-				person={kontakt_person}
-				projekter={projekter}
-			/>
+			<WPLandingComponent content={page} />
 		</>
 	);
 }

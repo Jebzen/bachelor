@@ -1,6 +1,7 @@
 import Head from "next/head";
 import WPIndexes from "../../components/WordPress/WPIndexes";
 import { GraphCatcher } from "../../data/GraphQL";
+import { WPAllPages } from "../../interfaces/WPIndexes";
 
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("landingpage");
@@ -12,7 +13,11 @@ export async function getServerSideProps(context: any) {
 	};
 }
 
-export default function LandingIndex({ content }: any) {
+interface prop {
+	content: WPAllPages;
+}
+
+export default function LandingIndex({ content }: prop) {
 	//console.log(content);
 
 	return (

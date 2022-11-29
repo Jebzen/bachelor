@@ -1,15 +1,18 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useEffect, useState } from "react";
 import { GraphCatcher } from "../../data/GraphQL";
-import { client } from "../contenful/main";
-
-type entry = {};
+import { WPAllPagesLimitSort } from "../../interfaces/WPIndexes";
 
 export default function WPLandingFeed() {
 	const [slide, setSlide] = useState("nyheder");
-	const [news, setNews] = useState<[] | any[]>([]);
-	const [projects, setProjects] = useState<[] | any[]>([]);
-	const [info, setInfo] = useState<[] | any[]>([]);
+	const [news, setNews] = useState<
+		WPAllPagesLimitSort["data"]["pages"]["nodes"]
+	>([]);
+	const [projects, setProjects] = useState<
+		WPAllPagesLimitSort["data"]["pages"]["nodes"]
+	>([]);
+	const [info, setInfo] = useState<
+		WPAllPagesLimitSort["data"]["pages"]["nodes"]
+	>([]);
 
 	useEffect(() => {
 		//Nyheder
@@ -51,7 +54,7 @@ export default function WPLandingFeed() {
 					{slide == "nyheder" &&
 						news &&
 						news.length != 0 &&
-						news.map((item: any, i: number) => {
+						news.map((item, i: number) => {
 							return (
 								<div className="col-4" key={i}>
 									<a href={"/nyheder/" + item.slug}>

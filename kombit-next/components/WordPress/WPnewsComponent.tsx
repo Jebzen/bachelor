@@ -1,7 +1,12 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { WPSinglePage } from "../../interfaces/WPIndexes";
 import ShareButtons from "../ShareButtons";
 
-export default function WPnewsComponent({ content }: any) {
+interface prop {
+	content: WPSinglePage["data"]["page"];
+}
+
+export default function WPnewsComponent({ content }: prop) {
 	//console.log(content);
 	return (
 		<section className="container">
