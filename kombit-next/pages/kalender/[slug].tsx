@@ -4,11 +4,12 @@ import { client } from "../../components/contenful/main";
 import KalenderComponent from "../../components/KalenderComponent";
 import WPKalenderComponent from "../../components/WordPress/WPKalenderComponent";
 import { GraphCatcher } from "../../data/GraphQL";
+import { WPSinglePage } from "../../interfaces/WPIndexes";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
-	const json = await GraphCatcher.getSinglePage(slug);
+	const json: WPSinglePage = await GraphCatcher.getSinglePage(slug);
 
 	const res_page = await fetch(
 		`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
@@ -24,8 +25,12 @@ export async function getServerSideProps(context: any) {
 	};
 }
 
-export default function KalenderPage({ content }: any) {
-	//console.log(content);
+interface prop {
+	content: WPSinglePage;
+}
+
+export default function KalenderPage({ content }: prop) {
+	console.log(content);
 
 	return (
 		<>
@@ -35,7 +40,7 @@ export default function KalenderPage({ content }: any) {
 					<meta name="description" content={content.data.page.excerpt} />
 				)}
 			</Head>
-			<WPKalenderComponent content={content.data.page} />
+			<WPKalenderComponent content={content} />
 		</>
 	);
 }

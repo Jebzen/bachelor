@@ -41,6 +41,7 @@ export interface WPSinglePage {
 			};
 			content: string;
 			modified: string;
+			datetime?: string;
 		};
 	};
 }
@@ -53,11 +54,13 @@ export interface WPAllPages {
 				excerpt: string;
 				slug: string;
 				title: string;
+				pageId: number;
 				featuredImage: {
 					node: {
 						node: featuredImage;
 					};
 				};
+				datetime?: string;
 			}[];
 		};
 	};

@@ -1,13 +1,13 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Head from "next/head";
-import { client } from "../../components/contenful/main";
+import { WPStringToTime } from "../../data/functions";
 import { GraphCatcher } from "../../data/GraphQL";
+import { WPAllPages } from "../../interfaces/WPIndexes";
 
 export async function getServerSideProps(context: any) {
-	const response = await GraphCatcher.getAllPages("kalender");
+	const response: WPAllPages = await GraphCatcher.getAllPages("kalender");
 
-	const pages = await Promise.all(
-		response.data.pages.nodes.map(async (item: any) => {
+	response.data.pages.nodes = await Promise.all(
+		response.data.pages.nodes.map(async (item) => {
 			const res = await (
 				await fetch(
 					`http://signepetersen.dk/wp-json/wp/v2/pages/${item.pageId}`
@@ -20,13 +20,18 @@ export async function getServerSideProps(context: any) {
 
 	return {
 		props: {
-			content: pages,
+			content: response,
 		},
 	};
 }
 
-export default function Kalender({ content }: any) {
+interface prop {
+	content: WPAllPages;
+}
+
+export default function Kalender({ content }: prop) {
 	//console.log(content);
+	const { nodes } = content.data.pages;
 
 	return (
 		<>
@@ -35,16 +40,13 @@ export default function Kalender({ content }: any) {
 			</Head>
 			<section className="container h-100">
 				<div className="kalenderGrid">
-					{content &&
-						content.length > 0 &&
-						content.map((item: any, i: number) => {
-							const date = `${item.datetime.substring(
-								0,
-								4
-							)}-${item.datetime.substring(4, 6)}-${item.datetime.substring(
-								6,
-								8
-							)}`;
+					{nodes &&
+						nodes.length > 0 &&
+						nodes.map((item, i: number) => {
+							const date =
+								item.datetime !== undefined
+									? WPStringToTime(item.datetime)
+									: "";
 							return (
 								<a
 									key={i}
