@@ -3,12 +3,8 @@ import type { AppProps } from "next/app";
 import "../styles/main.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.scss";
-import NProgress from "nprogress";
 import { IndexLayout } from "../layout";
-import { client } from "../components/contenful/main";
-import { useEffect } from "react";
 import { GraphCatcher } from "../data/GraphQL";
-import { useRouter } from "next/router";
 import pageLink from "../interfaces/pageLink";
 
 interface prop extends AppProps {
@@ -25,14 +21,16 @@ export default function App({
 	pageLinks,
 }: prop | any) {
 	return (
-		<IndexLayout footerLinks={footerLinks} pageLinks={pageLinks}>
-			<Component {...pageProps} />
-		</IndexLayout>
+		<>
+			<IndexLayout footerLinks={footerLinks} pageLinks={pageLinks}>
+				<Component {...pageProps} />
+			</IndexLayout>
+		</>
 	);
 }
 
 App.getInitialProps = async (context: any) => {
-	let pageLinks: pageLink[] | null = null;
+	let pageLinks: pageLink[] | null | { name: string; slug: string }[] = null;
 	let footerLinks: pageLink[] | null = null;
 
 	//Wordpress Site!
