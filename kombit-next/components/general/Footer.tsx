@@ -10,7 +10,7 @@ export default function Footer({ footerLinks }: prop) {
 			<div className="container">
 				<div className="row">
 					<h3 className="fw-bold col-12">KOMBIT A/S</h3>
-					<div className="col-3 d-flex flex-column">
+					<div className="col-12 col-sm-6 col-md-3 d-flex flex-column">
 						<h4 className="fw-bold">Adresse</h4>
 						<p>Halfdansgade 8</p>
 						<p>2300 København S</p>
@@ -26,7 +26,7 @@ export default function Footer({ footerLinks }: prop) {
 							</a>
 						</div>
 					</div>
-					<div className="col-3">
+					<div className="col-12 col-sm-6 col-md-3">
 						<h4 className="fw-bold">Kontakt</h4>
 						<p>CVR: 19435075</p>
 						<p>EAN: 5790001969370</p>
@@ -37,7 +37,7 @@ export default function Footer({ footerLinks }: prop) {
 							</a>
 						</p>
 					</div>
-					<div className="col-6">
+					<div className="col-12 col-md-6">
 						<h4 className="fw-bold">Inhold</h4>
 						<div className="indhold-sider">
 							{footerLinks &&
