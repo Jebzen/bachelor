@@ -1,10 +1,8 @@
 import Head from "next/head";
 import React from "react";
-import { client } from "../components/contenful/main";
-import Footer from "../components/footer";
-import Header from "../components/header";
+import Footer from "../components/general/Footer";
+import Header from "../components/general/Header";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import pageLink from "../interfaces/pageLink";
 
 interface prop {
@@ -32,7 +30,7 @@ export function IndexLayout({ children, footerLinks, pageLinks }: prop) {
 			<div data-theme={theme ? "dark" : "light"}>
 				<Header pageLinks={pageLinks} />
 				<main>{children}</main>
-				<Footer footerLinks={footerLinks as pageLink[]} />
+				<Footer footerLinks={footerLinks} />
 			</div>
 		</>
 	);

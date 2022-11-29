@@ -1,15 +1,21 @@
 import Head from "next/head";
-import FrontBanner from "../components/frontBanner";
-import { IndexLayout } from "../layout";
-import { useEffect, useState } from "react";
-
-//Contenful
 import { client } from "../components/contenful/main";
-import { BannerType, FrontPageFields } from "../interfaces/frontpage";
-import { BannerImage, BannerVideo } from "../interfaces/banner";
-import NewsCards from "../components/NewsCards";
-import ProjectBlobs from "../components/ProjekterBlobs";
-import WPFrontBanner from "../components/WordPress/WPFrontBanner";
+import FrontBanner from "../components/general/frontBanner";
+import { BannerImage } from "../interfaces/banner";
+
+interface IndexPage {
+	data: {
+		page: {
+			excerpt: string;
+			content: string;
+			title: string;
+			slug: string;
+			pageId: number;
+			featuredImage: any;
+			banners: any;
+		};
+	};
+}
 
 export async function getStaticProps() {
 	const res = await fetch("http://signepetersen.dk/graphql", {
@@ -26,9 +32,9 @@ export async function getStaticProps() {
 						pageId
 						featuredImage {
 							node {
-							altText
-							caption
-							link
+								altText
+								caption
+								link
 							}
 						}
 					}
@@ -36,36 +42,53 @@ export async function getStaticProps() {
 		}),
 	});
 
-	const json = await res.json();
+	const json: IndexPage = await res.json();
 
 	//console.log("0:", json.data.page.pageId);
 	//Extra for banner pictures
-	const res_page = await fetch(
-		`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
-	);
-	const res_page_json = await res_page.json();
-	//console.log("1:", res_page_json);
+	const res_page = await (
+		await fetch(
+			`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
+		)
+	).json();
+	//console.log("1:", res_page);
 
-	const res_banner = await fetch(res_page_json._links["wp:attachment"][0].href);
-	const res_banner_json = await res_banner.json();
-	//console.log("2:", res_banner_json);
+	json.data.page.banners = (
+		await (await fetch(res_page._links["wp:attachment"][0].href)).json()
+	).filter((item: any) => {
+		return (
+			item.id == res_page.acf?.banner_1 || item.id == res_page.acf?.banner_2
+		);
+	});
 
 	return {
 		props: {
 			json: json,
-			extra: res_banner_json.filter((item: any) => {
-				return (
-					item.id == res_page_json.acf?.banner_1 ||
-					item.id == res_page_json.acf?.banner_2
-				);
-			}),
 		},
 	};
 }
 
-export default function Home({ json, extra }: any) {
+interface prop {
+	json: IndexPage;
+}
+
+export default function Home({ json }: prop) {
 	//Alle props kommer ovenfra
-	//console.log(json, extra);
+	//console.log(json.data.page.banners);
+
+	const banners: BannerImage[] = json.data.page.banners.map((banner: any) => {
+		return {
+			title: banner.title.rendered,
+			type: "Image",
+			media: banner.source_url,
+		};
+	});
+
+	console.log(banners);
+
+	client.getEntries({ content_type: "landingPage" }).then((response: any) => {
+		console.log(response.items);
+	});
 
 	return (
 		<>
@@ -73,7 +96,7 @@ export default function Home({ json, extra }: any) {
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
-			<WPFrontBanner banners={extra} />
+			<FrontBanner banners={banners} />
 			<div dangerouslySetInnerHTML={{ __html: json.data.page.content }} />
 			{/* 
 			<FrontBanner banners={banners} />

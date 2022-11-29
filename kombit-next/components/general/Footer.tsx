@@ -1,4 +1,4 @@
-import pageLink from "../interfaces/pageLink";
+import pageLink from "../../interfaces/pageLink";
 
 interface prop {
 	footerLinks: pageLink[];

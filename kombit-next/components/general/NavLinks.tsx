@@ -8,7 +8,7 @@ interface prop {
 	pageLinks: pageLink[];
 }
 
-export default function WPNavLinks({ pageLinks }: prop) {
+export default function NavLinks({ pageLinks }: prop) {
 	return (
 		<>
 			<Navbar collapseOnSelect expand="lg" className="justify-content-end py-0">

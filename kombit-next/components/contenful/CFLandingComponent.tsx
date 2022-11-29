@@ -1,9 +1,14 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { MouseEventHandler, useEffect, useReducer, useState } from "react";
-import { client } from "./contenful/main";
-import Feed from "./Feed";
+import { useState } from "react";
+import { CFEntryLanding } from "../../interfaces/CFentry";
+import Feed from "../Feed";
 
-export default function LandingComponent({ content, children }: any) {
+interface prop {
+	content: CFEntryLanding;
+	children: any;
+}
+
+export default function LandingComponent({ content, children }: prop) {
 	const [slide, setSlide] = useState<any>(null);
 
 	//console.log(slide);

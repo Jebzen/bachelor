@@ -35,23 +35,17 @@ App.getInitialProps = async (context: any) => {
 	let pageLinks: pageLink[] | null = null;
 	let footerLinks: pageLink[] | null = null;
 
-	if (context.router.asPath.split("/")[1] == "wordpress") {
-		//Wordpress Site!
-		//Footer info pages
-		footerLinks = (
-			await GraphCatcher.getAllPages("infoside")
-		).data.pages.nodes.map((node: any) => {
-			return {
-				slug: node.slug,
-				title: node.title,
-			} as pageLink;
-		});
-		pageLinks = (await GraphCatcher.getAllCategories()).data.categories.nodes;
-	} else if (context.router.asPath.split("/")[1] == "contenful") {
-		//Contenful Site!
-	} else {
-		//No subsite found
-	}
+	//Wordpress Site!
+	//Footer info pages
+	footerLinks = (
+		await GraphCatcher.getAllPages("infoside")
+	).data.pages.nodes.map((node: any) => {
+		return {
+			slug: node.slug,
+			title: node.title,
+		} as pageLink;
+	});
+	pageLinks = (await GraphCatcher.getAllCategories()).data.categories.nodes;
 
 	return {
 		footerLinks,

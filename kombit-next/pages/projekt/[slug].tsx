@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
 import ProjektComponent from "../../components/ProjektComponent";
+import { CFentry } from "../../interfaces/CFentry";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
@@ -10,7 +11,7 @@ export async function getServerSideProps(context: any) {
 		content_type: "projekt",
 	});
 
-	const slugged = response.items.find((item: any) => {
+	const slugged: CFentry = response.items.find((item: any) => {
 		//console.log(item);
 		return item?.fields?.slug == slug;
 	});
@@ -28,7 +29,11 @@ export async function getServerSideProps(context: any) {
 	};
 }
 
-export default function ProjektPage({ content }: any) {
+interface prop {
+	content: CFentry;
+}
+
+export default function ProjektPage({ content }: prop) {
 	//console.log(content);
 
 	return (

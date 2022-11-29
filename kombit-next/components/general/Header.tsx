@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { useEffect, useState } from "react";
-import pageLink from "../interfaces/pageLink";
-import NavLinks from "./general/NavLinks";
+import pageLink from "../../interfaces/pageLink";
+import NavLinks from "../general/NavLinks";
 
 interface prop {
 	pageLinks: pageLink[];
