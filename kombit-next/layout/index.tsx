@@ -5,15 +5,15 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import InfoPageLink from "../interfaces/infoPageLink";
+import pageLink from "../interfaces/pageLink";
 
 interface prop {
 	children: any;
-	PageTypes: any;
-	footerLinks: InfoPageLink[];
+	footerLinks: pageLink[];
+	pageLinks: pageLink[];
 }
 
-export function IndexLayout({ children, PageTypes, footerLinks }: prop) {
+export function IndexLayout({ children, footerLinks, pageLinks }: prop) {
 	const [theme, setTheme] = useState(false);
 
 	useEffect(() => {
@@ -30,9 +30,9 @@ export function IndexLayout({ children, PageTypes, footerLinks }: prop) {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<div data-theme={theme ? "dark" : "light"}>
-				<Header PageTypes={PageTypes} />
+				<Header pageLinks={pageLinks} />
 				<main>{children}</main>
-				<Footer footerLinks={footerLinks as InfoPageLink[]} />
+				<Footer footerLinks={footerLinks as pageLink[]} />
 			</div>
 		</>
 	);

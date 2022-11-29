@@ -1,35 +1,7 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import InfoPageLink from "../interfaces/infoPageLink";
-import styles from "../styles/Home.module.css";
-import { client } from "./contenful/main";
-
-/*
-export default function Footer() {
-	return (
-		<footer className="footer">
-			<a
-				href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Powered by{" "}
-				<span className="logo">
-					<Image
-						src="/vercel.svg"
-						alt="Vercel Logo"
-						width={72}
-						height={16}
-					/>
-				</span>
-			</a>
-		</footer>
-	);
-}
-*/
+import pageLink from "../interfaces/pageLink";
 
 interface prop {
-	footerLinks: InfoPageLink[];
+	footerLinks: pageLink[];
 }
 
 export default function Footer({ footerLinks }: prop) {

@@ -1,19 +1,22 @@
 import { Container, Navbar } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import pageLink from "../../interfaces/pageLink";
 
-export default function WPNavLinks({ PageTypes }: any) {
-	const { nodes } = PageTypes;
+interface prop {
+	pageLinks: pageLink[];
+}
 
+export default function WPNavLinks({ pageLinks }: prop) {
 	return (
 		<>
 			<Navbar collapseOnSelect expand="lg" className="justify-content-end py-0">
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 					<Nav>
-						{nodes &&
-							nodes.length > 0 &&
-							nodes
+						{pageLinks &&
+							pageLinks.length > 0 &&
+							pageLinks
 								.sort((a: any, b: any) => {
 									return a.name - b.name;
 								})

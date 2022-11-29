@@ -9,60 +9,53 @@ import { client } from "../components/contenful/main";
 import { useEffect } from "react";
 import { GraphCatcher } from "../data/GraphQL";
 import { useRouter } from "next/router";
-import InfoPageLink from "../interfaces/infoPageLink";
+import pageLink from "../interfaces/pageLink";
 
 interface prop extends AppProps {
 	Component: any;
 	pageProps: any;
-	PageTypes: any;
-	footerLinks: InfoPageLink[];
+	footerLinks: pageLink[];
+	pageLinks: pageLink[];
 }
 
 export default function App({
 	Component,
 	pageProps,
-	PageTypes,
 	footerLinks,
+	pageLinks,
 }: prop | any) {
 	return (
-		<IndexLayout
-			PageTypes={PageTypes}
-			footerLinks={footerLinks as InfoPageLink[]}
-		>
+		<IndexLayout footerLinks={footerLinks} pageLinks={pageLinks}>
 			<Component {...pageProps} />
 		</IndexLayout>
 	);
 }
 
 App.getInitialProps = async (context: any) => {
-	let infoPages = null;
-	let PageTypes = null;
-	let footerLinks: InfoPageLink[] | null = null;
+	let pageLinks: pageLink[] | null = null;
+	let footerLinks: pageLink[] | null = null;
 
 	if (context.router.asPath.split("/")[1] == "wordpress") {
 		//Wordpress Site!
+		//Footer info pages
 		footerLinks = (
 			await GraphCatcher.getAllPages("infoside")
 		).data.pages.nodes.map((node: any) => {
 			return {
 				slug: node.slug,
 				title: node.title,
-			} as InfoPageLink;
+			} as pageLink;
 		});
-		PageTypes = (await GraphCatcher.getAllCategories()).data.categories;
+		pageLinks = (await GraphCatcher.getAllCategories()).data.categories.nodes;
 	} else if (context.router.asPath.split("/")[1] == "contenful") {
 		//Contenful Site!
+	} else {
+		//No subsite found
 	}
 
-	//Footer info pages
-	infoPages = await GraphCatcher.getAllPages("infoside");
-
-	//Header page types
-	PageTypes = (await GraphCatcher.getAllCategories()).data.categories;
-
 	return {
-		PageTypes,
 		footerLinks,
+		pageLinks,
 	};
 };
 

@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { useEffect, useState } from "react";
-import { client } from "./contenful/main";
-import NavDropdownExample from "./Nav";
+import pageLink from "../interfaces/pageLink";
 import WPNavLinks from "./WordPress/WPNavLinks";
 
-export default function Header({ PageTypes }: any) {
+interface prop {
+	pageLinks: pageLink[];
+}
+
+export default function Header({ pageLinks }: any) {
 	const router = useRouter();
 	const { term } = router.query;
 	const [searchTerm, setSearchTerm] = useState(term);
@@ -92,7 +95,7 @@ export default function Header({ PageTypes }: any) {
 						</form>
 					</div>
 				</div>
-				<WPNavLinks PageTypes={PageTypes} />
+				<WPNavLinks pageLinks={pageLinks} />
 			</header>
 			{breadCrumbs.length > 1 && (
 				<div className="pb-2 breadCrumbs container" id="breadCrumbs">
