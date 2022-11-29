@@ -9,13 +9,141 @@ export interface WPIndexes {
 					title: string;
 					featuredImage: {
 						node: {
-							altText: string;
-							title: string;
-							mediaItemUrl: string;
+							node: featuredImage;
 						};
 					};
 				}
 			];
 		};
 	};
+}
+
+export interface WPSinglePage {
+	data: {
+		page: {
+			pageId: number;
+			title: string;
+			excerpt: string;
+			tags: {
+				nodes: {
+					name: string;
+					slug: string;
+				}[];
+			};
+			featuredImage: {
+				node: featuredImage;
+			};
+			categories: {
+				nodes: {
+					name: string;
+					slug: string;
+				}[];
+			};
+			content: string;
+			modified: string;
+		};
+	};
+}
+
+export interface WPAllPages {
+	data: {
+		pages: {
+			nodes: {
+				date: string;
+				excerpt: string;
+				slug: string;
+				title: string;
+				featuredImage: {
+					node: {
+						node: featuredImage;
+					};
+				};
+			}[];
+		};
+	};
+}
+
+export interface WPMediaItem {
+	data: {
+		mediaItem: {
+			altText: string;
+			caption: string;
+			description: string;
+			mediaItemUrl: string;
+			title: string;
+		};
+	};
+}
+
+export interface WPPageCard {
+	data: {
+		page: {
+			excerpt: string;
+			date: string;
+			slug: string;
+			title: string;
+			featuredImage: {
+				node: {
+					node: featuredImage;
+				};
+			};
+		};
+	};
+}
+
+export interface WPAllPagesLimitSort {
+	data: {
+		pages: {
+			nodes: {
+				date: string;
+				excerpt: string;
+				slug: string;
+				title: string;
+				featuredImage: {
+					node: featuredImage;
+				};
+			}[];
+		};
+	};
+}
+
+export interface WPAllCategories {
+	data: {
+		categories: {
+			nodes: {
+				name: string;
+				slug: string;
+			}[];
+		};
+	};
+}
+
+export interface WPSearchPages {
+	data: {
+		pages: {
+			nodes: {
+				date: string;
+				excerpt: string;
+				slug: string;
+				title: string;
+				featuredImage: {
+					node: featuredImage;
+				};
+				categories: {
+					nodes: {
+						name: string;
+						slug: string;
+					}[];
+				};
+			}[];
+		};
+	};
+}
+
+interface featuredImage {
+	altText: string;
+	caption: string;
+	description: string;
+	mediaItemUrl: string;
+	title: string;
 }

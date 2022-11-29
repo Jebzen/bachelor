@@ -83,12 +83,7 @@ export default function Home({ json }: prop) {
 			media: banner.source_url,
 		};
 	});
-
-	console.log(banners);
-
-	client.getEntries({ content_type: "landingPage" }).then((response: any) => {
-		console.log(response.items);
-	});
+	//console.log(banners);
 
 	return (
 		<>

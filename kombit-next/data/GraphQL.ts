@@ -1,7 +1,15 @@
 import { json } from "stream/consumers";
+import {
+	WPAllCategories,
+	WPAllPages,
+	WPAllPagesLimitSort,
+	WPMediaItem,
+	WPPageCard,
+	WPSinglePage,
+} from "../interfaces/WPIndexes";
 
 export class GraphCatcher {
-	static async getSinglePage(slug: string) {
+	static async getSinglePage(slug: string): Promise<WPSinglePage> {
 		const res = await fetch("http://signepetersen.dk/graphql", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -27,6 +35,7 @@ export class GraphCatcher {
                 }
               }
               content
+              modified
             }
         }`,
 			}),
@@ -35,7 +44,7 @@ export class GraphCatcher {
 		return await res.json();
 	}
 
-	static async getAllPages(categoryName: string) {
+	static async getAllPages(categoryName: string): Promise<WPAllPages> {
 		const res = await fetch("http://signepetersen.dk/graphql", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -54,6 +63,7 @@ export class GraphCatcher {
                   altText
                   title
                   mediaItemUrl
+                  description
                 }
               }
             }
@@ -65,7 +75,7 @@ export class GraphCatcher {
 		return await res.json();
 	}
 
-	static async getMediaItem(id: string) {
+	static async getMediaItem(id: string): Promise<WPMediaItem> {
 		const res = await fetch("http://signepetersen.dk/graphql", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -86,7 +96,7 @@ export class GraphCatcher {
 		return await res.json();
 	}
 
-	static async getPageCard(id: string) {
+	static async getPageCard(id: string): Promise<WPPageCard> {
 		const response = await fetch("http://signepetersen.dk/graphql", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -114,7 +124,10 @@ export class GraphCatcher {
 		return await response.json();
 	}
 
-	static async getAllPagesLimitSort(categoryName: string, limit: number) {
+	static async getAllPagesLimitSort(
+		categoryName: string,
+		limit: number
+	): Promise<WPAllPagesLimitSort> {
 		const response = await fetch("http://signepetersen.dk/graphql", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -146,7 +159,7 @@ export class GraphCatcher {
 		return await response.json();
 	}
 
-	static async getAllCategories() {
+	static async getAllCategories(): Promise<WPAllCategories> {
 		const response = await fetch("http://signepetersen.dk/graphql", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },

@@ -1,4 +1,11 @@
-export default function WPIndexes({ nodes, parent }: any) {
+import { WPAllPages } from "../../interfaces/WPIndexes";
+
+interface prop {
+	nodes: WPAllPages["data"]["pages"]["nodes"];
+	parent: string;
+}
+
+export default function WPIndexes({ nodes, parent }: prop) {
 	return (
 		<>
 			{nodes.map((item: any, i: number) => {

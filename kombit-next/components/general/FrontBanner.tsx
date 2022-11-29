@@ -6,7 +6,7 @@ interface prop {
 }
 
 export default function FrontBanner({ banners }: prop) {
-	console.log("Banners", banners);
+	//console.log("Banners", banners);
 	return (
 		<>
 			<Carousel interval={10000} fade={true} indicators={false}>
