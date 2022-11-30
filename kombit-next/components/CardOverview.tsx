@@ -1,6 +1,12 @@
+import { CFEntryProjekt } from "../interfaces/CFentry";
 import styles from "../styles/Projekt.module.css";
 
-const CardOverview = ({ projekt, tab }: any) => {
+interface prop {
+	projekt: CFEntryProjekt;
+	tab: any;
+}
+
+const CardOverview = ({ projekt, tab }: prop) => {
 	//console.log(projekt);
 	const { title, abstrakt, featuredImage, slug } = projekt.fields;
 
