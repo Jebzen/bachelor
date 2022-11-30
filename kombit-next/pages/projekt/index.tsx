@@ -1,4 +1,4 @@
-import PageHero from "../../components/PageHero";
+import PageHero from "../../components/general/PageHero";
 import { useState } from "react";
 import styles from "../../styles/Projekt.module.css";
 import { GraphCatcher } from "../../data/GraphQL";

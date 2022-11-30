@@ -15,9 +15,7 @@ export default function ProjectBlobs({ projects }: any) {
 							<h3>{item.fields.title}</h3>
 							<>
 								{item.fields.beskrivelse &&
-									documentToReactComponents(
-										item.fields.beskrivelse
-									)}
+									documentToReactComponents(item.fields.beskrivelse)}
 							</>
 						</span>
 					);
