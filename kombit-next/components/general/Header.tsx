@@ -102,7 +102,7 @@ export default function Header({ pageLinks }: any) {
 					{breadCrumbs.map((crumb: any, i: number) => {
 						return (
 							<a key={i} href={crumb.href}>
-								{crumb.text} {breadCrumbs[i + 1] && <span>{">"} </span>}
+								{crumb.text} {breadCrumbs[i + 1] && <small>{">"} </small>}
 							</a>
 						);
 					})}

@@ -8,9 +8,7 @@ export interface WPIndexes {
 					slug: string;
 					title: string;
 					featuredImage: {
-						node: {
-							node: featuredImage;
-						};
+						node: featuredImage;
 					};
 				}
 			];
@@ -57,10 +55,14 @@ export interface WPAllPages {
 				slug: string;
 				title: string;
 				pageId: number;
+				tags: {
+					nodes: {
+						name: string;
+						slug: string;
+					}[];
+				};
 				featuredImage: {
-					node: {
-						node: featuredImage;
-					};
+					node: featuredImage;
 				};
 				datetime?: string;
 			}[];
@@ -87,6 +89,12 @@ export interface WPPageCard {
 			date: string;
 			slug: string;
 			title: string;
+			tags: {
+				nodes: {
+					name: string;
+					slug: string;
+				}[];
+			};
 			featuredImage: {
 				node: featuredImage;
 			};
@@ -102,6 +110,12 @@ export interface WPAllPagesLimitSort {
 				excerpt: string;
 				slug: string;
 				title: string;
+				tags: {
+					nodes: {
+						name: string;
+						slug: string;
+					}[];
+				};
 				featuredImage: {
 					node: featuredImage;
 				};

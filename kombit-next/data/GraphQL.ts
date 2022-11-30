@@ -20,6 +20,12 @@ export class GraphCatcher {
               title
               pageId
               excerpt
+              tags {
+                nodes {
+                  name
+                  slug
+                }
+              }
               featuredImage {
                 node {
                   altText
@@ -58,6 +64,12 @@ export class GraphCatcher {
               slug
               title
               pageId
+              tags {
+                nodes {
+                  name
+                  slug
+                }
+              }
               featuredImage {
                 node {
                   altText
@@ -108,6 +120,12 @@ export class GraphCatcher {
               date
               slug
               title
+              tags {
+                nodes {
+                  name
+                  slug
+                }
+              }
               featuredImage{
                 node{
                   mediaItemUrl
@@ -143,6 +161,12 @@ export class GraphCatcher {
                 excerpt
                 slug
                 title
+                tags {
+                  nodes {
+                    name
+                    slug
+                  }
+                }
                 featuredImage {
                   node {
                     altText

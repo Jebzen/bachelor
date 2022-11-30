@@ -19,7 +19,7 @@ export interface CFentry {
 export interface CFEntryIndhold extends CFentry {
 	fields: {
 		title: string;
-		slut: string;
+		slug: string;
 		abstrakt: string | any;
 		beskrivelse: any;
 		media: any;
@@ -29,7 +29,7 @@ export interface CFEntryIndhold extends CFentry {
 export interface CFEntryProjekt extends CFentry {
 	fields: {
 		title: string;
-		slut: string;
+		slug: string;
 		abstrakt: string | any;
 		beskrivelse: any;
 		featuredImage: any;
@@ -39,7 +39,7 @@ export interface CFEntryProjekt extends CFentry {
 export interface CFEntryKalender extends CFentry {
 	fields: {
 		title: string;
-		slut: string;
+		slug: string;
 		abstrakt: string | any;
 		beskrivelse: any;
 		featuredImage: any;
@@ -51,7 +51,7 @@ export interface CFEntryKalender extends CFentry {
 export interface CFEntryNyheder extends CFentry {
 	fields: {
 		title: string;
-		slut: string;
+		slug: string;
 		abstrakt: string | any;
 		indhold: any;
 		banner: any;
@@ -61,7 +61,7 @@ export interface CFEntryNyheder extends CFentry {
 export interface CFEntryLanding extends CFentry {
 	fields: {
 		title: string;
-		slut: string;
+		slug: string;
 		abstrakt: string | any;
 		forretningschef: any;
 		mission: any;
