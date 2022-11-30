@@ -3,144 +3,118 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 [data-theme="dark"] {
-  footer {
-    background-color: $neutral-2-2;
-    color: $neutral-2;
-    a {
-      color: $neutral-2;
-      &:hover {
-        color: $neutral-1;
-      }
-    }
-  }
+	a {
+		color: $neutral-2-2 !important;
+		&:focus,
+		&:hover,
+		&:active,
+		&:target {
+			color: $neutral-3-2 !important;
+		}
+	}
 
-  .carousel-item {
-    .overlay {
-      border-bottom: 6px solid $neutral-2-2;
-    }
-    .arrowdiv {
-      background: $neutral-2-2;
-    }
-  }
+	footer {
+		background-color: $neutral-2-2 !important;
+		color: $neutral-2 !important;
+		a {
+			color: $neutral-2 !important;
+			&:hover {
+				color: $neutral-1 !important;
+			}
+		}
+	}
 
-  .respect-line {
-    white-space: pre-line;
-  }
+	.carousel-item {
+		.carousel-caption {
+			.bannerCaptionBox {
+				background-color: $neutral-3-2 !important;
+			}
+		}
+	}
 
-  .search-grid {
-    > a {
-      background-color: $neutral-3-2;
-      &:hover {
-        color: $neutral-2-2;
-      }
-    }
-  }
+	.respect-line {
+		white-space: pre-line;
+	}
 
-  .news-box,
-  .landing-box,
-  .info-box {
-    .news-item {
-      h2 {
-        color: $neutral-3-2;
-      }
-      &:hover {
-        background-color: $neutral-2;
-      }
-    }
-  }
+	.search-grid {
+		> a {
+			background-color: $neutral-3-2 !important;
+			&:hover {
+				color: $neutral-2-2 !important;
+			}
+		}
+	}
 
-  header {
-    background-color: $neutral-1;
-    .nav-link {
-      color: $neutral-2-2;
-      &:hover {
-        color: $neutral-3-2;
-      }
-    }
-    form.input-group {
-      input,
-      button {
-        border-color: $neutral-2-2;
-        background-color: $neutral-1;
-      }
-    }
-  }
+	.news-box,
+	.landing-box,
+	.info-box {
+		.news-item {
+			h2 {
+				color: $neutral-3-2 !important;
+			}
+			&:hover {
+				background-color: $neutral-2 !important;
+			}
+		}
+	}
 
-  .breadCrumbs {
-    background-color: $neutral-1;
-    a {
-      color: $neutral-2-2;
-      &:hover,
-      &:focus {
-        color: $neutral-3-2;
-      }
-    }
-  }
+	header {
+		background-color: $neutral-1 !important;
+		.nav-link {
+			color: $neutral-2-2 !important;
+			&:hover {
+				color: $neutral-3-2 !important;
+			}
+		}
+		form.input-group {
+			input,
+			button {
+				border-color: $neutral-2-2 !important;
+				background-color: $neutral-1 !important;
+			}
+		}
+	}
 
-  .tabLink {
-    color: $neutral-2-2 !important;
-    border-color: $neutral-2-2 !important;
-    &.active {
-      background-color: $neutral-3 !important;
-    }
-  }
-  .Projekt_cardImg__oPvaE {
-    border-color: $neutral-2-2 !important;
-  }
-  .read-more {
-    border-color: $neutral-2-2 !important;
-    color: $neutral-2-2 !important;
-    &:hover {
-      background-color: $neutral-2-2 !important;
-      color: $neutral-1 !important;
-    }
-  }
-  .Projekt_insideHero__4vBsw h2 {
-    color: $neutral-1;
-  }
-  .Projekt_columnsImg__Y_LuR {
-    border-color: $neutral-2-2;
-  }
+	.breadCrumbs {
+		background-color: $neutral-1 !important;
+		a {
+			color: $neutral-2-2 !important;
+			&:hover,
+			&:focus {
+				color: $neutral-3-2 !important;
+			}
+		}
+	}
+
+	.tabLink {
+		color: $neutral-2-2 !important;
+		border-color: $neutral-2-2 !important;
+		&.active {
+			background-color: $neutral-3 !important;
+		}
+	}
+	.Projekt_cardImg__oPvaE {
+		border-color: $neutral-2-2 !important;
+	}
+	.read-more {
+		border-color: $neutral-2-2 !important;
+		color: $neutral-2-2 !important;
+		&:hover {
+			background-color: $neutral-2-2 !important;
+			color: $neutral-1 !important;
+		}
+	}
+	.Projekt_insideHero__4vBsw h2 {
+		color: $neutral-1 !important;
+	}
+	.Projekt_columnsImg__Y_LuR {
+		border-color: $neutral-2-2 !important;
+	}
+
+	.notFoundPage {
+		h1,
+		h2 {
+			color: $neutral-3-2;
+		}
+	}
 }
-
-// .newsHeader {
-//   color: $neutral-3-2;
-//   background-color: #fff;
-//   padding: 15px;
-//   border: 2px solid $neutral-3-2;
-//   padding: 15px !important;
-//   width: 30% !important;
-// }
-
-// .row {
-//   --bs-gutter-x: 0 !important;
-//   justify-content: space-between;
-// }
-
-// .col-4 {
-//   width: 30% !important;
-// }
-
-// .col-4 h4 {
-//   margin: 0;
-// }
-
-// .col-4 a {
-//   color: $neutral-3-2 !important;
-// }
-// .active {
-//   color: #fff !important;
-//   background-color: $neutral-3-2;
-// }
-
-// .col-4.newsHeader.active:after {
-//   content: "";
-//   width: 0;
-//   height: 0;
-//   border-style: solid;
-//   border-width: 17px 14px 0 14px;
-//   border-color: $neutral-3-2 transparent transparent transparent;
-//   position: absolute;
-//   margin-top: 17px;
-//   margin-left: -3px;
-// }

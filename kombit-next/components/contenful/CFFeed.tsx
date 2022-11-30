@@ -1,16 +1,15 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useEffect, useState } from "react";
-import { client } from "./contenful/main";
+import { client } from "./main";
 
-type entry = {};
-
-export default function Feed() {
+export default function CFFeed() {
 	const [slide, setSlide] = useState("nyheder");
-	const [news, setNews] = useState([]);
-	const [calender, setCalender] = useState([]);
-	const [info, setInfo] = useState([]);
+	const [news, setNews] = useState<any>([]);
+	const [calender, setCalender] = useState<any>([]);
+	const [info, setInfo] = useState<any>([]);
 
 	useEffect(() => {
+		//Nyheder
 		client
 			.getEntries({
 				content_type: "nyheder",
@@ -20,6 +19,7 @@ export default function Feed() {
 			.then((reponse: any) => {
 				setNews(reponse);
 			});
+		//Kalender
 		client
 			.getEntries({
 				content_type: "kalender",
@@ -29,6 +29,7 @@ export default function Feed() {
 			.then((response: any) => {
 				setCalender(response);
 			});
+		//Indhold
 		client
 			.getEntries({
 				content_type: "infoSide",
@@ -101,11 +102,11 @@ export default function Feed() {
 						info.items.length != 0 &&
 						info.items.map((infoSide: any, i: number) => {
 							return (
-								<div className="col-4 content-column" key={i}>
+								<div className="col-4" key={i}>
 									<a href={"kalender/" + infoSide.fields.slug}>
-										<h5>{infoSide.fields.title}</h5>
+										<h3>{infoSide.fields.title}</h3>
 									</a>
-									{infoSide.fields.abstrakt}
+									{documentToReactComponents(infoSide.fields.abstrakt)}
 									<p className="text-end">{infoSide.sys.createdAt}</p>
 								</div>
 							);

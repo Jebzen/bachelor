@@ -1,10 +1,15 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { MouseEventHandler, useEffect, useReducer, useState } from "react";
-import { client } from "./contenful/main";
-import Feed from "./Feed";
+import { useState } from "react";
+import { CFEntryLanding } from "../../interfaces/CFentry";
+import CFFeed from "./CFFeed";
 
-export default function LandingComponent({ content, children }: any) {
-	const [slide, setSlide] = useState(null);
+interface prop {
+	content: CFEntryLanding;
+	children: any;
+}
+
+export default function LandingComponent({ content, children }: prop) {
+	const [slide, setSlide] = useState<any>(null);
 
 	//console.log(slide);
 	//console.log(content.fields.forretningschef);
@@ -20,22 +25,11 @@ export default function LandingComponent({ content, children }: any) {
 				<div className="row">
 					{content.fields.sider.map((side: any, i: number) => {
 						return (
-							<div
-								key={i}
-								data-id={i}
-								className="col-2"
-								onClick={changeSlide}
-							>
+							<div key={i} data-id={i} className="col-2" onClick={changeSlide}>
 								<img
-									src={
-										side.fields.featuredImage.fields.file
-											.url
-									}
+									src={side.fields.featuredImage.fields.file.url}
 									className="img-fluid"
-									alt={
-										side.fields.featuredImage.fields.file
-											.title
-									}
+									alt={side.fields.featuredImage.fields.file.title}
 								/>
 								<p>{side.fields.title}</p>
 							</div>
@@ -75,7 +69,7 @@ export default function LandingComponent({ content, children }: any) {
 					</div>
 				</div>
 				<div className="col-12">
-					<Feed />
+					<CFFeed />
 				</div>
 			</div>
 			{children}

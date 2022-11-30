@@ -1,11 +1,17 @@
 import Head from "next/head";
 import React from "react";
-import { client } from "../components/contenful/main";
-import Footer from "../components/footer";
-import Header from "../components/header";
+import Footer from "../components/general/Footer";
+import Header from "../components/general/Header";
 import { useEffect, useState } from "react";
+import pageLink from "../interfaces/pageLink";
 
-export function IndexLayout({ children, infoPages, PageTypes }: any) {
+interface prop {
+	children: any;
+	footerLinks: pageLink[];
+	pageLinks: pageLink[];
+}
+
+export function IndexLayout({ children, footerLinks, pageLinks }: prop) {
 	const [theme, setTheme] = useState(false);
 
 	useEffect(() => {
@@ -21,10 +27,10 @@ export function IndexLayout({ children, infoPages, PageTypes }: any) {
 				<title>Kombit app</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<div data-theme={theme ? "dark" : ""}>
-				<Header PageTypes={PageTypes} />
+			<div data-theme={theme ? "dark" : "light"}>
+				<Header pageLinks={pageLinks} />
 				<main>{children}</main>
-				<Footer infoPages={infoPages} />
+				<Footer footerLinks={footerLinks} />
 			</div>
 		</>
 	);

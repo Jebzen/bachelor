@@ -4,7 +4,7 @@ import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 
 export async function getServerSideProps(context: any) {
-	const res = await GraphCatcher.getAllPages("nyheder");
+	const res = await GraphCatcher.getAllPages("landingpage");
 
 	return {
 		props: {
@@ -17,8 +17,8 @@ interface prop {
 	content: WPAllPages;
 }
 
-export default function NewsIndex({ content }: prop) {
-	//console.log(content.data.pages.nodes);
+export default function LandingIndex({ content }: prop) {
+	//console.log(content);
 
 	return (
 		<>
@@ -27,12 +27,12 @@ export default function NewsIndex({ content }: prop) {
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<section className="container">
-				<h1>Nyheder</h1>
+				<h1>Landing pages</h1>
 				<hr />
 				<p>Bar</p>
 				<hr />
-				<div className="news-box">
-					<WPIndexes nodes={content.data.pages.nodes} parent="/nyheder" />
+				<div className="landing-box">
+					<WPIndexes nodes={content.data.pages.nodes} parent="/landingpage" />
 				</div>
 			</section>
 		</>

@@ -1,8 +1,8 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styles from "../styles/Projekt.module.css";
-import ShareButtons from "./ShareButtons";
+import ShareButtons from "../general/ShareButtons";
 
-export default function ProjektComponent({ projekt }: any) {
+export default function CFProjektComponent({ projekt }: any) {
 	const { title, beskrivelse, featuredImage, links, cards } = projekt.fields;
 	//console.log(projekt);
 	return (

@@ -3,56 +3,51 @@ import type { AppProps } from "next/app";
 import "../styles/main.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.scss";
-import NProgress from "nprogress";
 import { IndexLayout } from "../layout";
-import { client } from "../components/contenful/main";
-import { useEffect } from "react";
+import { GraphCatcher } from "../data/GraphQL";
+import pageLink from "../interfaces/pageLink";
 
-let infoPagesPropsCache: any;
-let pageTypesCache: any;
+interface prop extends AppProps {
+	Component: any;
+	pageProps: any;
+	footerLinks: pageLink[];
+	pageLinks: pageLink[];
+}
 
 export default function App({
 	Component,
 	pageProps,
-	infoPages,
-	pageTypes,
-}: AppProps | any) {
-	useEffect(() => {
-		infoPagesPropsCache = infoPages;
-		pageTypesCache = pageTypes;
-	}, []);
-
+	footerLinks,
+	pageLinks,
+}: prop | any) {
 	return (
-		<IndexLayout infoPages={infoPages} PageTypes={pageTypes}>
-			<Component {...pageProps} />
-		</IndexLayout>
+		<>
+			<IndexLayout footerLinks={footerLinks} pageLinks={pageLinks}>
+				<Component {...pageProps} />
+			</IndexLayout>
+		</>
 	);
 }
 
-App.getInitialProps = async () => {
+App.getInitialProps = async (context: any) => {
+	let pageLinks: pageLink[] | null | { name: string; slug: string }[] = null;
+	let footerLinks: pageLink[] | null = null;
+
+	//Wordpress Site!
 	//Footer info pages
-	if (infoPagesPropsCache != undefined) {
-		return { infoPages: infoPagesPropsCache };
-	}
-	const response = await client.getEntries({
-		content_type: "infoSide",
+	footerLinks = (
+		await GraphCatcher.getAllPages("infoside")
+	).data.pages.nodes.map((node: any) => {
+		return {
+			slug: node.slug,
+			title: node.title,
+		} as pageLink;
 	});
-	const infoPages = response.items;
-	if (infoPagesPropsCache != undefined) infoPagesPropsCache = infoPages;
-
-	//Header page types
-	const responsePageTypes = await client.getContentTypes();
-	const pageTypes = responsePageTypes.items.filter((item: any) => {
-		return item.fields.find((field: any) => {
-			return field.id == "slug";
-		});
-	});
-
-	if (pageTypesCache != undefined) pageTypesCache = pageTypes;
+	pageLinks = (await GraphCatcher.getAllCategories()).data.categories.nodes;
 
 	return {
-		infoPages,
-		pageTypes,
+		footerLinks,
+		pageLinks,
 	};
 };
 

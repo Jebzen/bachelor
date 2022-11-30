@@ -1,9 +1,14 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Accordion } from "react-bootstrap";
-import SoMeFeed from "./Feed2";
-import ShareButtons from "./ShareButtons";
+import SoMeFeed from "../general/SoMeFeed";
+import ShareButtons from "../general/ShareButtons";
+import { CFEntryIndhold } from "../../interfaces/CFentry";
 
-export default function KalenderComponent({ content }: any) {
+interface prop {
+	content: CFEntryIndhold;
+}
+
+export default function CFInfoComponent({ content }: prop) {
 	//console.log(content);
 
 	const renderOption = {
@@ -32,15 +37,20 @@ export default function KalenderComponent({ content }: any) {
 	return (
 		<section className="container">
 			<div className="d-flex flex-column">
-				<h1>
-					{content.fields.title} - {content.fields.dato}
-				</h1>
-				<small>
-					{documentToReactComponents(content.fields.abstrakt, renderOption)}
-				</small>
-				<div className="kalender-main">
-					{documentToReactComponents(content.fields.beskrivelse, renderOption)}
-				</div>
+				<h1>{content.fields.title}</h1>
+				{content.fields.media && (
+					<div className="text-center">
+						<img
+							src={content.fields.media.fields.file.url}
+							alt={content.fields.media.fields.title}
+						/>
+					</div>
+				)}
+				<small className="fst-italic">{content.fields.abstrakt}</small>
+
+				<ShareButtons />
+				{documentToReactComponents(content.fields.beskrivelse, renderOption)}
+				<SoMeFeed />
 			</div>
 		</section>
 	);
