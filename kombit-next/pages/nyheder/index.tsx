@@ -1,5 +1,5 @@
 import Head from "next/head";
-import WPIndexes from "../../components/WordPress/WPIndexes";
+import WPIndexes from "../../components/wordpress/WPIndexes";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 

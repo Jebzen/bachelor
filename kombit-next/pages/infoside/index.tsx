@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { client } from "../../components/contenful/main";
 import { BannerType, FrontPageFields } from "../../interfaces/frontpage";
 import { BannerImage, BannerVideo } from "../../interfaces/banner";
-import WPIndexes from "../../components/WordPress/WPIndexes";
+import WPIndexes from "../../components/wordpress/WPIndexes";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 

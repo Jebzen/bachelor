@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../components/contenful/main";
 import KalenderComponent from "../../components/KalenderComponent";
-import WPKalenderComponent from "../../components/WordPress/WPKalenderComponent";
+import WPKalenderComponent from "../../components/wordpress/WPKalenderComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 import { IndexLayout } from "../../layout";

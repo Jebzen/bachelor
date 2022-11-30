@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { GraphCatcher } from "../data/GraphQL";
-import WPLandingComponent from "../components/WordPress/WPLandingComponent";
-import WPInfoComponent from "../components/WordPress/WPInfoComponent";
-import WPnewsComponent from "../components/WordPress/WPNewsComponent";
-import WPKalenderComponent from "../components/WordPress/WPKalenderComponent";
+import WPLandingComponent from "../components/wordpress/WPLandingComponent";
+import WPInfoComponent from "../components/wordpress/WPInfoComponent";
+import WPnewsComponent from "../components/wordpress/WPnewsComponent";
+import WPKalenderComponent from "../components/wordpress/WPKalenderComponent";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;

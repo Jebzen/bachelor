@@ -1,5 +1,5 @@
 import Head from "next/head";
-import WPProjektComponent from "../../components/WordPress/WPProjektComponent";
+import WPProjektComponent from "../../components/wordpress/WPProjektComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
@@ -7,8 +7,6 @@ export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);
 
-	//TO DO
-	//Relatered nyheder / projekter
 	//Hent sideindhold
 	const res_page_json = await (
 		await fetch(

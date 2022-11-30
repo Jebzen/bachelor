@@ -1,5 +1,5 @@
 import Head from "next/head";
-import WPLandingComponent from "../../components/WordPress/WPLandingComponent";
+import WPLandingComponent from "../../components/wordpress/WPLandingComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
 

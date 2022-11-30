@@ -2,6 +2,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { useState } from "react";
 import { CFEntryLanding } from "../../interfaces/CFentry";
 import Feed from "../Feed";
+import CFFeed from "./CFFeed";
 
 interface prop {
 	content: CFEntryLanding;
@@ -69,7 +70,7 @@ export default function LandingComponent({ content, children }: prop) {
 					</div>
 				</div>
 				<div className="col-12">
-					<Feed />
+					<CFFeed />
 				</div>
 			</div>
 			{children}
