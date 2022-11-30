@@ -70,7 +70,11 @@ export default function Projekter({ content }: prop) {
 
 			<div className={styles.CardOverviewContaier}>
 				{content.data.pages.nodes.map((node, i: number) => {
-					if (node.tags.nodes[0]?.slug == tab) {
+					if (
+						node.tags.nodes.find((node) => {
+							return node.slug == tab;
+						})
+					) {
 						return (
 							<div className={styles.cardBody} key={i}>
 								<WPCardOverview projekt={node} />
