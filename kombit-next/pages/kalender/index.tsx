@@ -1,37 +1,26 @@
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Head from "next/head";
-import { WPStringToTime } from "../../data/functions";
-import { GraphCatcher } from "../../data/GraphQL";
-import { WPAllPages } from "../../interfaces/WPIndexes";
+import { client } from "../../components/contenful/main";
+import { CFEntryKalender } from "../../interfaces/CFentry";
 
 export async function getServerSideProps(context: any) {
-	const response: WPAllPages = await GraphCatcher.getAllPages("kalender");
-
-	response.data.pages.nodes = await Promise.all(
-		response.data.pages.nodes.map(async (item) => {
-			const res = await (
-				await fetch(
-					`http://signepetersen.dk/wp-json/wp/v2/pages/${item.pageId}`
-				)
-			).json();
-			item["datetime"] = res.acf.dato;
-			return item;
-		})
-	);
+	const response = await client.getEntries({
+		content_type: "kalender",
+	});
 
 	return {
 		props: {
-			content: response,
+			content: response.items,
 		},
 	};
 }
 
 interface prop {
-	content: WPAllPages;
+	content: CFEntryKalender[];
 }
 
 export default function Kalender({ content }: prop) {
-	//console.log(content);
-	const { nodes } = content.data.pages;
+	console.log(content);
 
 	return (
 		<>
@@ -40,26 +29,22 @@ export default function Kalender({ content }: prop) {
 			</Head>
 			<section className="container h-100">
 				<div className="kalenderGrid">
-					{nodes &&
-						nodes.length > 0 &&
-						nodes.map((item, i: number) => {
-							const date =
-								item.datetime !== undefined
-									? WPStringToTime(item.datetime)
-									: "";
+					{content &&
+						content.length > 0 &&
+						content.map((item: any, i: number) => {
 							return (
 								<a
 									key={i}
-									href={"/kalender/" + item.slug}
+									href={"/kalender/" + item.fields.slug}
 									className="text-decoration-none text-dark"
 								>
 									<h2>
-										{date}
+										{item.fields.dato}
 										<i className="bi-arrow-right-short"></i>
 									</h2>
 									<hr />
-									<h3>{item.title}</h3>
-									<span dangerouslySetInnerHTML={{ __html: item.excerpt }} />
+									<h3>{item.fields.title}</h3>
+									{documentToReactComponents(item.fields.abstrakt)}
 								</a>
 							);
 						})}

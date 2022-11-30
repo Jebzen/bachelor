@@ -5,10 +5,9 @@ import CFFeed from "./CFFeed";
 
 interface prop {
 	content: CFEntryLanding;
-	children: any;
 }
 
-export default function LandingComponent({ content, children }: prop) {
+export default function CFLandingComponent({ content }: prop) {
 	const [slide, setSlide] = useState<any>(null);
 
 	//console.log(slide);
@@ -72,7 +71,6 @@ export default function LandingComponent({ content, children }: prop) {
 					<CFFeed />
 				</div>
 			</div>
-			{children}
 		</section>
 	);
 }

@@ -34,6 +34,7 @@ export default function CFInfoComponent({ content }: prop) {
 			},
 		},
 	};
+
 	return (
 		<section className="container">
 			<div className="d-flex flex-column">

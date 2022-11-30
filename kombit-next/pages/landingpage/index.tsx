@@ -1,20 +1,22 @@
 import Head from "next/head";
-import WPIndexes from "../../components/wordpress/WPIndexes";
-import { GraphCatcher } from "../../data/GraphQL";
-import { WPAllPages } from "../../interfaces/WPIndexes";
+import CFIndexes from "../../components/contenful/CFIndexes";
+import { client } from "../../components/contenful/main";
+import { CFEntryLanding } from "../../interfaces/CFentry";
 
 export async function getServerSideProps(context: any) {
-	const res = await GraphCatcher.getAllPages("landingpage");
+	const response = await client.getEntries({
+		content_type: "landingpage",
+	});
 
 	return {
 		props: {
-			content: res,
+			content: response.items,
 		},
 	};
 }
 
 interface prop {
-	content: WPAllPages;
+	content: CFEntryLanding[];
 }
 
 export default function LandingIndex({ content }: prop) {
@@ -32,7 +34,7 @@ export default function LandingIndex({ content }: prop) {
 				<p>Bar</p>
 				<hr />
 				<div className="landing-box">
-					<WPIndexes nodes={content.data.pages.nodes} parent="/landingpage" />
+					<CFIndexes nodes={content} parent={"/landingpage"} />
 				</div>
 			</section>
 		</>

@@ -1,32 +1,36 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
+import CFKalenderComponent from "../../components/contenful/CFKalenderComponent";
 import { client } from "../../components/contenful/main";
-import KalenderComponent from "../../components/KalenderComponent";
-import WPKalenderComponent from "../../components/wordpress/WPKalenderComponent";
 import { GraphCatcher } from "../../data/GraphQL";
+import { CFEntryKalender } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
-	const json: WPSinglePage = await GraphCatcher.getSinglePage(slug);
+	const response = await client.getEntries({
+		content_type: "kalender",
+	});
 
-	const res_page = await fetch(
-		`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
-	);
-	const res_page_json = await res_page.json();
+	const slugged = response.items.find((item: any) => {
+		return item?.fields?.slug == slug;
+	});
 
-	json.data.page["datetime"] = res_page_json.acf.dato;
+	if (slugged === undefined) {
+		return {
+			notFound: true,
+		};
+	}
 
 	return {
 		props: {
-			content: json,
+			content: slugged,
 		},
 	};
 }
 
 interface prop {
-	content: WPSinglePage;
+	content: CFEntryKalender;
 }
 
 export default function KalenderPage({ content }: prop) {
@@ -35,12 +39,12 @@ export default function KalenderPage({ content }: prop) {
 	return (
 		<>
 			<Head>
-				<title>{content.data.page.title}</title>
-				{content.data.page.excerpt && (
-					<meta name="description" content={content.data.page.excerpt} />
+				<title>{content.fields.title}</title>
+				{content.fields?.abstrakt && (
+					<meta name="description" content={content.fields?.abstrakt} />
 				)}
 			</Head>
-			<WPKalenderComponent content={content} />
+			<CFKalenderComponent content={content} />
 		</>
 	);
 }

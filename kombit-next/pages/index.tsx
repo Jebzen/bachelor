@@ -2,11 +2,10 @@ import Head from "next/head";
 import { client } from "../components/contenful/main";
 import { BannerType, FrontPageFields } from "../interfaces/frontpage";
 import { BannerImage, BannerVideo } from "../interfaces/banner";
-import NewsCards from "../components/NewsCards";
-import ProjectBlobs from "../components/ProjekterBlobs";
 import styles from "../styles/Projekt.module.css";
-import CardOverview from "../components/CardOverview";
-import Feed from "../components/Feed";
+import CFFeed from "../components/contenful/CFFeed";
+import CFProjectBlobs from "../components/contenful/CFProjekterBlobs";
+import FrontBanner from "../components/general/FrontBanner";
 
 export async function getServerSideProps() {
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
@@ -62,10 +61,10 @@ export default function Home({ banners, news, projects }: any) {
 				<h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
 			</div>
 			<div className={styles.CardOverviewContaier}>
-				<ProjectBlobs projects={projects} />
+				<CFProjectBlobs projects={projects} />
 			</div>
 			<div className={styles.container}>
-				<Feed />
+				<CFFeed />
 			</div>
 		</>
 	);

@@ -1,27 +1,22 @@
 import Head from "next/head";
-import { IndexLayout } from "../../layout";
-import { useEffect, useState } from "react";
-
-//Contenful
+import CFIndexes from "../../components/contenful/CFIndexes";
 import { client } from "../../components/contenful/main";
-import { BannerType, FrontPageFields } from "../../interfaces/frontpage";
-import { BannerImage, BannerVideo } from "../../interfaces/banner";
-import WPIndexes from "../../components/wordpress/WPIndexes";
-import { GraphCatcher } from "../../data/GraphQL";
-import { WPAllPages } from "../../interfaces/WPIndexes";
+import { CFEntryIndhold } from "../../interfaces/CFentry";
 
 export async function getServerSideProps(context: any) {
-	const res = await GraphCatcher.getAllPages("infoside");
+	const response = await client.getEntries({
+		content_type: "infoside",
+	});
 
 	return {
 		props: {
-			content: res,
+			content: response.items,
 		},
 	};
 }
 
 interface prop {
-	content: WPAllPages;
+	content: CFEntryIndhold[];
 }
 
 export default function InfoIndex({ content }: prop) {
@@ -39,7 +34,7 @@ export default function InfoIndex({ content }: prop) {
 				<p>Bar</p>
 				<hr />
 				<div className="info-box">
-					<WPIndexes nodes={content.data.pages.nodes} parent="/infoside" />
+					<CFIndexes nodes={content} parent={"/infoside"} />
 				</div>
 			</section>
 		</>

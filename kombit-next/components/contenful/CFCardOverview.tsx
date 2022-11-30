@@ -1,13 +1,14 @@
 import { CFEntryProjekt } from "../../interfaces/CFentry";
-import styles from "../styles/Projekt.module.css";
+import styles from "../../styles/Projekt.module.css";
 import { useEffect, useState } from "react";
 
 interface prop {
 	projekt: CFEntryProjekt;
-	tab: any;
+	tag: any;
+	showTag: any;
 }
 
-const CFCardOverview = ({ projekt, tab }: prop) => {
+const CFCardOverview = ({ projekt, tag, showTag }: prop) => {
 	//console.log(projekt);
 	const { title, abstrakt, featuredImage, slug } = projekt.fields;
 
@@ -15,13 +16,15 @@ const CFCardOverview = ({ projekt, tab }: prop) => {
 
 	const handleMouseOver = () => {
 		setIsHovering(true);
-		console.log(isHovering);
+		//console.log(isHovering);
 	};
 
 	const handleMouseOut = () => {
 		setIsHovering(false);
-		console.log(isHovering);
+		//console.log(isHovering);
 	};
+
+	console.log(showTag);
 
 	return (
 		<div onMouseEnter={handleMouseOver} onMouseLeave={handleMouseOut}>

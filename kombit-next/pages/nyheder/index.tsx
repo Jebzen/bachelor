@@ -1,20 +1,24 @@
 import Head from "next/head";
-import WPIndexes from "../../components/wordpress/WPIndexes";
+import CFIndexes from "../../components/contenful/CFIndexes";
+import { client } from "../../components/contenful/main";
 import { GraphCatcher } from "../../data/GraphQL";
+import { CFEntryNyheder } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 
 export async function getServerSideProps(context: any) {
-	const res = await GraphCatcher.getAllPages("nyheder");
+	const response = await client.getEntries({
+		content_type: "nyheder",
+	});
 
 	return {
 		props: {
-			content: res,
+			content: response.items,
 		},
 	};
 }
 
 interface prop {
-	content: WPAllPages;
+	content: CFEntryNyheder[];
 }
 
 export default function NewsIndex({ content }: prop) {
@@ -32,7 +36,7 @@ export default function NewsIndex({ content }: prop) {
 				<p>Bar</p>
 				<hr />
 				<div className="news-box">
-					<WPIndexes nodes={content.data.pages.nodes} parent="/nyheder" />
+					<CFIndexes nodes={content} parent="/nyheder" />
 				</div>
 			</section>
 		</>

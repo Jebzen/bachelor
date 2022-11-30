@@ -1,21 +1,33 @@
 import Head from "next/head";
-import WPInfoComponent from "../../components/wordpress/WPInfoComponent";
-import { GraphCatcher } from "../../data/GraphQL";
-import { WPSinglePage } from "../../interfaces/WPIndexes";
+import CFInfoComponent from "../../components/contenful/CFInfoComponent";
+import { client } from "../../components/contenful/main";
+import { CFEntryIndhold } from "../../interfaces/CFentry";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
-	const json: WPSinglePage = await GraphCatcher.getSinglePage(slug);
+	const response = await client.getEntries({
+		content_type: "infoside",
+	});
+
+	const slugged = response.items.find((item: any) => {
+		return item?.fields?.slug == slug;
+	});
+
+	if (slugged === undefined) {
+		return {
+			notFound: true,
+		};
+	}
 
 	return {
 		props: {
-			content: json,
+			content: slugged,
 		},
 	};
 }
 
 interface prop {
-	content: WPSinglePage;
+	content: CFEntryIndhold;
 }
 
 export default function InfoPage({ content }: prop) {
@@ -24,12 +36,12 @@ export default function InfoPage({ content }: prop) {
 	return (
 		<>
 			<Head>
-				<title>{content.data.page.title}</title>
-				{content.data.page.excerpt && (
-					<meta name="description" content={content.data.page.excerpt} />
+				<title>{content.fields.title}</title>
+				{content.fields?.abstrakt && (
+					<meta name="description" content={content.fields?.abstrakt} />
 				)}
 			</Head>
-			<WPInfoComponent content={content} />
+			<CFInfoComponent content={content} />
 		</>
 	);
 }
