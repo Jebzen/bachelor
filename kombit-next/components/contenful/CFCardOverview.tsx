@@ -24,8 +24,6 @@ const CFCardOverview = ({ projekt, tag, showTag }: prop) => {
 		//console.log(isHovering);
 	};
 
-	console.log(showTag);
-
 	return (
 		<div onMouseEnter={handleMouseOver} onMouseLeave={handleMouseOut}>
 			{isHovering && showTag ? (

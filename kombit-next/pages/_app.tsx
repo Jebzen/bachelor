@@ -6,6 +6,8 @@ import "bootstrap-icons/font/bootstrap-icons.scss";
 import { IndexLayout } from "../layout";
 import { GraphCatcher } from "../data/GraphQL";
 import pageLink from "../interfaces/pageLink";
+import { client } from "../components/contenful/main";
+import { CFEntryIndhold } from "../interfaces/CFentry";
 
 interface prop extends AppProps {
 	Component: any;
@@ -20,6 +22,7 @@ export default function App({
 	footerLinks,
 	pageLinks,
 }: prop | any) {
+	//console.log(footerLinks, pageLinks);
 	return (
 		<>
 			<IndexLayout footerLinks={footerLinks} pageLinks={pageLinks}>
@@ -33,17 +36,33 @@ App.getInitialProps = async (context: any) => {
 	let pageLinks: pageLink[] | null | { name: string; slug: string }[] = null;
 	let footerLinks: pageLink[] | null = null;
 
-	//Wordpress Site!
 	//Footer info pages
-	footerLinks = (
-		await GraphCatcher.getAllPages("infoside")
-	).data.pages.nodes.map((node: any) => {
+	const response: CFEntryIndhold[] = (
+		await client.getEntries({
+			content_type: "infoside",
+		})
+	).items;
+	footerLinks = response.map((res) => {
 		return {
-			slug: node.slug,
-			title: node.title,
-		} as pageLink;
+			slug: res.fields.slug,
+			title: res.fields.title,
+		};
 	});
-	pageLinks = (await GraphCatcher.getAllCategories()).data.categories.nodes;
+
+	//Header page types
+	const responsePageTypes = await client.getContentTypes();
+	pageLinks = responsePageTypes.items
+		.filter((item: any) => {
+			return item.fields.find((field: any) => {
+				return field.id == "slug";
+			});
+		})
+		.map((type: any) => {
+			return {
+				slug: type.sys.id,
+				title: type.sys.id.charAt(0).toUpperCase() + type.sys.id.slice(1),
+			};
+		});
 
 	return {
 		footerLinks,

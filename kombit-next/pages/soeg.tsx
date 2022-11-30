@@ -11,61 +11,38 @@ export async function getServerSideProps(context: any) {
 	//const term = context.term;
 
 	let response = null;
-
 	if (term) {
-		const res = await fetch("http://signepetersen.dk/graphql", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				query: `
-					query SearchPages {
-						pages(where: {search: "${term}"}) {
-							nodes {
-								date
-								excerpt
-								slug
-								title
-								featuredImage {
-									node {
-										altText
-										caption
-										description
-										mediaItemUrl
-										title
-									}
-								}
-								categories {
-									nodes {
-										name
-										slug
-									}
-								}
-							}
-						}
-					}`,
-			}),
+		response = await client.getEntries({
+			query: term,
 		});
-		response = await res.json();
+		response.items = response.items.filter((entry: any) => {
+			return (
+				entry.sys.contentType.sys.id != "cardEmbeddedEntry" &&
+				entry.sys.contentType.sys.id != "card" &&
+				entry.sys.contentType.sys.id != "bannerCarousel" &&
+				entry.sys.contentType.sys.id != "forside"
+			);
+		});
 	}
 
 	return {
 		props: {
 			term: term,
-			response: response.data.pages.nodes,
+			response: response,
 		},
 	};
 }
 
 export default function Search(props: any) {
 	const [searchTerm, setSearchTerm] = useState(props.term ? props.term : "");
-	//console.log(props.response);
+	//console.log(props);
 
 	return (
 		<>
 			<Head>
 				<title>{props.term ? "Søger efter: " + props.term : "Søgning"}</title>
 			</Head>
-			<section className="container">
+			<section className="container h-100">
 				{props.term && (
 					<h1 className="mt-2">
 						Søgte efter: <i>{props.term}</i>
@@ -92,31 +69,28 @@ export default function Search(props: any) {
 						</button>
 					</form>
 
-					{props.response && props.response?.length == 0 && (
+					{props.response?.items && props.response?.items.length == 0 && (
 						<p>
 							Ingen resultater for: <i>{props.term}</i>
 						</p>
 					)}
-					{props.response && (
+					{props.response?.items && (
 						<div className="search-grid">
-							{props.response &&
-								props.response.map((item: any, i: number) => {
-									//console.log(item);
+							{props.response?.items &&
+								props.response.items.map((item: any, i: number) => {
 									//if (!item.fields.slug) return;
 									//Lav godt link
-									let link =
-										item.categories?.nodes?.length > 0 &&
-										item.categories.nodes[0]
-											? item.categories.nodes[0].slug + "/" + item.slug
-											: item.slug;
+									let link = item?.sys?.contentType?.sys?.id
+										? item.sys.contentType.sys.id + "/" + item.fields.slug
+										: item.fields.slug;
 
 									return (
 										<a key={i} href={link} className="d-flex flex-column">
-											<h3>{item.title}</h3>
-											{item.excerpt && (
-												<span
-													dangerouslySetInnerHTML={{ __html: item.excerpt }}
-												/>
+											<h3>{item.fields.title}</h3>
+											{item.fields?.abstrakt?.nodeType == "document" &&
+												documentToReactComponents(item.fields.abstrakt)}
+											{item.fields?.abstrakt?.nodeType != "document" && (
+												<p>{item.fields.abstrakt}</p>
 											)}
 											<p className="fst-italic mt-auto">{link}</p>
 										</a>
