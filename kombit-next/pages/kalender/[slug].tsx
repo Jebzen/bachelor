@@ -34,7 +34,7 @@ interface prop {
 }
 
 export default function KalenderPage({ content }: prop) {
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>

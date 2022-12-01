@@ -1,5 +1,9 @@
 import Head from "next/head";
 import { client } from "../components/contenful/main";
+import WPInfoComponent from "../components/wordpress/WPInfoComponent";
+import WPKalenderComponent from "../components/wordpress/WPKalenderComponent";
+import WPLandingComponent from "../components/wordpress/WPLandingComponent";
+import WPnewsComponent from "../components/wordpress/WPnewsComponent";
 import { GraphCatcher } from "../data/GraphQL";
 
 export async function getServerSideProps(context: any) {
@@ -27,9 +31,8 @@ export async function getServerSideProps(context: any) {
 	};
 }
 
-export default function InfoPage({ content, kontakt_person, projekter }: any) {
+export default function InfoPage({ content }: any) {
 	//Type == content.sys.contentType.sys.id
-	const slug = content.data.page.categories.nodes[0].slug;
 
 	return (
 		<>
@@ -39,21 +42,6 @@ export default function InfoPage({ content, kontakt_person, projekter }: any) {
 					<meta name="description" content={content.data.page.excerpt} />
 				)}
 			</Head>
-			{slug == "landingpage" && (
-				<WPLandingComponent
-					content={content.data.page}
-					person={kontakt_person}
-					projekter={projekter}
-				/>
-			)}
-			{slug == "infoside" && <WPInfoComponent content={content.data.page} />}
-			{/*slug == "projekt" && (
-					<WPProjektComponent projekt={content} />
-				)*/}
-			{slug == "nyheder" && <WPnewsComponent content={content.data.page} />}
-			{slug == "kalender" && (
-				<WPKalenderComponent content={content.data.page} />
-			)}
 		</>
 	);
 }

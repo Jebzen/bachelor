@@ -20,7 +20,7 @@ interface prop {
 }
 
 export default function Kalender({ content }: prop) {
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>
