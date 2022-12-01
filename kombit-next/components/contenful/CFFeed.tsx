@@ -32,7 +32,7 @@ export default function CFFeed() {
 		//Indhold
 		client
 			.getEntries({
-				content_type: "infoSide",
+				content_type: "infoside",
 				limit: 3,
 				order: "sys.createdAt",
 			})

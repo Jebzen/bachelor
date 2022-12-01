@@ -4,7 +4,6 @@ import { client } from "../../components/contenful/main";
 import { GraphCatcher } from "../../data/GraphQL";
 import { CFEntryKalender } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
-import { IndexLayout } from "../../layout";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
