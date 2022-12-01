@@ -25,17 +25,37 @@ export async function getServerSideProps(context: any) {
 		});
 	}
 
+	const reduced = response.items.map((item: any) => {
+		return {
+			slug: item?.sys?.contentType?.sys?.id
+				? item.sys.contentType.sys.id + "/" + item.fields.slug
+				: item.fields.slug,
+			title: item.fields.title,
+			abstrakt: item.fields.abstrakt,
+			abstrakt_type:
+				item.fields.abstrakt.nodeType != undefined
+					? item.fields.abstrakt.nodeType
+					: null,
+		};
+	});
+	//console.log(reduced);
+
 	return {
 		props: {
 			term: term,
-			response: response,
+			reduced: reduced,
 		},
 	};
 }
 
+interface prop {
+	term: string | null;
+	reduced: any[];
+}
+
 export default function Search(props: any) {
 	const [searchTerm, setSearchTerm] = useState(props.term ? props.term : "");
-	//console.log(props);
+	//console.log(props.reduced);
 
 	return (
 		<>
@@ -69,35 +89,26 @@ export default function Search(props: any) {
 						</button>
 					</form>
 
-					{props.response?.items && props.response?.items.length == 0 && (
+					{props.reduced && props.reduced?.length == 0 && (
 						<p>
 							Ingen resultater for: <i>{props.term}</i>
 						</p>
 					)}
-					{props.response?.items && (
-						<div className="search-grid">
-							{props.response?.items &&
-								props.response.items.map((item: any, i: number) => {
-									//if (!item.fields.slug) return;
-									//Lav godt link
-									let link = item?.sys?.contentType?.sys?.id
-										? item.sys.contentType.sys.id + "/" + item.fields.slug
-										: item.fields.slug;
 
-									return (
-										<a key={i} href={link} className="d-flex flex-column">
-											<h3>{item.fields.title}</h3>
-											{item.fields?.abstrakt?.nodeType == "document" &&
-												documentToReactComponents(item.fields.abstrakt)}
-											{item.fields?.abstrakt?.nodeType != "document" && (
-												<p>{item.fields.abstrakt}</p>
-											)}
-											<p className="fst-italic mt-auto">{link}</p>
-										</a>
-									);
-								})}
-						</div>
-					)}
+					<div className="search-grid">
+						{props.reduced &&
+							props.reduced.map((item: any, i: number) => {
+								//console.log(item);
+								return (
+									<a key={i} href={item.slug} className="d-flex flex-column">
+										<h3>{item.title}</h3>
+										{item.abstrakt_type == "document" &&
+											documentToReactComponents(item.abstrakt)}
+										{item.abstrakt_type != "document" && <p>{item.abstrakt}</p>}
+									</a>
+								);
+							})}
+					</div>
 				</div>
 			</section>
 		</>

@@ -84,11 +84,12 @@ export default function Header({ pageLinks }: any) {
 								name="term"
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
+								id="SearchInput"
 							/>
 							<button
 								className="input-group-text"
 								type="submit"
-								id="button-addon2"
+								id="SearchButton"
 							>
 								<i className="bi bi-search"></i>
 							</button>
