@@ -23,11 +23,9 @@ export default function NavLinks({ pageLinks }: prop) {
 								})
 								.map((type: any, i: number) => {
 									return (
-										<>
-											<Nav.Item className="text-end" key={i}>
-												<Nav.Link href={"/" + type.slug}>{type.title}</Nav.Link>
-											</Nav.Item>
-										</>
+										<Nav.Item className="text-end" key={i}>
+											<Nav.Link href={"/" + type.slug}>{type.title}</Nav.Link>
+										</Nav.Item>
 									);
 								})}
 					</Nav>

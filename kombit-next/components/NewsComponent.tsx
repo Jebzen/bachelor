@@ -1,5 +1,5 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import ShareButtons from "./ShareButtons";
+import ShareButtons from "./general/ShareButtons";
 
 export default function NewsComponent({ content }: any) {
 	return (
@@ -16,12 +16,7 @@ export default function NewsComponent({ content }: any) {
 				<p>
 					<span>Relatered til: </span>
 					<span>
-						<a
-							href={
-								"/projekter/" +
-								content.fields.projekt.fields.slug
-							}
-						>
+						<a href={"/projekter/" + content.fields.projekt.fields.slug}>
 							{content.fields.projekt.fields.title}
 						</a>
 					</span>
