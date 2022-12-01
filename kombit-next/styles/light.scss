@@ -237,11 +237,11 @@ header {
   background-color: $neutral-1;
   a {
     text-decoration: none;
-    color: $red-1;
+    color: $fire-red;
     text-transform: capitalize;
     &:hover,
     &:focus {
-      color: $fire-red;
+      color: $red-1;
     }
     span {
       font-weight: bold;
