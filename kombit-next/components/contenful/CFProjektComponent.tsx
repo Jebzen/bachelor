@@ -1,5 +1,5 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import styles from "../styles/Projekt.module.css";
+import styles from "../../styles/Projekt.module.css";
 import ShareButtons from "../general/ShareButtons";
 
 export default function CFProjektComponent({ projekt }: any) {
