@@ -1,11 +1,4 @@
 import Head from "next/head";
-import { IndexLayout } from "../../layout";
-import { useEffect, useState } from "react";
-
-//Contenful
-import { client } from "../../components/contenful/main";
-import { BannerType, FrontPageFields } from "../../interfaces/frontpage";
-import { BannerImage, BannerVideo } from "../../interfaces/banner";
 import WPIndexes from "../../components/wordpress/WPIndexes";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";

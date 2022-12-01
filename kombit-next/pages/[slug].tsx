@@ -16,9 +16,10 @@ export async function getServerSideProps(context: any) {
 	}
 
 	//Landing page
-	let kontakt_person: Promise<any> | null = null;
+	let kontakt_person: Promise<any> | any | null = null;
 	let projekter: any[] | null = null;
 	if (json.data.page?.categories?.nodes[0]?.slug == "landingpage") {
+		//Hent sideindhold
 		const res_page_json = await (
 			await fetch(
 				`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
@@ -27,12 +28,12 @@ export async function getServerSideProps(context: any) {
 		//console.log("1:", res_page_json);
 
 		//Hent KontaktPerson
-		kontakt_person = await GraphCatcher.getMediaItem(
+		json.data.page.kontakt_person = await GraphCatcher.getMediaItem(
 			res_page_json.acf.kontakt_person
 		);
 
 		//Hent relateret projekter
-		projekter = await Promise.all(
+		json.data.page.projekter = await Promise.all(
 			res_page_json.acf.projekt.map(async (item: number) => {
 				const thing = await GraphCatcher.getPageCard(item.toString());
 				//console.log(thing.data.page);
@@ -52,8 +53,6 @@ export async function getServerSideProps(context: any) {
 	return {
 		props: {
 			content: json,
-			kontakt_person: kontakt_person,
-			projekter: projekter,
 		},
 	};
 }
@@ -71,11 +70,7 @@ export default function InfoPage({ content, kontakt_person, projekter }: any) {
 				)}
 			</Head>
 			{slug == "landingpage" && (
-				<WPLandingComponent
-					content={content.data.page}
-					person={kontakt_person}
-					projekter={projekter}
-				/>
+				<WPLandingComponent content={content.data.page} />
 			)}
 			{slug == "infoside" && <WPInfoComponent content={content.data.page} />}
 			{/*slug == "projekt" && (

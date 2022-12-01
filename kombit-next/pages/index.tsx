@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { client } from "../components/contenful/main";
-import FrontBanner from "../components/general/frontBanner";
+import FrontBanner from "../components/general/FrontBanner";
 import { BannerImage } from "../interfaces/banner";
 
 interface IndexPage {
