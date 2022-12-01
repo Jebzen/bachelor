@@ -1,5 +1,5 @@
 import Head from "next/head";
-import WPInfoComponent from "../../components/wordpress/WPInfoComponent";
+import WPInfoComponent from "../../components/WordPress/WPInfoComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 

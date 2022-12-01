@@ -1,6 +1,6 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
-import ShareButtons from "../ShareButtons";
+import ShareButtons from "../general/ShareButtons";
 
 interface prop {
 	content: WPSinglePage["data"]["page"];

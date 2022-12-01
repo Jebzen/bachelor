@@ -1,5 +1,5 @@
 import Head from "next/head";
-import WPProjektComponent from "../../components/wordpress/WPProjektComponent";
+import WPProjektComponent from "../../components/WordPress/WPProjektComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 

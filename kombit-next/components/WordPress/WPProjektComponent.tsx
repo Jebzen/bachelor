@@ -1,5 +1,5 @@
 import styles from "../../styles/Projekt.module.css";
-import ShareButtons from "../ShareButtons";
+import ShareButtons from "../general/ShareButtons";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 interface prop {

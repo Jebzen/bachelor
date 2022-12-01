@@ -1,6 +1,6 @@
 import { WPSinglePage } from "../../interfaces/WPIndexes";
-import SoMeFeed from "../Feed2";
-import ShareButtons from "../ShareButtons";
+import ShareButtons from "../general/ShareButtons";
+import SoMeFeed from "../general/SoMeFeed";
 
 interface prop {
 	content: WPSinglePage;
