@@ -1,7 +1,6 @@
-describe("Test Header links", () => {
+describe("Testing header & Footer", () => {
 	it("Check each header element link", () => {
-		return;
-		cy.visit("http://localhost:3000");
+		cy.visit("/");
 
 		cy.wait(1000);
 
@@ -17,16 +16,15 @@ describe("Test Header links", () => {
 				cy.wrap(element)
 					.get("a.nav-link")
 					.invoke("attr", "href")
-					.then((href) => {
+					.then((href: any) => {
 						cy.request(href).its("status").should("eq", 200);
 					});
 			});
 	});
 
 	it("Check first link", () => {
-		return;
 		let slug: any | undefined = "";
-		cy.visit("http://localhost:3000");
+		cy.visit("/");
 
 		cy.wait(1000);
 
@@ -41,7 +39,7 @@ describe("Test Header links", () => {
 
 						cy.log(slug);
 
-						cy.visit("http://localhost:3000" + slug);
+						cy.visit(slug);
 
 						cy.wait(1000);
 
@@ -51,8 +49,7 @@ describe("Test Header links", () => {
 	});
 
 	it("Check climate friendly", () => {
-		return;
-		cy.visit("http://localhost:3000");
+		cy.visit("/");
 
 		cy.wait(1000);
 
@@ -74,7 +71,7 @@ describe("Test Header links", () => {
 	});
 
 	it("Check search bar", () => {
-		cy.visit("http://localhost:3000");
+		cy.visit("/");
 
 		cy.wait(1000);
 
@@ -85,5 +82,22 @@ describe("Test Header links", () => {
 		cy.wait(1000);
 
 		cy.url().should("eq", "http://localhost:3000/soeg?term=kombit");
+	});
+
+	it("Check each footer indhold link", () => {
+		cy.visit("/");
+
+		cy.wait(1000);
+
+		cy.get("Footer")
+			.get(".indhold-sider")
+			.children()
+			.each((element, index, list) => {
+				cy.wrap(element)
+					.invoke("attr", "href")
+					.then((href: any) => {
+						cy.request(href).its("status").should("eq", 200);
+					});
+			});
 	});
 });

@@ -25,7 +25,7 @@ export async function getServerSideProps(context: any) {
 		});
 	}
 
-	const reduced = response.items.map((item: any) => {
+	let reduced = response?.items?.map((item: any) => {
 		return {
 			slug: item?.sys?.contentType?.sys?.id
 				? item.sys.contentType.sys.id + "/" + item.fields.slug
@@ -38,6 +38,7 @@ export async function getServerSideProps(context: any) {
 					: null,
 		};
 	});
+	if (reduced === undefined) reduced = null;
 	//console.log(reduced);
 
 	return {

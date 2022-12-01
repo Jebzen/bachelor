@@ -11,7 +11,7 @@ export default function SoMeFeed() {
 	useEffect(() => {}, []);
 
 	return (
-		<div className="row">
+		<div className="row SoMeFeed">
 			<div
 				className={slide == "linkedin" ? "bg-info col-4" : "col-4"}
 				onClick={() => setSlide("linkedin")}

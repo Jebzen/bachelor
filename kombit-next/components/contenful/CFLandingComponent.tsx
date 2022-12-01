@@ -1,6 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useState } from "react";
 import { CFEntryLanding } from "../../interfaces/CFentry";
+import ShareButtons from "../general/ShareButtons";
 import CFFeed from "./CFFeed";
 
 interface prop {
@@ -20,8 +21,9 @@ export default function CFLandingComponent({ content }: prop) {
 	return (
 		<section className="container">
 			<div className="p-2 my-2">
+				<h1>{content.fields.title}</h1>
 				<h2>Projekter</h2>
-				<div className="row">
+				<div className="row projekt-area">
 					{content.fields.sider.map((side: any, i: number) => {
 						return (
 							<div key={i} data-id={i} className="col-2" onClick={changeSlide}>
@@ -35,7 +37,7 @@ export default function CFLandingComponent({ content }: prop) {
 						);
 					})}
 					{slide !== null && (
-						<div className="mt-2">
+						<div className="mt-2 open-projekt-box">
 							<h3 className="fw-bold">{slide.fields.title}</h3>
 							<div>{slide.fields.abstrakt}</div>
 							<a
@@ -50,11 +52,12 @@ export default function CFLandingComponent({ content }: prop) {
 			</div>
 			<div className="row">
 				<div className="col-9">
+					<ShareButtons />
 					<h3>Mission</h3>
 					{documentToReactComponents(content.fields.mission)}
 				</div>
 				<div className="col-3">
-					<div className="d-flex justify-end flex-column">
+					<div className="d-flex justify-end flex-column forretningschef">
 						<h4 className="text-end">Forretningschef</h4>
 						<img
 							className="img-fluid"
