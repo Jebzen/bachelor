@@ -10,7 +10,6 @@ export default function CFProjectBlobs({ projects }: any) {
 
   //Contentful npm package søgning for ting
   //Contentful npm package documentToReactComponents
-
   return (
     <>
       {projects.items &&

@@ -192,7 +192,12 @@
   .cardText p {
     font-size: 14px;
   }
-
+  .cardImg {
+    height: 150px;
+  }
+  .cardText h3 {
+    font-size: 23px;
+  }
   .cardBody {
     height: auto;
     min-height: auto;

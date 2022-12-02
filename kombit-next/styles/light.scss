@@ -323,7 +323,20 @@ header {
 @media (max-width: 500px) {
   .carousel-item {
     img {
-      height: 500px;
+      height: 400px;
     }
+  }
+}
+
+// RESPONSIV - MOBILE
+@media (max-width: 500px) {
+  .col-4 {
+    width: 100% !important;
+    flex: 0 0 auto;
+    margin: 25px 0px;
+  }
+
+  .arrowdiv {
+    left: 45%;
   }
 }
