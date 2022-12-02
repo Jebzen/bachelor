@@ -4,44 +4,45 @@ import { client } from "../../components/contenful/main";
 import { CFEntryIndhold } from "../../interfaces/CFentry";
 
 export async function getServerSideProps(context: any) {
-	const { slug } = context.query;
-	const response = await client.getEntries({
-		content_type: "infoside",
-	});
+  const { slug } = context.query;
+  const response = await client.getEntries({
+    content_type: "infoside",
+  });
 
-	const slugged = response.items.find((item: any) => {
-		return item?.fields?.slug == slug;
-	});
+  const slugged = response.items.find((item: any) => {
+    return item?.fields?.slug == slug;
+  });
 
-	if (slugged === undefined) {
-		return {
-			notFound: true,
-		};
-	}
+  if (slugged === undefined) {
+    return {
+      notFound: true,
+    };
+  }
 
-	return {
-		props: {
-			content: slugged,
-		},
-	};
+  return {
+    props: {
+      content: slugged,
+    },
+  };
 }
 
 interface prop {
-	content: CFEntryIndhold;
+  content: CFEntryIndhold;
 }
 
 export default function InfoPage({ content }: prop) {
-	//console.log(content);
+  //console.log(content);
 
-	return (
-		<>
-			<Head>
-				<title>{content.fields.title}</title>
-				{content.fields?.abstrakt && (
-					<meta name="description" content={content.fields?.abstrakt} />
-				)}
-			</Head>
-			<CFInfoComponent content={content} />
-		</>
-	);
+  return (
+    <>
+      <Head>
+        <title>{content.fields.title}</title>
+
+        {content.fields?.abstrakt && (
+          <meta name="description" content={content.fields?.abstrakt} />
+        )}
+      </Head>
+      <CFInfoComponent content={content} />
+    </>
+  );
 }
