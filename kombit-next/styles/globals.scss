@@ -19,6 +19,10 @@ img.logo {
   width: 130px;
 }
 
+input#flexSwitchCheckDefault {
+  cursor: pointer;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -27,6 +31,27 @@ img.logo {
     color: white;
     background: black;
   }
+}
+
+svg.svg-inline--fa.fa-chevron-right {
+  height: 0.9em;
+}
+
+div#breadCrumbs {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+div#breadCrumbs a {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+
+.breadcrumb-arrow {
+  padding: 0 5px !important; 
 }
 
 .arrow {
@@ -116,6 +141,11 @@ img.logo {
   width: 30% !important;
 }
 
+.activebox{
+  color: #fff !important;
+  background-color: #c5252f !important;
+}
+
 .row {
   --bs-gutter-x: 0 !important;
   justify-content: space-between;
@@ -132,10 +162,7 @@ img.logo {
 .col-4 a {
   color: #c5252f !important;
 }
-.active {
-  color: #fff !important;
-  background-color: #c5252f;
-}
+
 
 .col-4.newsHeader.active:after {
   content: "";

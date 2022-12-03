@@ -61,7 +61,7 @@ export default function Projekter({ projekt }: prop) {
             <div
               className={
                 tab == tag.slug
-                  ? "tabLink active text-uppercase"
+                  ? "tabLink activebox text-uppercase"
                   : "tabLink text-uppercase"
               }
               aria-current="page"
@@ -75,7 +75,7 @@ export default function Projekter({ projekt }: prop) {
         <div
           className={
             tab == "other"
-              ? "tabLink active text-uppercase"
+              ? "tabLink activebox text-uppercase"
               : "tabLink text-uppercase"
           }
           aria-current="page"

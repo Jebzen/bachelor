@@ -1,6 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Head from "next/head";
 import { client } from "../../components/contenful/main";
+import PageHero from "../../components/general/PageHero";
 import { CFEntryKalender } from "../../interfaces/CFentry";
 
 export async function getServerSideProps(context: any) {
@@ -27,6 +28,7 @@ export default function Kalender({ content }: prop) {
 			<Head>
 				<title>Kalender</title>
 			</Head>
+			<PageHero heading={"Kaleder"}/>
 			<section className="container h-100">
 				<div className="kalenderGrid">
 					{content &&

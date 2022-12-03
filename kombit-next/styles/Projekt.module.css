@@ -24,8 +24,8 @@
 }
 .container {
   margin: 60px auto;
-  width: 85%;
-}
+  width: 83%;
+  padding-right: 2% }
 
 .columns {
   padding: 5% 10%;
@@ -184,7 +184,7 @@
 }
 .cardText a:hover {
   background-color: #c5252f;
-  color: #ffffff;
+  color: #ffffff !important;
   transform: scale(1.15);
 }
 
@@ -218,5 +218,3 @@
   font-weight: bold;
 }
 
-.projectContainer h2 {
-}

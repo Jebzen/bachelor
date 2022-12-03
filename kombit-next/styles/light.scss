@@ -28,12 +28,13 @@ a {
 
 footer {
   background-color: $red-1 !important;
-  color: $neutral-2 !important;
+  color: $neutral-1 !important;
   a {
-    color: $neutral-2 !important;
+    color: $neutral-1 !important;
     text-decoration: none;
     &:hover {
-      color: $neutral-2-2 !important;
+      color:$neutral-3 !important;
+      font-weight: bold !important;
     }
   }
 }
@@ -215,6 +216,8 @@ header {
     text-transform: uppercase;
     &:hover {
       color: $fire-red;
+      font-weight: bold;
+
     }
   }
   form.input-group {
@@ -291,7 +294,6 @@ header {
 .arrowdiv {
   position: absolute;
   bottom: 5%;
-  right: 50%;
   z-index: 13;
   background: $red-1;
   border-radius: 50%;
@@ -303,6 +305,9 @@ header {
   align-items: center;
   animation: leaves 1s ease-in-out infinite alternate;
   -webkit-animation: leaves 1s ease-in-out infinite alternate;
+  margin: auto;
+  left: 0;
+  right: 0;
 }
 
 .arrowdiv .carousel-control-next-icon {
@@ -343,4 +348,15 @@ header {
   .arrowdiv {
     left: 45%;
   }
+  .col-4.content-column {
+    margin: 0;
+  }
+  .row {
+    display: grid !important;
+    
+  }
+
 }
+
+
+
