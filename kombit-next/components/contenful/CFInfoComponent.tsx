@@ -3,6 +3,7 @@ import { Accordion } from "react-bootstrap";
 import SoMeFeed from "../general/SoMeFeed";
 import ShareButtons from "../general/ShareButtons";
 import { CFEntryIndhold } from "../../interfaces/CFentry";
+import PageHero from "../general/PageHero";
 
 interface prop {
 	content: CFEntryIndhold;
@@ -36,9 +37,11 @@ export default function CFInfoComponent({ content }: prop) {
 	};
 
 	return (
-		<section className="container">
+		<>
+		<PageHero heading={content.fields.title} abstrakt={content.fields.abstrakt}/>
+
+		<section className="container news">
 			<div className="d-flex flex-column">
-				<h1>{content.fields.title}</h1>
 				{content.fields.media && (
 					<div className="text-center">
 						<img
@@ -47,12 +50,11 @@ export default function CFInfoComponent({ content }: prop) {
 						/>
 					</div>
 				)}
-				<small className="fst-italic">{content.fields.abstrakt}</small>
 
-				<ShareButtons />
 				{documentToReactComponents(content.fields.beskrivelse, renderOption)}
 				<SoMeFeed />
 			</div>
 		</section>
+		</>
 	);
 }

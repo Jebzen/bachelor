@@ -16,7 +16,6 @@ export default function CFProjektComponent({ projekt }: any) {
 				</div>
 				<div className={styles.columns}>
 					<div>
-						<ShareButtons />
 						{documentToReactComponents(beskrivelse)}
 					</div>
 					<div>
@@ -27,13 +26,20 @@ export default function CFProjektComponent({ projekt }: any) {
 							width={500}
 							height={500}
 						/>
+
 					</div>
+					<div className="some"><p>Del projektet:</p><ShareButtons /></div>
+
 				</div>
+
+
 				{cards && cards.length > 0 && (
 					<div className={styles.cardContainer}>
-						{cards.map((item: any) => {
+						{cards.map((item: any, index: any) => {
+							console.log(index)
 							return (
 								<div className={styles.card} key={item.sys.id}>
+									<h3 className={styles.cardNumber}>{`0${index + 1} `}</h3>
 									<div className={styles.cardHeader}>
 										<h4>{item.fields.titel}</h4>
 									</div>
@@ -53,8 +59,11 @@ export default function CFProjektComponent({ projekt }: any) {
 						></span>
 					</div>
 				)}
-				<div>
+				<div className={styles.linkSection}>
+					<div  className={styles.cardContainer}>
 					<>{documentToReactComponents(links)}</>
+
+					</div>
 				</div>
 			</div>
 		</>

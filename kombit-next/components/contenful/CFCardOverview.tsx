@@ -44,7 +44,7 @@ const CFCardOverview = ({ projekt, tag, showTag, showTagHover }: prop) => {
 
         <p className="text">{abstrakt}</p>
         <a className="read-more" href={"/projekt/" + slug}>
-          Read more
+         Læs mere
         </a>
       </div>
     </div>

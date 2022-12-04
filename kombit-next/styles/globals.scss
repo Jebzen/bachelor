@@ -65,56 +65,30 @@ div#breadCrumbs a {
 }
 
 /* tabs */
-.tabsContainer {
-  width: 100%;
-}
+// .tabsContainer {
+//   width: 100%;
+// }
 
 .tabsContainer {
   display: flex;
-  flex-wrap: wrap;
   padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-  width: 76%;
-  margin: 0 auto;
   flex-direction: row;
 }
 
 .tabLink {
-  width: 18%;
-  display: flex;
-  align-items: center;
-  margin: 60px 7.5px;
-  padding: 10px;
-  text-align: center;
-  border: 2px solid #c5252f;
+margin: 0 auto;
+  padding: 5px 10px ;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;   
+   line-height: 1.75rem;
+
 }
 
 .tabLink {
   color: #c5252f;
 }
-@media (max-width: 1100px) {
-  .tabLink {
-    width: 46%;
-    justify-content: center;
-    margin: 10px 7.5px 0;
-    padding: 10px;
-  }
-}
 
-@media (max-width: 500px) {
-  .tabLink {
-    width: 100%;
-    justify-content: center;
-    margin: 10px 7.5px 0;
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-  .tabsContainer {
-    width: 90%;
-    margin: 30px auto;
-  }
-}
 
 @media (min-width: 576px) {
   img.logo {
@@ -127,7 +101,7 @@ div#breadCrumbs a {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     flex-direction: row;
   }
@@ -143,11 +117,22 @@ div#breadCrumbs a {
   width: 30% !important;
 }
 
-.activebox{
-  color: #fff !important;
-  background-color: #c5252f !important;
+.tabs.activebox:after {
+  content: '';
+  display: block;
+  background-color: #eb052f;
+  height: 2.5px;  
+  
 }
 
+.tabLink.activebox.text-uppercase {
+  color: #eb052f;
+}
+
+.tabsContainer {
+  margin-top: 60px;
+  margin-bottom: 60px;
+} 
 .row {
   --bs-gutter-x: 0 !important;
   justify-content: space-between;
@@ -189,6 +174,15 @@ div#breadCrumbs a {
 h2 {
   overflow-wrap: break-word;
 }
+
+@media(max-width: 576px) {
+  .tabsContainer {
+    display: flex;
+    padding-left: 0;
+    flex-direction: column;
+  }
+}
+
 
 .navbar-toggler-icon {
   filter: invert(16%) sepia(99%) saturate(3210%) hue-rotate(346deg)
@@ -240,4 +234,10 @@ h2 {
 hr {
   color: #c5252f !important;
   opacity: 1 !important;
+}
+ 
+@media (min-width: 1400px) {
+
+ .container {
+    max-width: 1200px !important; }
 }

@@ -45,7 +45,7 @@ export default function CFFeed() {
     <div className="row">
       <div
         className={
-          slide == "nyheder" ? "col-4 newsHeader activebox news" : "col-4 newsHeader"
+          slide == "nyheder" ? "col-4 newsHeader activebox2 news" : "col-4 newsHeader"
         }
         onClick={() => setSlide("nyheder")}
       >
@@ -53,7 +53,7 @@ export default function CFFeed() {
       </div>
       <div
         className={
-          slide == "kalender" ? " col-4 newsHeader activebox kalender" : "col-4 newsHeader"
+          slide == "kalender" ? " col-4 newsHeader activebox2 kalender" : "col-4 newsHeader"
         }
         onClick={() => setSlide("kalender")}
       >
@@ -61,7 +61,7 @@ export default function CFFeed() {
       </div>
       <div
         className={
-          slide == "viden" ? " col-4 newsHeader activebox viden" : "col-4 newsHeader"
+          slide == "viden" ? " col-4 newsHeader activebox2 viden" : "col-4 newsHeader"
         }
         onClick={() => setSlide("viden")}
       >

@@ -23,6 +23,7 @@ export default function CFKalenderComponent({ content }: prop) {
 				{
 					return (
 						<>
+						
 							<span className="fs-3">{node.data.target.fields.title}</span>
 							<br />
 							<span>{node.data.target.fields.text}</span>

@@ -1,4 +1,6 @@
 import { CFentry } from "../../interfaces/CFentry";
+import styles from "../../styles/Projekt.module.css";
+
 
 interface prop {
 	nodes: CFentry[];
@@ -32,7 +34,7 @@ export default function CFIndexes({ nodes, parent }: prop) {
 							/>
 						)}
 				<div className="related">
-						<div></div><a href={"/projekt/" + item.fields.slug}>	
+						<div></div><a href={parent + "/" + item.fields.slug}>	
 <p className="small">Udgivet d. {item.sys.createdAt.substring(0, 10)}</p>
 	
 			
@@ -40,6 +42,9 @@ export default function CFIndexes({ nodes, parent }: prop) {
 				
 			
 		<p>{item.fields.abstrakt}</p>	</a>
+		<a className="readMore" href={(parent ? parent : "") + "/" + item.fields.slug}>
+          Læs nyhed
+        </a>
 	</div>
 	
 

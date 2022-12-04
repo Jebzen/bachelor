@@ -21,14 +21,14 @@ interface prop {
 }
 
 export default function Kalender({ content }: prop) {
-	//console.log(content);
+	console.log(content);
 
 	return (
 		<>
 			<Head>
 				<title>Kalender</title>
 			</Head>
-			<PageHero heading={"Kaleder"}/>
+			<PageHero heading={"Kalender"}/>
 			<section className="container h-100">
 				<div className="kalenderGrid">
 					{content &&
