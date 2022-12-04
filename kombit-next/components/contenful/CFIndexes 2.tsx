@@ -11,40 +11,26 @@ export default function CFIndexes({ nodes, parent }: prop) {
 			{nodes.map((item, i: number) => {
 				console.log(item);
 				return (
-
 					<a
 						href={(parent ? parent : "") + "/" + item.fields.slug}
 						className={`box-${i + 1} news-item`}
 						key={i}
-					>	
-								{item.fields.media && (
+					>
+						<h2>{item.fields.title}</h2>
+						<small className="fst-italic">{item.sys.createdAt}</small>
+						<p>{item.fields.abstrakt}</p>
+						{item.fields.media && (
 							<img
 								src={item.fields.media.fields.file.url}
 								alt={item.fields.media.fields.description}
-								className="newsImg"
 							/>
 						)}
-								{item.fields.banner && (
+						{item.fields.banner && (
 							<img
 								src={item.fields.banner.fields.file.url}
 								alt={item.fields.banner.fields.description}
-								className="newsImg"
 							/>
 						)}
-				<div className="related">
-						<div></div><a href={"/projekt/" + item.fields.slug}>	
-<p className="small">Udgivet d. {item.sys.createdAt.substring(0, 10)}</p>
-	
-			
-				<h3>{item.fields.title}</h3>
-				
-			
-		<p>{item.fields.abstrakt}</p>	</a>
-	</div>
-	
-
-				
-				
 					</a>
 				);
 			})}

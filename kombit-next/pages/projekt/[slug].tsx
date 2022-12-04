@@ -12,7 +12,7 @@ export async function getServerSideProps(context: any) {
   });
 
   const slugged = response.items.find((item: any) => {
-    //console.log(item);
+    console.log(item);
     return item?.fields?.slug == slug;
   });
 
@@ -34,7 +34,7 @@ interface prop {
 }
 
 export default function ProjektPage({ content }: prop) {
-  //console.log(content);
+  console.log(content);
   return (
     <>
       <Head>

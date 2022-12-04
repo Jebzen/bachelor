@@ -6,6 +6,7 @@ import styles from "../styles/Projekt.module.css";
 import CFFeed from "../components/contenful/CFFeed";
 import CFProjectBlobs from "../components/contenful/CFProjekterBlobs";
 import FrontBanner from "../components/general/FrontBanner";
+import { useState } from "react";
 
 export async function getServerSideProps() {
   const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");

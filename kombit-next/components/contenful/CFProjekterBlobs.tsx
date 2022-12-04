@@ -5,6 +5,8 @@ import styles from "../../styles/Projekt.module.css";
 
 export default function CFProjectBlobs({ projects }: any) {
   const [showTag, setShowTag] = useState(true);
+  const [showTagHover, setShowTagHover] = useState(true);
+
 
   //console.log(projects);
 
@@ -20,7 +22,7 @@ export default function CFProjectBlobs({ projects }: any) {
             return (
               <div className={styles.cardBody} key={i}>
                 {/* <h3> {tag.sys.id}</h3> */}
-                <CFCardOverview projekt={item} tag={tag} showTag={showTag} />
+                <CFCardOverview projekt={item} tag={tag} showTag={showTag} showTagHover={showTagHover} />
               </div>
             );
           });

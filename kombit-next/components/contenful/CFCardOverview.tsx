@@ -6,20 +6,27 @@ interface prop {
   projekt: CFEntryProjekt;
   tag: any;
   showTag: any;
+  showTagHover: any
 }
 
-const CFCardOverview = ({ projekt, tag, showTag }: prop) => {
+const CFCardOverview = ({ projekt, tag, showTag, showTagHover }: prop) => {
   //console.log(projekt);
   const { title, abstrakt, featuredImage, slug } = projekt.fields;
 
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {
-    setIsHovering(true);
+    if (showTagHover) {
+      setIsHovering(true);
+
+    }
   };
 
   const handleMouseOut = () => {
-    setIsHovering(false);
+    if(showTagHover) {
+      setIsHovering(false);
+
+    }
     //console.log(isHovering);
   };
 

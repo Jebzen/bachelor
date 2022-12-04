@@ -1,3 +1,5 @@
+@import "variables_colors";
+
 html,
 body {
   padding: 0;
@@ -233,4 +235,9 @@ h2 {
   100% {
     height: 300px;
   }
+}
+
+hr {
+  color: #c5252f !important;
+  opacity: 1 !important;
 }

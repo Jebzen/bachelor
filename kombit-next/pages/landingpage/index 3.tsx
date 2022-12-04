@@ -1,14 +1,11 @@
 import Head from "next/head";
 import CFIndexes from "../../components/contenful/CFIndexes";
 import { client } from "../../components/contenful/main";
-import PageHero from "../../components/general/PageHero";
-import { GraphCatcher } from "../../data/GraphQL";
-import { CFEntryNyheder } from "../../interfaces/CFentry";
-import { WPAllPages } from "../../interfaces/WPIndexes";
+import { CFEntryLanding } from "../../interfaces/CFentry";
 
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
-		content_type: "nyheder",
+		content_type: "landingpage",
 	});
 
 	return {
@@ -19,11 +16,11 @@ export async function getServerSideProps(context: any) {
 }
 
 interface prop {
-	content: CFEntryNyheder[];
+	content: CFEntryLanding[];
 }
 
-export default function NewsIndex({ content }: prop) {
-	//console.log(content.data.pages.nodes);
+export default function LandingIndex({ content }: prop) {
+	//console.log(content);
 
 	return (
 		<>
@@ -31,11 +28,13 @@ export default function NewsIndex({ content }: prop) {
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
-			<PageHero heading={"Nyheder"} />
 			<section className="container">
-				<div className="news-box">
-					
-					<CFIndexes nodes={content} parent="/nyheder" />
+				<h1>Landing pages</h1>
+				<hr />
+				<p>Bar</p>
+				<hr />
+				<div className="landing-box">
+					<CFIndexes nodes={content} parent={"/landingpage"} />
 				</div>
 			</section>
 		</>

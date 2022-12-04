@@ -24,8 +24,6 @@ interface prop {
 }
 
 export default function Projekter({ projekt }: prop) {
-  //console.log(projekt);
-  //console.log(tag);
 
   const tags: any[] = [];
   projekt
@@ -98,13 +96,13 @@ export default function Projekter({ projekt }: prop) {
           ) {
             return (
               <div className={styles.cardBody} key={i}>
-                <CFCardOverview projekt={node} tag={tag} showTag={true} />
+                <CFCardOverview projekt={node} tag={tag} showTag={true} showTagHover={false} />
               </div>
             );
           } else if (node.metadata.tags.length == 0 && tab == "other") {
             return (
               <div className={styles.cardBody} key={i}>
-                <CFCardOverview projekt={node} tag={tag} showTag={false} />
+                <CFCardOverview projekt={node} tag={tag} showTag={false} showTagHover={false} />
               </div>
             );
           }

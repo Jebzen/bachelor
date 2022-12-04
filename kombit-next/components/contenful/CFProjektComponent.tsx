@@ -4,7 +4,7 @@ import ShareButtons from "../general/ShareButtons";
 
 export default function CFProjektComponent({ projekt }: any) {
 	const { title, beskrivelse, featuredImage, links, cards } = projekt.fields;
-	//console.log(projekt);
+	console.log(projekt);
 	return (
 		<>
 			<div className={styles.pageContainer}>
