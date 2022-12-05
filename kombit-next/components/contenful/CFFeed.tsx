@@ -42,7 +42,7 @@ export default function CFFeed() {
 	}, []);
 
 	return (
-		<div className="row">
+		<div className="row CFFeedHeader">
 			<div
 				className={
 					slide == "nyheder" ? "col-4 newsHeader active" : "col-4 newsHeader"
@@ -68,14 +68,14 @@ export default function CFFeed() {
 				<h4>Viden</h4>
 			</div>
 			<div className="col-12">
-				<div className="row">
+				<div className="row CFFeed">
 					{slide == "nyheder" &&
 						news?.items &&
 						news.items.length != 0 &&
 						news.items.map((newss: any, i: number) => {
 							return (
 								<div className="col-4 content-column" key={i}>
-									<a href={newss.fields.slug}>
+									<a href={"/nyheder/" + newss.fields.slug}>
 										<h5>{newss.fields.title}</h5>
 									</a>
 									<p>{newss.fields.abstrakt}</p>
@@ -89,8 +89,8 @@ export default function CFFeed() {
 						calender.items.map((event: any, i: number) => {
 							return (
 								<div className="col-4 content-column" key={i}>
-									<a href={"kalender/" + event.fields.slug}>
-										<h5>{event.fields.title}</h5>{" "}
+									<a href={"/kalender/" + event.fields.slug}>
+										<h5>{event.fields.title}</h5>
 									</a>
 									{documentToReactComponents(event.fields.abstrakt)}
 									<p className="text-end">{event.sys.createdAt}</p>
@@ -102,11 +102,11 @@ export default function CFFeed() {
 						info.items.length != 0 &&
 						info.items.map((infoSide: any, i: number) => {
 							return (
-								<div className="col-4" key={i}>
-									<a href={"kalender/" + infoSide.fields.slug}>
-										<h3>{infoSide.fields.title}</h3>
+								<div className="col-4 content-column" key={i}>
+									<a href={"/infoside/" + infoSide.fields.slug}>
+										<h5>{infoSide.fields.title}</h5>
 									</a>
-									{documentToReactComponents(infoSide.fields.abstrakt)}
+									{infoSide.fields.abstrakt}
 									<p className="text-end">{infoSide.sys.createdAt}</p>
 								</div>
 							);

@@ -40,6 +40,7 @@ export default function Footer({ footerLinks }: prop) {
 					<div className="col-12 col-md-6">
 						<h4 className="fw-bold">Inhold</h4>
 						<div className="indhold-sider">
+							<a href="/kontakt">Kontakt</a>
 							{footerLinks &&
 								footerLinks.length > 0 &&
 								footerLinks.map((page: pageLink, i: number) => {

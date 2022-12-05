@@ -38,12 +38,12 @@ export default function Kalender({ content }: prop) {
 									href={"/kalender/" + item.fields.slug}
 									className="text-decoration-none text-dark"
 								>
-									<h2>
+									<h3>
 										{item.fields.dato}
 										<i className="bi-arrow-right-short"></i>
-									</h2>
+									</h3>
 									<hr />
-									<h3>{item.fields.title}</h3>
+									<h2>{item.fields.title}</h2>
 									{documentToReactComponents(item.fields.abstrakt)}
 								</a>
 							);

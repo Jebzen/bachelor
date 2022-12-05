@@ -33,32 +33,20 @@ export default function Kontakt() {
 			</Head>
 			<section className="container h-100">
 				<h1>Kontaktformular</h1>
-				<form ref={form} onSubmit={sendEmail}>
+				<form ref={form} onSubmit={sendEmail} id="kontakt_formular">
 					<div className="mb-3">
 						<label className="form-label">Navn</label>
-						<input
-							type="text"
-							name="name"
-							className="form-control"
-						/>
+						<input type="text" name="name" className="form-control" />
 					</div>
 					<div className="mb-3">
 						<label className="form-label">Email</label>
-						<input
-							type="email"
-							name="email"
-							className="form-control"
-						/>
+						<input type="email" name="email" className="form-control" />
 					</div>
 					<div className="mb-3">
 						<label className="form-label">Besked</label>
-						<textarea name="message" className="form-control" />
+						<textarea name="message" className="form-control" rows={10} />
 					</div>
-					<input
-						type="submit"
-						value="Send"
-						className="btn btn-primary"
-					/>
+					<input type="submit" value="Send" className="btn btn-primary" />
 				</form>
 			</section>
 		</>

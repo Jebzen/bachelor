@@ -85,7 +85,7 @@ export default function WPLandingFeed() {
 						info.map((item: any, i: number) => {
 							return (
 								<div className="col-4" key={i}>
-									<a href={"/infoSide/" + item.slug}>
+									<a href={"/infoside/" + item.slug}>
 										<h3>{item.title}</h3>
 									</a>
 									<span dangerouslySetInnerHTML={{ __html: item.excerpt }} />

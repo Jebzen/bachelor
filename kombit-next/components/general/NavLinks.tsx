@@ -28,6 +28,9 @@ export default function NavLinks({ pageLinks }: prop) {
 										</Nav.Item>
 									);
 								})}
+						<Nav.Item className="text-end">
+							<Nav.Link href="/kontakt">Kontakt</Nav.Link>
+						</Nav.Item>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
