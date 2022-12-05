@@ -44,7 +44,7 @@ export default function Footer({ footerLinks }: prop) {
 								footerLinks.length > 0 &&
 								footerLinks.map((page: pageLink, i: number) => {
 									return (
-										<a key={i} href={"/indhold/" + page.slug}>
+										<a key={i} href={"/infoside/" + page.slug}>
 											{page.title}
 										</a>
 									);

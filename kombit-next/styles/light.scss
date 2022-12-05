@@ -549,8 +549,14 @@ section.container.news {
   max-width: auto !important;
   width: 100%;
 }
+
+.text-center {
+  .img-fluid {
+    width: 90%;
+  }
+}
 .beskrivelse-news {
-  width: 85%;
+  width: 80%;
   margin: 0 auto;
   margin-bottom: 90px;
   
