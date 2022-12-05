@@ -6,9 +6,9 @@ describe("Testing header & Footer", () => {
 
 		cy.get(".navbar-nav")
 			.children()
-			.should("have.length", 5)
+			.should("have.length", 6)
 			.first()
-			.contains("Infoside");
+			.should("exist");
 
 		cy.get(".navbar-nav")
 			.children()
@@ -101,3 +101,5 @@ describe("Testing header & Footer", () => {
 			});
 	});
 });
+
+export {};
