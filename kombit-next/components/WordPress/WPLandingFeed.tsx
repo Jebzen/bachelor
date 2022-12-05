@@ -30,33 +30,39 @@ export default function WPLandingFeed() {
 	}, []);
 
 	return (
-		<div className="row">
+		<div className="row WPFeedHeader">
 			<div
-				className={slide == "nyheder" ? "bg-info col-4 p-2" : "col-4 p-2"}
+				className={
+					slide == "nyheder" ? "col-4 newsHeader active" : "col-4 newsHeader"
+				}
 				onClick={() => setSlide("nyheder")}
 			>
 				Nyheder
 			</div>
 			<div
-				className={slide == "projekt" ? "bg-info col-4 p-2" : "col-4 p-2"}
+				className={
+					slide == "projekt" ? "col-4 newsHeader active" : "col-4 newsHeader"
+				}
 				onClick={() => setSlide("projekt")}
 			>
 				Projekter
 			</div>
 			<div
-				className={slide == "viden" ? "bg-info col-4 p-2" : "col-4 p-2"}
+				className={
+					slide == "viden" ? "col-4 newsHeader active" : "col-4 newsHeader"
+				}
 				onClick={() => setSlide("viden")}
 			>
 				Viden
 			</div>
 			<div className="col-12">
-				<div className="row">
+				<div className="row WPFeed">
 					{slide == "nyheder" &&
 						news &&
 						news.length != 0 &&
 						news.map((item, i: number) => {
 							return (
-								<div className="col-4" key={i}>
+								<div className="col-4 content-column" key={i}>
 									<a href={"/nyheder/" + item.slug}>
 										<h3>{item.title}</h3>
 									</a>
@@ -70,7 +76,7 @@ export default function WPLandingFeed() {
 						projects.length != 0 &&
 						projects.map((item: any, i: number) => {
 							return (
-								<div className="col-4" key={i}>
+								<div className="col-4 content-column" key={i}>
 									<a href={"/projekt/" + item.slug}>
 										<h3>{item.title}</h3>
 									</a>
@@ -84,7 +90,7 @@ export default function WPLandingFeed() {
 						info.length != 0 &&
 						info.map((item: any, i: number) => {
 							return (
-								<div className="col-4" key={i}>
+								<div className="col-4 content-column" key={i}>
 									<a href={"/infoside/" + item.slug}>
 										<h3>{item.title}</h3>
 									</a>

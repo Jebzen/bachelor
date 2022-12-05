@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
+import ShareButtons from "../general/ShareButtons";
 import WPLandingFeed from "./WPLandingFeed";
 
 interface prop {
@@ -21,8 +22,9 @@ export default function WPLandingComponent({ content }: prop) {
 			<div className="p-2 my-2">
 				{projekter && projekter.length > 0 && (
 					<>
+						<h1>{content.title}</h1>
 						<h2>Projekter</h2>
-						<div className="row">
+						<div className="row projekt-area">
 							{projekter.map((item, i: number) => {
 								return (
 									<div
@@ -41,7 +43,7 @@ export default function WPLandingComponent({ content }: prop) {
 								);
 							})}
 							{slide !== null && (
-								<div className="mt-2">
+								<div className="mt-2 open-projekt-box">
 									<h3 className="fw-bold">{slide.data.page.title}</h3>
 									<div
 										dangerouslySetInnerHTML={{
@@ -62,13 +64,14 @@ export default function WPLandingComponent({ content }: prop) {
 			</div>
 			<div className="row">
 				<div className="col-9">
+					<ShareButtons />
 					<span dangerouslySetInnerHTML={{ __html: content.content }} />
 				</div>
 
 				{kontakt_person && kontakt_person.data.mediaItem && (
 					<>
 						<div className="col-3">
-							<div className="d-flex justify-end flex-column">
+							<div className="d-flex justify-end flex-column forretningschef">
 								<span
 									className="text-end fs-4"
 									dangerouslySetInnerHTML={{
