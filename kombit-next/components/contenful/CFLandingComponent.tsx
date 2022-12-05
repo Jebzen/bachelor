@@ -53,7 +53,6 @@ export default function CFLandingComponent({ content }: prop) {
 			<div className="row">
 				<div className="col-9">
 					<ShareButtons />
-					<h3>Mission</h3>
 					{documentToReactComponents(content.fields.mission)}
 				</div>
 				<div className="col-3">
