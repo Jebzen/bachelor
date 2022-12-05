@@ -33,7 +33,6 @@ export default function App({
 }
 
 /* CONTENTFUL VERSION START */
-/*
 App.getInitialProps = async (context: any) => {
 	let pageLinks: pageLink[] | null | { name: string; slug: string }[] = null;
 	let footerLinks: pageLink[] | null = null;
@@ -71,11 +70,10 @@ App.getInitialProps = async (context: any) => {
 		pageLinks,
 	};
 };
-*/
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-
+/*
 App.getInitialProps = async (context: any) => {
 	let pageLinks: pageLink[] | null | { name: string; slug: string }[] = null;
 	let footerLinks: pageLink[] | null = null;
