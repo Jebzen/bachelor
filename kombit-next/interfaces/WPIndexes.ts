@@ -12,8 +12,8 @@ export interface WPIndexes {
 					};
 				}
 			];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPSinglePage {
@@ -42,8 +42,8 @@ export interface WPSinglePage {
 			datetime?: string;
 			kontakt_person?: any;
 			projekter?: WPPageCard[];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPAllPages {
@@ -66,8 +66,8 @@ export interface WPAllPages {
 				};
 				datetime?: string;
 			}[];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPMediaItem {
@@ -78,8 +78,8 @@ export interface WPMediaItem {
 			description: string;
 			mediaItemUrl: string;
 			title: string;
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPPageCard {
@@ -98,8 +98,8 @@ export interface WPPageCard {
 			featuredImage: {
 				node: featuredImage;
 			};
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPAllPagesLimitSort {
@@ -120,8 +120,8 @@ export interface WPAllPagesLimitSort {
 					node: featuredImage;
 				};
 			}[];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPAllCategories {
@@ -131,8 +131,8 @@ export interface WPAllCategories {
 				name: string;
 				slug: string;
 			}[];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPSearchPages {
@@ -153,8 +153,8 @@ export interface WPSearchPages {
 					}[];
 				};
 			}[];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface featuredImage {
