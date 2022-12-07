@@ -3,6 +3,7 @@ import PageHero from "../../components/general/PageHero";
 import { WPStringToTime } from "../../data/functions";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
+import styles from "../../styles/Calendar.module.css"
 
 export async function getServerSideProps(context: any) {
 	const response: WPAllPages = await GraphCatcher.getAllPages("kalender");
