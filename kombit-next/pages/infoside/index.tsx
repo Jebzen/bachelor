@@ -21,7 +21,7 @@ interface prop {
 }
 
 export default function InfoIndex({ content }: prop) {
-	//console.log(content.data.pages.nodes);
+	// console.log(content.data.pages.nodes);
 
 	return (
 		<>

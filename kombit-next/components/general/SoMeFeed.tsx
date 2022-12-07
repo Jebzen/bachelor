@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import styles from "../../styles/Projekt.module.css";
+
 
 type entry = {};
 
@@ -13,28 +15,28 @@ export default function SoMeFeed() {
 	return (
 		<div className="row">
 			<div
-				className={slide == "linkedin" ? "bg-info col-4" : "col-4"}
+				className={slide == "linkedin" ? "col-4 newsHeader activebox2 news" : "col-4 newsHeader"}
 				onClick={() => setSlide("linkedin")}
 			>
-				LinkedIn
+				<h4>LinkedIn</h4>
 			</div>
 			<div
-				className={slide == "presse" ? "bg-info col-4" : "col-4"}
+				className={slide == "presse" ? "col-4 newsHeader activebox2 news" : "col-4 newsHeader"}
 				onClick={() => setSlide("presse")}
 			>
-				Presse
+				<h4>Presse</h4>
 			</div>
 			<div
-				className={slide == "kontakt" ? "bg-info col-4" : "col-4"}
+				className={slide == "kontakt" ? "col-4 newsHeader activebox2 news" : "col-4 newsHeader"}
 				onClick={() => setSlide("kontakt")}
 			>
-				Kontakt
+				<h4>Kontakt</h4>
 			</div>
 			<div className="col-12">
-				<div className="row">
-					<div className="col-4"></div>
-					<div className="col-4"></div>
-					<div className="col-4"></div>
+				<div className="row content-row">
+					<div className="col-4 content-column"></div>
+					<div className="col-4 content-column"></div>
+					<div className="col-4 content-column"></div>
 				</div>
 			</div>
 		</div>

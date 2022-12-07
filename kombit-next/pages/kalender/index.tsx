@@ -3,6 +3,7 @@ import Head from "next/head";
 import { client } from "../../components/contenful/main";
 import PageHero from "../../components/general/PageHero";
 import { CFEntryKalender } from "../../interfaces/CFentry";
+import styles from "../../styles/Calendar.module.css";
 
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
@@ -29,8 +30,8 @@ export default function Kalender({ content }: prop) {
 				<title>Kalender</title>
 			</Head>
 			<PageHero heading={"Kalender"}/>
-			<section className="container h-100">
-				<div className="kalenderGrid">
+			<section className="container kalenderContainer">
+				<div className="">
 					{content &&
 						content.length > 0 &&
 						content.map((item: any, i: number) => {
@@ -38,8 +39,8 @@ export default function Kalender({ content }: prop) {
 								<a
 									key={i}
 									href={"/kalender/" + item.fields.slug}
-									className="text-decoration-none text-dark"
-								>
+									className="text-decoration-none text-dark kalender"
+								><div className={styles.kalenderCard}>
 									<h2>
 										{item.fields.dato}
 										<i className="bi-arrow-right-short"></i>
@@ -47,7 +48,7 @@ export default function Kalender({ content }: prop) {
 									<hr />
 									<h3>{item.fields.title}</h3>
 									{documentToReactComponents(item.fields.abstrakt)}
-								</a>
+									</div></a>
 							);
 						})}
 				</div>

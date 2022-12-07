@@ -24,13 +24,7 @@
 		}
 	}
 
-	.carousel-item {
-		.carousel-caption {
-			.bannerCaptionBox {
-				background-color: $neutral-3-2 !important;
-			}
-		}
-	}
+	
 
 	.respect-line {
 		white-space: pre-line;
@@ -59,7 +53,11 @@
 	}
 
 	header {
-		background-color: $neutral-1 !important;
+		.navbar-toggler-icon {
+			filter: invert(40%) sepia(1%) saturate(1196%) hue-rotate(319deg) brightness(96%) contrast(79%) !important;
+
+
+		}
 		.nav-link {
 			color: $neutral-2-2 !important;
 			&:hover {

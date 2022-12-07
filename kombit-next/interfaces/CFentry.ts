@@ -22,6 +22,8 @@ export interface CFEntryIndhold extends CFentry {
 		slug: string;
 		abstrakt: string | any;
 		beskrivelse: any;
+		billedeGalleri: any,
+		sectionTo: any;
 		media: any;
 	};
 }

@@ -16,8 +16,8 @@ export default function CFInfoComponent({ content }: prop) {
 		renderNode: {
 			"embedded-asset-block": (node: any, children: any) => {
 				return (
-					<div className="text-center">
-						<img src={node.data.target.fields.file.url} className="img-fluid" />
+					<div className="text-center mansory">
+						<img src={node.data.target.fields.file.url} width="100%" className=" images" />
 					</div>
 				);
 			},
@@ -39,22 +39,34 @@ export default function CFInfoComponent({ content }: prop) {
 	return (
 		<>
 		<PageHero heading={content.fields.title} abstrakt={content.fields.abstrakt}/>
-
-		<section className="container news">
+		<section className="container news info">
 			<div className="d-flex flex-column">
-				{content.fields.media && (
+				<div className="featuredImage">{content.fields.media && (
 					<div className="text-center">
 						<img
 							src={content.fields.media.fields.file.url}
 							alt={content.fields.media.fields.title}
+							className="featuredImage-img" 
 						/>
 					</div>
-				)}
+				)}</div>
+							
 
-				{documentToReactComponents(content.fields.beskrivelse, renderOption)}
+				<div className="beskrivelse-news">{documentToReactComponents(content.fields.beskrivelse, renderOption)}</div>
+				</div>
+
+						</section>
+
+				<div className="galleri">{documentToReactComponents(content.fields.billedeGalleri, renderOption)}</div>
+				<section className="container news">
+
+								{documentToReactComponents(content.fields.sectionTo, renderOption)}
+
+
+				
+				
 				<SoMeFeed />
-			</div>
-		</section>
+				</section>
 		</>
 	);
 }

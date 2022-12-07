@@ -31,7 +31,7 @@ interface prop {
 }
 
 export default function InfoPage({ content }: prop) {
-  //console.log(content);
+  console.log(content);
 
   return (
     <>
