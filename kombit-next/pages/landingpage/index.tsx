@@ -30,7 +30,6 @@ export default function LandingIndex({ content }: prop) {
 			<PageHero heading={"Landing pages"}/>
 
 			<section className="container">
-
 				<div className="landing-box">
 					<WPIndexes nodes={content.data.pages.nodes} parent="/landingpage" />
 				</div>
