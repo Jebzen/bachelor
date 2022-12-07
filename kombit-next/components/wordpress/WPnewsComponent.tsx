@@ -1,6 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 import ShareButtons from "../general/ShareButtons";
+import WPNewsCard from "./WPNewsCard";
 
 interface prop {
 	content: WPSinglePage["data"]["page"];
@@ -51,7 +52,7 @@ export default function WPnewsComponent({ content }: prop) {
 <>
 		<h3 className="text-center news-h3">Måske du også kan lide</h3>
 		</>
-
+<WPNewsCard content={content}/>
 </div>
 		</>
 	);
