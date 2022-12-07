@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { client } from "../components/contenful/main";
 import FrontBanner from "../components/general/FrontBanner";
+import WPLandingFeed from "../components/WordPress/WPLandingFeed";
 import { BannerImage } from "../interfaces/banner";
 
 interface IndexPage {
@@ -102,6 +103,7 @@ export default function Home({ json }: prop) {
 				<NewsCards news={news} />
 			</section>
       */}
+	  <WPLandingFeed/>
 		</>
 	);
 }
