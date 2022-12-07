@@ -1,4 +1,5 @@
 import Head from "next/head";
+import PageHero from "../../components/general/PageHero";
 // import WPIndexes from "../../components/wordpress/WPIndexes";
 import WPIndexes from "../../components/WordPress/WPIndexes";
 import { GraphCatcher } from "../../data/GraphQL";
@@ -23,15 +24,14 @@ export default function NewsIndex({ content }: prop) {
 
 	return (
 		<>
+			
 			<Head>
 				<title>Nyheder</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
+			<PageHero heading={"Nyheder"}/>
 			<section className="container">
-				<h1>Nyheder</h1>
-				<hr />
-				<p>Bar</p>
-				<hr />
+		
 				<div className="news-box">
 					<WPIndexes nodes={content.data.pages.nodes} parent="/nyheder" />
 				</div>
