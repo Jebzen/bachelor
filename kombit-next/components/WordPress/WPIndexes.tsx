@@ -15,15 +15,25 @@ export default function WPIndexes({ nodes, parent }: prop) {
 						className={`box-${i + 1} news-item`}
 						key={i}
 					>
-						<h2>{item.title}</h2>
-						<small className="fst-italic">{item.date}</small>
-						<span dangerouslySetInnerHTML={{ __html: item.excerpt }} />
 						{item.featuredImage && (
 							<img
 								src={item.featuredImage?.node?.mediaItemUrl}
 								alt={item.featuredImage?.node?.altText}
+								className="newsImg"
+
 							/>
 						)}
+						<div className="related">
+						<a href={(parent ? parent : "") + "/" + item.slug}>	
+						<p className="small">Udgivet d. {item.date.substring(0, 10)}</p>
+
+						<h3>{item.title}</h3>
+						<p><span dangerouslySetInnerHTML={{ __html: item.excerpt }} /></p>
+						<a className="readMore" href={(parent ? parent : "") + "/" + item.slug}>
+          Læs nyhed
+        </a>
+						</a>
+						</div>
 					</a>
 				);
 			})}
@@ -32,3 +42,4 @@ export default function WPIndexes({ nodes, parent }: prop) {
 
 	);
 }
+
