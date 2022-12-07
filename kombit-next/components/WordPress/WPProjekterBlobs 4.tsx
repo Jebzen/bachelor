@@ -14,16 +14,9 @@ const [showTagHover, setShowTagHover] = useState(true);
 
 	return (
 		<>
-
-		{item.tags.nodes.map((tag: any) => {
-			console.log(tag)
-			return (
 			<div className={styles.cardBody}>
- 			  <WPCardOverview projekt={item} tag={tag} showTag={showTag} showTagHover={showTagHover} />
- 			</div>
-			)
-		})}
-			
+// 			  <WPCardOverview projekt={item} showTag={showTag} showTagHover={showTagHover} />
+// 			</div>
 		</>
 	);
 }
