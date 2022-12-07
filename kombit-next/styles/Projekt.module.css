@@ -73,7 +73,7 @@
 }
 
 .cardNumber {
-  font-size: 65px;
+  font-size: 60px;
   color: #c5252f;
 
 }
@@ -259,4 +259,16 @@
   display: flex;
 justify-content: space-between; 
  width: 100%;
+}
+
+
+
+
+.cardNumber p span:nth-child(1) {
+  color: #c5252f !important;
+
+}
+
+.specialMargin {
+  margin-top: 90px;
 }
