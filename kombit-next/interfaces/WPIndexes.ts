@@ -45,6 +45,9 @@ export interface WP_Page_Single {
 	kontakt_person?: any;
 	projekter?: WPPageCard[];
 	kombitFelter: kombitFelter;
+	datoField: {
+		dato: string;
+	};
 }
 
 export interface WP_Page_Node {
@@ -64,6 +67,9 @@ export interface WP_Page_Node {
 		node: featuredImage;
 	};
 	datetime?: string;
+	datoField: {
+		dato: string;
+	};
 }
 
 export interface WPIndexes {

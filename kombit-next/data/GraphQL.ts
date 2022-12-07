@@ -42,6 +42,9 @@ export class GraphCatcher {
                   }
                 }
                 modified
+                datoField {
+                  dato
+                }
                 kombitFelter {
                   dokument {
                     title
@@ -101,6 +104,9 @@ export class GraphCatcher {
                     name
                     slug
                   }
+                }
+                datoField {
+                  dato
                 }
                 featuredImage {
                   node {
