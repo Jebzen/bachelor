@@ -41,8 +41,12 @@ export default function Kalender({ content }: prop) {
 				<title>Kalender</title>
 			</Head>
 			<PageHero heading={"Kalender"}/>
-			<section className="container h-100">
-				<div className="kalenderGrid">
+
+		
+
+			
+			<section className="container kalenderContainer  ">
+				<div className="">
 					{nodes &&
 						nodes.length > 0 &&
 						nodes.map((item, i: number) => {
@@ -54,8 +58,9 @@ export default function Kalender({ content }: prop) {
 								<a
 									key={i}
 									href={"/kalender/" + item.slug}
-									className="text-decoration-none text-dark"
+									className="text-decoration-none text-dark kalender"
 								>
+									<div className={styles.kalenderCard}>
 									<h2>
 										{date}
 										<i className="bi-arrow-right-short"></i>
@@ -63,6 +68,7 @@ export default function Kalender({ content }: prop) {
 									<hr />
 									<h3>{item.title}</h3>
 									<span dangerouslySetInnerHTML={{ __html: item.excerpt }} />
+									</div>
 								</a>
 							);
 						})}
