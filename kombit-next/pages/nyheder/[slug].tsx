@@ -61,7 +61,7 @@ export async function getServerSideProps(context: any) {
 	//Hent sideindhold
 	const res_page_json = await (
 		await fetch(
-			`http://signepetersen.dk/wp-json/wp/v2/pages/${json?.data?.page?.pageId}`
+			`https://signepetersen.dk/wp-json/wp/v2/pages/${json?.data?.page?.pageId}`
 		)
 	).json();
 	console.log("1:", res_page_json.acf.projekt);

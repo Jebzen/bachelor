@@ -16,7 +16,7 @@ export default function Footer({ footerLinks }: prop) {
 						<p>2300 København S</p>
 						<div className="mt-auto">
 							<a
-								href="http://www.linkedin.com/company/kombit-a-s"
+								href="https://www.linkedin.com/company/kombit-a-s"
 								className="fs-4"
 							>
 								<i className="bi bi-linkedin"></i>

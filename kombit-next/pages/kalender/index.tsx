@@ -69,7 +69,7 @@ export async function getServerSideProps(context: any) {
 			response.data.pages.nodes.map(async (item) => {
 				const res = await (
 					await fetch(
-						`http://signepetersen.dk/wp-json/wp/v2/pages/${item.pageId}`
+						`https://signepetersen.dk/wp-json/wp/v2/pages/${item.pageId}`
 					)
 				).json();
 				item["datetime"] = res.acf.dato;

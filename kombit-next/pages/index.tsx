@@ -94,7 +94,7 @@ interface IndexPage {
 }
 
 export async function getStaticProps() {
-	const res = await fetch("http://signepetersen.dk/graphql", {
+	const res = await fetch("https://signepetersen.dk/graphql", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
@@ -124,7 +124,7 @@ export async function getStaticProps() {
 	//Extra for banner pictures
 	const res_page = await (
 		await fetch(
-			`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
+			`https://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
 		)
 	).json();
 	//console.log("1:", res_page);

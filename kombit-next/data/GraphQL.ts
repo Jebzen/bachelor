@@ -11,7 +11,7 @@ import fetch from "node-fetch";
 export class GraphCatcher {
 	static async getSinglePage(slug: string): Promise<WPSinglePage | null> {
 		try {
-			const res = await fetch("http://signepetersen.dk/graphql", {
+			const res = await fetch("https://signepetersen.dk/graphql", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
@@ -57,7 +57,7 @@ export class GraphCatcher {
 
 	static async getAllPages(categoryName: string): Promise<WPAllPages | null> {
 		try {
-			const res = await fetch("http://signepetersen.dk/graphql", {
+			const res = await fetch("https://signepetersen.dk/graphql", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
@@ -99,7 +99,7 @@ export class GraphCatcher {
 
 	static async getMediaItem(id: string): Promise<WPMediaItem | null> {
 		try {
-			const res = await fetch("http://signepetersen.dk/graphql", {
+			const res = await fetch("https://signepetersen.dk/graphql", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
@@ -125,7 +125,7 @@ export class GraphCatcher {
 
 	static async getPageCard(id: string): Promise<WPPageCard | null> {
 		try {
-			const response = await fetch("http://signepetersen.dk/graphql", {
+			const response = await fetch("https://signepetersen.dk/graphql", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
@@ -167,7 +167,7 @@ export class GraphCatcher {
 		limit: number
 	): Promise<WPAllPagesLimitSort | null> {
 		try {
-			const response = await fetch("http://signepetersen.dk/graphql", {
+			const response = await fetch("https://signepetersen.dk/graphql", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
@@ -210,7 +210,7 @@ export class GraphCatcher {
 
 	static async getAllCategories(): Promise<WPAllCategories | null> {
 		try {
-			const response = await fetch("http://signepetersen.dk/graphql", {
+			const response = await fetch("https://signepetersen.dk/graphql", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
