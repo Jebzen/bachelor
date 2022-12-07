@@ -1,3 +1,25 @@
+interface kombitFelter {
+	dokument: {
+		title: string;
+		sourceUrl: string;
+	};
+	kontaktPerson: {
+		title: string;
+		mediaItemUrl: string;
+		description: string;
+		caption: string;
+		altText: string;
+	};
+	projekt: {
+		title: string;
+		excerpt: string;
+		slug: string;
+		featuredImage: {
+			node: featuredImage;
+		};
+	}[];
+}
+
 export interface WP_Page_Single {
 	pageId: number;
 	title: string;
@@ -22,6 +44,7 @@ export interface WP_Page_Single {
 	datetime?: string;
 	kontakt_person?: any;
 	projekter?: WPPageCard[];
+	kombitFelter: kombitFelter;
 }
 
 export interface WP_Page_Node {

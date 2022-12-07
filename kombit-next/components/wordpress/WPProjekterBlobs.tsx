@@ -12,16 +12,16 @@ export default function WPProjectBlobs({ projects }: prop) {
 	//Contentful npm package documentToReactComponents
 
 	return (
-		<>
+		<div className="row">
 			{projects &&
 				projects.map((item, i: number) => {
 					return (
-						<span key={i}>
+						<div key={i} className="col-12">
 							<h3>{item.title}</h3>
 							<span dangerouslySetInnerHTML={{ __html: item.excerpt }}></span>
-						</span>
+						</div>
 					);
 				})}
-		</>
+		</div>
 	);
 }

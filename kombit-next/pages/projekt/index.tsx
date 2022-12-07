@@ -147,7 +147,7 @@ export default function Projekter({ content }: prop) {
 				slug: page.tags.nodes[0].slug,
 			};
 		});
-	console.log(tags);
+	//console.log(tags);
 
 	const [tab, setTab] = useState(tags ? tags[0].slug : "");
 

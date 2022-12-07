@@ -78,6 +78,14 @@ export default function Home({ banners, news, projects }: any) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+interface Banner {
+	altText: string;
+	caption: string;
+	description: string;
+	mediaItemUrl: string;
+	title: string;
+}
+
 interface IndexPage {
 	data: {
 		page: {
@@ -89,6 +97,11 @@ interface IndexPage {
 			pageId: number;
 			featuredImage: any;
 			banners: any;
+			bannersAndStuff: {
+				banner1: Banner;
+				banner2: Banner;
+			};
+			kombitFelter: any;
 		};
 	};
 }
@@ -113,33 +126,30 @@ export async function getStaticProps() {
 								link
 							}
 						}
+						kombitFelter {
+							projekt {
+								... on Page {
+									title
+									excerpt
+								}
+							}
+						}
+						bannersAndStuff {
+							banner1 {
+								mediaItemUrl
+								title
+							}
+							banner2 {
+								mediaItemUrl
+								title
+							}
+						}
 					}
 				}`,
 		}),
 	});
 
-	const json: IndexPage = await res.json();
-
-	//console.log("0:", json.data.page.pageId);
-	//Extra for banner pictures
-	const res_page = await (
-		await fetch(
-			`https://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
-		)
-	).json();
-	//console.log("1:", res_page);
-
-	json.data.page.banners = (
-		await (await fetch(res_page._links["wp:attachment"][0].href)).json()
-	).filter((item: any) => {
-		return (
-			item.id == res_page.acf?.banner_1 || item.id == res_page.acf?.banner_2
-		);
-	});
-
-	json.data.page.projekts = (
-		await GraphCatcher.getAllPagesLimitSort("projekt", 3)
-	)?.data?.pages?.nodes;
+	const json: IndexPage | any = await res.json();
 
 	return {
 		props: {
@@ -156,13 +166,18 @@ export default function Home({ json }: prop) {
 	//Alle props kommer ovenfra
 	//console.log(json.data.page);
 
-	const banners: BannerImage[] = json.data.page.banners.map((banner: any) => {
-		return {
-			title: banner.title.rendered,
+	const banners: BannerImage[] = [
+		{
+			title: json.data.page.bannersAndStuff.banner1.title,
 			type: "Image",
-			media: banner.source_url,
-		};
-	});
+			media: json.data.page.bannersAndStuff.banner1.mediaItemUrl,
+		},
+		{
+			title: json.data.page.bannersAndStuff.banner2.title,
+			type: "Image",
+			media: json.data.page.bannersAndStuff.banner2.mediaItemUrl,
+		},
+	] as BannerImage[];
 	//console.log(banners);
 
 	return (
@@ -176,7 +191,7 @@ export default function Home({ json }: prop) {
 				<h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
 			</div>
 			<div className={styles.CardOverviewContaier}>
-				<WPProjectBlobs projects={json.data.page.projekts} />
+				<WPProjectBlobs projects={json.data.page.kombitFelter.projekt} />
 			</div>
 			<div className={styles.container}>
 				<WPLandingFeed />
