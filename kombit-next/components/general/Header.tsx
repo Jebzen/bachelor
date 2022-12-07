@@ -3,6 +3,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import pageLink from "../../interfaces/pageLink";
 import NavLinks from "../general/NavLinks";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 interface prop {
 	pageLinks: pageLink[];
