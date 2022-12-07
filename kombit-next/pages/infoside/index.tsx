@@ -1,7 +1,8 @@
 import Head from "next/head";
-import WPIndexes from "../../components/wordpress/WPIndexes";
+import PageHero from "../../components/general/PageHero";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
+import WPIndexes from "../../components/WordPress/WPIndexes";
 
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("infoside");
@@ -26,11 +27,9 @@ export default function InfoIndex({ content }: prop) {
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
+			<PageHero heading="Info sider"/>
 			<section className="container">
-				<h1>Info pages</h1>
-				<hr />
-				<p>Bar</p>
-				<hr />
+			
 				<div className="info-box">
 					<WPIndexes nodes={content.data.pages.nodes} parent="/infoside" />
 				</div>
