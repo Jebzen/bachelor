@@ -8,7 +8,7 @@ interface prop {
 	projekt: WPAllPages["data"]["pages"]["nodes"][0];
 }
 
-const WPCardOverview = ({ projekt, tag, showTag, showTagHover }: prop) => {
+const WPCardOverview = ({ projekt, tag, showTag, showTagHover }: any) => {
 	//console.log(projekt);
 	const { title, excerpt, featuredImage, slug } = projekt;
 
