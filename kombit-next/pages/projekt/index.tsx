@@ -21,6 +21,7 @@ interface prop {
 
 export default function Projekter({ content }: prop) {
 	//console.log(content);
+	const arr: any[] = [];
 	const tags = content.data.pages.nodes
 		.filter((page) => {
 			return page.tags.nodes.length > 0;
@@ -30,6 +31,18 @@ export default function Projekter({ content }: prop) {
 				name: page.tags.nodes[0].name,
 				slug: page.tags.nodes[0].slug,
 			};
+		})
+		.filter((page) => {
+			if (
+				!arr.find((arrPage) => {
+					if (arrPage && arrPage.slug == page.slug) {
+						return page.slug;
+					}
+				})
+			) {
+				arr.push(page);
+				return page;
+			}
 		});
 	//console.log(tags);
 

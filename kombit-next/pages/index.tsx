@@ -3,15 +3,13 @@ import { client } from "../components/contenful/main";
 import FrontBanner from "../components/general/FrontBanner";
 import WPLandingFeed from "../components/wordpress/WPLandingFeed";
 import { BannerImage } from "../interfaces/banner";
-import styles from "../styles/Projekt.module.css"
+import styles from "../styles/Projekt.module.css";
 import { useEffect, useState } from "react";
 import { GraphCatcher } from "../data/GraphQL";
 import { WPAllPagesLimitSort } from "../interfaces/WPIndexes";
-import WPProjectBlobs from "../components/wordpress/WPProjekterBlobs";
-
+import WPProjectBlobs from "../components/wordpress/WPProjekterblobs";
 
 interface IndexPage {
-	
 	data: {
 		page: {
 			excerpt: string;
@@ -24,9 +22,6 @@ interface IndexPage {
 		};
 	};
 }
-
-
-
 
 export async function getStaticProps() {
 	const res = await fetch("http://signepetersen.dk/graphql", {
@@ -86,19 +81,16 @@ interface prop {
 export default function Home({ json }: prop) {
 	const [slide, setSlide] = useState("projekt");
 
-const [projects, setProjects] = useState<
-WPAllPagesLimitSort["data"]["pages"]["nodes"]
->([]);
+	const [projects, setProjects] = useState<
+		WPAllPagesLimitSort["data"]["pages"]["nodes"]
+	>([]);
 
-
-
-useEffect(() => {
-	//Kalender
-	GraphCatcher.getAllPagesLimitSort("projekt", 3).then(async (response) => {
-		setProjects(response.data.pages.nodes);
-	});
-
-}, []);
+	useEffect(() => {
+		//Kalender
+		GraphCatcher.getAllPagesLimitSort("projekt", 3).then(async (response) => {
+			setProjects(response.data.pages.nodes);
+		});
+	}, []);
 	//Alle props kommer ovenfra
 	//console.log(json.data.page.banners);
 
@@ -113,29 +105,23 @@ useEffect(() => {
 
 	return (
 		<>
-		
 			<Head>
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<FrontBanner banners={banners} />
 			<div className={styles.container}>
-        <h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
-		</div>
+				<h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
+			</div>
 
-		<div className={styles.CardOverviewContaier}>
-
-		{slide == "projekt" &&
-						projects &&
-						projects.length != 0 &&
-						projects.map((item, i: number) => {
-							return (
-							
-
-								<WPProjectBlobs item={item}/>
-							);
-						})}
-														</div>
+			<div className={styles.CardOverviewContaier}>
+				{slide == "projekt" &&
+					projects &&
+					projects.length != 0 &&
+					projects.map((item, i: number) => {
+						return <WPProjectBlobs item={item} />;
+					})}
+			</div>
 
 			{/* 
 			<FrontBanner banners={banners} />
@@ -146,13 +132,12 @@ useEffect(() => {
 				<NewsCards news={news} />
 			</section>
       */}
-	     <div className={styles.container}>
-		 <WPLandingFeed/>
-      </div>
+			<div className={styles.container}>
+				<WPLandingFeed />
+			</div>
 		</>
 	);
 }
-
 
 // return (
 //     <>
