@@ -26,14 +26,13 @@ export default function WPLandingComponent({ content }: prop) {
 
 				{projekter && projekter.length > 0 && (
 					<>
-						<h2>Projekter</h2>
-						<div className="row">
+						<div className="row land">
 							{projekter.map((item, i: number) => {
 								return (
 									<div
 										key={i}
 										data-id={i}
-										className="col-2"
+										className="col-2 landing"
 										onClick={changeSlide}
 									>
 										<img
