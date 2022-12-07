@@ -735,7 +735,15 @@ margin: 30px 0px 15px 0;}
 
 // kalender 
 
-.kalender-main {
+// .kalender-main {
+//   margin-top: 90px;
+//   margin-bottom: 60px;
+//   display: grid;
+//   grid-template-columns: 4fr 4fr;
+//   column-gap: 30px;
+// }
+
+.kalender-main span {
   margin-top: 90px;
   margin-bottom: 60px;
   display: grid;
@@ -750,6 +758,11 @@ margin: 30px 0px 15px 0;}
 .kalender-main li:nth-child(1) {
   list-style-type: none; 
   margin-left: -14px;
+  list-style-type: none;
+  margin-left: -14px;
+  font-size: 22px !important;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .kalender-main table {
@@ -760,12 +773,23 @@ margin: 30px 0px 15px 0;}
   padding: 30px !important;
 }
 
+td {
+  border: none !important;
+}
+
 @media(max-width: 600px) {
-  .kalender-main {
+  // .kalender-main {
+  //   display: flex;
+  //   flex-direction: column;
+  //   margin: 30px 15px;
+  // }
+
+  .kalender-main span {
     display: flex;
     flex-direction: column;
     margin: 30px 15px;
   }
+
 
   .kalender-main ul {
     margin-top: 30px;

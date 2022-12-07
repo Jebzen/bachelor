@@ -1,4 +1,7 @@
 import { WPSinglePage } from "../../interfaces/WPIndexes";
+import PageHero from "../general/PageHero";
+import styles from "../../styles/Calendar.module.css"
+
 
 interface prop {
 	content: WPSinglePage;
@@ -17,18 +20,24 @@ export default function WPKalenderComponent({ content }: prop) {
 			: "";
 
 	return (
-		<section className="container">
+		<>
+							<PageHero heading={page.title} abstrakt={"test"}/>
+
+		
+		<section className="container news">
 			<div className="d-flex flex-column">
-				<h1>
-					{page.title} - {date}
-				</h1>
-				<small>
+				<h2 className={styles.calendarNumber} >
+					{date}
+				</h2>
+				<small className="fst-italic text-center">
 					<span dangerouslySetInnerHTML={{ __html: page.excerpt }} />
 				</small>
-				<div className="kalender-main new-table">
+				<div className={"kalender-main"}>
 					<span dangerouslySetInnerHTML={{ __html: page.content }} />
 				</div>
 			</div>
 		</section>
+		</>
+
 	);
 }
