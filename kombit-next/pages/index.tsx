@@ -121,15 +121,22 @@ useEffect(() => {
 			<FrontBanner banners={banners} />
 			<div className={styles.container}>
         <h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
+		</div>
+
+		<div className={styles.CardOverviewContaier}>
+
 		{slide == "projekt" &&
 						projects &&
 						projects.length != 0 &&
 						projects.map((item, i: number) => {
 							return (
+							
+
 								<WPProjectBlobs item={item}/>
 							);
 						})}
-      </div>
+														</div>
+
 			{/* 
 			<FrontBanner banners={banners} />
 			<section className="container">
