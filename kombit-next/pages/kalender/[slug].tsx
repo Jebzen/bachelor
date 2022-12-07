@@ -7,6 +7,7 @@ import { CFEntryKalender } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const response = await client.getEntries({
@@ -52,10 +53,9 @@ export default function KalenderPage({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
-	const json: WPSinglePage = await GraphCatcher.getSinglePage(slug);
+	const json = await GraphCatcher.getSinglePage(slug);
 
 	return {
 		props: {
@@ -70,6 +70,7 @@ interface prop {
 
 export default function KalenderPage({ content }: prop) {
 	//console.log(content);
+	if (!content.data?.page) return <></>;
 
 	return (
 		<>

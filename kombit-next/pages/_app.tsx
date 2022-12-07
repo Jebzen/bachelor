@@ -33,6 +33,7 @@ export default function App({
 }
 
 /* CONTENTFUL VERSION START */
+/*
 App.getInitialProps = async (context: any) => {
 	let pageLinks: pageLink[] | null | { name: string; slug: string }[] = null;
 	let footerLinks: pageLink[] | null = null;
@@ -73,29 +74,32 @@ App.getInitialProps = async (context: any) => {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 App.getInitialProps = async (context: any) => {
-	let pageLinks: pageLink[] | null | { name: string; slug: string }[] = null;
-	let footerLinks: pageLink[] | null = null;
+	let pageLinks:
+		| pageLink[]
+		| null
+		| { name: string; slug: string }[]
+		| undefined = null;
+	let footerLinks: pageLink[] | null | undefined = null;
 
 	//Wordpress Site!
 	//Footer info pages
 	footerLinks = (
 		await GraphCatcher.getAllPages("infoside")
-	).data.pages.nodes.map((node: any) => {
+	)?.data?.pages?.nodes.map((node: any) => {
 		return {
 			slug: node.slug,
 			title: node.title,
 		} as pageLink;
 	});
-	pageLinks = (await GraphCatcher.getAllCategories()).data.categories.nodes.map(
-		(a) => {
-			return {
-				title: a.name,
-				slug: a.slug,
-			};
-		}
-	);
+	pageLinks = (
+		await GraphCatcher.getAllCategories()
+	)?.data?.categories?.nodes.map((a) => {
+		return {
+			title: a.name,
+			slug: a.slug,
+		};
+	});
 
 	return {
 		footerLinks,

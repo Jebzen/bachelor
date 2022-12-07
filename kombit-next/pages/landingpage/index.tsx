@@ -7,6 +7,7 @@ import { CFEntryLanding } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "landingpage",
@@ -47,7 +48,6 @@ export default function LandingIndex({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("landingpage");
 
@@ -77,7 +77,9 @@ export default function LandingIndex({ content }: prop) {
 				<p>Bar</p>
 				<hr />
 				<div className="landing-box">
-					<WPIndexes nodes={content.data.pages.nodes} parent="/landingpage" />
+					{content.data?.pages && (
+						<WPIndexes nodes={content.data.pages.nodes} parent="/landingpage" />
+					)}
 				</div>
 			</section>
 		</>

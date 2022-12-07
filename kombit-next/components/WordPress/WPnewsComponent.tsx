@@ -1,9 +1,13 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { WPSinglePage, WP_Page_Node } from "../../interfaces/WPIndexes";
+import {
+	WPSinglePage,
+	WP_Page_Node,
+	WP_Page_Single,
+} from "../../interfaces/WPIndexes";
 import ShareButtons from "../general/ShareButtons";
 
 interface prop {
-	content: WP_Page_Node;
+	content: WP_Page_Single;
 }
 
 export default function WPnewsComponent({ content }: prop) {

@@ -6,7 +6,7 @@ interface prop {
 
 export default function WPKalenderComponent({ content }: prop) {
 	//console.log(content);
-	if (!content.data?.page) return;
+	if (!content.data?.page) return <></>;
 	const { page } = content.data;
 
 	const date =

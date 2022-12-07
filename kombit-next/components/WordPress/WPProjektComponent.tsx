@@ -3,10 +3,11 @@ import ShareButtons from "../general/ShareButtons";
 import { WPSinglePage, WP_Page_Single } from "../../interfaces/WPIndexes";
 
 interface prop {
-	projekt: WP_Page_Single;
+	projekt: WP_Page_Single | null;
 }
 
 export default function WPProjektComponent({ projekt }: prop) {
+	if (!projekt) return <></>;
 	const { title, content, featuredImage, projekter } = projekt;
 
 	return (
