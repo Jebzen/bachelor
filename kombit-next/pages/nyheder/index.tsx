@@ -1,5 +1,6 @@
 import Head from "next/head";
-import WPIndexes from "../../components/wordpress/WPIndexes";
+// import WPIndexes from "../../components/wordpress/WPIndexes";
+import WPIndexes from "../../components/WordPress/WPIndexes";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 
@@ -23,7 +24,7 @@ export default function NewsIndex({ content }: prop) {
 	return (
 		<>
 			<Head>
-				<title>KOMBIT APP</title>
+				<title>Nyheder</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<section className="container">
