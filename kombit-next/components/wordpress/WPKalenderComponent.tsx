@@ -21,7 +21,7 @@ export default function WPKalenderComponent({ content }: prop) {
 
 	return (
 		<>
-							<PageHero heading={page.title} abstrakt={"test"}/>
+							<PageHero heading={page.title} abstrakt={<span dangerouslySetInnerHTML={{ __html: page.excerpt }} />}/>
 
 		
 		<section className="container news">
@@ -29,9 +29,7 @@ export default function WPKalenderComponent({ content }: prop) {
 				<h2 className={styles.calendarNumber} >
 					{date}
 				</h2>
-				<small className="fst-italic text-center">
-					<span dangerouslySetInnerHTML={{ __html: page.excerpt }} />
-				</small>
+	
 				<div className={"kalender-main"}>
 					<span dangerouslySetInnerHTML={{ __html: page.content }} />
 				</div>
