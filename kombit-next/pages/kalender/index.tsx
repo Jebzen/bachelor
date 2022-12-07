@@ -7,6 +7,7 @@ import { CFEntryKalender } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "kalender",
@@ -60,7 +61,6 @@ export default function Kalender({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const response = await GraphCatcher.getAllPages("kalender");
 

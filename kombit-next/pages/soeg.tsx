@@ -6,6 +6,7 @@ import { IndexLayout } from "../layout";
 import { useEffect, useState } from "react";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const term =
 		context.query.term && context.query.term != "" ? context.query.term : null;
@@ -126,7 +127,6 @@ export default function Search(props: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const term =
 		context.query.term && context.query.term != "" ? context.query.term : null;

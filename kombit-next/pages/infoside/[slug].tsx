@@ -7,6 +7,7 @@ import { CFEntryIndhold } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const response = await client.getEntries({
@@ -52,7 +53,6 @@ export default function InfoPage({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);
