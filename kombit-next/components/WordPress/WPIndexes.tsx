@@ -28,5 +28,7 @@ export default function WPIndexes({ nodes, parent }: prop) {
 				);
 			})}
 		</>
+
+
 	);
 }
