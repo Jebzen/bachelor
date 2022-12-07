@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "../../styles/Projekt.module.css";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
-import WPCardOverview from "../../components/wordpress/WPCardOverview";
+import WPCardOverview from "../../components/WordPress/WPCardOverview";
 
 export async function getStaticProps() {
 	const res = await GraphCatcher.getAllPages("Projekt");

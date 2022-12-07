@@ -3,8 +3,15 @@ import { client } from "../components/contenful/main";
 import FrontBanner from "../components/general/FrontBanner";
 import WPLandingFeed from "../components/WordPress/WPLandingFeed";
 import { BannerImage } from "../interfaces/banner";
+import styles from "../styles/Projekt.module.css"
+import { useEffect, useState } from "react";
+import { GraphCatcher } from "../data/GraphQL";
+import { WPAllPagesLimitSort } from "../interfaces/WPIndexes";
+import WPProjectBlobs from "../components/WordPress/WPProjekterBlobs";
+
 
 interface IndexPage {
+	
 	data: {
 		page: {
 			excerpt: string;
@@ -17,6 +24,9 @@ interface IndexPage {
 		};
 	};
 }
+
+
+
 
 export async function getStaticProps() {
 	const res = await fetch("http://signepetersen.dk/graphql", {
@@ -74,6 +84,21 @@ interface prop {
 }
 
 export default function Home({ json }: prop) {
+	const [slide, setSlide] = useState("projekt");
+
+const [projects, setProjects] = useState<
+WPAllPagesLimitSort["data"]["pages"]["nodes"]
+>([]);
+
+
+
+useEffect(() => {
+	//Kalender
+	GraphCatcher.getAllPagesLimitSort("projekt", 3).then(async (response) => {
+		setProjects(response.data.pages.nodes);
+	});
+
+}, []);
 	//Alle props kommer ovenfra
 	//console.log(json.data.page.banners);
 
@@ -88,12 +113,23 @@ export default function Home({ json }: prop) {
 
 	return (
 		<>
+		
 			<Head>
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<FrontBanner banners={banners} />
-			<div dangerouslySetInnerHTML={{ __html: json.data.page.content }} />
+			<div className={styles.container}>
+        <h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
+		{slide == "projekt" &&
+						projects &&
+						projects.length != 0 &&
+						projects.map((item, i: number) => {
+							return (
+								<WPProjectBlobs item={item}/>
+							);
+						})}
+      </div>
 			{/* 
 			<FrontBanner banners={banners} />
 			<section className="container">
@@ -103,9 +139,31 @@ export default function Home({ json }: prop) {
 				<NewsCards news={news} />
 			</section>
       */}
-	  <WPLandingFeed/>
+	     <div className={styles.container}>
+		 <WPLandingFeed/>
+      </div>
 		</>
 	);
 }
 
 
+// return (
+//     <>
+//       <Head>
+//         {/* <title>KOMBIT APP</title>
+
+//         <meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" /> */}
+//       </Head>
+//       <FrontBanner banners={banners} />
+//       <div className={styles.container}>
+//         <h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
+//       </div>
+//       <div className={styles.CardOverviewContaier}>
+//         <CFProjectBlobs projects={projects} />
+//       </div>
+//       <div className={styles.container}>
+//         <CFFeed />
+//       </div>
+//     </>
+//   );
+// }
