@@ -1,5 +1,5 @@
 import Head from "next/head";
-import WPnewsComponent from "../../components/wordpress/WPnewsComponent";
+import WPnewsComponent from "../../components/WordPress/WPnewsComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
