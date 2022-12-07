@@ -9,7 +9,6 @@ import CFCardOverview from "../../components/contenful/CFCardOverview";
 import WPCardOverview from "../../components/wordpress/WPCardOverview";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps() {
 	const response = await client.getEntries({
 		content_type: "projekt",
@@ -119,6 +118,7 @@ export default function Projekter({ projekt }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps() {
 	const res = await GraphCatcher.getAllPages("Projekt");
 
