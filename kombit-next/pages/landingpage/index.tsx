@@ -1,7 +1,8 @@
 import Head from "next/head";
-import WPIndexes from "../../components/wordpress/WPIndexes";
+import PageHero from "../../components/general/PageHero";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
+import WPIndexes from "../../components/WordPress/WPIndexes";
 
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("landingpage");
@@ -26,11 +27,10 @@ export default function LandingIndex({ content }: prop) {
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
+			<PageHero heading={"Landing pages"}/>
+
 			<section className="container">
-				<h1>Landing pages</h1>
-				<hr />
-				<p>Bar</p>
-				<hr />
+
 				<div className="landing-box">
 					<WPIndexes nodes={content.data.pages.nodes} parent="/landingpage" />
 				</div>
@@ -38,3 +38,4 @@ export default function LandingIndex({ content }: prop) {
 		</>
 	);
 }
+
