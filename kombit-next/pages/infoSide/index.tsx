@@ -2,7 +2,7 @@ import Head from "next/head";
 import PageHero from "../../components/general/PageHero";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
-import WPIndexes from "../../components/WordPress/WPIndexes";
+import WPIndexes from "../../components/wordpress/WPIndexes";
 
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("infoside");

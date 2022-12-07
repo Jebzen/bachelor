@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { client } from "../components/contenful/main";
 import FrontBanner from "../components/general/FrontBanner";
-import WPLandingFeed from "../components/WordPress/WPLandingFeed";
+import WPLandingFeed from "../components/wordpress/WPLandingFeed";
 import { BannerImage } from "../interfaces/banner";
 import styles from "../styles/Projekt.module.css"
 import { useEffect, useState } from "react";
 import { GraphCatcher } from "../data/GraphQL";
 import { WPAllPagesLimitSort } from "../interfaces/WPIndexes";
-import WPProjectBlobs from "../components/WordPress/WPProjekterBlobs";
+import WPProjectBlobs from "../components/wordpress/WPProjekterBlobs";
 
 
 interface IndexPage {

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
-import WPLandingComponent from "../../components/WordPress/WPLandingComponent";
+import WPLandingComponent from "../../components/wordpress/WPLandingComponent";
 
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
