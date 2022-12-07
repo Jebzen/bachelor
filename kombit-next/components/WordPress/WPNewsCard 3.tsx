@@ -9,7 +9,7 @@ export default function WPNewsCard({ content }: any) {
 	alt={content.featuredImage?.node?.altText}
 className="newsImg-related"
 />
-<p className="small">Udgivet d. </p>
+<p className="small">Udgivet d.{content.modified}</p>
 	
 			
 				<h3>card titel</h3>

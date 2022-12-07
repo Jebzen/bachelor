@@ -14,7 +14,7 @@ export default function WPnewsComponent({ content }: prop) {
 		<hr/>
 
 		<section className="container news">
-		<p className="small-grey">Udgivet d. </p>
+		<p className="small-grey">Udgivet d. {content.modified} </p>
 			<h1 className="news-header">{content.title}</h1>
 			<p className="fst-italic text-center">
 		<small dangerouslySetInnerHTML={{ __html: content.excerpt }}
