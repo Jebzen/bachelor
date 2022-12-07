@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
+import {
+	WPPageCard,
+	WPSinglePage,
+	WP_Page_Single,
+} from "../../interfaces/WPIndexes";
 import ShareButtons from "../general/ShareButtons";
 import WPLandingFeed from "./WPLandingFeed";
 
 interface prop {
-	content: WPSinglePage["data"]["page"];
+	content: WP_Page_Single;
 }
 
 export default function WPLandingComponent({ content }: prop) {
@@ -26,6 +30,7 @@ export default function WPLandingComponent({ content }: prop) {
 						<h2>Projekter</h2>
 						<div className="row projekt-area">
 							{projekter.map((item, i: number) => {
+								if (!item.data?.page) return;
 								return (
 									<div
 										key={i}

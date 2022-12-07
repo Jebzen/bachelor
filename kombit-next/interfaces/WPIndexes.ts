@@ -1,3 +1,48 @@
+export interface WP_Page_Single {
+	pageId: number;
+	title: string;
+	excerpt: string;
+	tags: {
+		nodes: {
+			name: string;
+			slug: string;
+		}[];
+	};
+	featuredImage: {
+		node: featuredImage;
+	};
+	categories: {
+		nodes: {
+			name: string;
+			slug: string;
+		}[];
+	};
+	content: string;
+	modified: string;
+	datetime?: string;
+	kontakt_person?: any;
+	projekter?: WPPageCard[];
+}
+
+export interface WP_Page_Node {
+	date: string;
+	excerpt: string;
+	slug: string;
+	title: string;
+	pageId?: number;
+	content?: string;
+	tags: {
+		nodes: {
+			name: string;
+			slug: string;
+		}[];
+	};
+	featuredImage: {
+		node: featuredImage;
+	};
+	datetime?: string;
+}
+
 export interface WPIndexes {
 	data: {
 		pages: {
@@ -18,54 +63,14 @@ export interface WPIndexes {
 
 export interface WPSinglePage {
 	data: {
-		page: {
-			pageId: number;
-			title: string;
-			excerpt: string;
-			tags: {
-				nodes: {
-					name: string;
-					slug: string;
-				}[];
-			};
-			featuredImage: {
-				node: featuredImage;
-			};
-			categories: {
-				nodes: {
-					name: string;
-					slug: string;
-				}[];
-			};
-			content: string;
-			modified: string;
-			datetime?: string;
-			kontakt_person?: any;
-			projekter?: WPPageCard[];
-		} | null;
+		page: WP_Page_Single | null;
 	} | null;
 }
 
 export interface WPAllPages {
 	data: {
 		pages: {
-			nodes: {
-				date: string;
-				excerpt: string;
-				slug: string;
-				title: string;
-				pageId: number;
-				tags: {
-					nodes: {
-						name: string;
-						slug: string;
-					}[];
-				};
-				featuredImage: {
-					node: featuredImage;
-				};
-				datetime?: string;
-			}[];
+			nodes: WP_Page_Node[];
 		} | null;
 	} | null;
 }

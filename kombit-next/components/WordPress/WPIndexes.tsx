@@ -1,7 +1,7 @@
-import { WPAllPages } from "../../interfaces/WPIndexes";
+import { WPAllPages, WP_Page_Node } from "../../interfaces/WPIndexes";
 
 interface prop {
-	nodes: WPAllPages["data"]["pages"]["nodes"];
+	nodes: WP_Page_Node[];
 	parent: string;
 }
 

@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { GraphCatcher } from "../../data/GraphQL";
-import { WPAllPagesLimitSort } from "../../interfaces/WPIndexes";
+import { WPAllPagesLimitSort, WP_Page_Node } from "../../interfaces/WPIndexes";
 import { client } from "../contenful/main";
 
 interface prop {
@@ -10,9 +10,7 @@ interface prop {
 export default function SoMeFeed({ version }: prop) {
 	const [slide, setSlide] = useState("soMe");
 	const [linkedin, setLinkedin] = useState([]);
-	const [presse, setPresse] = useState<
-		any | WPAllPagesLimitSort["data"]["pages"]["nodes"]
-	>([]);
+	const [presse, setPresse] = useState<any | WP_Page_Node[]>([]);
 
 	useEffect(() => {
 		if (version == "CF" || version === undefined) {
@@ -30,7 +28,7 @@ export default function SoMeFeed({ version }: prop) {
 		if (version == "WP") {
 			//Nyheder
 			GraphCatcher.getAllPagesLimitSort("nyheder", 3).then(async (response) => {
-				setPresse(response.data.pages.nodes);
+				setPresse(response?.data?.pages?.nodes);
 			});
 		}
 	}, []);
@@ -112,24 +110,19 @@ export default function SoMeFeed({ version }: prop) {
 							{presse &&
 								presse.length != 0 &&
 								Array.isArray(presse) &&
-								presse.map(
-									(
-										item: WPAllPagesLimitSort["data"]["pages"]["nodes"][0],
-										i: number
-									) => {
-										return (
-											<div className="col-4 content-column" key={i}>
-												<a href={"/nyheder/" + item.slug}>
-													<h3>{item.title}</h3>
-												</a>
-												<span
-													dangerouslySetInnerHTML={{ __html: item.excerpt }}
-												/>
-												<p className="text-end">{item.date}</p>
-											</div>
-										);
-									}
-								)}
+								presse.map((item: WP_Page_Node, i: number) => {
+									return (
+										<div className="col-4 content-column" key={i}>
+											<a href={"/nyheder/" + item.slug}>
+												<h3>{item.title}</h3>
+											</a>
+											<span
+												dangerouslySetInnerHTML={{ __html: item.excerpt }}
+											/>
+											<p className="text-end">{item.date}</p>
+										</div>
+									);
+								})}
 						</>
 					)}
 					{slide == "kontakt" && (

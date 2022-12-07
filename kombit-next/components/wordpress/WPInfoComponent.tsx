@@ -8,6 +8,7 @@ interface prop {
 
 export default function WPInfoComponent({ content }: prop) {
 	console.log(content);
+	if (!content.data?.page) return;
 	const { page } = content.data;
 
 	return (
