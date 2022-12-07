@@ -2,6 +2,7 @@ import { useState } from "react";
 import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
 import PageHero from "../general/PageHero";
 import WPLandingFeed from "./WPLandingFeed";
+import styles from "../../styles/Landing.module.css"
 
 interface prop {
 	content: WPSinglePage["data"]["page"];
@@ -22,7 +23,7 @@ export default function WPLandingComponent({ content }: prop) {
 		<PageHero heading={content.title}/>
 		<section className="container news">
 			<div className="p-2 my-2">
-			<h4 >PROJEKTER: TEKNIK, MILJØ & BORGERSERVICE</h4>
+			<h4 className={styles.HeaderFour}>PROJEKTER: TEKNIK, MILJØ & BORGERSERVICE</h4>
 
 				{projekter && projekter.length > 0 && (
 					<>
@@ -37,10 +38,14 @@ export default function WPLandingComponent({ content }: prop) {
 									>
 										<img
 											src={item.data.page.featuredImage.node.mediaItemUrl}
-											className="img-fluid"
+											className={styles.landingImg}
 											alt={item.data.page.featuredImage.node.altText}
 										/>
-										<p>{item.data.page.title}</p>
+										<div className={styles.flexDiv}><p className="text-center"><b>{item.data.page.title}</b></p>
+										<a className={styles.readMore} href={"/projekt/" + item.data.page.slug}>
+         Læs mere
+        </a>
+										</div>
 									</div>
 								);
 							})}
