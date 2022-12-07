@@ -46,16 +46,7 @@
   border: 5px solid #c5252f;
 }
 
-.cardContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 60px;
-  padding: 0% 10%;
-  padding-top: 90px;
-  padding-bottom: 90px;
 
-  background-color: #f9e5e3;
-}
 
 .cardContainer p {
   margin: 0;

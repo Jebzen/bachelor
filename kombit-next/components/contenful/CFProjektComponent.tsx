@@ -38,7 +38,7 @@ export default function CFProjektComponent({ projekt }: any) {
 
 
 				{cards && cards.length > 0 && (
-					<div className={styles.cardContainer}>
+					<div className="cardContainer">
 						{cards.map((item: any, index: any) => {
 							console.log(index)
 							return (
