@@ -8,7 +8,7 @@ interface prop {
 }
 
 export default function WPnewsComponent({ content }: prop) {
-	//console.log(content);
+	console.log(content);
 	return (
 		<>
 		<hr/>

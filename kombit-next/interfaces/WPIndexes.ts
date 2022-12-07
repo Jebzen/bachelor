@@ -41,7 +41,7 @@ export interface WPSinglePage {
 			modified: string;
 			datetime?: string;
 			kontakt_person?: any;
-			projekter?: WPPageCard[];
+			projekter: WPPageCard[];
 		};
 	};
 }

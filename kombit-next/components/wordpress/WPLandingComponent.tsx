@@ -9,6 +9,7 @@ interface prop {
 }
 
 export default function WPLandingComponent({ content }: prop) {
+	console.log(content)
 	const [slide, setSlide] = useState<any | null>(null);
 	let { projekter, kontakt_person } = content;
 
