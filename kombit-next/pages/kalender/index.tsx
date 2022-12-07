@@ -1,4 +1,5 @@
 import Head from "next/head";
+import PageHero from "../../components/general/PageHero";
 import { WPStringToTime } from "../../data/functions";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPages } from "../../interfaces/WPIndexes";
@@ -38,6 +39,7 @@ export default function Kalender({ content }: prop) {
 			<Head>
 				<title>Kalender</title>
 			</Head>
+			<PageHero heading={"Kalender"}/>
 			<section className="container h-100">
 				<div className="kalenderGrid">
 					{nodes &&
