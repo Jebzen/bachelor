@@ -1,9 +1,9 @@
 import { CFEntryProjekt } from "../../interfaces/CFentry";
-import { WPAllPages } from "../../interfaces/WPIndexes";
+import { WPAllPages, WP_Page_Node } from "../../interfaces/WPIndexes";
 import styles from "../../styles/Projekt.module.css";
 
 interface prop {
-	projekt: WPAllPages["data"]["pages"]["nodes"][0];
+	projekt: WP_Page_Node;
 }
 
 const WPCardOverview = ({ projekt }: prop) => {

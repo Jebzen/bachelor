@@ -1,30 +1,27 @@
 import { useEffect, useState } from "react";
 import { GraphCatcher } from "../../data/GraphQL";
-import { WPAllPagesLimitSort } from "../../interfaces/WPIndexes";
+import { WPAllPagesLimitSort, WP_Page_Node } from "../../interfaces/WPIndexes";
 
 export default function WPLandingFeed() {
 	const [slide, setSlide] = useState("nyheder");
-	const [news, setNews] = useState<
-		WPAllPagesLimitSort["data"]["pages"]["nodes"]
-	>([]);
-	const [projects, setProjects] = useState<
-		WPAllPagesLimitSort["data"]["pages"]["nodes"]
-	>([]);
-	const [info, setInfo] = useState<
-		WPAllPagesLimitSort["data"]["pages"]["nodes"]
-	>([]);
+	const [news, setNews] = useState<WP_Page_Node[]>([]);
+	const [projects, setProjects] = useState<WP_Page_Node[]>([]);
+	const [info, setInfo] = useState<WP_Page_Node[]>([]);
 
 	useEffect(() => {
 		//Nyheder
 		GraphCatcher.getAllPagesLimitSort("nyheder", 3).then(async (response) => {
+			if (!response?.data?.pages?.nodes) return;
 			setNews(response.data.pages.nodes);
 		});
 		//Kalender
 		GraphCatcher.getAllPagesLimitSort("projekt", 3).then(async (response) => {
+			if (!response?.data?.pages?.nodes) return;
 			setProjects(response.data.pages.nodes);
 		});
 		//Indhold
 		GraphCatcher.getAllPagesLimitSort("infoside", 3).then(async (response) => {
+			if (!response?.data?.pages?.nodes) return;
 			setInfo(response.data.pages.nodes);
 		});
 	}, []);

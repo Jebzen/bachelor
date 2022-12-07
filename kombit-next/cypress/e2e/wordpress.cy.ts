@@ -61,7 +61,7 @@ describe("Testing pages", () => {
 							.find(".col-4")
 							.each((element, index, list) => {
 								if (index < 3) {
-									cy.wrap(element).click().should("have.class", "bg-info");
+									cy.wrap(element).click().should("have.class", "active");
 								}
 							});
 					});

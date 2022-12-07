@@ -29,3 +29,4 @@ export default function ProjectBlobs({ projects }: any) {
 	);
 }
 */
+export {};

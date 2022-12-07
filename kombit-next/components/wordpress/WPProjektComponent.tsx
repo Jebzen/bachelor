@@ -1,12 +1,13 @@
 import styles from "../../styles/Projekt.module.css";
 import ShareButtons from "../general/ShareButtons";
-import { WPSinglePage } from "../../interfaces/WPIndexes";
+import { WPSinglePage, WP_Page_Single } from "../../interfaces/WPIndexes";
 
 interface prop {
-	projekt: WPSinglePage["data"]["page"];
+	projekt: WP_Page_Single | null;
 }
 
 export default function WPProjektComponent({ projekt }: prop) {
+	if (!projekt) return <></>;
 	const { title, content, featuredImage, projekter } = projekt;
 
 	return (
@@ -36,6 +37,7 @@ export default function WPProjektComponent({ projekt }: prop) {
 				{projekter && projekter.length > 0 && (
 					<div className={styles.cardContainer}>
 						{projekter.map((projekt, i: number) => {
+							if (!projekt.data?.page) return;
 							return (
 								<div className={styles.card} key={i}>
 									<div className={styles.cardHeader}>

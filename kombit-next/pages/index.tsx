@@ -14,7 +14,6 @@ import WPLandingFeed from "../components/wordpress/WPLandingFeed";
 import { CFEntryProjekt } from "../interfaces/CFentry";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getStaticProps() {
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
 
@@ -75,14 +74,14 @@ export default function Home({ banners, news, projects }: any) {
 		</>
 	);
 }
-*/
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 interface IndexPage {
 	data: {
 		page: {
-			projekts: WPAllPagesLimitSort["data"]["pages"]["nodes"];
+			projekts: any;
 			excerpt: string;
 			content: string;
 			title: string;
@@ -140,7 +139,7 @@ export async function getStaticProps() {
 
 	json.data.page.projekts = (
 		await GraphCatcher.getAllPagesLimitSort("projekt", 3)
-	).data.pages.nodes;
+	)?.data?.pages?.nodes;
 
 	return {
 		props: {

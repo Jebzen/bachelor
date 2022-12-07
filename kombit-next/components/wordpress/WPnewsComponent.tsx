@@ -1,9 +1,13 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { WPSinglePage } from "../../interfaces/WPIndexes";
+import {
+	WPSinglePage,
+	WP_Page_Node,
+	WP_Page_Single,
+} from "../../interfaces/WPIndexes";
 import ShareButtons from "../general/ShareButtons";
 
 interface prop {
-	content: WPSinglePage["data"]["page"];
+	content: WP_Page_Single;
 }
 
 export default function WPnewsComponent({ content }: prop) {
@@ -35,7 +39,11 @@ export default function WPnewsComponent({ content }: prop) {
 				className="fst-italic"
 				dangerouslySetInnerHTML={{ __html: content.excerpt }}
 			/>
-			<div dangerouslySetInnerHTML={{ __html: content.content }} />
+			<div
+				dangerouslySetInnerHTML={{
+					__html: content.content ? content.content : "",
+				}}
+			/>
 		</section>
 	);
 }

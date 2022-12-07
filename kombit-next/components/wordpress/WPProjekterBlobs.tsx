@@ -1,8 +1,8 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { WPAllPagesLimitSort } from "../../interfaces/WPIndexes";
+import { WPAllPagesLimitSort, WP_Page_Node } from "../../interfaces/WPIndexes";
 
 interface prop {
-	projects: WPAllPagesLimitSort["data"]["pages"]["nodes"];
+	projects: WP_Page_Node[];
 }
 
 export default function WPProjectBlobs({ projects }: prop) {

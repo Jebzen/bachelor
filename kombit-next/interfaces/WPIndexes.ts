@@ -1,3 +1,48 @@
+export interface WP_Page_Single {
+	pageId: number;
+	title: string;
+	excerpt: string;
+	tags: {
+		nodes: {
+			name: string;
+			slug: string;
+		}[];
+	};
+	featuredImage: {
+		node: featuredImage;
+	};
+	categories: {
+		nodes: {
+			name: string;
+			slug: string;
+		}[];
+	};
+	content: string;
+	modified: string;
+	datetime?: string;
+	kontakt_person?: any;
+	projekter?: WPPageCard[];
+}
+
+export interface WP_Page_Node {
+	date: string;
+	excerpt: string;
+	slug: string;
+	title: string;
+	pageId?: number;
+	content?: string;
+	tags: {
+		nodes: {
+			name: string;
+			slug: string;
+		}[];
+	};
+	featuredImage: {
+		node: featuredImage;
+	};
+	datetime?: string;
+}
+
 export interface WPIndexes {
 	data: {
 		pages: {
@@ -12,62 +57,22 @@ export interface WPIndexes {
 					};
 				}
 			];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPSinglePage {
 	data: {
-		page: {
-			pageId: number;
-			title: string;
-			excerpt: string;
-			tags: {
-				nodes: {
-					name: string;
-					slug: string;
-				}[];
-			};
-			featuredImage: {
-				node: featuredImage;
-			};
-			categories: {
-				nodes: {
-					name: string;
-					slug: string;
-				}[];
-			};
-			content: string;
-			modified: string;
-			datetime?: string;
-			kontakt_person?: any;
-			projekter?: WPPageCard[];
-		};
-	};
+		page: WP_Page_Single | null;
+	} | null;
 }
 
 export interface WPAllPages {
 	data: {
 		pages: {
-			nodes: {
-				date: string;
-				excerpt: string;
-				slug: string;
-				title: string;
-				pageId: number;
-				tags: {
-					nodes: {
-						name: string;
-						slug: string;
-					}[];
-				};
-				featuredImage: {
-					node: featuredImage;
-				};
-				datetime?: string;
-			}[];
-		};
-	};
+			nodes: WP_Page_Node[];
+		} | null;
+	} | null;
 }
 
 export interface WPMediaItem {
@@ -78,8 +83,8 @@ export interface WPMediaItem {
 			description: string;
 			mediaItemUrl: string;
 			title: string;
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPPageCard {
@@ -98,8 +103,8 @@ export interface WPPageCard {
 			featuredImage: {
 				node: featuredImage;
 			};
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPAllPagesLimitSort {
@@ -120,8 +125,8 @@ export interface WPAllPagesLimitSort {
 					node: featuredImage;
 				};
 			}[];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPAllCategories {
@@ -131,8 +136,8 @@ export interface WPAllCategories {
 				name: string;
 				slug: string;
 			}[];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface WPSearchPages {
@@ -153,8 +158,8 @@ export interface WPSearchPages {
 					}[];
 				};
 			}[];
-		};
-	};
+		} | null;
+	} | null;
 }
 
 export interface featuredImage {

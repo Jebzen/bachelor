@@ -9,7 +9,6 @@ import CFCardOverview from "../../components/contenful/CFCardOverview";
 import WPCardOverview from "../../components/wordpress/WPCardOverview";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps() {
 	const response = await client.getEntries({
 		content_type: "projekt",
@@ -116,10 +115,10 @@ export default function Projekter({ projekt }: prop) {
 		</div>
 	);
 }
-*/
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps() {
 	const res = await GraphCatcher.getAllPages("Projekt");
 
@@ -138,7 +137,7 @@ export default function Projekter({ content }: prop) {
 	//console.log(projekt);
 	//console.log(tag);
 
-	const tags = content.data.pages.nodes
+	const tags = content?.data?.pages?.nodes
 		.filter((page) => {
 			return page.tags.nodes.length > 0;
 		})
@@ -150,28 +149,29 @@ export default function Projekter({ content }: prop) {
 		});
 	console.log(tags);
 
-	const [tab, setTab] = useState(tags[0].slug);
+	const [tab, setTab] = useState(tags ? tags[0].slug : "");
 
 	return (
 		<div>
 			<PageHero heading={"Projekt overblik"} />
 			<div className="tabsContainer">
-				{tags.map((tag, i) => {
-					return (
-						<div
-							className={
-								tab == tag.slug
-									? "tabLink active text-uppercase"
-									: "tabLink text-uppercase"
-							}
-							aria-current="page"
-							onClick={() => setTab(tag.slug)}
-							key={i}
-						>
-							{tag.name}
-						</div>
-					);
-				})}
+				{tags &&
+					tags.map((tag, i) => {
+						return (
+							<div
+								className={
+									tab == tag.slug
+										? "tabLink active text-uppercase"
+										: "tabLink text-uppercase"
+								}
+								aria-current="page"
+								onClick={() => setTab(tag.slug)}
+								key={i}
+							>
+								{tag.name}
+							</div>
+						);
+					})}
 				<div
 					className={
 						tab == "other"
@@ -185,21 +185,22 @@ export default function Projekter({ content }: prop) {
 				</div>
 			</div>
 			<div className={styles.CardOverviewContaier}>
-				{content.data.pages.nodes.map((node, i: number) => {
-					if (node.tags.nodes[0]?.slug == tab) {
-						return (
-							<div className={styles.cardBody} key={i}>
-								<WPCardOverview projekt={node} />
-							</div>
-						);
-					} else if (node.tags.nodes.length == 0 && tab == "other") {
-						return (
-							<div className={styles.cardBody} key={i}>
-								<WPCardOverview projekt={node} />
-							</div>
-						);
-					}
-				})}
+				{content?.data?.pages &&
+					content.data.pages.nodes.map((node, i: number) => {
+						if (node.tags.nodes[0]?.slug == tab) {
+							return (
+								<div className={styles.cardBody} key={i}>
+									<WPCardOverview projekt={node} />
+								</div>
+							);
+						} else if (node.tags.nodes.length == 0 && tab == "other") {
+							return (
+								<div className={styles.cardBody} key={i}>
+									<WPCardOverview projekt={node} />
+								</div>
+							);
+						}
+					})}
 			</div>
 		</div>
 	);

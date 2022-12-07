@@ -8,7 +8,6 @@ import { CFEntryNyheder, CFEntryProjekt } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const response = await client.getEntries({
@@ -54,6 +53,7 @@ export default function NewsPage({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);
@@ -61,13 +61,13 @@ export async function getServerSideProps(context: any) {
 	//Hent sideindhold
 	const res_page_json = await (
 		await fetch(
-			`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
+			`http://signepetersen.dk/wp-json/wp/v2/pages/${json?.data?.page?.pageId}`
 		)
 	).json();
 	console.log("1:", res_page_json.acf.projekt);
 
 	//Hent KontaktPerson
-	if (res_page_json.acf.kontakt_person != "") {
+	if (res_page_json.acf.kontakt_person != "" && json?.data?.page) {
 		json.data.page.kontakt_person = await GraphCatcher.getMediaItem(
 			res_page_json.acf.kontakt_person
 		);
@@ -75,7 +75,8 @@ export async function getServerSideProps(context: any) {
 
 	if (
 		res_page_json.acf.projekt != null &&
-		res_page_json.acf.projekt.length != 0
+		res_page_json.acf.projekt.length != 0 &&
+		json?.data?.page
 	) {
 		//Hent relateret projekter
 		json.data.page.projekter = await Promise.all(
@@ -100,6 +101,7 @@ interface prop {
 
 export default function NewsPage({ content }: prop) {
 	//console.log(content);
+	if (!content.data?.page) return <></>;
 	const { page } = content.data;
 
 	return (

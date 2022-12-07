@@ -7,7 +7,6 @@ import { CFEntryKalender } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "kalender",
@@ -61,20 +60,23 @@ export default function Kalender({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
-	const response: WPAllPages = await GraphCatcher.getAllPages("kalender");
+	const response = await GraphCatcher.getAllPages("kalender");
 
-	response.data.pages.nodes = await Promise.all(
-		response.data.pages.nodes.map(async (item) => {
-			const res = await (
-				await fetch(
-					`http://signepetersen.dk/wp-json/wp/v2/pages/${item.pageId}`
-				)
-			).json();
-			item["datetime"] = res.acf.dato;
-			return item;
-		})
-	);
+	if (response?.data?.pages) {
+		response.data.pages.nodes = await Promise.all(
+			response.data.pages.nodes.map(async (item) => {
+				const res = await (
+					await fetch(
+						`http://signepetersen.dk/wp-json/wp/v2/pages/${item.pageId}`
+					)
+				).json();
+				item["datetime"] = res.acf.dato;
+				return item;
+			})
+		);
+	}
 
 	return {
 		props: {
@@ -89,6 +91,7 @@ interface prop {
 
 export default function Kalender({ content }: prop) {
 	//console.log(content);
+	if (!content.data?.pages) return <></>;
 	const { nodes } = content.data.pages;
 
 	return (

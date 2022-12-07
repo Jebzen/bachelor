@@ -7,7 +7,6 @@ import { CFEntryProjekt } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const response = await client.getEntries({
@@ -51,6 +50,7 @@ export default function ProjektPage({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);
@@ -58,19 +58,19 @@ export async function getServerSideProps(context: any) {
 	//Hent sideindhold
 	const res_page_json = await (
 		await fetch(
-			`http://signepetersen.dk/wp-json/wp/v2/pages/${json.data.page.pageId}`
+			`http://signepetersen.dk/wp-json/wp/v2/pages/${json?.data?.page?.pageId}`
 		)
 	).json();
 	console.log("1:", res_page_json.acf.projekt);
 
 	//Hent KontaktPerson
-	if (res_page_json.acf.kontakt_person != "") {
+	if (res_page_json.acf.kontakt_person != "" && json?.data?.page) {
 		json.data.page.kontakt_person = await GraphCatcher.getMediaItem(
 			res_page_json.acf.kontakt_person
 		);
 	}
 
-	if (res_page_json.acf.projekt.length != 0) {
+	if (res_page_json.acf.projekt.length != 0 && json?.data?.page) {
 		//Hent relateret projekter
 		json.data.page.projekter = await Promise.all(
 			res_page_json.acf.projekt.map(async (item: number) => {
@@ -94,13 +94,14 @@ interface prop {
 
 export default function ProjektPage({ content }: prop) {
 	//console.log(content);
+	if (!content.data) return;
 	const { page } = content.data;
 
 	return (
 		<>
 			<Head>
-				<title>{page.title}</title>
-				<meta name="description" content={page.excerpt} />
+				<title>{page && page.title}</title>
+				<meta name="description" content={page?.excerpt ? page.excerpt : ""} />
 			</Head>
 			<WPProjektComponent projekt={page} />
 		</>

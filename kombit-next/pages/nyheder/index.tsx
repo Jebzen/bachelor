@@ -8,7 +8,6 @@ import { CFEntryNyheder, CFEntryProjekt } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "nyheder",
@@ -49,6 +48,7 @@ export default function NewsIndex({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("nyheder");
 
@@ -78,7 +78,9 @@ export default function NewsIndex({ content }: prop) {
 				<p>Bar</p>
 				<hr />
 				<div className="news-box">
-					<WPIndexes nodes={content.data.pages.nodes} parent="/nyheder" />
+					{content.data?.pages && (
+						<WPIndexes nodes={content.data.pages.nodes} parent="/nyheder" />
+					)}
 				</div>
 			</section>
 		</>
