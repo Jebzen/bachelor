@@ -9,14 +9,22 @@ interface prop {
 export default function WPnewsComponent({ content }: prop) {
 	//console.log(content);
 	return (
-		<section className="container">
-			<h1>{content.title}</h1>
+		<>
+		<hr/>
+
+		<section className="container news">
+		<p className="small-grey">Udgivet d. </p>
+			<h1 className="news-header">{content.title}</h1>
+			<p className="fst-italic text-center">
+		<small dangerouslySetInnerHTML={{ __html: content.excerpt }}
+></small>
+	</p>
 			<div className="text-center">
 				<img
 					src={content.featuredImage?.node?.mediaItemUrl}
 					alt={content.featuredImage?.node?.altText}
 					className="img-fluid"
-				/>
+					/>
 			</div>
 			{/*content.fields.projekt && (
 				<p>
@@ -28,14 +36,24 @@ export default function WPnewsComponent({ content }: prop) {
 					</span>
 				</p>
 			)*/}
-			<div className="d-flex">
-				<ShareButtons />
-			</div>
-			<small
-				className="fst-italic"
-				dangerouslySetInnerHTML={{ __html: content.excerpt }}
-			/>
-			<div dangerouslySetInnerHTML={{ __html: content.content }} />
+		
+			<div  />
+			<div className="beskrivelse-news">		
+		<span dangerouslySetInnerHTML={{ __html: content.content }}/>
+		<div className="some"><p>Del artiklen:</p><ShareButtons /></div>
+		
+
+
+</div>
 		</section>
+		<div className="news-header">
+
+<>
+		<h3 className="text-center news-h3">Måske du også kan lide</h3>
+		</>
+
+</div>
+		</>
 	);
 }
+
