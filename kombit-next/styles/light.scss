@@ -846,6 +846,7 @@ section.container.news.info {
 
 }
 
+
 .landing p {
   margin: 0;
   padding: 15px;
@@ -855,6 +856,13 @@ section.container.news.info {
   margin-bottom: 60px;
 }
 
+.col-9 {
+  width: 65% !important;
+}
+
+.text-end {
+  margin-top: -4px;
+}
 @media(max-width: 950px) {
   .row.land {
     grid-template-columns: 1fr 1fr;
