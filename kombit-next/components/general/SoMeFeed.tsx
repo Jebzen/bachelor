@@ -43,7 +43,7 @@ export default function SoMeFeed({ version }: prop) {
 				}
 				onClick={() => setSlide("soMe")}
 			>
-				Sociale medier
+				<h4>Sociale medier</h4>
 			</div>
 			<div
 				className={

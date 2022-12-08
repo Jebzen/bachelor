@@ -43,25 +43,31 @@ describe("Testing pages", () => {
 			.first()
 			.then((element) => {
 				cy.wrap(element)
-					.find("h2")
-					.then((h2) => {
-						title = h2.text();
+					.find("h3")
+					.then((h3) => {
+						title = h3.text();
 
-						cy.wrap(element).find("small.fst-italic").should("exist");
-						cy.wrap(element).find("p").should("exist");
+						cy.wrap(element).find(".related p").should("exist");
 
 						cy.wrap(element).click();
 						cy.wait(1000);
 
 						cy.get("h1").should("contain", title);
 
-						cy.get(".shareButtons").children().should("have.length", 3);
+						//cy.get(".shareButtons").children().should("have.length", 3);
 
-						cy.get(".SoMeFeed")
-							.find(".col-4")
+						cy.get(".container.news.info")
+							.find(".featuredImage")
+							.should("exist");
+						cy.get(".container.news.info")
+							.find(".beskrivelse-news")
+							.should("exist");
+
+						cy.get(".WPFeedHeader")
+							.find(".col-4.newsHeader")
 							.each((element, index, list) => {
 								if (index < 3) {
-									cy.wrap(element).click().should("have.class", "bg-info");
+									cy.wrap(element).click().should("have.class", "active");
 								}
 							});
 					});
@@ -79,12 +85,11 @@ describe("Testing pages", () => {
 			.first()
 			.then((element) => {
 				cy.wrap(element)
-					.find("h2")
-					.then((h2) => {
-						title = h2.text();
+					.find("h3")
+					.then((h3) => {
+						title = h3.text();
 
-						cy.wrap(element).find("small.fst-italic").should("exist");
-						cy.wrap(element).find("p").should("exist");
+						cy.wrap(element).find("p.small").should("exist");
 
 						cy.wrap(element).click();
 						cy.wait(1000);
@@ -92,10 +97,10 @@ describe("Testing pages", () => {
 
 						cy.get("h1").should("contain", title);
 
-						cy.get(".shareButtons").children().should("have.length", 3);
+						//cy.get(".shareButtons").children().should("have.length", 3);
 
-						cy.get(".projekt-area")
-							.find(".col-2")
+						cy.get(".container.news .row.land")
+							.find(".col-2.landing")
 							.each((element, index, list) => {
 								let subtitle = "";
 								cy.wrap(element).should(
@@ -120,21 +125,17 @@ describe("Testing pages", () => {
 						cy.get(".forretningschef").then((element) => {
 							cy.wrap(element).find("h4").should("exist");
 							cy.wrap(element).find("img").should("exist");
-							cy.wrap(element)
-								.find("p")
-								.each((p, i) => {
-									if (i == 1) {
-										cy.wrap(p).should("have.class", "respect-line");
-									}
-								});
+							cy.wrap(element).find("p").should("exist");
 						});
+
+						cy.get(".projektLanding").should("exist");
 
 						cy.get(".CFFeedHeader").children().should("have.length", 4);
 						cy.get(".CFFeed").children().should("have.length", 3);
 
 						cy.get(".CFFeedHeader .newsHeader")
 							.first()
-							.should("have.class", "active");
+							.should("have.class", "activebox2");
 
 						cy.get(".CFFeed")
 							.find(".content-column")
@@ -143,11 +144,10 @@ describe("Testing pages", () => {
 									.find("a")
 									.invoke("attr", "href")
 									.then((href: any) => {
-										cy.wrap(href).should("include", "/nyheder/");
+										cy.wrap(href).should("include", "nyheder/");
 										cy.request(href).its("status").should("eq", 200);
 									});
-								cy.wrap(element).find("p");
-								cy.wrap(element).find("p.text-end");
+								cy.wrap(element).find("p").should("exist");
 							});
 
 						cy.get(".CFFeedHeader .newsHeader").first().next().click();
@@ -159,11 +159,10 @@ describe("Testing pages", () => {
 									.find("a")
 									.invoke("attr", "href")
 									.then((href: any) => {
-										cy.wrap(href).should("include", "/kalender/");
+										cy.wrap(href).should("include", "kalender/");
 										cy.request(href).its("status").should("eq", 200);
 									});
-								cy.wrap(element).find("p");
-								cy.wrap(element).find("p.text-end");
+								cy.wrap(element).find("p").should("exist");
 							});
 
 						cy.get(".CFFeedHeader .newsHeader").first().next().next().click();
@@ -175,11 +174,10 @@ describe("Testing pages", () => {
 									.find("a")
 									.invoke("attr", "href")
 									.then((href: any) => {
-										cy.wrap(href).should("include", "/infoside/");
+										cy.wrap(href).should("include", "infoside/");
 										cy.request(href).its("status").should("eq", 200);
 									});
-								cy.wrap(element).find("p");
-								cy.wrap(element).find("p.text-end");
+								cy.wrap(element).find("p").should("exist");
 							});
 					});
 			});
@@ -191,6 +189,14 @@ describe("Testing pages", () => {
 		cy.visit("/projekt");
 
 		cy.wait(1000);
+
+		cy.get(".tabsContainer")
+			.children()
+			.each((element, index) => {
+				cy.wrap(element).click().should("have.class", "activebox");
+			});
+
+		cy.get(".tabsContainer").children().first().click();
 
 		cy.get(".Projekt_CardOverviewContaier__AflId .Projekt_cardBody__ByE6l")
 			.first()
@@ -215,6 +221,10 @@ describe("Testing pages", () => {
 							.find(".shareButtons")
 							.children()
 							.should("have.length", 3);
+
+						cy.get(".cardContainer").should("exist");
+
+						cy.get(".Projekt_linkSection__iXO_B").should("exist");
 					});
 			});
 	});
@@ -226,7 +236,7 @@ describe("Testing pages", () => {
 
 		cy.wait(1000);
 
-		cy.get(".kalenderGrid a")
+		cy.get(".kalenderContainer a")
 			.first()
 			.then((element) => {
 				cy.wrap(element)
@@ -258,9 +268,9 @@ describe("Testing pages", () => {
 			.first()
 			.then((element) => {
 				cy.wrap(element)
-					.find("h2")
-					.then((h2) => {
-						title = h2.text();
+					.find("h3")
+					.then((h3) => {
+						title = h3.text();
 
 						cy.wrap(element).find("p").should("exist");
 
@@ -271,6 +281,8 @@ describe("Testing pages", () => {
 						cy.get("h1").should("contain", title);
 
 						cy.get(".shareButtons").children().should("have.length", 3);
+
+						cy.get(".beskrivelse-news").should("exist");
 					});
 			});
 	});
