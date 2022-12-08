@@ -210,16 +210,7 @@ export default function Home({ json }: prop) {
 						return <WPProjectBlobs item={item} />;
 					})}
 			</div>
-
-			{/* 
-			<FrontBanner banners={banners} />
-			<section className="container">
-				<h2>Projekter:</h2>
-				<ProjectBlobs projects={projects} />
-				<h2>Nyheder:</h2>
-				<NewsCards news={news} />
-			</section>
-      */}
+			
 			<div className={styles.container}>
 				<WPLandingFeed />
 			</div>
