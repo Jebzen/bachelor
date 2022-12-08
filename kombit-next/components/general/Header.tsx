@@ -3,8 +3,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import pageLink from "../../interfaces/pageLink";
 import NavLinks from "../general/NavLinks";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 interface prop {
 	pageLinks: pageLink[];
@@ -105,7 +105,12 @@ export default function Header({ pageLinks }: any) {
 					{breadCrumbs.map((crumb: any, i: number) => {
 						return (
 							<a key={i} href={crumb.href}>
-								{crumb.text} {breadCrumbs[i + 1] && <small className="breadcrumb-arrow">{<FontAwesomeIcon icon={faChevronRight} />} </small>}
+								{crumb.text}{" "}
+								{breadCrumbs[i + 1] && (
+									<small className="breadcrumb-arrow">
+										{<FontAwesomeIcon icon={faChevronRight} />}{" "}
+									</small>
+								)}
 							</a>
 						);
 					})}

@@ -20,26 +20,20 @@ export default function WPIndexes({ nodes, parent }: prop) {
 								src={item.featuredImage?.node?.mediaItemUrl}
 								alt={item.featuredImage?.node?.altText}
 								className="newsImg"
-
 							/>
 						)}
 						<div className="related">
-						<a href={(parent ? parent : "") + "/" + item.slug}>	
-						<p className="small">Udgivet d. {item.date.substring(0, 10)}</p>
+							<div>
+								<p className="small">Udgivet d. {item.date.substring(0, 10)}</p>
 
-						<h3>{item.title}</h3>
-						<p><span dangerouslySetInnerHTML={{ __html: item.excerpt }} /></p>
-						<a className="readMore" href={(parent ? parent : "") + "/" + item.slug}>
-          Læs nyhed
-        </a>
-						</a>
+								<h3>{item.title}</h3>
+								<span dangerouslySetInnerHTML={{ __html: item.excerpt }} />
+								<span className="readMore">Læs nyhed</span>
+							</div>
 						</div>
 					</a>
 				);
 			})}
 		</>
-
-
 	);
 }
-

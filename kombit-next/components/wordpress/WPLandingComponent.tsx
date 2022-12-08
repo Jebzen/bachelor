@@ -18,14 +18,6 @@ export default function WPLandingComponent({ content }: prop) {
 
 	const projekter = content.kombitFelter.projekt;
 
-	function changeSlide(event: any) {
-		setSlide(
-			content.kombitFelter.projekt
-				? content.kombitFelter.projekt[event.currentTarget.dataset.id]
-				: null
-		);
-	}
-
 	//console.log(projekter);
 
 	return (
