@@ -34,10 +34,12 @@ export default function SoMeFeed({ version }: prop) {
 	}, []);
 
 	return (
-		<div className="row SoMeFeed">
+		<div className="row WPFeedHeader">
 			<div
 				className={
-					slide == "soMe" ? "col-4 newsHeader active" : "col-4 newsHeader"
+					slide == "soMe"
+						? "col-4 newsHeader active activebox2 news"
+						: "col-4 newsHeader"
 				}
 				onClick={() => setSlide("soMe")}
 			>
@@ -45,7 +47,9 @@ export default function SoMeFeed({ version }: prop) {
 			</div>
 			<div
 				className={
-					slide == "presse" ? "col-4 newsHeader active" : "col-4 newsHeader"
+					slide == "presse"
+						? "col-4 newsHeader active activebox2 news"
+						: "col-4 newsHeader"
 				}
 				onClick={() => setSlide("presse")}
 			>
@@ -53,7 +57,9 @@ export default function SoMeFeed({ version }: prop) {
 			</div>
 			<div
 				className={
-					slide == "kontakt" ? "col-4 newsHeader active" : "col-4 newsHeader"
+					slide == "kontakt"
+						? "col-4 newsHeader active activebox2 news"
+						: "col-4 newsHeader"
 				}
 				onClick={() => setSlide("kontakt")}
 			>

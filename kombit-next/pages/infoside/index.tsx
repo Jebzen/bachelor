@@ -1,10 +1,11 @@
 import Head from "next/head";
 import CFIndexes from "../../components/contenful/CFIndexes";
 import { client } from "../../components/contenful/main";
-import WPIndexes from "../../components/wordpress/WPIndexes";
+import PageHero from "../../components/general/PageHero";
 import { GraphCatcher } from "../../data/GraphQL";
 import { CFEntryIndhold } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
+import WPIndexes from "../../components/wordpress/WPIndexes";
 
 /* CONTENTFUL VERSION START */
 export async function getServerSideProps(context: any) {
@@ -72,11 +73,8 @@ export default function InfoIndex({ content }: prop) {
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
+			<PageHero heading="Info sider" />
 			<section className="container">
-				<h1>Info pages</h1>
-				<hr />
-				<p>Bar</p>
-				<hr />
 				<div className="info-box">
 					<WPIndexes nodes={content.data.pages.nodes} parent="/infoside" />
 				</div>

@@ -1,8 +1,7 @@
 import Head from "next/head";
-import CFIndexes from "../../components/contenful/CFIndexes";
-import CFProjektComponent from "../../components/contenful/CFProjektComponent";
-import { client } from "../../components/contenful/main";
+import PageHero from "../../components/general/PageHero";
 import WPIndexes from "../../components/wordpress/WPIndexes";
+// import WPIndexes from "../../components/wordpress/WPIndexes";
 import { GraphCatcher } from "../../data/GraphQL";
 import { CFEntryNyheder, CFEntryProjekt } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
@@ -69,14 +68,11 @@ export default function NewsIndex({ content }: prop) {
 	return (
 		<>
 			<Head>
-				<title>KOMBIT APP</title>
+				<title>Nyheder</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
+			<PageHero heading={"Nyheder"} />
 			<section className="container">
-				<h1>Nyheder</h1>
-				<hr />
-				<p>Bar</p>
-				<hr />
 				<div className="news-box">
 					{content.data?.pages && (
 						<WPIndexes nodes={content.data.pages.nodes} parent="/nyheder" />

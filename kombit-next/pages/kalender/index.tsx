@@ -1,10 +1,12 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Head from "next/head";
 import { client } from "../../components/contenful/main";
+import PageHero from "../../components/general/PageHero";
 import { WPStringToTime } from "../../data/functions";
 import { GraphCatcher } from "../../data/GraphQL";
 import { CFEntryKalender } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
+import styles from "../../styles/Calendar.module.css";
 
 /* CONTENTFUL VERSION START */
 export async function getServerSideProps(context: any) {
@@ -85,8 +87,10 @@ export default function Kalender({ content }: prop) {
 			<Head>
 				<title>Kalender</title>
 			</Head>
-			<section className="container h-100">
-				<div className="kalenderGrid">
+			<PageHero heading={"Kalender"} />
+
+			<section className="container kalenderContainer  ">
+				<div className="">
 					{nodes &&
 						nodes.length > 0 &&
 						nodes.map((item, i: number) => {
@@ -94,15 +98,17 @@ export default function Kalender({ content }: prop) {
 								<a
 									key={i}
 									href={"/kalender/" + item.slug}
-									className="text-decoration-none text-dark"
+									className="text-decoration-none text-dark kalender"
 								>
-									<h3>
-										{item.datoField.dato}
-										<i className="bi-arrow-right-short"></i>
-									</h3>
-									<hr />
-									<h2>{item.title}</h2>
-									<span dangerouslySetInnerHTML={{ __html: item.excerpt }} />
+									<div className={styles.kalenderCard}>
+										<h3>
+											{item.datoField.dato}
+											<i className="bi-arrow-right-short"></i>
+										</h3>
+										<hr />
+										<h2>{item.title}</h2>
+										<span dangerouslySetInnerHTML={{ __html: item.excerpt }} />
+									</div>
 								</a>
 							);
 						})}

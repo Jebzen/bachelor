@@ -1,27 +1,35 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { WPAllPagesLimitSort, WP_Page_Node } from "../../interfaces/WPIndexes";
+import { useState } from "react";
+import WPCardOverview from "./WPCardOverview";
+import styles from "../../styles/Projekt.module.css";
+import { WP_Page_Node } from "../../interfaces/WPIndexes";
 
 interface prop {
-	projects: WP_Page_Node[];
+	item: WP_Page_Node;
 }
 
-export default function WPProjectBlobs({ projects }: prop) {
-	//console.log(projects);
+export default function WPProjectBlobs({ item }: prop) {
+	//console.log(item);
+	const [showTag, setShowTag] = useState(true);
+	const [showTagHover, setShowTagHover] = useState(true);
 
-	//Contentful npm package søgning for ting
-	//Contentful npm package documentToReactComponents
+	console.log(item);
 
 	return (
-		<div className="row">
-			{projects &&
-				projects.map((item, i: number) => {
-					return (
-						<div key={i} className="col-12">
-							<h3>{item.title}</h3>
-							<span dangerouslySetInnerHTML={{ __html: item.excerpt }}></span>
-						</div>
-					);
-				})}
-		</div>
+		<>
+			{item.tags.nodes.map((tag: any) => {
+				console.log(tag);
+				return (
+					<div className={styles.cardBody}>
+						<WPCardOverview
+							projekt={item}
+							tag={tag}
+							showTag={showTag}
+							showTagHover={showTagHover}
+						/>
+					</div>
+				);
+			})}
+		</>
 	);
 }

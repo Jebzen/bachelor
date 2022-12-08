@@ -9,7 +9,7 @@ import {
 
 export default function ShareButtons() {
 	return (
-		<div className="shareButtons">
+		<div className="shareButtons some-icons">
 			<FacebookShareButton
 				quote="Se denne seje artikel!"
 				hashtag="Kombit"
