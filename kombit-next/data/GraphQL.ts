@@ -18,8 +18,8 @@ export class GraphCatcher {
 					query: `
             {
               page(id: "${slug}", idType: URI) {
-                title
                 pageId
+                title
                 excerpt
                 tags {
                   nodes {
@@ -41,8 +41,37 @@ export class GraphCatcher {
                     slug
                   }
                 }
-                content
                 modified
+                datoField {
+                  dato
+                }
+                kombitFelter {
+                  dokument {
+                    title
+                    sourceUrl
+                  }
+                  kontaktPerson {
+                    title
+                    mediaItemUrl
+                    description
+                    caption
+                    altText
+                  }
+                  projekt {
+                    ... on Page {
+                      title
+                      excerpt
+                      slug
+                      featuredImage{
+                        node{
+                          mediaItemUrl
+                          altText
+                        }
+                      }
+                    }
+                  }
+                }
+                content
               }
           }`,
 				}),
@@ -75,6 +104,9 @@ export class GraphCatcher {
                     name
                     slug
                   }
+                }
+                datoField {
+                  dato
                 }
                 featuredImage {
                   node {

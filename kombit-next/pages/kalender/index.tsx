@@ -64,20 +64,6 @@ export default function Kalender({ content }: prop) {
 export async function getServerSideProps(context: any) {
 	const response = await GraphCatcher.getAllPages("kalender");
 
-	if (response?.data?.pages) {
-		response.data.pages.nodes = await Promise.all(
-			response.data.pages.nodes.map(async (item) => {
-				const res = await (
-					await fetch(
-						`https://signepetersen.dk/wp-json/wp/v2/pages/${item.pageId}`
-					)
-				).json();
-				item["datetime"] = res.acf.dato;
-				return item;
-			})
-		);
-	}
-
 	return {
 		props: {
 			content: response,
@@ -104,10 +90,6 @@ export default function Kalender({ content }: prop) {
 					{nodes &&
 						nodes.length > 0 &&
 						nodes.map((item, i: number) => {
-							const date =
-								item.datetime !== undefined
-									? WPStringToTime(item.datetime)
-									: "";
 							return (
 								<a
 									key={i}
@@ -115,7 +97,7 @@ export default function Kalender({ content }: prop) {
 									className="text-decoration-none text-dark"
 								>
 									<h3>
-										{date}
+										{item.datoField.dato}
 										<i className="bi-arrow-right-short"></i>
 									</h3>
 									<hr />

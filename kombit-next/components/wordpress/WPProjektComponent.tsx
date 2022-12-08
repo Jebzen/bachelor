@@ -8,7 +8,7 @@ interface prop {
 
 export default function WPProjektComponent({ projekt }: prop) {
 	if (!projekt) return <></>;
-	const { title, content, featuredImage, projekter } = projekt;
+	const { title, content, featuredImage, kombitFelter } = projekt;
 
 	return (
 		<>
@@ -34,18 +34,17 @@ export default function WPProjektComponent({ projekt }: prop) {
 						/>
 					</div>
 				</div>
-				{projekter && projekter.length > 0 && (
+				{kombitFelter.projekt && kombitFelter.projekt.length > 0 && (
 					<div className={styles.cardContainer}>
-						{projekter.map((projekt, i: number) => {
-							if (!projekt.data?.page) return;
+						{kombitFelter.projekt.map((projekt, i: number) => {
 							return (
 								<div className={styles.card} key={i}>
 									<div className={styles.cardHeader}>
-										<h4>{projekt.data.page.title}</h4>
+										<h4>{projekt.title}</h4>
 									</div>
 									<span
 										dangerouslySetInnerHTML={{
-											__html: projekt.data.page.excerpt,
+											__html: projekt.excerpt,
 										}}
 									/>
 								</div>
