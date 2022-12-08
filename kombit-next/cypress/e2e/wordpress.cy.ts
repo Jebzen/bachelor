@@ -43,21 +43,22 @@ describe("Testing pages", () => {
 			.first()
 			.then((element) => {
 				cy.wrap(element)
-					.find("h2")
-					.then((h2) => {
-						title = h2.text();
+					.find("h3")
+					.then((h3) => {
+						title = h3.text();
 
-						cy.wrap(element).find("small.fst-italic").should("exist");
-						cy.wrap(element).find("p").should("exist");
+						cy.wrap(element).find("p.small").should("exist");
 
 						cy.wrap(element).click();
 						cy.wait(1000);
 
 						cy.get("h1").should("contain", title);
 
-						cy.get(".shareButtons").children().should("have.length", 3);
+						cy.get(".shareButtons.some-icons")
+							.children()
+							.should("have.length", 3);
 
-						cy.get(".SoMeFeed")
+						cy.get(".WPFeedHeader")
 							.find(".col-4")
 							.each((element, index, list) => {
 								if (index < 3) {
@@ -79,12 +80,12 @@ describe("Testing pages", () => {
 			.first()
 			.then((element) => {
 				cy.wrap(element)
-					.find("h2")
-					.then((h2) => {
-						title = h2.text();
+					.find("h3")
+					.then((h3) => {
+						title = h3.text();
 
-						cy.wrap(element).find("small.fst-italic").should("exist");
-						cy.wrap(element).find("p").should("exist");
+						cy.wrap(element).find("p.small").should("exist");
+						cy.wrap(element).find("span p").should("exist");
 
 						cy.wrap(element).click();
 						cy.wait(1000);
@@ -92,29 +93,20 @@ describe("Testing pages", () => {
 
 						cy.get("h1").should("contain", title);
 
-						cy.get(".shareButtons").children().should("have.length", 3);
+						//cy.get(".shareButtons").children().should("have.length", 3);
 
-						cy.get(".projekt-area")
-							.find(".col-2")
+						cy.get(".container.news div.row.land")
+							.find(".col-2.landing")
 							.each((element, index, list) => {
-								let subtitle = "";
 								cy.wrap(element).should(
 									"have.attr",
 									"data-id",
 									index.toString()
 								);
 
-								cy.wrap(element)
-									.find("p")
-									.then((p) => {
-										subtitle = p.text();
-
-										cy.wrap(element).click();
-
-										cy.get(".open-projekt-box")
-											.find("h3")
-											.should("contain", subtitle);
-									});
+								cy.wrap(element).find("p.text-center").should("exist");
+								cy.wrap(element).find("img").should("exist");
+								cy.wrap(element).find("a").should("exist");
 							});
 
 						cy.get(".forretningschef").should("exist");
@@ -149,8 +141,7 @@ describe("Testing pages", () => {
 										cy.wrap(href).should("include", "/nyheder/");
 										cy.request(href).its("status").should("eq", 200);
 									});
-								cy.wrap(element).find("p");
-								cy.wrap(element).find("p.text-end");
+								cy.wrap(element).find("p").should("exist");
 							});
 
 						cy.get(".WPFeedHeader .newsHeader").first().next().click();
@@ -165,8 +156,7 @@ describe("Testing pages", () => {
 										cy.wrap(href).should("include", "/projekt/");
 										cy.request(href).its("status").should("eq", 200);
 									});
-								cy.wrap(element).find("p");
-								cy.wrap(element).find("p.text-end");
+								cy.wrap(element).find("p").should("exist");
 							});
 
 						cy.get(".WPFeedHeader .newsHeader").first().next().next().click();
@@ -181,8 +171,7 @@ describe("Testing pages", () => {
 										cy.wrap(href).should("include", "/infoside/");
 										cy.request(href).its("status").should("eq", 200);
 									});
-								cy.wrap(element).find("p");
-								cy.wrap(element).find("p.text-end");
+								cy.wrap(element).find("p").should("exist");
 							});
 					});
 			});
@@ -194,6 +183,14 @@ describe("Testing pages", () => {
 		cy.visit("/projekt");
 
 		cy.wait(1000);
+
+		cy.get(".tabsContainer")
+			.children()
+			.each((element) => {
+				cy.wrap(element).click().should("have.class", "activebox");
+			});
+
+		cy.get(".tabsContainer").children().first().click();
 
 		cy.get(".Projekt_CardOverviewContaier__AflId .Projekt_cardBody__ByE6l")
 			.first()
@@ -215,7 +212,7 @@ describe("Testing pages", () => {
 
 						cy.get(".Projekt_columns__XcPJT")
 							.should("exist")
-							.find(".shareButtons")
+							.find(".shareButtons.some-icons")
 							.children()
 							.should("have.length", 3);
 					});
@@ -229,7 +226,7 @@ describe("Testing pages", () => {
 
 		cy.wait(1000);
 
-		cy.get(".kalenderGrid a")
+		cy.get(".container .kalender")
 			.first()
 			.then((element) => {
 				cy.wrap(element)
@@ -245,6 +242,7 @@ describe("Testing pages", () => {
 
 						cy.get("h1").should("contain", title);
 
+						cy.get("h2.Calendar_calendarNumber__yqKqb").should("exist");
 						cy.get("div.kalender-main").should("exist");
 					});
 			});
@@ -261,11 +259,11 @@ describe("Testing pages", () => {
 			.first()
 			.then((element) => {
 				cy.wrap(element)
-					.find("h2")
-					.then((h2) => {
-						title = h2.text();
+					.find("h3")
+					.then((h3) => {
+						title = h3.text();
 
-						cy.wrap(element).find("p").should("exist");
+						cy.wrap(element).find("p.small").should("exist");
 
 						cy.wrap(element).click();
 						cy.wait(1000);
@@ -274,6 +272,7 @@ describe("Testing pages", () => {
 						cy.get("h1").should("contain", title);
 
 						cy.get(".shareButtons").children().should("have.length", 3);
+						cy.get(".beskrivelse-news").should("exist");
 					});
 			});
 	});

@@ -84,7 +84,7 @@ export default function WPLandingFeed() {
 										<h3>{item.title}</h3>
 									</a>
 									<span dangerouslySetInnerHTML={{ __html: item.excerpt }} />
-									<p className="col-4 content-column">{item.date}</p>
+									<p className="text-end">{item.date}</p>
 								</div>
 							);
 						})}

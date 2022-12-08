@@ -63,7 +63,7 @@ export default function WPLandingComponent({ content }: prop) {
 					{content.kombitFelter.kontaktPerson && (
 						<>
 							<div className="col-3 projektLanding">
-								<div className="d-flex justify-end flex-column">
+								<div className="d-flex justify-end flex-column forretningschef">
 									<span
 										className="text-end fs-4"
 										dangerouslySetInnerHTML={{
