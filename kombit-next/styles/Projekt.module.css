@@ -70,7 +70,7 @@
 }
 
 .cardNumber {
-	font-size: 65px;
+	font-size: 60px;
 	color: #c5252f;
 }
 
@@ -120,10 +120,6 @@
 	min-height: 500px;
 	overflow: hidden;
 	width: 100%;
-}
-
-.card {
-	margin: 20px 0px;
 }
 
 .card {
@@ -236,7 +232,7 @@
 	padding: 20px;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -244,16 +240,6 @@
 	margin: 0% 10%;
 	margin-top: 90px;
 	margin-bottom: 90px;
-}
-
-.columnsImgLink {
-	border: 3px solid #c5252f;
-}
-
-.flex {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
 }
 
 .columnsImgLink {

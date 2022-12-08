@@ -79,7 +79,7 @@ App.getInitialProps = async (context: any) => {
 		| pageLink[]
 		| null
 		| { name: string; slug: string }[]
-		| undefined = null;
+		| undefined;
 	let footerLinks: pageLink[] | null | undefined = null;
 
 	//Wordpress Site!

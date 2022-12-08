@@ -39,22 +39,21 @@ export default function CFKalenderComponent({ content }: prop) {
 	};
 	return (
 		<>
-					<PageHero heading={content.fields.title} abstrakt={documentToReactComponents(content.fields.abstrakt, renderOption)}/>
+			<PageHero heading={content.fields.title} abstrakt={documentToReactComponents(content.fields.abstrakt, renderOption)}/>
+			<section className="container news">
+				<div className="d-flex flex-column">
+					<h2 className={styles.calendarNumber} >
+					{content.fields.dato}
 
-		<section className="container news">
-			<div className="d-flex flex-column">
-				<h2 className={styles.calendarNumber} >
-				{content.fields.dato}
-
-				</h2>
-				<small className="fst-italic text-center">
-					
-				</small>
-				<div className={"kalender-main"}>
-					{documentToReactComponents(content.fields.beskrivelse, renderOption)}
+					</h2>
+					<small className="fst-italic text-center">
+						
+					</small>
+					<div className={"kalender-main"}>
+						{documentToReactComponents(content.fields.beskrivelse, renderOption)}
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 		</>
 
 	);
