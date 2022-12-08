@@ -15,6 +15,7 @@ import { CFEntryProjekt } from "../interfaces/CFentry";
 import { useEffect, useState } from "react";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getStaticProps() {
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
 
@@ -78,7 +79,6 @@ export default function Home({ banners, news, projects }: any) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 interface Banner {
 	altText: string;
 	caption: string;
