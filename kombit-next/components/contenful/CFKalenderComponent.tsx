@@ -1,6 +1,10 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { CFEntryKalender } from "../../interfaces/CFentry";
+import PageHero from "../general/PageHero";
 import ShareButtons from "../general/ShareButtons";
+import styles from "../../styles/Calendar.module.css";
+
+
 
 interface prop {
 	content: CFEntryKalender;
@@ -23,6 +27,7 @@ export default function CFKalenderComponent({ content }: prop) {
 				{
 					return (
 						<>
+							
 							<span className="fs-3">{node.data.target.fields.title}</span>
 							<br />
 							<span>{node.data.target.fields.text}</span>
@@ -33,18 +38,24 @@ export default function CFKalenderComponent({ content }: prop) {
 		},
 	};
 	return (
-		<section className="container">
+		<>
+					<PageHero heading={content.fields.title} abstrakt={documentToReactComponents(content.fields.abstrakt, renderOption)}/>
+
+		<section className="container news">
 			<div className="d-flex flex-column">
-				<h1>
-					{content.fields.title} - {content.fields.dato}
-				</h1>
-				<small>
-					{documentToReactComponents(content.fields.abstrakt, renderOption)}
+				<h2 className={styles.calendarNumber} >
+				{content.fields.dato}
+
+				</h2>
+				<small className="fst-italic text-center">
+					
 				</small>
-				<div className="kalender-main">
+				<div className={"kalender-main"}>
 					{documentToReactComponents(content.fields.beskrivelse, renderOption)}
 				</div>
 			</div>
 		</section>
+		</>
+
 	);
 }

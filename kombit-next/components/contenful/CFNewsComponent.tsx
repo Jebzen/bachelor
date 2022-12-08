@@ -1,10 +1,18 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import ShareButtons from "../general/ShareButtons";
+import CFNewsCard from "./CFNewsCard";
 
 export default function CFNewsComponent({ content }: any) {
+	console.log(content)
 	return (
-		<section className="container">
-			<h1>{content.fields.title}</h1>
+		<>
+		<hr/>
+		<section className="container news">
+			<p className="small-grey">Udgivet d. {content.sys.createdAt.substring(0, 10)}</p>
+			<h1 className="news-header">{content.fields.title}</h1>
+			<p className="fst-italic text-center">
+				<small>{content.fields.abstrakt}</small>
+			</p>
 			<div className="text-center">
 				<img
 					src={content.fields.banner.fields.file.url}
@@ -12,23 +20,26 @@ export default function CFNewsComponent({ content }: any) {
 					className="img-fluid"
 				/>
 			</div>
-			{content.fields.projekt && (
-				<p>
-					<span>Relatered til: </span>
-					<span>
-						<a href={"/projekter/" + content.fields.projekt.fields.slug}>
-							{content.fields.projekt.fields.title}
-						</a>
-					</span>
-				</p>
-			)}
-			<div className="d-flex">
-				<ShareButtons />
-			</div>
-			<p className="fst-italic">
-				<small>{content.fields.abstrakt}</small>
-			</p>
-			{documentToReactComponents(content.fields.indhold)}
+			
+		
+		<div className="beskrivelse-news">		
+				{documentToReactComponents(content.fields.indhold)}
+				<div className="some"><p>Del artiklen:</p><ShareButtons /></div>
+				
+
+
+</div>
+
 		</section>
+		<div className="news-header">
+	{content.fields.projekt && (
+		<>
+				<h3 className="text-center news-h3">Måske du også kan lide</h3>
+				<CFNewsCard content={content}/>
+				</>)}
+
+</div>
+
+		</>
 	);
 }

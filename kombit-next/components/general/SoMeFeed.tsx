@@ -53,7 +53,7 @@ export default function SoMeFeed({ version }: prop) {
 				}
 				onClick={() => setSlide("presse")}
 			>
-				Presse
+				<h4>Presse</h4>
 			</div>
 			<div
 				className={
@@ -63,7 +63,7 @@ export default function SoMeFeed({ version }: prop) {
 				}
 				onClick={() => setSlide("kontakt")}
 			>
-				Kontakt
+				<h4>Kontakt</h4>
 			</div>
 			<div className="col-12">
 				<div className="row">

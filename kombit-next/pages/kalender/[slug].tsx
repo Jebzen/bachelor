@@ -8,46 +8,47 @@ import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
 export async function getServerSideProps(context: any) {
-	const { slug } = context.query;
-	const response = await client.getEntries({
-		content_type: "kalender",
-	});
+  const { slug } = context.query;
+  const response = await client.getEntries({
+    content_type: "kalender",
+  });
 
-	const slugged = response.items.find((item: any) => {
-		return item?.fields?.slug == slug;
-	});
+  const slugged = response.items.find((item: any) => {
+    return item?.fields?.slug == slug;
+  });
 
-	if (slugged === undefined) {
-		return {
-			notFound: true,
-		};
-	}
+  if (slugged === undefined) {
+    return {
+      notFound: true,
+    };
+  }
 
-	return {
-		props: {
-			content: slugged,
-		},
-	};
+  return {
+    props: {
+      content: slugged,
+    },
+  };
 }
 
 interface prop {
-	content: CFEntryKalender;
+  content: CFEntryKalender;
 }
 
 export default function KalenderPage({ content }: prop) {
-	//console.log(content);
+  //console.log(content);
 
-	return (
-		<>
-			<Head>
-				<title>{content.fields.title}</title>
-				{content.fields?.abstrakt && (
-					<meta name="description" content={content.fields?.abstrakt} />
-				)}
-			</Head>
-			<CFKalenderComponent content={content} />
-		</>
-	);
+  return (
+    <>
+      <Head>
+        <title>{content.fields.title}</title>
+
+        {content.fields?.abstrakt && (
+          <meta name="description" content={content.fields?.abstrakt} />
+        )}
+      </Head>
+      <CFKalenderComponent content={content} />
+    </>
+  );
 }
 /* CONTENTFUL VERSION END */
 

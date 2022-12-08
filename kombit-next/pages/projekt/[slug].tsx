@@ -1,51 +1,50 @@
 import Head from "next/head";
 import CFProjektComponent from "../../components/contenful/CFProjektComponent";
 import { client } from "../../components/contenful/main";
-import WPProjektComponent from "../../components/wordpress/WPProjektComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { CFEntryProjekt } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
 export async function getServerSideProps(context: any) {
-	const { slug } = context.query;
-	const response = await client.getEntries({
-		content_type: "projekt",
-	});
+  const { slug } = context.query;
+  const response = await client.getEntries({
+    content_type: "projekt",
+  });
 
-	const slugged = response.items.find((item: any) => {
-		//console.log(item);
-		return item?.fields?.slug == slug;
-	});
+  const slugged = response.items.find((item: any) => {
+    console.log(item);
+    return item?.fields?.slug == slug;
+  });
 
-	if (slugged === undefined) {
-		return {
-			notFound: true,
-		};
-	}
+  if (slugged === undefined) {
+    return {
+      notFound: true,
+    };
+  }
 
-	return {
-		props: {
-			content: slugged,
-		},
-	};
+  return {
+    props: {
+      content: slugged,
+    },
+  };
 }
 
 interface prop {
-	content: CFEntryProjekt;
+  content: CFEntryProjekt;
 }
 
 export default function ProjektPage({ content }: prop) {
-	//console.log(content);
-	return (
-		<>
-			<Head>
-				<title>{content.fields.title}</title>
-				<meta name="description" content={content.fields.abstrakt} />
-			</Head>
-			<CFProjektComponent projekt={content} />
-		</>
-	);
+  console.log(content);
+  return (
+    <>
+      <Head>
+        <title>{content.fields.title}</title>
+        <meta name="description" content={content.fields.abstrakt} />
+      </Head>
+      <CFProjektComponent projekt={content} />
+    </>
+  );
 }
 /* CONTENTFUL VERSION END */
 

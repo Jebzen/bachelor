@@ -1,7 +1,6 @@
 import Head from "next/head";
 import CFIndexes from "../../components/contenful/CFIndexes";
 import { client } from "../../components/contenful/main";
-import { GraphCatcher } from "../../data/GraphQL";
 import { CFEntryLanding } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 import WPIndexes from "../../components/wordpress/WPIndexes";
@@ -33,11 +32,9 @@ export default function LandingIndex({ content }: prop) {
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
+			<PageHero heading={"Landing pages"}/>
 			<section className="container">
-				<h1>Landing pages</h1>
-				<hr />
-				<p>Bar</p>
-				<hr />
+				
 				<div className="landing-box">
 					<CFIndexes nodes={content} parent={"/landingpage"} />
 				</div>

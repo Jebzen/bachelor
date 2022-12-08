@@ -130,6 +130,8 @@
 
 @import "variables_colors";
 
+@import "variables_colors";
+
 html,
 body {
 	padding: 0;
@@ -148,7 +150,11 @@ a {
 }
 
 img.logo {
-	width: 150px;
+	width: 130px;
+}
+
+input#flexSwitchCheckDefault {
+	cursor: pointer;
 }
 
 img.logo {
@@ -189,7 +195,32 @@ div#breadCrumbs a {
 	padding: 0 5px !important;
 }
 
+svg.svg-inline--fa.fa-chevron-right {
+	height: 0.9em;
+}
+
+div#breadCrumbs {
+	display: flex;
+	align-content: center;
+	align-items: center;
+}
+
+div#breadCrumbs a {
+	display: flex;
+	align-items: center;
+	align-content: center;
+}
+
+.breadcrumb-arrow {
+	padding: 0 5px !important;
+}
+
 .arrow {
+	filter: invert(84%) sepia(9%) saturate(1100%) hue-rotate(165deg)
+		brightness(88%) contrast(83%);
+	position: absolute;
+	right: 5rem;
+	margin-top: 9%;
 	filter: invert(84%) sepia(9%) saturate(1100%) hue-rotate(165deg)
 		brightness(88%) contrast(83%);
 	position: absolute;
@@ -206,9 +237,18 @@ div#breadCrumbs a {
 	display: flex;
 	padding-left: 0;
 	flex-direction: row;
+	display: flex;
+	padding-left: 0;
+	flex-direction: row;
 }
 
 .tabLink {
+	margin: 0 auto;
+	padding: 5px 10px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1rem;
+	line-height: 1.75rem;
 	margin: 0 auto;
 	padding: 5px 10px;
 	cursor: pointer;
@@ -222,6 +262,20 @@ div#breadCrumbs a {
 }
 
 @media (min-width: 576px) {
+	img.logo {
+		width: 160px;
+	}
+
+	.tabsContainer {
+		display: flex;
+		flex-wrap: wrap;
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style: none;
+		width: 85%;
+		margin: 0 auto;
+		flex-direction: row;
+	}
 	img.logo {
 		width: 160px;
 	}

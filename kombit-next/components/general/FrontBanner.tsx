@@ -2,7 +2,7 @@ import { Carousel } from "react-bootstrap";
 import { BannerImage, BannerVideo } from "../../interfaces/banner";
 
 interface prop {
-	banners: BannerImage[] | BannerVideo[];
+  banners: BannerImage[] | BannerVideo[];
 }
 
 export default function FrontBanner({ banners }: prop) {

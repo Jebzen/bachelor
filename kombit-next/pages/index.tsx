@@ -18,11 +18,11 @@ import { useEffect, useState } from "react";
 export async function getStaticProps() {
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
 
-	//Hent projekter
-	const projects = await client.getEntries({
-		content_type: "projekt",
-		limit: 3,
-	});
+  //Hent projekter
+  const projects = await client.getEntries({
+    content_type: "projekt",
+    limit: 3,
+  });
 
 	//Hent nyheder
 	const news = await client.getEntries({
@@ -40,19 +40,19 @@ export async function getStaticProps() {
 		});
 	}
 
-	return {
-		props: {
-			banners: response.fields.banners.map((banner: any) => {
-				return {
-					media: banner.fields.bannerBillede.fields.file.url,
-					type: "Image",
-					title: banner.fields.cta,
-				} as BannerImage;
-			}) as BannerImage[],
-			news: news,
-			projects: projects,
-		},
-	};
+  return {
+    props: {
+      banners: response.fields.banners.map((banner: any) => {
+        return {
+          media: banner.fields.bannerBillede.fields.file.url,
+          type: "Image",
+          title: banner.fields.cta,
+        } as BannerImage;
+      }) as BannerImage[],
+      news: news,
+      projects: projects,
+    },
+  };
 }
 
 export default function Home({ banners, news, projects }: any) {
@@ -210,7 +210,7 @@ export default function Home({ json }: prop) {
 						return <WPProjectBlobs item={item} />;
 					})}
 			</div>
-			
+
 			<div className={styles.container}>
 				<WPLandingFeed />
 			</div>

@@ -24,13 +24,7 @@
 		}
 	}
 
-	.carousel-item {
-		.carousel-caption {
-			.bannerCaptionBox {
-				background-color: $neutral-3-2 !important;
-			}
-		}
-	}
+	
 
 	.respect-line {
 		white-space: pre-line;
@@ -48,6 +42,7 @@
 	.news-box,
 	.landing-box,
 	.info-box {
+		
 		.news-item {
 			h2 {
 				color: $neutral-3-2 !important;
@@ -59,7 +54,11 @@
 	}
 
 	header {
-		background-color: $neutral-1 !important;
+		.navbar-toggler-icon {
+			filter: invert(40%) sepia(1%) saturate(1196%) hue-rotate(319deg) brightness(96%) contrast(79%) !important;
+
+
+		}
 		.nav-link {
 			color: $neutral-2-2 !important;
 			&:hover {
@@ -92,6 +91,7 @@
 		&.active {
 			background-color: $neutral-3 !important;
 		}
+	
 	}
 	.Projekt_cardImg__oPvaE {
 		border-color: $neutral-2-2 !important;
@@ -118,3 +118,15 @@
 		}
 	}
 }
+
+// .tabs.activebox:after {
+			
+// 	background-color: $neutral-2-2 !important;
+	
+//   }
+
+// .cardContainer {
+  
+// 	background-color: $neutral-3;
+//   }
+  

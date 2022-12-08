@@ -3,6 +3,9 @@ import { Accordion } from "react-bootstrap";
 import SoMeFeed from "../general/SoMeFeed";
 import ShareButtons from "../general/ShareButtons";
 import { CFEntryIndhold } from "../../interfaces/CFentry";
+import PageHero from "../general/PageHero";
+import styles from "../../styles/Projekt.module.css";
+
 
 interface prop {
 	content: CFEntryIndhold;
@@ -15,8 +18,8 @@ export default function CFInfoComponent({ content }: prop) {
 		renderNode: {
 			"embedded-asset-block": (node: any, children: any) => {
 				return (
-					<div className="text-center">
-						<img src={node.data.target.fields.file.url} className="img-fluid" />
+					<div className="text-center mansory featuredImage">
+						<img src={node.data.target.fields.file.url} width="100%" className=" images" />
 					</div>
 				);
 			},
@@ -36,23 +39,82 @@ export default function CFInfoComponent({ content }: prop) {
 	};
 
 	return (
-		<section className="container">
+		<>
+		<PageHero heading={content.fields.title} abstrakt={content.fields.abstrakt}/>
+		<section className="container news info">
 			<div className="d-flex flex-column">
-				<h1>{content.fields.title}</h1>
-				{content.fields.media && (
+				<div className="featuredImage">{content.fields.media && (
 					<div className="text-center">
 						<img
 							src={content.fields.media.fields.file.url}
 							alt={content.fields.media.fields.title}
+							className="featuredImage-img" 
 						/>
 					</div>
-				)}
-				<small className="fst-italic">{content.fields.abstrakt}</small>
+				)}</div>
+							
 
-				<ShareButtons />
-				{documentToReactComponents(content.fields.beskrivelse, renderOption)}
-				<SoMeFeed />
-			</div>
-		</section>
+				<div className="beskrivelse-news featuredImage-img">{documentToReactComponents(content.fields.beskrivelse, renderOption)}</div>
+				</div>
+
+						</section>
+						{content.fields.sectionTo && (			<div className="sectionOne">
+			
+			<div className="table-col">{documentToReactComponents(content.fields.sectionTo, renderOption)}</div>
+
+</div>)}
+	{ content.fields.sectionTre &&(<div className={ `text-center`}>{documentToReactComponents(content.fields.sectionTre, renderOption)}
+								
+
+								</div>)}
+
+				
+				{/* {documentToReactComponents(content.fields.billedeGalleri, renderOption)} */}
+
+				<section className="container news con2">
+				{content.fields.sectionFire && (<div className="secTwo">
+<div className="colOne">{documentToReactComponents(content.fields.sectionFire)}</div>
+{documentToReactComponents(content.fields.pic1, renderOption)}
+
+
+
+</div>)}
+
+
+{ content.fields.pic2 &&(<div className="secTree">
+{documentToReactComponents(content.fields.pic2, renderOption)}
+
+<div className="colOne">{documentToReactComponents(content.fields.sectionFem)}</div>
+
+
+
+</div>)}
+
+
+
+<div className={ `text-center`}>
+								
+
+								</div>
+						
+
+		
+
+			
+				
+				</section>
+
+				{content.fields.sectionSeks &&(	<div className={styles.specialMargin + ` ` + `sectionOne`}>
+			
+			<div className="table-col">{documentToReactComponents(content.fields.sectionSeks)}</div>
+
+</div>)}
+
+			
+
+<div className={styles.container}>
+<SoMeFeed />      </div>
+
+		</>
 	);
 }
