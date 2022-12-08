@@ -5,24 +5,33 @@ import {
 	WP_Page_Single,
 } from "../../interfaces/WPIndexes";
 import ShareButtons from "../general/ShareButtons";
+import WPNewsCard from "./WPNewsCard";
 
 interface prop {
 	content: WP_Page_Single;
 }
 
 export default function WPnewsComponent({ content }: prop) {
-	//console.log(content);
+	console.log(content);
 	return (
-		<section className="container">
-			<h1>{content.title}</h1>
-			<div className="text-center">
-				<img
-					src={content.featuredImage?.node?.mediaItemUrl}
-					alt={content.featuredImage?.node?.altText}
-					className="img-fluid"
-				/>
-			</div>
-			{/*content.fields.projekt && (
+		<>
+			<hr />
+
+			<section className="container news">
+				<p className="small-grey">Udgivet d. {content.modified} </p>
+				<h1 className="news-header">{content.title}</h1>
+				<small
+					className="fst-italic text-center"
+					dangerouslySetInnerHTML={{ __html: content.excerpt }}
+				></small>
+				<div className="text-center">
+					<img
+						src={content.featuredImage?.node?.mediaItemUrl}
+						alt={content.featuredImage?.node?.altText}
+						className="img-fluid"
+					/>
+				</div>
+				{/*content.fields.projekt && (
 				<p>
 					<span>Relatered til: </span>
 					<span>
@@ -32,18 +41,22 @@ export default function WPnewsComponent({ content }: prop) {
 					</span>
 				</p>
 			)*/}
-			<div className="d-flex">
-				<ShareButtons />
+
+				<div />
+				<div className="beskrivelse-news">
+					<span dangerouslySetInnerHTML={{ __html: content.content }} />
+					<div className="some">
+						<p>Del artiklen:</p>
+						<ShareButtons />
+					</div>
+				</div>
+			</section>
+			<div className="news-header">
+				<>
+					<h3 className="text-center news-h3">Måske du også kan lide</h3>
+				</>
+				<WPNewsCard content={content} />
 			</div>
-			<small
-				className="fst-italic"
-				dangerouslySetInnerHTML={{ __html: content.excerpt }}
-			/>
-			<div
-				dangerouslySetInnerHTML={{
-					__html: content.content ? content.content : "",
-				}}
-			/>
-		</section>
+		</>
 	);
 }

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import CFLandingComponent from "../../components/contenful/CFLandingComponent";
 import { client } from "../../components/contenful/main";
-import WPLandingComponent from "../../components/wordpress/WPLandingComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { CFEntryLanding } from "../../interfaces/CFentry";
 import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
+import WPLandingComponent from "../../components/wordpress/WPLandingComponent";
 
 /* CONTENTFUL VERSION START */
 /*
@@ -71,7 +71,7 @@ interface prop {
 }
 
 export default function LandingPage({ content }: prop) {
-	//console.log(content);
+	//console.log(content.data?.page);
 	if (!content.data?.page) return <></>;
 	const { page } = content.data;
 

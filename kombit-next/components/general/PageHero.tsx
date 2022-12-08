@@ -5,6 +5,7 @@ export default function PageHero(props: any) {
 	return (
 		<div className={styles.hero}>
 			<h1 className={styles.heroHeading}>{props.heading}</h1>
+			<p>{props.abstrakt}</p>
 		</div>
 	);
 }

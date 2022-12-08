@@ -26,30 +26,32 @@ interface prop {
 	projekt: CFEntryProjekt[];
 }
 
-export default function Projekter({ projekt }: prop) {
-	//console.log(projekt);
-	//console.log(tag);
+//SKAL KIGGES PÅ NÅR CONTENTFUL
 
-	const tags: any[] = [];
-	projekt
-		.map((projekt, i: number) => {
-			return projekt.metadata.tags.map((tag: any) => {
-				return {
-					name: tag.sys.id.toUpperCase(),
-					slug: tag.sys.id,
-				};
-			});
+export default function Projekter({ content }: prop) {
+	//console.log(content);
+	const arr: any[] = [];
+	const tags = content.data.pages.nodes
+		.filter((page) => {
+			return page.tags.nodes.length > 0;
 		})
-		.flat(1)
-		.filter((item) => {
-			const isDuplicate = tags.find((tag) => {
-				return tag.slug == item.slug;
-			});
-			if (!isDuplicate) {
-				tags.push(item);
-				return true;
+		.map((page) => {
+			return {
+				name: page.tags.nodes[0].name,
+				slug: page.tags.nodes[0].slug,
+			};
+		})
+		.filter((page) => {
+			if (
+				!arr.find((arrPage) => {
+					if (arrPage && arrPage.slug == page.slug) {
+						return page.slug;
+					}
+				})
+			) {
+				arr.push(page);
+				return page;
 			}
-			return false;
 		});
 	console.log(tags);
 
@@ -64,7 +66,7 @@ export default function Projekter({ projekt }: prop) {
 						<div
 							className={
 								tab == tag.slug
-									? "tabLink active text-uppercase"
+									? "tabLink activebox text-uppercase tabs"
 									: "tabLink text-uppercase"
 							}
 							aria-current="page"
@@ -78,7 +80,7 @@ export default function Projekter({ projekt }: prop) {
 				<div
 					className={
 						tab == "other"
-							? "tabLink active text-uppercase"
+							? "tabLink activebox text-uppercase tabs"
 							: "tabLink text-uppercase"
 					}
 					aria-current="page"
@@ -137,6 +139,7 @@ export default function Projekter({ content }: prop) {
 	//console.log(projekt);
 	//console.log(tag);
 
+	const arr: any[] = [];
 	const tags = content?.data?.pages?.nodes
 		.filter((page) => {
 			return page.tags.nodes.length > 0;
@@ -146,6 +149,18 @@ export default function Projekter({ content }: prop) {
 				name: page.tags.nodes[0].name,
 				slug: page.tags.nodes[0].slug,
 			};
+		})
+		.filter((page) => {
+			if (
+				!arr.find((arrPage) => {
+					if (arrPage && arrPage.slug == page.slug) {
+						return page.slug;
+					}
+				})
+			) {
+				arr.push(page);
+				return page;
+			}
 		});
 	//console.log(tags);
 
@@ -161,7 +176,7 @@ export default function Projekter({ content }: prop) {
 							<div
 								className={
 									tab == tag.slug
-										? "tabLink active text-uppercase"
+										? "tabLink activebox text-uppercase tabs"
 										: "tabLink text-uppercase"
 								}
 								aria-current="page"
@@ -175,7 +190,7 @@ export default function Projekter({ content }: prop) {
 				<div
 					className={
 						tab == "other"
-							? "tabLink active text-uppercase"
+							? "tabLink activebox text-uppercase tabs"
 							: "tabLink text-uppercase"
 					}
 					aria-current="page"
