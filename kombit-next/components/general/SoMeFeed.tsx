@@ -2,6 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPagesLimitSort, WP_Page_Node } from "../../interfaces/WPIndexes";
 import { client } from "../contenful/main";
+import styles from "../../styles/Landing.module.css";
 
 interface prop {
 	version?: "CF" | "WP" | undefined;
@@ -72,7 +73,7 @@ export default function SoMeFeed({ version }: prop) {
 							<div className="p-2">
 								<a
 									className="twitter-timeline"
-									data-height="1000"
+									data-height="825"
 									href="https://twitter.com/Jebzen_tweet?ref_src=twsrc%5Etfw"
 								>
 									Tweets by Jebzen_tweet
@@ -92,7 +93,7 @@ export default function SoMeFeed({ version }: prop) {
 									allowFullScreen={true}
 									title="Embedded post"
 									width="504"
-									height="1000"
+									height="825"
 									frameBorder="5"
 								></iframe>
 							</div>
