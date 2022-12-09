@@ -6,7 +6,6 @@ import { CFEntryIndhold } from "../../interfaces/CFentry";
 import PageHero from "../general/PageHero";
 import styles from "../../styles/Projekt.module.css";
 
-
 interface prop {
 	content: CFEntryIndhold | any;
 }
@@ -19,7 +18,11 @@ export default function CFInfoComponent({ content }: prop) {
 			"embedded-asset-block": (node: any, children: any) => {
 				return (
 					<div className="text-center mansory featuredImage">
-						<img src={node.data.target.fields.file.url} width="100%" className=" images" />
+						<img
+							src={node.data.target.fields.file.url}
+							width="100%"
+							className=" images"
+						/>
 					</div>
 				);
 			},
@@ -40,7 +43,10 @@ export default function CFInfoComponent({ content }: prop) {
 
 	return (
 		<>
-			<PageHero heading={content.fields.title} abstrakt={content.fields.abstrakt}/>
+			<PageHero
+				heading={content.fields.title}
+				abstrakt={content.fields.abstrakt}
+			/>
 			<section className="container news info">
 				<div className="d-flex flex-column">
 					<div className="featuredImage">
@@ -49,55 +55,96 @@ export default function CFInfoComponent({ content }: prop) {
 								<img
 									src={content.fields.media.fields.file.url}
 									alt={content.fields.media.fields.title}
-									className="featuredImage-img" 
+									className="featuredImage-img"
 								/>
 							</div>
 						)}
 					</div>
 					<div className="beskrivelse-news featuredImage-img">
-						{documentToReactComponents(content.fields.beskrivelse, renderOption)}
+						{documentToReactComponents(
+							content.fields.beskrivelse,
+							renderOption
+						)}
 					</div>
 				</div>
 			</section>
-			{content.fields.sectionTo && (
+			{content.fields.sektioner &&
+				content.fields.sektioner.length > 0 &&
+				content.fields.sektioner.map((sektion: any, i: number) => {
+					if (sektion.fields.text && sektion.fields.billede) {
+						return (
+							<div className="container tb-section" key={i}>
+								<div className="secTwo">
+									<div className="colOne">
+										{documentToReactComponents(sektion.fields.text)}
+									</div>
+									<div className="text-center mansory featuredImage">
+										<img
+											src={sektion.fields.billede.fields.file.url}
+											alt={sektion.fields.billede.fields.title}
+										/>
+									</div>
+								</div>
+							</div>
+						);
+					} else {
+						return (
+							<div className="sectionOne my-5" key={i}>
+								<div className="table-col">
+									{documentToReactComponents(sektion.fields.text, renderOption)}
+								</div>
+							</div>
+						);
+					}
+				})}
+			{/*{content.fields.sectionTo && (
 				<div className="sectionOne">
 					<div className="table-col">
 						{documentToReactComponents(content.fields.sectionTo, renderOption)}
 					</div>
 				</div>
 			)}
-			{content.fields.sectionTre &&	(
+			{content.fields.overskift && (
 				<div className="text-center">
-					{documentToReactComponents(content.fields.sectionTre, renderOption)}
+					<h2>{content.fields.overskift}</h2>
 				</div>
 			)}
-			{/* {documentToReactComponents(content.fields.billedeGalleri, renderOption)} */}
 			<section className="container news con2">
-				{content.fields.sectionFire && (
+				{content.fields.sectionFire && content.fields.section1Billede && (
 					<div className="secTwo">
 						<div className="colOne">
 							{documentToReactComponents(content.fields.sectionFire)}
 						</div>
-						{documentToReactComponents(content.fields.pic1, renderOption)}
+						<div className="text-center mansory featuredImage">
+							<img
+								src={content.fields.section1Billede.fields.file.url}
+								alt={content.fields.section1Billede.fields.title}
+							/>
+						</div>
 					</div>
 				)}
-				{content.fields.pic2 &&(
+				{content.fields.section2Billede && content.fields.sectionFem && (
 					<div className="secTree">
-						{documentToReactComponents(content.fields.pic2, renderOption)}
+						<div className="text-center mansory featuredImage">
+							<img
+								src={content.fields.section2Billede.fields.file.url}
+								alt={content.fields.section2Billede.fields.title}
+							/>
+						</div>
 						<div className="colOne">
 							{documentToReactComponents(content.fields.sectionFem)}
 						</div>
 					</div>
 				)}
-				<div className={ `text-center`}></div>
+				<div className={`text-center`}></div>
 			</section>
-			{content.fields.sectionSeks &&(
+			{content.fields.sectionSeks && (
 				<div className={styles.specialMargin + ` ` + `sectionOne`}>
 					<div className="table-col">
 						{documentToReactComponents(content.fields.sectionSeks)}
 					</div>
 				</div>
-			)}
+			)}*/}
 			<div className={styles.container}>
 				<SoMeFeed />
 			</div>

@@ -757,6 +757,14 @@ section.container.news {
 	margin-top: 30px;
 	margin-bottom: 60px;
 }
+img.featuredImage-img {
+	object-fit: cover;
+	aspect-ratio: 2/1;
+}
+
+div.container.tb-section:nth-child(odd) .colOne {
+	order: 2 !important;
+}
 
 .galleri {
 	column-count: 2;
