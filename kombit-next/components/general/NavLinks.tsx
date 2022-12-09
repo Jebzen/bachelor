@@ -11,7 +11,7 @@ interface prop {
 export default function NavLinks({ pageLinks }: prop) {
 	return (
 		<>
-			<Navbar collapseOnSelect expand="lg" className="justify-content-end py-0">
+			<Navbar collapseOnSelect expand="lg" className="justify-content-end">
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 					<Nav>

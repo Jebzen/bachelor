@@ -355,7 +355,7 @@ a.readMore:hover {
 header {
 	display: flex;
 	justify-content: space-between;
-	flex-wrap: wrap; /* so they do not overlap each other if space too short */
+	//flex-wrap: wrap; /* so they do not overlap each other if space too short */
 	background-color: transparent;
 	> div,
 	> nav {
