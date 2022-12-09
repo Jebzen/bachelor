@@ -2,6 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPagesLimitSort, WP_Page_Node } from "../../interfaces/WPIndexes";
 import { client } from "../contenful/main";
+import styles from "../../styles/Landing.module.css";
 
 interface prop {
 	version?: "CF" | "WP" | undefined;
@@ -41,8 +42,7 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("soMe")}
-			>
+				onClick={() => setSlide("soMe")}>
 				<h4>Sociale medier</h4>
 			</div>
 			<div
@@ -51,8 +51,7 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("presse")}
-			>
+				onClick={() => setSlide("presse")}>
 				<h4>Presse</h4>
 			</div>
 			<div
@@ -61,8 +60,7 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("kontakt")}
-			>
+				onClick={() => setSlide("kontakt")}>
 				<h4>Kontakt</h4>
 			</div>
 			<div className="col-12">
@@ -73,16 +71,14 @@ export default function SoMeFeed({ version }: prop) {
 								<a
 									className="twitter-timeline"
 									data-height="1000"
-									href="https://twitter.com/Jebzen_tweet?ref_src=twsrc%5Etfw"
-								>
+									href="https://twitter.com/Jebzen_tweet?ref_src=twsrc%5Etfw">
 									Tweets by Jebzen_tweet
 								</a>{" "}
 								<script
 									async
 									src="https://platform.twitter.com/widgets.js"
 									charSet="utf-8"
-									defer={true}
-								></script>
+									defer={true}></script>
 							</div>
 						</div>
 						<div className="col">
@@ -93,8 +89,8 @@ export default function SoMeFeed({ version }: prop) {
 									title="Embedded post"
 									width="504"
 									height="1000"
-									frameBorder="5"
-								></iframe>
+									className={styles.responsivIframe}
+									frameBorder="5"></iframe>
 							</div>
 						</div>
 					</div>
