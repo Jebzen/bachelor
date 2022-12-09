@@ -2,6 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { GraphCatcher } from "../../data/GraphQL";
 import { WPAllPagesLimitSort, WP_Page_Node } from "../../interfaces/WPIndexes";
 import { client } from "../contenful/main";
+import styles from "../../styles/Landing.module.css";
 
 interface prop {
 	version?: "CF" | "WP" | undefined;

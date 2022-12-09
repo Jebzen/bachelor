@@ -62,10 +62,10 @@ export default function CFProjektComponent({ projekt }: any) {
 							// return ;
 							// return <ProjectCards key={item.sys.id} item={item} />;
 						})}
-						<span
+						{/* <span
 							aria-hidden="true"
 							className="carousel-control-next-icon arrow"
-						></span>
+						></span> */}
 					</div>
 				)}
 				<div className={styles.linkSection}>
