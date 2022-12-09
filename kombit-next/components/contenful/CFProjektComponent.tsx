@@ -15,7 +15,9 @@ export default function CFProjektComponent({ projekt }: any) {
 		projektleder,
 		projektlederInfo,
 	} = projekt.fields;
-	console.log(projekt);
+
+	//console.log(projektleder.fields.description);
+
 	return (
 		<>
 			<div className={styles.pageContainer}>
@@ -25,6 +27,25 @@ export default function CFProjektComponent({ projekt }: any) {
 						<h2>OM PROJEKTET</h2>
 					</div>
 				</div>
+				{projekt.metadata.tags && projekt.metadata.tags.length > 0 && (
+					<div className="container mt-3">
+						<p>
+							Dette projekt er realteret til:{" "}
+							{projekt.metadata.tags.map((tag: any, i: number) => {
+								return (
+									<>
+										<a
+											className="text-capitalize d-inline-flex mb-3 px-2 py-1 fw-semibold text-danger bg-danger bg-opacity-10 border border-danger border-opacity-10 rounded-2"
+											href="/projekt"
+										>
+											{tag.sys.id}
+										</a>
+									</>
+								);
+							})}
+						</p>
+					</div>
+				)}
 				<div className={styles.columns}>
 					<div>{documentToReactComponents(beskrivelse)}</div>
 					<div>
@@ -45,12 +66,10 @@ export default function CFProjektComponent({ projekt }: any) {
 				{cards && cards.length > 0 && (
 					<div className="cardContainer">
 						{cards.map((item: any, index: any) => {
-							console.log(index);
 							return (
 								<div className={styles.card} key={item.sys.id}>
-									<h3 className={styles.cardNumber}>{`0${index + 1} `}</h3>
 									<div className={styles.cardHeader}>
-										<h4>{item.fields.titel}</h4>
+										<h4 className="lh-base">{item.fields.titel}</h4>
 									</div>
 									{documentToReactComponents(item.fields.beskrivelse)}
 								</div>
@@ -68,28 +87,35 @@ export default function CFProjektComponent({ projekt }: any) {
 						></span> */}
 					</div>
 				)}
-				<div className={styles.linkSection}>
-					<div className={styles.flex}>
-						<div>
-							<h3 className={styles.cardNumber}>LINKS</h3>
-							{documentToReactComponents(links)}
-							{!links && "Ingen links"}
-							<></>
-						</div>
+				{(links || projektleder) && (
+					<div className={styles.linkSection}>
+						<div className={styles.flex}>
+							{links && (
+								<div>
+									<h3 className={styles.cardNumber}>LINKS</h3>
+									{documentToReactComponents(links)}
+									{!links && "Ingen links"}
+									<></>
+								</div>
+							)}
 
-						<div>
-							<h4>Projektleder</h4>
-							<img
-								alt={title}
-								src={projektleder.fields.file.url}
-								className={styles.columnsImgLink}
-								width={200}
-								height={200}
-							/>
-							{documentToReactComponents(projektlederInfo)}
+							{projektleder && (
+								<div>
+									<h4>Projektleder</h4>
+									<img
+										alt={title}
+										src={projektleder.fields.file.url}
+										className={styles.columnsImgLink}
+										width={200}
+										height={200}
+									/>
+									<h3>{projektleder.fields.title}</h3>
+									<p className="white-pre">{projektleder.fields.description}</p>
+								</div>
+							)}
 						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		</>
 	);
