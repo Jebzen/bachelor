@@ -72,6 +72,22 @@ export class GraphCatcher {
                   }
                 }
                 content
+                seo {
+                  metaDesc
+                  metaKeywords
+                  title
+                  metaRobotsNofollow
+                  metaRobotsNoindex
+                  opengraphImage {
+                    mediaItemUrl
+                  }
+                }
+                author {
+                  node {
+                    name
+                    email
+                  }
+                }
               }
           }`,
 				}),

@@ -72,14 +72,19 @@ interface prop {
 export default function KalenderPage({ content }: prop) {
 	//console.log(content);
 	if (!content.data?.page) return <></>;
+	const { page } = content.data;
 
 	return (
 		<>
 			<Head>
-				<title>{content.data.page.title}</title>
-				{content.data.page.excerpt && (
-					<meta name="description" content={content.data.page.excerpt} />
-				)}
+				<title>{page && page.seo.title}</title>
+				<meta name="description" content={page?.seo && page.seo.metaDesc} />
+				<meta name="keywords" content={page?.seo && page.seo.metaKeywords} />
+				<meta name="robots" content={page?.seo && page.seo.metaRobotsNoindex} />
+				<meta
+					name="robots"
+					content={page?.seo && page.seo.metaRobotsNofollow}
+				/>
 			</Head>
 			<WPKalenderComponent content={content} />
 		</>

@@ -75,8 +75,14 @@ export default function ProjektPage({ content }: prop) {
 	return (
 		<>
 			<Head>
-				<title>{page && page.title}</title>
-				<meta name="description" content={page?.excerpt ? page.excerpt : ""} />
+				<title>{page && page.seo.title}</title>
+				<meta name="description" content={page?.seo && page.seo.metaDesc} />
+				<meta name="keywords" content={page?.seo && page.seo.metaKeywords} />
+				<meta name="robots" content={page?.seo && page.seo.metaRobotsNoindex} />
+				<meta
+					name="robots"
+					content={page?.seo && page.seo.metaRobotsNofollow}
+				/>
 			</Head>
 			<WPProjektComponent projekt={page} />
 		</>

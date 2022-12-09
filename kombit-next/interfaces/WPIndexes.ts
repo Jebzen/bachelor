@@ -48,6 +48,22 @@ export interface WP_Page_Single {
 	datoField: {
 		dato: string;
 	};
+	seo: {
+		metaDesc: string;
+		metaKeywords: string;
+		title: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+	};
+	author: {
+		node: {
+			name: string;
+			email: string;
+		};
+	};
 }
 
 export interface WP_Page_Node {
