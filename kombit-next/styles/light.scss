@@ -2,6 +2,8 @@
 @import "variables_typografi";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+// GENEREL STYLE
+
 * {
 	margin: 0;
 	padding: 0;
@@ -38,6 +40,8 @@ footer {
 		}
 	}
 }
+
+// FORSIDE STYLE
 
 .carousel-item {
 	img {
@@ -135,20 +139,11 @@ footer {
 	font-size: 0.9em;
 }
 
-.tabs.activebox:after {
-	content: "";
-	display: block;
-	background-color: #eb052f;
-	height: 2.5px;
-}
-
 .news-box {
 	overflow: hidden;
-
 	margin-left: auto;
 	margin-right: auto;
 	display: grid;
-	// grid-auto-rows: 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 2.5rem;
 	.related {
@@ -162,12 +157,8 @@ footer {
 		height: 250px;
 	}
 	.news-item {
-		// display: flex;
-		// flex-direction: column;
-		// grid-row: span 1;
 		text-decoration: none !important;
 		color: black;
-		// padding: 0.25rem;
 		overflow: hidden;
 
 		h2 {
@@ -256,24 +247,18 @@ footer {
 			display: none;
 		}
 	}
-	.box-2 {
-		// grid-column: span 2;
-	}
 }
 
 a.readMore {
 	border: 2px solid #c5252f;
 	color: #c5252f;
 	cursor: pointer;
-	/* font-family: "Lato", sans-serif; */
 	font-size: 0.85rem;
 	font-weight: bold;
-	/* margin: 0 auto; */
 	margin-top: 15px;
 	padding: 7.5px 25px;
 	transition: all 0.5s ease;
 	z-index: 50;
-	/* text-align: center; */
 	display: flex;
 	width: fit-content;
 }
@@ -355,7 +340,6 @@ a.readMore:hover {
 header {
 	display: flex;
 	justify-content: space-between;
-	//flex-wrap: wrap; /* so they do not overlap each other if space too short */
 	background-color: transparent;
 	> div,
 	> nav {
@@ -431,7 +415,7 @@ header {
 	}
 }
 
-/* naked header */
+/* naked header and banner - frontpage */
 .flex-column {
 	z-index: 10;
 }
@@ -501,8 +485,8 @@ header {
 	}
 }
 
-// RESPONSIV - MOBILE
-@media (max-width: 500px) {
+// frontpage - MOBILE
+@media (max-width: 600px) {
 	.col-4 {
 		width: 100% !important;
 		flex: 0 0 auto;
@@ -523,7 +507,6 @@ header {
 // news
 
 .small-grey {
-	// margin-top: 60px;
 	text-align: center;
 	color: #9f9f9f;
 }
@@ -950,6 +933,22 @@ section.container.news.con2 {
 .cardNumber p span {
 	color: #000;
 	font: 40px !important;
+}
+
+// PROJECTS STYLE
+
+.tabs.activebox:after {
+	content: "";
+	display: block;
+	background-color: #eb052f;
+	height: 2.5px;
+}
+
+// KONTAKT PAGE
+
+.btn-primary {
+	background-color: #c5252f !important;
+	border-color: none !important;
 }
 
 @media (max-width: 1100px) {

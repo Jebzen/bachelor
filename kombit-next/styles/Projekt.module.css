@@ -74,30 +74,6 @@
 	color: #c5252f;
 }
 
-@media (max-width: 1100px) {
-	.cardContainer {
-		grid-template-columns: 1fr 1fr;
-	}
-}
-
-@media (max-width: 970px) {
-	.columns {
-		display: flex;
-		flex-direction: column;
-	}
-}
-
-@media (max-width: 600px) {
-	.insideHero {
-		padding: 30px 0px;
-	}
-
-	.cardContainer {
-		grid-template-columns: 1fr;
-		grid-column-gap: 30px;
-	}
-}
-
 .heroHeading {
 	text-align: center;
 	margin: 30px 0px;
@@ -202,46 +178,6 @@
 	transform: scale(1.15);
 }
 
-@media (max-width: 900px) {
-	.card {
-		margin-bottom: 60px;
-	}
-
-	.card:last-child {
-		margin: 0px;
-	}
-}
-
-@media (max-width: 600px) {
-	.card {
-		margin: 0;
-		margin-bottom: 30px;
-	}
-
-	.card:first-child {
-		margin: 0px 0px 30px 0px;
-	}
-	.card:last-child {
-		margin: 0px;
-	}
-
-	.cardText p {
-		font-size: 14px;
-	}
-	.cardImg {
-		height: 150px;
-	}
-	.cardText h3 {
-		font-size: 23px;
-	}
-	.cardBody {
-		height: auto;
-		min-height: auto;
-		padding-bottom: 30px;
-		margin-top: 30px;
-	}
-}
-
 .tagActive {
 	position: absolute;
 	background-color: #c5252f;
@@ -278,6 +214,35 @@
 	margin-top: 90px;
 }
 
+/* BIG TABLET */
+
+@media (max-width: 1100px) {
+	.cardContainer {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+	.card {
+		margin-bottom: 60px;
+	}
+
+	.card:last-child {
+		margin: 0px;
+	}
+}
+
+@media (max-width: 970px) {
+	.columns {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+/* MOBILE */
+
 @media (max-width: 600px) {
 	.flex {
 		flex-direction: column;
@@ -287,5 +252,41 @@
 
 	.flex div:first-child {
 		margin-bottom: 30px;
+	}
+	.card {
+		margin: 0;
+		margin-bottom: 30px;
+	}
+
+	.card:first-child {
+		margin: 0px 0px 30px 0px;
+	}
+	.card:last-child {
+		margin: 0px;
+	}
+
+	.cardText p {
+		font-size: 14px;
+	}
+	.cardImg {
+		height: 150px;
+	}
+	.cardText h3 {
+		font-size: 23px;
+	}
+	.cardBody {
+		height: auto;
+		min-height: auto;
+		padding-bottom: 30px;
+		margin-top: 30px;
+	}
+
+	.insideHero {
+		padding: 30px 0px;
+	}
+
+	.cardContainer {
+		grid-template-columns: 1fr;
+		grid-column-gap: 30px;
 	}
 }
