@@ -3,12 +3,14 @@ import ShareButtons from "../general/ShareButtons";
 import CFNewsCard from "./CFNewsCard";
 
 export default function CFNewsComponent({ content }: any) {
-	console.log(content)
+	console.log(content);
 	return (
 		<>
-			<hr/>
+			<hr />
 			<section className="container news">
-				<p className="small-grey">Udgivet d. {content.sys.createdAt.substring(0, 10)}</p>
+				<p className="small-grey">
+					Udgivet d. {content.sys.createdAt.substring(0, 10)}
+				</p>
 				<h1 className="news-header">{content.fields.title}</h1>
 				<p className="fst-italic text-center">
 					<small>{content.fields.abstrakt}</small>
@@ -20,7 +22,7 @@ export default function CFNewsComponent({ content }: any) {
 						className="img-fluid"
 					/>
 				</div>
-				<div className="beskrivelse-news">		
+				<div className="beskrivelse-news">
 					{documentToReactComponents(content.fields.indhold)}
 					<div className="some">
 						<p>Del artiklen:</p>
@@ -28,13 +30,13 @@ export default function CFNewsComponent({ content }: any) {
 					</div>
 				</div>
 			</section>
-			<div className="news-header">
+			<div className="more-news">
 				{content.fields.projekt && (
 					<>
 						<h3 className="text-center news-h3">Måske du også kan lide</h3>
-						<CFNewsCard content={content}/>
+						<CFNewsCard content={content} />
 					</>
-					)}
+				)}
 			</div>
 		</>
 	);

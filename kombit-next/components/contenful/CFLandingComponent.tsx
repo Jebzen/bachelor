@@ -34,8 +34,7 @@ export default function CFLandingComponent({ content }: prop) {
 									key={i}
 									data-id={i}
 									className="col-2 landing"
-									onClick={changeSlide}
-								>
+									onClick={changeSlide}>
 									<img
 										src={side.fields.featuredImage.fields.file.url}
 										className={styles.landingImg}
@@ -47,8 +46,7 @@ export default function CFLandingComponent({ content }: prop) {
 										</p>
 										<a
 											className={styles.readMore}
-											href={"/projekt/" + side.fields.slug}
-										>
+											href={"/projekt/" + side.fields.slug}>
 											Læs mere
 										</a>
 									</div>
@@ -61,8 +59,7 @@ export default function CFLandingComponent({ content }: prop) {
 								<div>{slide.fields.abstrakt}</div>
 								<a
 									href={"projekter/" + slide.fields.slug}
-									className="d-flex justify-content-end"
-								>
+									className="d-flex justify-content-end">
 									<p className="text-end">Læs mere</p>
 								</a>
 							</div>

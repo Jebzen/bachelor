@@ -33,7 +33,7 @@ export default function NewsIndex({ content }: prop) {
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<PageHero heading={"Nyheder"} />
-			<section className="container">
+			<section className="container news">
 				<div className="news-box">
 					<CFIndexes nodes={content} parent="/nyheder" />
 				</div>
