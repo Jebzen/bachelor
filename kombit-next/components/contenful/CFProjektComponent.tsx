@@ -4,6 +4,7 @@ import ShareButtons from "../general/ShareButtons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import React from "react";
+import PageHero from "../general/PageHero";
 
 
 export default function CFProjektComponent({ projekt }: any) {
@@ -11,7 +12,6 @@ export default function CFProjektComponent({ projekt }: any) {
 	console.log(projekt);
 	return (
 		<>
-			<div className={styles.pageContainer}>
 				<div className={styles.hero}>
 					<div className={styles.insideHero}>
 						<h1 className={styles.single}>{title}</h1>
