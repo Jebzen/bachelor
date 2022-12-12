@@ -70,7 +70,7 @@ export default function NewsIndex({ content }: prop) {
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<PageHero heading={"Nyheder"} />
-			<section className="container">
+			<section className="container section-container">
 				<div className="news-box">
 					{content.data?.pages && (
 						<WPIndexes nodes={content.data.pages.nodes} parent="/nyheder" />

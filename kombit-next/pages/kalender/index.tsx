@@ -89,7 +89,7 @@ export default function Kalender({ content }: prop) {
 			</Head>
 			<PageHero heading={"Kalender"} />
 
-			<section className="container kalenderContainer  ">
+			<section className="container section-container  ">
 				<div className="">
 					{nodes &&
 						nodes.length > 0 &&
@@ -98,8 +98,7 @@ export default function Kalender({ content }: prop) {
 								<a
 									key={i}
 									href={"/kalender/" + item.slug}
-									className="text-decoration-none text-dark kalender"
-								>
+									className="text-decoration-none text-dark kalender">
 									<div className={styles.kalenderCard}>
 										<h3>
 											{item.datoField.dato}

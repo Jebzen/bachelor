@@ -72,7 +72,7 @@ export default function InfoIndex({ content }: prop) {
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<PageHero heading="Info sider" />
-			<section className="container">
+			<section className="container section-container">
 				<div className="info-box">
 					<WPIndexes nodes={content.data.pages.nodes} parent="/infoside" />
 				</div>
