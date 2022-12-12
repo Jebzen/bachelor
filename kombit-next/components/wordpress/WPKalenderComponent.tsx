@@ -18,7 +18,7 @@ export default function WPKalenderComponent({ content }: prop) {
 				abstrakt={<span dangerouslySetInnerHTML={{ __html: page.excerpt }} />}
 			/>
 
-			<section className="container news">
+			<section className="container section-container">
 				<div className="d-flex flex-column">
 					<h2 className={styles.calendarNumber}>{page.datoField.dato}</h2>
 					<div className={"kalender-main"}>
