@@ -14,6 +14,10 @@ body > * {
 	background-color: $neutral-1 !important;
 }
 
+h5 {
+	margin: 0;
+}
+
 a {
 	color: $red-1 !important;
 	&:focus,
