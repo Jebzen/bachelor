@@ -163,57 +163,57 @@ export default function Projekter({ content }: prop) {
 	const [tab, setTab] = useState(tags ? tags[0].slug : "");
 
 	return (
-		<div>
+		<>
 			<PageHero heading={"Projekt overblik"} />
-			<div className="tabsContainer">
-				{tags &&
-					tags.map((tag, i) => {
-						return (
-							<div
-								className={
-									tab == tag.slug
-										? "tabLink activebox text-uppercase tabs"
-										: "tabLink text-uppercase"
-								}
-								aria-current="page"
-								onClick={() => setTab(tag.slug)}
-								key={i}
-							>
-								{tag.name}
-							</div>
-						);
-					})}
-				<div
-					className={
-						tab == "other"
-							? "tabLink activebox text-uppercase tabs"
-							: "tabLink text-uppercase"
-					}
-					aria-current="page"
-					onClick={() => setTab("other")}
-				>
-					Ukategoriseret
-				</div>
-			</div>
-			<div className={styles.CardOverviewContaier}>
-				{content?.data?.pages &&
-					content.data.pages.nodes.map((node, i: number) => {
-						if (node.tags.nodes[0]?.slug == tab) {
+			<section className="container section-container">
+				<div className="tabsContainer">
+					{tags &&
+						tags.map((tag, i) => {
 							return (
-								<div className={styles.cardBody} key={i}>
-									<WPCardOverview projekt={node} />
+								<div
+									className={
+										tab == tag.slug
+											? "tabLink activebox text-uppercase tabs"
+											: "tabLink text-uppercase"
+									}
+									aria-current="page"
+									onClick={() => setTab(tag.slug)}
+									key={i}>
+									{tag.name}
 								</div>
 							);
-						} else if (node.tags.nodes.length == 0 && tab == "other") {
-							return (
-								<div className={styles.cardBody} key={i}>
-									<WPCardOverview projekt={node} />
-								</div>
-							);
+						})}
+					<div
+						className={
+							tab == "other"
+								? "tabLink activebox text-uppercase tabs"
+								: "tabLink text-uppercase"
 						}
-					})}
-			</div>
-		</div>
+						aria-current="page"
+						onClick={() => setTab("other")}>
+						Ukategoriseret
+					</div>
+				</div>
+				<div className={styles.CardOverviewContaier}>
+					{content?.data?.pages &&
+						content.data.pages.nodes.map((node, i: number) => {
+							if (node.tags.nodes[0]?.slug == tab) {
+								return (
+									<div className={styles.cardBody} key={i}>
+										<WPCardOverview projekt={node} />
+									</div>
+								);
+							} else if (node.tags.nodes.length == 0 && tab == "other") {
+								return (
+									<div className={styles.cardBody} key={i}>
+										<WPCardOverview projekt={node} />
+									</div>
+								);
+							}
+						})}
+				</div>
+			</section>
+		</>
 	);
 }
 /* WORDPRESS VERSION END */
