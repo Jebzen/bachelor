@@ -39,6 +39,10 @@ footer {
 	}
 }
 
+.section-container {
+	margin: 90px 0px;
+}
+
 .carousel-item {
 	img {
 		height: 700px;
@@ -320,7 +324,14 @@ a.readMore:hover {
 	}
 }
 
+.featured-img {
+	width: 100%;
+}
+
 @media (max-width: 600px) {
+	.section-container {
+		margin: 60px 0px;
+	}
 	.landing-box,
 	.info-box {
 		grid-template-columns: 1fr;
