@@ -15,25 +15,28 @@ export default function WPInfoComponent({ content }: prop) {
 	return (
 		<>
 			<PageHero heading={page.title} />
-			<section className="container section-container">
+			<section className="container section-container info">
 				<div className="d-flex flex-column">
-					{page.featuredImage && (
-						<div className="text-center">
-							<img
-								src={page.featuredImage?.node?.mediaItemUrl}
-								alt={page.featuredImage?.node?.altText}
-								className="featured-img"
-							/>
-						</div>
-					)}
-					<small dangerouslySetInnerHTML={{ __html: page.excerpt }} />
-
-					<span dangerouslySetInnerHTML={{ __html: page.content }} />
-					<ShareButtons />
-
-					<SoMeFeed />
+					<div className="featuredImage">
+						{page.featuredImage && (
+							<div className="text-center">
+								<img
+									src={page.featuredImage?.node?.mediaItemUrl}
+									alt={page.featuredImage?.node?.altText}
+									className="featuredImage-img"
+								/>
+							</div>
+						)}
+					</div>
+					<div className="beskrivelse-news ">
+						<small dangerouslySetInnerHTML={{ __html: page.excerpt }} />
+						<span dangerouslySetInnerHTML={{ __html: page.content }} />
+					</div>
 				</div>
 			</section>
+			<div className="container section-container">
+				<SoMeFeed />
+			</div>
 		</>
 	);
 }
