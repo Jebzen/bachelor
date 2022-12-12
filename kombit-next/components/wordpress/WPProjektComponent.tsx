@@ -32,20 +32,21 @@ export default function WPProjektComponent({ projekt }: prop) {
 					</div>
 				</div>
 			</section>
-
 			{kombitFelter.projekt && kombitFelter.projekt.length > 0 && (
 				<div className={styles.cardContainer}>
 					{kombitFelter.projekt.map((projekt, i: number) => {
 						return (
-							<div className={styles.card} key={i}>
-								<div className={styles.cardHeader}>
-									<h4>{projekt.title}</h4>
+							<div>
+								<div className={styles.card + ` container`} key={i}>
+									<div className={styles.cardHeader}>
+										<h4>{projekt.title}</h4>
+									</div>
+									<span
+										dangerouslySetInnerHTML={{
+											__html: projekt.excerpt,
+										}}
+									/>
 								</div>
-								<span
-									dangerouslySetInnerHTML={{
-										__html: projekt.excerpt,
-									}}
-								/>
 							</div>
 						);
 					})}
