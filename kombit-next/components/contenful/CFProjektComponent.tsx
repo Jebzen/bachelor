@@ -4,6 +4,7 @@ import ShareButtons from "../general/ShareButtons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
+import PageHero from "../general/PageHero";
 
 export default function CFProjektComponent({ projekt }: any) {
 	const {
@@ -20,32 +21,26 @@ export default function CFProjektComponent({ projekt }: any) {
 
 	return (
 		<>
-			<div className={styles.pageContainer}>
-				<div className={styles.hero}>
-					<div className={styles.insideHero}>
-						<h1 className={styles.single}>{title}</h1>
-						<h2>OM PROJEKTET</h2>
-					</div>
+			<PageHero heading={title} subheader={"OM PROJEKTET"} />
+			{projekt.metadata.tags && projekt.metadata.tags.length > 0 && (
+				<div className="container mt-3">
+					<p>
+						Dette projekt er realteret til:{" "}
+						{projekt.metadata.tags.map((tag: any, i: number) => {
+							return (
+								<>
+									<a
+										className="text-capitalize d-inline-flex mb-3 px-2 py-1 fw-semibold text-danger bg-danger bg-opacity-10 border border-danger border-opacity-10 rounded-2"
+										href="/projekt">
+										{tag.sys.id}
+									</a>
+								</>
+							);
+						})}
+					</p>
 				</div>
-				{projekt.metadata.tags && projekt.metadata.tags.length > 0 && (
-					<div className="container mt-3">
-						<p>
-							Dette projekt er realteret til:{" "}
-							{projekt.metadata.tags.map((tag: any, i: number) => {
-								return (
-									<>
-										<a
-											className="text-capitalize d-inline-flex mb-3 px-2 py-1 fw-semibold text-danger bg-danger bg-opacity-10 border border-danger border-opacity-10 rounded-2"
-											href="/projekt"
-										>
-											{tag.sys.id}
-										</a>
-									</>
-								);
-							})}
-						</p>
-					</div>
-				)}
+			)}
+			<section className="container section-container">
 				<div className={styles.columns}>
 					<div>{documentToReactComponents(beskrivelse)}</div>
 					<div>
@@ -62,31 +57,34 @@ export default function CFProjektComponent({ projekt }: any) {
 						<ShareButtons />
 					</div>
 				</div>
-
-				{cards && cards.length > 0 && (
-					<div className="cardContainer">
-						{cards.map((item: any, index: any) => {
-							return (
-								<div className={styles.card} key={item.sys.id}>
+			</section>
+			{cards && cards.length > 0 && (
+				<div className="cardContainer">
+					{cards.map((item: any, index: any) => {
+						return (
+							<div>
+								<div className={styles.card + ` container`} key={item.sys.id}>
 									<div className={styles.cardHeader}>
 										<h4 className="lh-base">{item.fields.titel}</h4>
 									</div>
 									{documentToReactComponents(item.fields.beskrivelse)}
 								</div>
-							);
-							// console.log(item.fields.titel);
-							// this creates a wierd error
+							</div>
+						);
+						// console.log(item.fields.titel);
+						// this creates a wierd error
 
-							// console.log(item.fields.beskrivelse);
-							// return ;
-							// return <ProjectCards key={item.sys.id} item={item} />;
-						})}
-						{/* <span
+						// console.log(item.fields.beskrivelse);
+						// return ;
+						// return <ProjectCards key={item.sys.id} item={item} />;
+					})}
+					{/* <span
 							aria-hidden="true"
 							className="carousel-control-next-icon arrow"
 						></span> */}
-					</div>
-				)}
+				</div>
+			)}
+			<section className="container section-container">
 				{(links || projektleder) && (
 					<div className={styles.linkSection}>
 						<div className={styles.flex}>
@@ -116,7 +114,7 @@ export default function CFProjektComponent({ projekt }: any) {
 						</div>
 					</div>
 				)}
-			</div>
+			</section>
 		</>
 	);
 }

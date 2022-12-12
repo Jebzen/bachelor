@@ -13,6 +13,7 @@ interface prop {
 
 export function IndexLayout({ children, footerLinks, pageLinks }: prop) {
 	const [theme, setTheme] = useState(false);
+	const [whiteColor, setWhiteColor] = useState(false);
 
 	useEffect(() => {
 		if (typeof window !== undefined) {

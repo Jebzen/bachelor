@@ -93,7 +93,6 @@ div#breadCrumbs a {
 		padding-left: 0;
 		margin-bottom: 0;
 		list-style: none;
-		width: 85%;
 		margin: 0 auto;
 		flex-direction: row;
 	}
@@ -114,8 +113,7 @@ div#breadCrumbs a {
 }
 
 .tabsContainer {
-	margin-top: 60px;
-	margin-bottom: 60px;
+	margin-bottom: 45px;
 }
 .row {
 	--bs-gutter-x: 0 !important;
@@ -158,11 +156,14 @@ h2 {
 	overflow-wrap: break-word;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 600px) {
 	.tabsContainer {
 		display: flex;
 		padding-left: 0;
 		flex-direction: column;
+	}
+	div#breadCrumbs a {
+		font-size: 12px;
 	}
 }
 
@@ -230,4 +231,8 @@ hr {
 }
 .white-pre {
 	white-space: pre;
+}
+
+.white-text {
+	color: #fff;
 }

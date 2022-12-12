@@ -18,11 +18,11 @@ import { useEffect, useState } from "react";
 export async function getStaticProps() {
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
 
-  //Hent projekter
-  const projects = await client.getEntries({
-    content_type: "projekt",
-    limit: 3,
-  });
+	//Hent projekter
+	const projects = await client.getEntries({
+		content_type: "projekt",
+		limit: 3,
+	});
 
 	//Hent nyheder
 	const news = await client.getEntries({
@@ -40,22 +40,28 @@ export async function getStaticProps() {
 		});
 	}
 
-  return {
-    props: {
-      banners: response.fields.banners.map((banner: any) => {
-        return {
-          media: banner.fields.bannerBillede.fields.file.url,
-          type: "Image",
-          title: banner.fields.cta,
-        } as BannerImage;
-      }) as BannerImage[],
-      news: news,
-      projects: projects,
-    },
-  };
+	return {
+		props: {
+			banners: response.fields.banners.map((banner: any) => {
+				return {
+					media: banner.fields.bannerBillede.fields.file.url,
+					type: "Image",
+					title: banner.fields.cta,
+				} as BannerImage;
+			}) as BannerImage[],
+			news: news,
+			projects: projects,
+		},
+	};
 }
 
-export default function Home({ banners, news, projects }: any) {
+export default function Home({
+	banners,
+	news,
+	projects,
+	setWhiteColor,
+	whiteColor,
+}: any) {
 	return (
 		<>
 			<Head>
@@ -63,15 +69,15 @@ export default function Home({ banners, news, projects }: any) {
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<FrontBanner banners={banners} />
-			<div className={styles.container}>
+			<section className="container section-container">
 				<h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
-			</div>
-			<div className={styles.CardOverviewContaier}>
-				<CFProjectBlobs projects={projects} />
-			</div>
-			<div className={styles.container}>
-				<CFFeed />
-			</div>
+				<div className={styles.CardOverviewContaier}>
+					<CFProjectBlobs projects={projects} />
+				</div>
+				<div className={styles.container}>
+					<CFFeed />
+				</div>
+			</section>
 		</>
 	);
 }

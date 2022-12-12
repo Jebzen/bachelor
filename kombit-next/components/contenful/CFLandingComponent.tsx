@@ -13,7 +13,6 @@ export default function CFLandingComponent({ content }: prop) {
 	const [slide, setSlide] = useState<any>(null);
 
 	//console.log(slide);
-	//console.log(content.fields.forretningschef);
 
 	function changeSlide(event: any) {
 		setSlide(content.fields.sider[event.currentTarget.dataset.id]);
@@ -22,7 +21,7 @@ export default function CFLandingComponent({ content }: prop) {
 	return (
 		<>
 			<PageHero heading={content.fields.title} />
-			<section className="container news">
+			<section className="container section-container">
 				<div className="p-2 my-2">
 					<h4 className={styles.HeaderFour}>
 						PROJEKTER: TEKNIK, MILJØ & BORGERSERVICE

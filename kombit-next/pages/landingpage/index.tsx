@@ -32,9 +32,8 @@ export default function LandingIndex({ content }: prop) {
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
-			<PageHero heading={"Landing pages"}/>
-			<section className="container">
-				
+			<PageHero heading={"Landing pages"} />
+			<section className="container section-container">
 				<div className="landing-box">
 					<CFIndexes nodes={content} parent={"/landingpage"} />
 				</div>

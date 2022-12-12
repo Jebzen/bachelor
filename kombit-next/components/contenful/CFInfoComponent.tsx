@@ -47,7 +47,7 @@ export default function CFInfoComponent({ content }: prop) {
 				heading={content.fields.title}
 				abstrakt={content.fields.abstrakt}
 			/>
-			<section className="container news info">
+			<section className="container section-container info">
 				<div className="d-flex flex-column">
 					<div className="featuredImage">
 						{content.fields.media && (
@@ -60,7 +60,7 @@ export default function CFInfoComponent({ content }: prop) {
 							</div>
 						)}
 					</div>
-					<div className="beskrivelse-news featuredImage-img">
+					<div className="beskrivelse-news ">
 						{documentToReactComponents(
 							content.fields.beskrivelse,
 							renderOption
@@ -89,7 +89,7 @@ export default function CFInfoComponent({ content }: prop) {
 						);
 					} else {
 						return (
-							<div className="sectionOne my-5" key={i}>
+							<div className="sectionOne" key={i}>
 								<div className="table-col">
 									{documentToReactComponents(sektion.fields.text, renderOption)}
 								</div>
@@ -145,7 +145,7 @@ export default function CFInfoComponent({ content }: prop) {
 					</div>
 				</div>
 			)}*/}
-			<div className={styles.container}>
+			<div className="container section-container">
 				<SoMeFeed />
 			</div>
 		</>

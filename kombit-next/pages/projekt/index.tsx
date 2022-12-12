@@ -61,73 +61,73 @@ export default function Projekter({ projekt }: prop) {
 	const [tab, setTab] = useState(tags[0].slug);
 
 	return (
-		<div>
+		<>
 			<PageHero heading={"Projekt overblik"} />
-			<div className="tabsContainer">
-				{tags.map((tag, i) => {
-					return (
-						<div
-							className={
-								tab == tag.slug
-									? "tabLink activebox text-uppercase tabs"
-									: "tabLink text-uppercase tabs"
-							}
-							aria-current="page"
-							onClick={() => setTab(tag.slug)}
-							key={i}
-						>
-							{tag.name}
-						</div>
-					);
-				})}
-				<div
-					className={
-						tab == "other"
-							? "tabLink activebox text-uppercase tabs"
-							: "tabLink text-uppercase tabs"
-					}
-					aria-current="page"
-					onClick={() => setTab("other")}
-				>
-					Ukategoriseret
+			<section className="container section-container">
+				<div className="tabsContainer">
+					{tags.map((tag, i) => {
+						return (
+							<div
+								className={
+									tab == tag.slug
+										? "tabLink activebox text-uppercase tabs"
+										: "tabLink text-uppercase tabs"
+								}
+								aria-current="page"
+								onClick={() => setTab(tag.slug)}
+								key={i}>
+								{tag.name}
+							</div>
+						);
+					})}
+					<div
+						className={
+							tab == "other"
+								? "tabLink activebox text-uppercase tabs"
+								: "tabLink text-uppercase tabs"
+						}
+						aria-current="page"
+						onClick={() => setTab("other")}>
+						Ukategoriseret
+					</div>
 				</div>
-			</div>
-			<div className={styles.CardOverviewContaier}>
-				{projekt.map((node, i) => {
-					let tag: any;
-					if (
-						node.metadata.tags.find((node: any) => {
-							if (node.sys.id == tab) {
-								tag = node;
-								return node.sys.id == tab;
-							}
-						})
-					) {
-						return (
-							<div className={styles.cardBody} key={i}>
-								<CFCardOverview
-									projekt={node}
-									tag={tag}
-									showTag={true}
-									showTagHover={false}
-								/>
-							</div>
-						);
-					} else if (node.metadata.tags.length == 0 && tab == "other") {
-						return (
-							<div className={styles.cardBody} key={i}>
-								<CFCardOverview
-									projekt={node}
-									tag={tag}
-									showTag={false}
-									showTagHover={false}
-								/>
-							</div>
-						);
-					}
-				})}
-			</div>
-		</div>
+				<div className={styles.CardOverviewContaier}>
+					{projekt.map((node, i) => {
+						let tag: any;
+						if (
+							node.metadata.tags.find((node: any) => {
+								if (node.sys.id == tab) {
+									tag = node;
+									return node.sys.id == tab;
+								}
+							})
+						) {
+							return (
+								<div className={styles.cardBody} key={i}>
+									<CFCardOverview
+										projekt={node}
+										tag={tag}
+										showTag={true}
+										showTagHover={false}
+									/>
+								</div>
+							);
+						} else if (node.metadata.tags.length == 0 && tab == "other") {
+							return (
+								<div className={styles.cardBody} key={i}>
+									<CFCardOverview
+										projekt={node}
+										tag={tag}
+										showTag={false}
+										showTagHover={false}
+									/>
+								</div>
+							);
+						}
+					})}
+				</div>
+			</section>
+		</>
 	);
 }
 /* CONTENTFUL VERSION END */

@@ -32,9 +32,9 @@ export default function InfoIndex({ content }: prop) {
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
-			<PageHero heading={'Info pages'}/>		
+			<PageHero heading={"Info pages"} />
 
-			<section className="container">
+			<section className="container section-container">
 				<div className="info-box">
 					<CFIndexes nodes={content} parent={"/infoside"} />
 				</div>

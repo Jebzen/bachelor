@@ -10,7 +10,7 @@ interface prop {
 	pageLinks: pageLink[];
 }
 
-export default function Header({ pageLinks }: any) {
+export default function Header({ pageLinks, whiteColor, setWhiteColor }: any) {
 	const router = useRouter();
 	const { term } = router.query;
 	const [searchTerm, setSearchTerm] = useState(term);
@@ -70,10 +70,10 @@ export default function Header({ pageLinks }: any) {
 							/>
 							<label
 								className="form-check-label"
-								htmlFor="flexSwitchCheckDefault"
-							>
-								{climate && <i className="bi bi-brightness-high-fill"></i>}
-								{!climate && <i className="bi bi-brightness-high"></i>}
+								htmlFor="flexSwitchCheckDefault">
+								Clima Friendly
+								{climate}
+								{!climate}
 							</label>
 						</div>
 						<form className="input-group" action="/soeg">
@@ -90,8 +90,7 @@ export default function Header({ pageLinks }: any) {
 							<button
 								className="input-group-text"
 								type="submit"
-								id="SearchButton"
-							>
+								id="SearchButton">
 								<i className="bi bi-search"></i>
 							</button>
 						</form>

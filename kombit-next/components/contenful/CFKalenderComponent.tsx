@@ -4,14 +4,12 @@ import PageHero from "../general/PageHero";
 import ShareButtons from "../general/ShareButtons";
 import styles from "../../styles/Calendar.module.css";
 
-
-
 interface prop {
 	content: CFEntryKalender;
 }
 
 export default function CFKalenderComponent({ content }: prop) {
-	//console.log(content);
+	console.log(content);
 
 	const renderOption = {
 		renderNode: {
@@ -27,7 +25,6 @@ export default function CFKalenderComponent({ content }: prop) {
 				{
 					return (
 						<>
-							
 							<span className="fs-3">{node.data.target.fields.title}</span>
 							<br />
 							<span>{node.data.target.fields.text}</span>
@@ -39,22 +36,40 @@ export default function CFKalenderComponent({ content }: prop) {
 	};
 	return (
 		<>
-			<PageHero heading={content.fields.title} abstrakt={documentToReactComponents(content.fields.abstrakt, renderOption)}/>
+			<PageHero
+				heading={content.fields.title}
+				abstrakt={documentToReactComponents(
+					content.fields.abstrakt,
+					renderOption
+				)}
+			/>
 			<section className="container news">
 				<div className="d-flex flex-column">
-					<h2 className={styles.calendarNumber} >
-					{content.fields.dato}
-
-					</h2>
-					<small className="fst-italic text-center">
-						
-					</small>
+					<h2 className={styles.calendarNumber}>{content.fields.dato}</h2>
+					<small className="fst-italic text-center"></small>
 					<div className={"kalender-main"}>
-						{documentToReactComponents(content.fields.beskrivelse, renderOption)}
+						{documentToReactComponents(
+							content.fields.beskrivelse,
+							renderOption
+						)}
 					</div>
 				</div>
+				{content.fields.kontaktPerson && (
+					<div className="contactPerson">
+						<h4>Kontaktperson</h4>
+						<img
+							alt={content.fields.title}
+							src={content.fields.kontaktPerson.fields.file.url}
+							width={200}
+							height={200}
+						/>
+						<h3>{content.fields.kontaktPerson.fields.title}</h3>
+						<p className="white-pre">
+							{content.fields.kontaktPerson.fields.description}
+						</p>
+					</div>
+				)}
 			</section>
 		</>
-
 	);
 }

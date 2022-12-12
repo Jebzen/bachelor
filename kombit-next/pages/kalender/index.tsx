@@ -30,8 +30,8 @@ export default function Kalender({ content }: prop) {
 			<Head>
 				<title>Kalender</title>
 			</Head>
-			<PageHero heading={"Kalender"}/>
-			<section className="container kalenderContainer">
+			<PageHero heading={"Kalender"} />
+			<section className="container section-container">
 				<div className="">
 					{content &&
 						content.length > 0 &&
@@ -40,16 +40,17 @@ export default function Kalender({ content }: prop) {
 								<a
 									key={i}
 									href={"/kalender/" + item.fields.slug}
-									className="text-decoration-none text-dark kalender"
-								><div className={styles.kalenderCard}>
-									<h3>
-										{item.fields.dato}
-										<i className="bi-arrow-right-short"></i>
-									</h3>
-									<hr />
-									<h2>{item.fields.title}</h2>
-									{documentToReactComponents(item.fields.abstrakt)}
-									</div></a>
+									className="text-decoration-none text-dark kalender">
+									<div className={styles.kalenderCard}>
+										<h3>
+											{item.fields.dato}
+											<i className="bi-arrow-right-short"></i>
+										</h3>
+										<hr />
+										<h2>{item.fields.title}</h2>
+										{documentToReactComponents(item.fields.abstrakt)}
+									</div>
+								</a>
 							);
 						})}
 				</div>
