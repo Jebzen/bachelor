@@ -33,10 +33,10 @@ export default function WPProjektComponent({ projekt }: prop) {
 				</div>
 			</section>
 			{kombitFelter.projekt && kombitFelter.projekt.length > 0 && (
-				<div className={styles.cardContainer}>
+				<div className="cardContainer">
 					{kombitFelter.projekt.map((projekt, i: number) => {
 						return (
-							<div>
+							<div className="card-sec">
 								<div className={styles.card + ` container`} key={i}>
 									<div className={styles.cardHeader}>
 										<h4>{projekt.title}</h4>
@@ -52,14 +52,12 @@ export default function WPProjektComponent({ projekt }: prop) {
 					})}
 				</div>
 			)}
-			<section className="container section-container">
-				{
-					//Links toDO
-					/*<div>
+			{
+				//Links toDO
+				/*<div>
 					<>{documentToReactComponents(links)}</>
 					</div>*/
-				}
-			</section>
+			}
 		</>
 	);
 }
