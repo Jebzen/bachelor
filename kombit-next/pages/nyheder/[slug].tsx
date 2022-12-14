@@ -8,53 +8,53 @@ import { CFEntryNyheder, CFEntryProjekt } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
-  const { slug } = context.query;
-  const response = await client.getEntries({
-    content_type: "nyheder",
-  });
+	const { slug } = context.query;
+	const response = await client.getEntries({
+		content_type: "nyheder",
+	});
 
-  const slugged = response.items.find((item: any) => {
-    return item?.fields?.slug == slug;
-  });
+	const slugged = response.items.find((item: any) => {
+		return item?.fields?.slug == slug;
+	});
 
-  if (slugged === undefined) {
-    return {
-      notFound: true,
-    };
-  }
+	if (slugged === undefined) {
+		return {
+			notFound: true,
+		};
+	}
 
-  return {
-    props: {
-      content: slugged,
-    },
-  };
+	return {
+		props: {
+			content: slugged,
+		},
+	};
 }
 
 interface prop {
-  content: CFEntryNyheder;
+	content: CFEntryNyheder;
 }
 
 export default function NewsPage({ content }: prop) {
-  //console.log(content);
+	//console.log(content);
 
-  return (
-    <>
-      <Head>
-        <title>{content.fields.title}</title>
+	return (
+		<>
+			<Head>
+				<title>{content.fields.title}</title>
 
-        {content.fields?.abstrakt && (
-          <meta name="description" content={content.fields?.abstrakt} />
-        )}
-      </Head>
-      <CFNewsComponent content={content} />
-    </>
-  );
+				{content.fields?.abstrakt && (
+					<meta name="description" content={content.fields?.abstrakt} />
+				)}
+			</Head>
+			<CFNewsComponent content={content} />
+		</>
+	);
 }
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);

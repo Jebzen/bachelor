@@ -7,7 +7,6 @@ import { WPPageCard, WPSinglePage } from "../../interfaces/WPIndexes";
 import WPLandingComponent from "../../components/wordpress/WPLandingComponent";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 
@@ -55,6 +54,7 @@ export default function LandingPage({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);

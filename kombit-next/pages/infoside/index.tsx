@@ -8,7 +8,6 @@ import WPIndexes from "../../components/wordpress/WPIndexes";
 import { GraphCatcher } from "../../data/GraphQL";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "infoside",
@@ -47,6 +46,7 @@ export default function InfoIndex({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("infoside");
 

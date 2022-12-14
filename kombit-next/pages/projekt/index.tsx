@@ -9,7 +9,6 @@ import CFCardOverview from "../../components/contenful/CFCardOverview";
 import WPCardOverview from "../../components/wordpress/WPCardOverview";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps() {
 	const response = await client.getEntries({
 		content_type: "projekt",
@@ -76,7 +75,8 @@ export default function Projekter({ projekt }: prop) {
 								}
 								aria-current="page"
 								onClick={() => setTab(tag.slug)}
-								key={i}>
+								key={i}
+							>
 								{tag.name}
 							</div>
 						);
@@ -88,7 +88,8 @@ export default function Projekter({ projekt }: prop) {
 								: "tabLink text-uppercase tabs"
 						}
 						aria-current="page"
-						onClick={() => setTab("other")}>
+						onClick={() => setTab("other")}
+					>
 						Ukategoriseret
 					</div>
 				</div>
@@ -134,6 +135,7 @@ export default function Projekter({ projekt }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps() {
 	const res = await GraphCatcher.getAllPages("Projekt");
 

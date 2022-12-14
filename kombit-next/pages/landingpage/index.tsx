@@ -8,7 +8,6 @@ import PageHero from "../../components/general/PageHero";
 import { GraphCatcher } from "../../data/GraphQL";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "landingpage",
@@ -46,6 +45,7 @@ export default function LandingIndex({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("landingpage");
 

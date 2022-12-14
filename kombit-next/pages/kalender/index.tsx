@@ -8,7 +8,6 @@ import { WPAllPages } from "../../interfaces/WPIndexes";
 import styles from "../../styles/Calendar.module.css";
 
 /* CONTENTFUL VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "kalender",
@@ -43,7 +42,8 @@ export default function Kalender({ content }: prop) {
 								<a
 									key={i}
 									href={"/kalender/" + item.fields.slug}
-									className="text-decoration-none text-dark kalender">
+									className="text-decoration-none text-dark kalender"
+								>
 									<div className={styles.kalenderCard}>
 										<h3>
 											{item.fields.dato}
@@ -64,6 +64,7 @@ export default function Kalender({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const response = await GraphCatcher.getAllPages("kalender");
 
