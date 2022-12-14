@@ -51,8 +51,8 @@ export default function Header({ pageLinks, whiteColor, setWhiteColor }: any) {
 
 	return (
 		<>
-			<header className="pt-2 container d-flex flex-column ">
-				<div className="d-flex justify-content-between mb-3">
+			<header className="pt-0 pt-lg-2 container d-flex flex-column">
+				<div className="justify-content-between mb-3 d-none d-none d-lg-flex">
 					<div className="d-flex align-items-center">
 						<a href="/">
 							<img className="logo" src="/logo-2.png" alt="Kombit Logo" />
@@ -96,10 +96,20 @@ export default function Header({ pageLinks, whiteColor, setWhiteColor }: any) {
 						</form>
 					</div>
 				</div>
-				<NavLinks pageLinks={pageLinks} />
+				<NavLinks
+					pageLinks={pageLinks}
+					searchTerm={searchTerm}
+					setSearchTerm={setSearchTerm}
+					climate={climate}
+					handleChange={handleChange}
+				/>
 			</header>
+
 			{breadCrumbs.length > 1 && (
-				<div className="pb-2 breadCrumbs container" id="breadCrumbs">
+				<div
+					className="d-none d-lg-flex pb-2 breadCrumbs container"
+					id="breadCrumbs"
+				>
 					{breadCrumbs.map((crumb: any, i: number) => {
 						return (
 							<a key={i} href={crumb.href}>
