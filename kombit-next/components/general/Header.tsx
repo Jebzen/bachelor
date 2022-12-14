@@ -72,9 +72,7 @@ export default function Header({ pageLinks, whiteColor, setWhiteColor }: any) {
 								className="form-check-label"
 								htmlFor="flexSwitchCheckDefault"
 							>
-								Clima Friendly
-								{climate}
-								{!climate}
+								Climate Friendly
 							</label>
 						</div>
 						<form className="input-group" action="/soeg">
