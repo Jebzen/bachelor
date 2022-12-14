@@ -31,7 +31,8 @@ export default function CFProjektComponent({ projekt }: any) {
 								<>
 									<a
 										className="text-capitalize d-inline-flex mb-3 px-2 py-1 fw-semibold text-danger bg-danger bg-opacity-10 border border-danger border-opacity-10 rounded-2"
-										href="/projekt">
+										href="/projekt"
+									>
 										{tag.sys.id}
 									</a>
 								</>

@@ -1,11 +1,13 @@
 import Head from "next/head";
 import CFProjektComponent from "../../components/contenful/CFProjektComponent";
 import { client } from "../../components/contenful/main";
+import WPProjektComponent from "../../components/wordpress/WPProjektComponent";
 import { GraphCatcher } from "../../data/GraphQL";
 import { CFEntryProjekt } from "../../interfaces/CFentry";
 import { WPSinglePage } from "../../interfaces/WPIndexes";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const response = await client.getEntries({
@@ -50,7 +52,6 @@ export default function ProjektPage({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const { slug } = context.query;
 	const json = await GraphCatcher.getSinglePage(slug);

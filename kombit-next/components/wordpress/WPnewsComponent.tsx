@@ -17,13 +17,12 @@ export default function WPnewsComponent({ content }: prop) {
 		<>
 			<hr />
 
-			<section className="container news">
+			<section className="container section-container news">
 				<p className="small-grey">Udgivet d. {content.modified} </p>
 				<h1 className="news-header">{content.title}</h1>
 				<small
 					className="fst-italic text-center"
-					dangerouslySetInnerHTML={{ __html: content.excerpt }}
-				></small>
+					dangerouslySetInnerHTML={{ __html: content.excerpt }}></small>
 				<div className="text-center">
 					<img
 						src={content.featuredImage?.node?.mediaItemUrl}

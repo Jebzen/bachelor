@@ -5,8 +5,10 @@ import PageHero from "../../components/general/PageHero";
 import { CFEntryIndhold } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 import WPIndexes from "../../components/wordpress/WPIndexes";
+import { GraphCatcher } from "../../data/GraphQL";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "infoside",
@@ -45,7 +47,6 @@ export default function InfoIndex({ content }: prop) {
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 export async function getServerSideProps(context: any) {
 	const res = await GraphCatcher.getAllPages("infoside");
 
@@ -71,7 +72,7 @@ export default function InfoIndex({ content }: prop) {
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<PageHero heading="Info sider" />
-			<section className="container">
+			<section className="container section-container">
 				<div className="info-box">
 					<WPIndexes nodes={content.data.pages.nodes} parent="/infoside" />
 				</div>

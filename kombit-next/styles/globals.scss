@@ -132,18 +132,6 @@ div#breadCrumbs a {
 	color: #c5252f !important;
 }
 
-.col-4.newsHeader.active:after {
-	content: "";
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 17px 14px 0 14px;
-	border-color: #c5252f transparent transparent transparent;
-	position: absolute;
-	margin-top: 17px;
-	margin-left: -3px;
-}
-
 .col-4.newsHeader.active {
 	color: #fff !important;
 }

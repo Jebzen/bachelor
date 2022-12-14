@@ -23,7 +23,7 @@ export default function WPLandingComponent({ content }: prop) {
 	return (
 		<>
 			<PageHero heading={content.title} />
-			<section className="container news">
+			<section className="container section-container">
 				<div className="p-2 my-2">
 					{projekter && projekter.length > 0 && (
 						<>
@@ -43,8 +43,7 @@ export default function WPLandingComponent({ content }: prop) {
 												</p>
 												<a
 													className={styles.readMore}
-													href={"/projekt/" + item.slug}
-												>
+													href={"/projekt/" + item.slug}>
 													Læs mere
 												</a>
 											</div>

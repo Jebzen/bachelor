@@ -15,6 +15,7 @@ import { CFEntryProjekt } from "../interfaces/CFentry";
 import { useEffect, useState } from "react";
 
 /* CONTENTFUL VERSION START */
+/*
 export async function getStaticProps() {
 	const response = await client.getEntry("7fW3ZHZQgTQeFORANbS6Uk");
 
@@ -84,7 +85,6 @@ export default function Home({
 /* CONTENTFUL VERSION END */
 
 /* WORDPRESS VERSION START */
-/*
 interface Banner {
 	altText: string;
 	caption: string;
@@ -204,22 +204,22 @@ export default function Home({ json }: prop) {
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
 			<FrontBanner banners={banners} />
-			<div className={styles.container}>
+			<section className="container section-container">
 				<h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
-			</div>
 
-			<div className={styles.CardOverviewContaier}>
-				{slide == "projekt" &&
-					projects &&
-					projects.length != 0 &&
-					projects.map((item: WP_Page_Node, i: number) => {
-						return <WPProjectBlobs item={item} />;
-					})}
-			</div>
+				<div className={styles.CardOverviewContaier}>
+					{slide == "projekt" &&
+						projects &&
+						projects.length != 0 &&
+						projects.map((item: WP_Page_Node, i: number) => {
+							return <WPProjectBlobs item={item} />;
+						})}
+				</div>
 
-			<div className={styles.container}>
-				<WPLandingFeed />
-			</div>
+				<div className={styles.container}>
+					<WPLandingFeed />
+				</div>
+			</section>
 		</>
 	);
 }

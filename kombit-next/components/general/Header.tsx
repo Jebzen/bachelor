@@ -70,7 +70,8 @@ export default function Header({ pageLinks, whiteColor, setWhiteColor }: any) {
 							/>
 							<label
 								className="form-check-label"
-								htmlFor="flexSwitchCheckDefault">
+								htmlFor="flexSwitchCheckDefault"
+							>
 								Clima Friendly
 								{climate}
 								{!climate}
@@ -90,7 +91,8 @@ export default function Header({ pageLinks, whiteColor, setWhiteColor }: any) {
 							<button
 								className="input-group-text"
 								type="submit"
-								id="SearchButton">
+								id="SearchButton"
+							>
 								<i className="bi bi-search"></i>
 							</button>
 						</form>
