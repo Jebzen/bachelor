@@ -1,43 +1,59 @@
 export default function CFReferencer({ content }: any) {
 	//console.log(content.sys.contentType.sys.id);
 
-	switch (content.sys.contentType.sys.id) {
-		case "nyheder":
-			return (
+	return (
+		<div className="news-related">
+			{content.map((reference: any) => (
 				<>
-					<div className="news-related">
+					{reference.sys.contentType.sys.id == "nyheder" && (
 						<div className="related">
-							<div></div>
-							<a href={content.sys.contentType.sys.id + content.fields.slug}>
+							<a
+								href={
+									"/" +
+									reference.sys.contentType.sys.id +
+									"/" +
+									reference.fields.slug
+								}
+							>
 								<img
-									src={content.fields.banner.fields.file.url}
-									alt={content.fields.banner.fields.title}
+									src={reference.fields.banner.fields.file.url}
+									alt={reference.fields.banner.fields.title}
 									className="newsImg-related"
 								/>
 								<p className="small">
-									Udgivet d. {content.sys.createdAt.substring(0, 10)}
+									Udgivet d. {reference.sys.createdAt.substring(0, 10)}
 								</p>
-								<h3>{content.fields.title}</h3>
-								<p>{content.fields.abstrakt}</p>
+								<h3>{reference.fields.title}</h3>
+								<p>{reference.fields.abstrakt}</p>
 							</a>
 						</div>
-					</div>
+					)}
+
+					{reference.sys.contentType.sys.id == "landingpage" && (
+						<div className="related">
+							<a
+								href={
+									"/" +
+									reference.sys.contentType.sys.id +
+									"/" +
+									reference.fields.slug
+								}
+							>
+								<img
+									src={reference.fields.media.fields.file.url}
+									alt={reference.fields.media.fields.title}
+									className="newsImg-related"
+								/>
+								<p className="small">
+									Udgivet d. {reference.sys.createdAt.substring(0, 10)}
+								</p>
+								<h3>{reference.fields.title}</h3>
+								<p>{reference.fields.abstrakt}</p>
+							</a>
+						</div>
+					)}
 				</>
-			);
-			break;
-		case "landingpage":
-			return <></>;
-			break;
-		case "infoside":
-			return <></>;
-			break;
-		case "kalender":
-			return <></>;
-			break;
-		case "projekt":
-			return <></>;
-			break;
-		default:
-			return <></>;
-	}
+			))}
+		</div>
+	);
 }

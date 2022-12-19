@@ -41,12 +41,7 @@ export default function CFNewsComponent({ content }: any) {
 						return (
 							<div className="more-news">
 								<h3 className="text-center news-h3">Måske du også kan lide</h3>
-								{sektion.fields.referencer &&
-									sektion.fields.referencer.map((reference: any) => (
-										<>
-											<CFReferencer content={reference} />
-										</>
-									))}
+								<CFReferencer content={sektion.fields.referencer} />
 							</div>
 						);
 					}
