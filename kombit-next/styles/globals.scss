@@ -171,7 +171,7 @@ h2 {
 		padding-bottom: 0 !important;
 		right: 0% !important;
 		width: 100% !important;
-		transition: all 0.5s ease-in-out !important;
+		//transition: all 0.5s ease-in-out !important;
 	}
 
 	.navbar-nav {
@@ -183,13 +183,13 @@ h2 {
 		background: #fff;
 		width: 100% !important;
 		margin-top: -45px !important;
-		transition: all 0.5s ease-in-out !important;
-		animation: 1s slideDown !important;
+		//transition: all 0.5s ease-in-out !important;
+		//animation: 1s slideDown !important;
 	}
 }
 
 .navbar-nav {
-	animation: 1s slideDown !important;
+	//animation: 1s slideDown !important;
 }
 
 @keyframes slideDown {
