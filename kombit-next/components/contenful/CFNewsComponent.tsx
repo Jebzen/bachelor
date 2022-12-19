@@ -1,6 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import ShareButtons from "../general/ShareButtons";
 import CFNewsCard from "./CFNewsCard";
+import CFReferencer from "./CFReferencer";
 
 export default function CFNewsComponent({ content }: any) {
 	console.log(content);
@@ -30,14 +31,26 @@ export default function CFNewsComponent({ content }: any) {
 					</div>
 				</div>
 			</section>
-			<div className="more-news">
-				{content.fields.projekt && (
-					<>
-						<h3 className="text-center news-h3">Måske du også kan lide</h3>
-						<CFNewsCard content={content} />
-					</>
-				)}
-			</div>
+			{content.fields.sektioner &&
+				content.fields.sektioner.length > 0 &&
+				content.fields.sektioner.map((sektion: any) => {
+					if (
+						sektion.sys.contentType.sys.id == "referencer" &&
+						sektion.fields?.referencer.length > 0
+					) {
+						return (
+							<div className="more-news">
+								<h3 className="text-center news-h3">Måske du også kan lide</h3>
+								{sektion.fields.referencer &&
+									sektion.fields.referencer.map((reference: any) => (
+										<>
+											<CFReferencer content={reference} />
+										</>
+									))}
+							</div>
+						);
+					}
+				})}
 		</>
 	);
 }
