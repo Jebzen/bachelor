@@ -15,10 +15,11 @@ export default function CFReferencer({ content }: any) {
 				console.log(reference); //Indhold
 				console.log(reference.sys?.contentType?.sys?.id); //Content model;
 				console.groupEnd();
+				console.log(reference);
 
 				return (
 					<>
-						{reference.sys.contentType.sys.id == "nyheder" && (
+						{reference.sys?.contentType?.sys?.id == "nyheder" && (
 							<div className="related">
 								<a
 									href={
@@ -26,8 +27,7 @@ export default function CFReferencer({ content }: any) {
 										reference.sys.contentType.sys.id +
 										"/" +
 										reference.fields.slug
-									}
-								>
+									}>
 									<img
 										src={reference.fields.banner.fields.file.url}
 										alt={reference.fields.banner.fields.title}
@@ -42,7 +42,7 @@ export default function CFReferencer({ content }: any) {
 							</div>
 						)}
 
-						{reference.sys.contentType.sys.id == "landingpage" && (
+						{reference.sys?.contentType?.sys?.id == "landingpage" && (
 							<div className="related">
 								<a
 									href={
@@ -50,8 +50,7 @@ export default function CFReferencer({ content }: any) {
 										reference.sys.contentType.sys.id +
 										"/" +
 										reference.fields.slug
-									}
-								>
+									}>
 									<img
 										src={reference.fields.media.fields.file.url}
 										alt={reference.fields.media.fields.title}
@@ -66,16 +65,16 @@ export default function CFReferencer({ content }: any) {
 							</div>
 						)}
 
-						{reference.sys.contentType.sys.id == "infoside" && (
-							<div className="related"></div>
+						{reference.sys?.contentType?.sys?.id == "infoside" && (
+							<div className="related">test</div>
 						)}
 
-						{reference.sys.contentType.sys.id == "kalender" && (
-							<div className="related"></div>
+						{reference.sys?.contentType?.sys?.id == "kalender" && (
+							<div className="related">test</div>
 						)}
 
-						{reference.sys.contentType.sys.id == "projekt" && (
-							<div className="related"></div>
+						{reference.sys?.contentType?.sys?.id == "projekt" && (
+							<div className="related">test</div>
 						)}
 					</>
 				);

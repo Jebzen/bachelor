@@ -22,7 +22,7 @@ export interface CFEntryIndhold extends CFentry {
 		slug: string;
 		abstrakt: string | any;
 		beskrivelse: any;
-		billedeGalleri: any,
+		billedeGalleri: any;
 		sectionTo: any;
 		media: any;
 	};
@@ -67,6 +67,5 @@ export interface CFEntryLanding extends CFentry {
 		abstrakt: string | any;
 		forretningschef: any;
 		mission: any;
-		sider: any[];
 	};
 }

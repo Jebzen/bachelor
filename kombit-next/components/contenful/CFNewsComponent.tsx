@@ -34,6 +34,7 @@ export default function CFNewsComponent({ content }: any) {
 			{content.fields.sektioner &&
 				content.fields.sektioner.length > 0 &&
 				content.fields.sektioner.map((sektion: any) => {
+					console.log(sektion);
 					if (
 						sektion.sys.contentType.sys.id == "referencer" &&
 						sektion.fields?.referencer.length > 0

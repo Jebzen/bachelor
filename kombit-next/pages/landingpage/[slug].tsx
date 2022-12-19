@@ -12,14 +12,13 @@ export async function getServerSideProps(context: any) {
 
 	const response = await client.getEntries({
 		content_type: "landingpage",
-		"fields.slug": slug,
 	});
 
-	const content = response.items.find((item: any) => {
-		return true;
+	const slugged = response.items.find((item: any) => {
+		return item?.fields?.slug == slug;
 	});
 
-	if (content === undefined) {
+	if (slugged === undefined) {
 		return {
 			notFound: true,
 		};
@@ -27,7 +26,7 @@ export async function getServerSideProps(context: any) {
 
 	return {
 		props: {
-			content: content,
+			content: slugged,
 		},
 	};
 }

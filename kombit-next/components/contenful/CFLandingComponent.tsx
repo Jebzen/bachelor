@@ -4,15 +4,16 @@ import { CFEntryLanding } from "../../interfaces/CFentry";
 import CFFeed from "./CFFeed";
 import styles from "../../styles/Landing.module.css";
 import PageHero from "../general/PageHero";
+import CFReferencer from "./CFReferencer";
 
 interface prop {
 	content: CFEntryLanding;
 }
 
-export default function CFLandingComponent({ content }: prop) {
+export default function CFLandingComponent({ content }: any) {
 	const [slide, setSlide] = useState<any>(null);
 
-	//console.log(slide);
+	console.log(content);
 
 	function changeSlide(event: any) {
 		setSlide(content.fields.sider[event.currentTarget.dataset.id]);
@@ -27,31 +28,50 @@ export default function CFLandingComponent({ content }: prop) {
 						PROJEKTER: TEKNIK, MILJØ & BORGERSERVICE
 					</h4>
 					<div className="row land">
-						{content.fields.sider.map((side: any, i: number) => {
+						{content.fields.sektioner &&
+							content.fields.sektioner.length > 0 &&
+							content.fields.sektioner.map((sektion: any) => {
+								console.log(sektion);
+								if (
+									sektion.sys.contentType.sys.id == "referencer" &&
+									sektion.fields?.referencer.length > 0
+								) {
+									return (
+										<div className="more-news">
+											Test
+											<CFReferencer content={sektion.fields.referencer} />
+										</div>
+									);
+								}
+							})}
+						{/* {content.fields.sider.map((side: any, i: number) => {
 							return (
-								<div
-									key={i}
-									data-id={i}
-									className="col-2 landing"
-									onClick={changeSlide}>
-									<img
-										src={side.fields.featuredImage.fields.file.url}
-										className={styles.landingImg}
-										alt={side.fields.featuredImage.fields.file.title}
-									/>
-									<div className={styles.flexDiv}>
-										<p className="text-center">
-											<b>{side.fields.title}</b>
-										</p>
-										<a
-											className={styles.readMore}
-											href={"/projekt/" + side.fields.slug}>
-											Læs mere
-										</a>
+								<>
+									<CFReferencer content={side.fields.referencer} />
+									<div
+										key={i}
+										data-id={i}
+										className="col-2 landing"
+										onClick={changeSlide}>
+										<img
+											src={side.fields.featuredImage.fields.file.url}
+											className={styles.landingImg}
+											alt={side.fields.featuredImage.fields.file.title}
+										/>
+										<div className={styles.flexDiv}>
+											<p className="text-center">
+												<b>{side.fields.title}</b>
+											</p>
+											<a
+												className={styles.readMore}
+												href={"/projekt/" + side.fields.slug}>
+												Læs mere
+											</a>
+										</div>
 									</div>
-								</div>
+								</>
 							);
-						})}
+						})} */}
 						{slide !== null && (
 							<div className="mt-2 open-projekt-box">
 								<h3 className="fw-bold">{slide.fields.title}</h3>
