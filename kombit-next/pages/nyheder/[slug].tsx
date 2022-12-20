@@ -24,9 +24,11 @@ export async function getServerSideProps(context: any) {
 		};
 	}
 
+	const entry = await client.getEntry(slugged.sys.id);
+
 	return {
 		props: {
-			content: slugged,
+			content: entry,
 		},
 	};
 }

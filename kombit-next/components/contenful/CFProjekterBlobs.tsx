@@ -4,7 +4,7 @@ import CFCardOverview from "./CFCardOverview";
 import styles from "../../styles/Projekt.module.css";
 
 export default function CFProjectBlobs({ projects }: any) {
-	const [showTag, setShowTag] = useState(true);
+	const [showTag, setShowTag] = useState(false);
 	const [showTagHover, setShowTagHover] = useState(true);
 
 	//console.log(projects);
