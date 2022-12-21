@@ -28,72 +28,81 @@ export default function CFReferencer({ content }: any) {
 			{referencer && referencer.length > 0 && (
 				<>
 					<div className="container">
-						<h3>Relatered historier:</h3>
+						<h3>Relaterede historier:</h3>
 					</div>
-					<div className="news-related">
+					<div className="news-related container section-container">
 						{referencer.map((reference: any, i: number) => {
 							return (
-								<div key={i}>
+								<>
 									{reference.sys?.contentType?.sys?.id == "nyheder" && (
-										<div className="related">
-											<a
-												href={
-													"/" +
-													reference.sys.contentType.sys.id +
-													"/" +
-													reference.fields.slug
-												}
-											>
-												<img
-													src={reference.fields.banner.fields.file.url}
-													alt={reference.fields.banner.fields.title}
-													className="newsImg-related"
-												/>
+										<a
+											href={
+												"/" +
+												reference.sys.contentType.sys.id +
+												"/" +
+												reference.fields.slug
+											}
+											className={` news-item`}
+											key={i}>
+											<img
+												src={reference.fields.banner.fields.file.url}
+												alt={reference.fields.banner.fields.title}
+												className="newsImg"
+											/>
+
+											<div className="related">
 												<p className="small">
 													Udgivet d. {reference.sys.createdAt.substring(0, 10)}
 												</p>
 												<h3>{reference.fields.title}</h3>
 												<p>{reference.fields.abstrakt}</p>
-											</a>
-										</div>
+											</div>
+										</a>
 									)}
 
 									{reference.sys?.contentType?.sys?.id == "landingpage" && (
-										<div className="related">
-											<a
-												href={
-													"/" +
-													reference.sys.contentType.sys.id +
-													"/" +
-													reference.fields.slug
-												}
-											>
-												<img
-													src={reference.fields.media.fields.file.url}
-													alt={reference.fields.media.fields.title}
-													className="newsImg-related"
-												/>
+										<a
+											href={
+												"/" +
+												reference.sys.contentType.sys.id +
+												"/" +
+												reference.fields.slug
+											}
+											className={` news-item`}
+											key={i}>
+											<img
+												src={reference.fields.media.fields.file.url}
+												alt={reference.fields.media.fields.title}
+												className="newsImg"
+											/>
+											<div className="related">
 												<p className="small">
 													Udgivet d. {reference.sys.createdAt.substring(0, 10)}
 												</p>
 												<h3>{reference.fields.title}</h3>
 												<p>{reference.fields.abstrakt}</p>
-											</a>
-										</div>
+											</div>
+										</a>
 									)}
 
 									{reference.sys?.contentType?.sys?.id == "infoside" && (
-										<div className="related">test</div>
+										<div className="related" key={i}>
+											test
+										</div>
 									)}
 
 									{reference.sys?.contentType?.sys?.id == "kalender" && (
-										<div className="related">test</div>
+										<div className="related" key={i}>
+											test
+										</div>
 									)}
 
 									{reference.sys?.contentType?.sys?.id == "projekt" && (
-										<div className="related">test</div>
+										<div className="related" key={i}>
+											test
+										</div>
 									)}
-								</div>
+								</>
 							);
 						})}
 					</div>

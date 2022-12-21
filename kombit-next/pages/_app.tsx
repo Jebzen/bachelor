@@ -8,6 +8,7 @@ import { GraphCatcher } from "../data/GraphQL";
 import pageLink from "../interfaces/pageLink";
 import { client } from "../components/contenful/main";
 import { CFEntryIndhold } from "../interfaces/CFentry";
+import Head from "next/head";
 
 interface prop extends AppProps {
 	Component: any;

@@ -145,6 +145,9 @@ h2 {
 }
 
 @media (max-width: 600px) {
+	hr {
+		margin-top: 60px !important;
+	}
 	.tabsContainer {
 		display: flex;
 		padding-left: 0;

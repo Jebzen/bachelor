@@ -12,14 +12,12 @@ import CFSectionTextBillede from "./Sections/CFSectionTextBillede";
 import CFReferencer from "./CFReferencer";
 
 export default function CFSections({ sections }: any) {
-	//console.log(sections);
-
 	return (
 		<>
 			{sections && sections.length > 0 && (
-				<div className="row">
+				<div className="">
 					{sections.map((sektion: any, i: number) => {
-						//console.log(sektion.sys.contentType.sys.id);
+						console.log(sektion.sys.contentType.sys.id);
 
 						if (sektion.sys.contentType.sys.id == "sektionCards") {
 							return (
@@ -55,7 +53,7 @@ export default function CFSections({ sections }: any) {
 
 						if (sektion.sys.contentType.sys.id == "referencer") {
 							return (
-								<section className="col-12 kombit-section" key={i}>
+								<section className="" key={i}>
 									<CFReferencer content={sektion.fields.referencer} />
 								</section>
 							);

@@ -42,8 +42,7 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("soMe")}
-			>
+				onClick={() => setSlide("soMe")}>
 				<h4>Sociale medier</h4>
 			</div>
 			<div
@@ -52,8 +51,7 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("presse")}
-			>
+				onClick={() => setSlide("presse")}>
 				<h4>Presse</h4>
 			</div>
 			<div
@@ -62,8 +60,7 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("kontakt")}
-			>
+				onClick={() => setSlide("kontakt")}>
 				<h4>Kontakt</h4>
 			</div>
 			<div className="col-12">
@@ -74,16 +71,14 @@ export default function SoMeFeed({ version }: prop) {
 								<a
 									className="twitter-timeline"
 									data-height="825"
-									href="https://twitter.com/Jebzen_tweet?ref_src=twsrc%5Etfw"
-								>
+									href="https://twitter.com/Jebzen_tweet?ref_src=twsrc%5Etfw">
 									Tweets by Jebzen_tweet
 								</a>{" "}
 								<script
 									async
 									src="https://platform.twitter.com/widgets.js"
 									charSet="utf-8"
-									defer={true}
-								></script>
+									defer={true}></script>
 							</div>
 						</div>
 						<div className="col">
@@ -94,8 +89,7 @@ export default function SoMeFeed({ version }: prop) {
 									title="Embedded post"
 									width="504"
 									height="825"
-									frameBorder="5"
-								></iframe>
+									frameBorder="5"></iframe>
 							</div>
 						</div>
 					</div>
@@ -152,7 +146,7 @@ export default function SoMeFeed({ version }: prop) {
 							<div className="col-4 content-column">
 								<p>
 									Skriv til os ved at bruge vores{" "}
-									<a href="/kontakt">kontakt formualr</a>
+									<a href="/kontakt">kontaktformular</a>
 								</p>
 							</div>
 						</>
