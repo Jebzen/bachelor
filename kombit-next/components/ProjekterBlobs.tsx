@@ -15,7 +15,7 @@ export default function ProjectBlobs({ projects }: any) {
 		<>
 			{projects.items &&
 				projects.items.map((item: any, i: number) => {
-					console.log(item);
+					//console.log(item);
 
 					return item.metadata.tags.map((tag: any, i: number) => {
 						return (

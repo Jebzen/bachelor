@@ -3,13 +3,14 @@ import { CFEntryKalender } from "../../interfaces/CFentry";
 import PageHero from "../general/PageHero";
 import ShareButtons from "../general/ShareButtons";
 import styles from "../../styles/Calendar.module.css";
+import CFSections from "./CFSections";
 
 interface prop {
 	content: CFEntryKalender;
 }
 
 export default function CFKalenderComponent({ content }: prop) {
-	console.log(content);
+	//console.log(content);
 
 	const renderOption = {
 		renderNode: {
@@ -38,10 +39,7 @@ export default function CFKalenderComponent({ content }: prop) {
 		<>
 			<PageHero
 				heading={content.fields.title}
-				abstrakt={documentToReactComponents(
-					content.fields.abstrakt,
-					renderOption
-				)}
+				abstrakt={content.fields.abstrakt}
 			/>
 			<section className="container news">
 				<div className="d-flex flex-column">
@@ -70,6 +68,8 @@ export default function CFKalenderComponent({ content }: prop) {
 					</div>
 				)}
 			</section>
+
+			<CFSections sections={content.fields.sektioner} />
 		</>
 	);
 }

@@ -47,6 +47,7 @@ export interface CFEntryKalender extends CFentry {
 		featuredImage: any;
 		dato: string;
 		kontaktPerson: any;
+		sektioner: any[];
 	};
 }
 
@@ -67,5 +68,8 @@ export interface CFEntryLanding extends CFentry {
 		abstrakt: string | any;
 		forretningschef: any;
 		mission: any;
+		media: any;
+		sider: any[];
+		sektioner: any[];
 	};
 }

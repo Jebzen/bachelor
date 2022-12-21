@@ -65,10 +65,6 @@ export default function CFProjektComponent({ projekt }: any) {
 			</section>
 
 			<CFSections sections={sektioner} />
-
-			<div className="container">
-				<CFFeed />
-			</div>
 		</>
 	);
 }

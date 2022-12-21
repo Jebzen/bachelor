@@ -3,17 +3,30 @@ import styles from "../../../styles/Projekt.module.css";
 import ShareButtons from "../../general/ShareButtons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PageHero from "../../general/PageHero";
+import { client } from "../main";
 
 export default function CFSectionCards({ cards }: any) {
 	//console.log(cards);
 
+	const [referencer, setReferencer] = useState<any | any[]>([]);
+
+	useEffect(() => {
+		Promise.all(
+			cards.map((element: any) => {
+				return client.getEntry(element.sys.id);
+			})
+		).then((results: any) => {
+			setReferencer(results);
+		});
+	}, []);
+
 	return (
 		<>
-			{cards && cards.length > 0 && (
+			{referencer && referencer.length > 0 && (
 				<div className="cardContainer my-4">
-					{cards.map((item: any, index: any) => {
+					{referencer.map((item: any, index: any) => {
 						return (
 							<div className={styles.card + ` container`} key={index}>
 								<div className={styles.cardHeader}>

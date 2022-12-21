@@ -4,8 +4,8 @@ import { IndexLayout } from "../layout";
 
 export default function NotFoundPage() {
 	const router = useRouter();
-	console.log(router);
-	console.log(router.asPath.split("/"));
+	//console.log(router);
+	//console.log(router.asPath.split("/"));
 	return (
 		<>
 			<Head>

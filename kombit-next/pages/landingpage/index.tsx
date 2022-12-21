@@ -1,7 +1,7 @@
 import Head from "next/head";
 import CFIndexes from "../../components/contenful/CFIndexes";
 import { client } from "../../components/contenful/main";
-import { CFEntryLanding } from "../../interfaces/CFentry";
+import { CFentry, CFEntryLanding } from "../../interfaces/CFentry";
 import { WPAllPages } from "../../interfaces/WPIndexes";
 import WPIndexes from "../../components/wordpress/WPIndexes";
 import PageHero from "../../components/general/PageHero";
@@ -11,7 +11,19 @@ import { GraphCatcher } from "../../data/GraphQL";
 export async function getServerSideProps(context: any) {
 	const response = await client.getEntries({
 		content_type: "landingpage",
+		select: [
+			"fields.title",
+			"fields.slug",
+			"fields.abstrakt",
+			"fields.sider",
+			"fields.mission",
+			"fields.media",
+			"fields.forretningschef",
+			"sys.createdAt",
+		],
 	});
+
+	//console.log(response.items);
 
 	return {
 		props: {

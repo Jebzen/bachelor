@@ -8,7 +8,7 @@ import PageHero from "../../general/PageHero";
 import { renderOption } from "../../../data/renderoption";
 
 export default function CFSectionTextBillede({ textB }: any) {
-	console.log(textB);
+	//console.log(textB);
 
 	if (textB.text && textB.billede) {
 		return (

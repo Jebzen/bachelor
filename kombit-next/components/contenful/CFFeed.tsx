@@ -113,7 +113,7 @@ export default function CFFeed() {
 							info?.items &&
 							info.items.length != 0 &&
 							info.items.map((infoSide: any, i: number) => {
-								console.log(infoSide);
+								//console.log(infoSide);
 								return (
 									<div className="col-4 content-column" key={i}>
 										<a href={"infoside/" + infoSide.fields.slug}>

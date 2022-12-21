@@ -25,7 +25,7 @@ interface prop {
 }
 
 export default function Kalender({ content }: prop) {
-	console.log(content);
+	//console.log(content);
 
 	return (
 		<>
@@ -51,7 +51,7 @@ export default function Kalender({ content }: prop) {
 										</h3>
 										<hr />
 										<h2>{item.fields.title}</h2>
-										{documentToReactComponents(item.fields.abstrakt)}
+										<p>{item.fields.abstrakt}</p>
 									</div>
 								</a>
 							);

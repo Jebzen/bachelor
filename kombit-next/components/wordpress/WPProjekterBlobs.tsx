@@ -13,12 +13,12 @@ export default function WPProjectBlobs({ item }: prop) {
 	const [showTag, setShowTag] = useState(true);
 	const [showTagHover, setShowTagHover] = useState(true);
 
-	console.log(item);
+	//console.log(item);
 
 	return (
 		<>
 			{item.tags.nodes.map((tag: any) => {
-				console.log(tag);
+				//console.log(tag);
 				return (
 					<div className={styles.cardBody}>
 						<WPCardOverview

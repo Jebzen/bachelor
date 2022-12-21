@@ -20,6 +20,7 @@ export default function CFSections({ sections }: any) {
 				<div className="row">
 					{sections.map((sektion: any, i: number) => {
 						//console.log(sektion.sys.contentType.sys.id);
+
 						if (sektion.sys.contentType.sys.id == "sektionCards") {
 							return (
 								<section className="col-12 kombit-section" key={i}>
@@ -27,6 +28,7 @@ export default function CFSections({ sections }: any) {
 								</section>
 							);
 						}
+
 						if (sektion.sys.contentType.sys.id == "sektionLinks") {
 							return (
 								<section className="col-12 col-xl-8 kombit-section" key={i}>
@@ -34,6 +36,7 @@ export default function CFSections({ sections }: any) {
 								</section>
 							);
 						}
+
 						if (sektion.sys.contentType.sys.id == "sektionProjektLeder") {
 							return (
 								<section className="col-12 col-xl-4 kombit-section" key={i}>
@@ -41,6 +44,7 @@ export default function CFSections({ sections }: any) {
 								</section>
 							);
 						}
+
 						if (sektion.sys.contentType.sys.id == "textBillede") {
 							return (
 								<section className="col-12 kombit-section" key={i}>
@@ -48,6 +52,7 @@ export default function CFSections({ sections }: any) {
 								</section>
 							);
 						}
+
 						if (sektion.sys.contentType.sys.id == "referencer") {
 							return (
 								<section className="col-12 kombit-section" key={i}>

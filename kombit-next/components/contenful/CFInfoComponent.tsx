@@ -5,6 +5,7 @@ import ShareButtons from "../general/ShareButtons";
 import { CFEntryIndhold } from "../../interfaces/CFentry";
 import PageHero from "../general/PageHero";
 import styles from "../../styles/Projekt.module.css";
+import CFSections from "./CFSections";
 
 interface prop {
 	content: CFEntryIndhold | any;
@@ -68,35 +69,9 @@ export default function CFInfoComponent({ content }: prop) {
 					</div>
 				</div>
 			</section>
-			{content.fields.sektioner &&
-				content.fields.sektioner.length > 0 &&
-				content.fields.sektioner.map((sektion: any, i: number) => {
-					if (sektion.fields.text && sektion.fields.billede) {
-						return (
-							<div className="container tb-section" key={i}>
-								<div className="secTwo">
-									<div className="colOne">
-										{documentToReactComponents(sektion.fields.text)}
-									</div>
-									<div className="text-center mansory featuredImage">
-										<img
-											src={sektion.fields.billede.fields.file.url}
-											alt={sektion.fields.billede.fields.title}
-										/>
-									</div>
-								</div>
-							</div>
-						);
-					} else {
-						return (
-							<div className="sectionOne" key={i}>
-								<div className="table-col">
-									{documentToReactComponents(sektion.fields.text, renderOption)}
-								</div>
-							</div>
-						);
-					}
-				})}
+
+			<CFSections sections={content.fields.sektioner} />
+
 			{/*{content.fields.sectionTo && (
 				<div className="sectionOne">
 					<div className="table-col">
