@@ -51,8 +51,7 @@ export default function CFFeed() {
 							? "col-4 newsHeader activebox2 news"
 							: "col-4 newsHeader"
 					}
-					onClick={() => setSlide("nyheder")}
-				>
+					onClick={() => setSlide("nyheder")}>
 					<h4>Nyheder</h4>
 				</div>
 				<div
@@ -61,8 +60,7 @@ export default function CFFeed() {
 							? " col-4 newsHeader activebox2 kalender"
 							: "col-4 newsHeader"
 					}
-					onClick={() => setSlide("kalender")}
-				>
+					onClick={() => setSlide("kalender")}>
 					<h4>Kalender</h4>
 				</div>
 				<div
@@ -71,8 +69,7 @@ export default function CFFeed() {
 							? " col-4 newsHeader activebox2 viden"
 							: "col-4 newsHeader"
 					}
-					onClick={() => setSlide("viden")}
-				>
+					onClick={() => setSlide("viden")}>
 					<h4>Viden</h4>
 				</div>
 				<div className="col-12">
@@ -97,12 +94,14 @@ export default function CFFeed() {
 							calender?.items &&
 							calender.items.length != 0 &&
 							calender.items.map((event: any, i: number) => {
+								console.log(event);
 								return (
 									<div className="col-4 content-column" key={i}>
 										<a href={"kalender/" + event.fields.slug}>
 											<h5>{event.fields.title}</h5>{" "}
 										</a>
-										{documentToReactComponents(event.fields.abstrakt)}
+										<p>{event.fields.abstrakt}</p>
+
 										<p className="text-end">
 											{event.sys.createdAt.substring(0, 10)}
 										</p>

@@ -10,8 +10,10 @@ import CFSectionLinks from "./Sections/CFSectionLinks";
 import CFSectionLeder from "./Sections/CFSectionLeder";
 import CFSectionTextBillede from "./Sections/CFSectionTextBillede";
 import CFReferencer from "./CFReferencer";
+import CFsektionLinksAndLeader from "./Sections/CFSectionLinksAndLeader";
 
 export default function CFSections({ sections }: any) {
+	console.log(sections);
 	return (
 		<>
 			{sections && sections.length > 0 && (
@@ -37,7 +39,7 @@ export default function CFSections({ sections }: any) {
 
 						if (sektion.sys.contentType.sys.id == "sektionProjektLeder") {
 							return (
-								<section className="col-12 col-xl-4 kombit-section" key={i}>
+								<section className="col-12 kombit-section" key={i}>
 									<CFSectionLeder leader={sektion.fields?.projektlederen} />
 								</section>
 							);
@@ -47,6 +49,13 @@ export default function CFSections({ sections }: any) {
 							return (
 								<section className="col-12 kombit-section" key={i}>
 									<CFSectionTextBillede textB={sektion.fields} />
+								</section>
+							);
+						}
+						if (sektion.sys.contentType.sys.id == "sektionLinksAndLeader") {
+							return (
+								<section className="container section-container flex" key={i}>
+									<CFsektionLinksAndLeader leader={sektion.fields} />
 								</section>
 							);
 						}

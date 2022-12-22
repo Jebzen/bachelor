@@ -35,8 +35,7 @@ export default function CFProjektComponent({ projekt }: any) {
 								<a
 									className="kombit-badge bg-danger bg-opacity-10 border border-danger border-opacity-10"
 									href={"/projekt?tag=" + tag.sys.id}
-									key={i}
-								>
+									key={i}>
 									{tag.sys.id}
 								</a>
 							);

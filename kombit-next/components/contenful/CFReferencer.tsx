@@ -86,21 +86,73 @@ export default function CFReferencer({ content }: any) {
 									)}
 
 									{reference.sys?.contentType?.sys?.id == "infoside" && (
-										<div className="related" key={i}>
-											test
-										</div>
+										<a
+											href={
+												"/" +
+												reference.sys.contentType.sys.id +
+												"/" +
+												reference.fields.slug
+											}
+											className={` news-item`}
+											key={i}>
+											<img
+												src={reference.fields.media.fields.file.url}
+												alt={reference.fields.media.fields.title}
+												className="newsImg"
+											/>
+											<div className="related">
+												<p className="small">
+													Udgivet d. {reference.sys.createdAt.substring(0, 10)}
+												</p>
+												<h3>{reference.fields.title}</h3>
+												<p>{reference.fields.abstrakt}</p>
+											</div>
+										</a>
 									)}
 
 									{reference.sys?.contentType?.sys?.id == "kalender" && (
-										<div className="related" key={i}>
-											test
-										</div>
+										<a
+											href={
+												"/" +
+												reference.sys.contentType.sys.id +
+												"/" +
+												reference.fields.slug
+											}
+											className={` news-item`}
+											key={i}>
+											<div className="related">
+												<p className="small">
+													Udgivet d. {reference.sys.createdAt.substring(0, 10)}
+												</p>
+												<h3>{reference.fields.title}</h3>
+												<p>{reference.fields.abstrakt}</p>
+											</div>
+										</a>
 									)}
 
 									{reference.sys?.contentType?.sys?.id == "projekt" && (
-										<div className="related" key={i}>
-											test
-										</div>
+										<a
+											href={
+												"/" +
+												reference.sys.contentType.sys.id +
+												"/" +
+												reference.fields.slug
+											}
+											className={` news-item`}
+											key={i}>
+											<img
+												src={reference.fields.featuredImage.fields.file.url}
+												alt={reference.fields.featuredImage.fields.title}
+												className="newsImg"
+											/>
+											<div className="related">
+												<p className="small">
+													Udgivet d. {reference.sys.createdAt.substring(0, 10)}
+												</p>
+												<h3>{reference.fields.title}</h3>
+												<p>{reference.fields.abstrakt}</p>
+											</div>
+										</a>
 									)}
 								</>
 							);

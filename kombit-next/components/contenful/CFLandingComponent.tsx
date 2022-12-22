@@ -25,11 +25,11 @@ export default function CFLandingComponent({ content }: any) {
 			<PageHero heading={content.fields.title} />
 			<section className="container section-container">
 				<div className="row landingInfoContainer">
-					<div className="col-9 projektLanding">
+					<div className="col-9 ">
 						<h3>Mission</h3>
 						{documentToReactComponents(content.fields.mission)}
 					</div>
-					<div className="col-3 projektLanding">
+					<div className="col-3 ">
 						<div className="d-flex justify-end flex-column forretningschef">
 							<h4 className="text-end">Forretningschef</h4>
 							<img
@@ -48,7 +48,7 @@ export default function CFLandingComponent({ content }: any) {
 
 			<CFSections sections={content.fields.sektioner} />
 
-			<div className="container">
+			<div className="container section-container">
 				<CFFeed />
 			</div>
 		</>

@@ -23,7 +23,7 @@ export default function CFSectionLeder({ leader }: any) {
 						/>
 					</div>
 					<h3>{leader.fields.title}</h3>
-					<p className="white-pre">{leader.fields.description}</p>
+					<p className="center white-pre">{leader.fields.description}</p>
 				</div>
 			)}
 		</>

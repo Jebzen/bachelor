@@ -56,7 +56,7 @@ export default function CFInfoComponent({ content }: prop) {
 								<img
 									src={content.fields.media.fields.file.url}
 									alt={content.fields.media.fields.title}
-									className="featuredImage-img"
+									className="featuredImage-img img-fluid"
 								/>
 							</div>
 						)}

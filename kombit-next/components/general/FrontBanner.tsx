@@ -2,7 +2,7 @@ import { Carousel } from "react-bootstrap";
 import { BannerImage, BannerVideo } from "../../interfaces/banner";
 
 interface prop {
-  banners: BannerImage[] | BannerVideo[];
+	banners: BannerImage[] | BannerVideo[];
 }
 
 export default function FrontBanner({ banners }: prop) {
@@ -20,20 +20,22 @@ export default function FrontBanner({ banners }: prop) {
 									src={banner.media}
 									alt={banner.title}
 								/>
-                <div className="overlay"></div>
-                <div className="arrowdiv">
-                  <a href="#slide">
-                    <span
-                      aria-hidden="true"
-                      className="carousel-control-next-icon"
-                    ></span>
-                  </a>
-                </div>
-								<Carousel.Caption>
-									<div className="bannerCaptionBox">
-										<h3>{banner.title}</h3>
-									</div>
-								</Carousel.Caption>
+								<div className="overlay"></div>
+								<div className="arrowdiv">
+									<a href="#slide">
+										<span
+											aria-hidden="true"
+											className="carousel-control-next-icon"></span>
+									</a>
+								</div>
+								{/* <Carousel.Caption> */}
+								<div className="bannerCaptionBox">
+									<h3>{banner.title}</h3>
+									<p className="bannet-caption">
+										Vi skaber konkurrence i det kommunale it-marked.
+									</p>
+								</div>
+								{/* </Carousel.Caption> */}
 							</Carousel.Item>
 						);
 					})}
