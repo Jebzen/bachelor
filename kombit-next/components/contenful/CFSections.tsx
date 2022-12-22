@@ -17,7 +17,7 @@ export default function CFSections({ sections }: any) {
 	return (
 		<>
 			{sections && sections.length > 0 && (
-				<div className="">
+				<div>
 					{sections.map((sektion: any, i: number) => {
 						console.log(sektion.sys.contentType.sys.id);
 

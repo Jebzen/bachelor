@@ -2,6 +2,7 @@
 @import "variables_typografi";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+// frontpage and generel footer, menu etc.
 [data-theme="dark"] {
 	a {
 		color: $neutral-2-2 !important;
@@ -61,11 +62,30 @@
 				color: $neutral-3-2 !important;
 			}
 		}
+		label.form-check-label {
+			color: #000 !important;
+		}
 		form.input-group {
 			input,
 			button {
 				border-color: $neutral-2-2 !important;
 				background-color: $neutral-1 !important;
+			}
+		}
+	}
+	.carousel {
+		.carousel-inner {
+			.carousel-item {
+				height: 100vh;
+				img {
+					display: none !important;
+				}
+				.overlay {
+					border-color: $neutral-2-2 !important;
+				}
+				.arrowdiv {
+					background: $neutral-2-2 !important;
+				}
 			}
 		}
 	}
@@ -80,6 +100,24 @@
 			}
 		}
 	}
+
+	.pagehero {
+		background-image: linear-gradient(rgba(0, 0, 0, 1.8), rgba(0, 0, 0, 0.8));
+		h2 {
+			color: $neutral-1 !important;
+		}
+	}
+
+	.container {
+		.bg-danger {
+			background-color: $neutral-2 !important;
+		}
+		.border-danger {
+			border-color: $neutral-3 !important;
+		}
+	}
+
+	// projekter
 
 	.tabLink {
 		color: $neutral-2-2 !important;
@@ -112,15 +150,108 @@
 			color: $neutral-3-2;
 		}
 	}
+
+	.newsHeader {
+		color: $neutral-3-2 !important;
+		border-color: $neutral-3-2 !important;
+	}
+	.activebox2 {
+		background-color: $neutral-3-2 !important;
+		color: #fff !important;
+	}
+
+	.section-container {
+		.tabs.activebox:after {
+			background-color: $neutral-3-2 !important;
+		}
+	}
+
+	.section-container {
+		.landing-box {
+			a {
+				img {
+					border-color: $neutral-3-2 !important;
+				}
+			}
+		}
+	}
+
+	.kombit-section {
+		.cardContainer {
+			background-color: $neutral-2;
+		}
+		.container {
+			div {
+				h4 {
+					color: $neutral-2-2 !important;
+				}
+			}
+		}
+	}
+
+	.news-item {
+		img {
+			border-color: $neutral-2-2 !important;
+		}
+	}
+
+	.projektlederLinks {
+		border-color: $neutral-2-2 !important;
+	}
+	.section-leader {
+		img {
+			border-color: $neutral-2-2 !important;
+		}
+	}
+
+	// kalender
+
+	.container {
+		.flex-column {
+			h2 {
+				color: $neutral-3-2;
+			}
+		}
+	}
+
+	.kalender-main {
+		table {
+			background-color: $neutral-2;
+		}
+	}
+
+	// infopages
+	.sectionOne {
+		background-color: $neutral-3-2;
+		.table-col {
+			background-color: $neutral-2;
+		}
+	}
+
+	//news
+	hr {
+		color: $neutral-2-2 !important;
+	}
+
+	// contact
+	.kontakt-col1 {
+		background-color: $neutral-3-2;
+		a {
+			color: $neutral-3 !important;
+		}
+		a:hover {
+			color: $neutral-2-2 !important;
+		}
+	}
+
+	.btn-primary {
+		background-color: $neutral-3-2 !important;
+	}
+	.btn-primary:hover {
+		background-color: $neutral-2-2 !important;
+	}
+	navbar-toggler {
+		background-color: #b2aeae !important;
+		border: var(--bs-border-width) solid rgb(0 0 0 / 53%) !important;
+	}
 }
-
-// .tabs.activebox:after {
-
-// 	background-color: $neutral-2-2 !important;
-
-//   }
-
-// .cardContainer {
-
-// 	background-color: $neutral-3;
-//   }

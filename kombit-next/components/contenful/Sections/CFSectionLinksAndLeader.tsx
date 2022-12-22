@@ -19,7 +19,9 @@ export default function CFSectionTextBillede({ leader }: any) {
 					<div className="d-flex justify-content-center">
 						<img
 							src={leader.projektleder.fields.file.url}
-							className={styles.columnsImgLink + " mb-2 bg-white"}
+							className={
+								styles.columnsImgLink + " mb-2 bg-white projektlederLinks"
+							}
 							width={200}
 							height={200}
 						/>
