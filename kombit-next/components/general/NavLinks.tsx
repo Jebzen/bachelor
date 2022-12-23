@@ -37,7 +37,6 @@ export default function NavLinks({
 						{pageLinks &&
 							pageLinks.length > 0 &&
 							pageLinks.sort().map((type, i: number) => {
-								console.log(type.slug);
 								return (
 									<Nav.Item className="text-end" key={i}>
 										<Nav.Link

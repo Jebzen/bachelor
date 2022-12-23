@@ -52,24 +52,8 @@ export default function CFKalenderComponent({ content }: prop) {
 						)}
 					</div>
 				</div>
-				{content.fields.kontaktPerson && (
-					<div className="contactPerson">
-						<h4>Kontaktperson</h4>
-						<img
-							alt={content.fields.title}
-							src={content.fields.kontaktPerson.fields.file.url}
-							width={200}
-							height={200}
-						/>
-						<h3>{content.fields.kontaktPerson.fields.title}</h3>
-						<p className="white-pre">
-							{content.fields.kontaktPerson.fields.description}
-						</p>
-					</div>
-				)}
+				<CFSections sections={content.fields.sektioner} />
 			</section>
-
-			<CFSections sections={content.fields.sektioner} />
 		</>
 	);
 }

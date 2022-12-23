@@ -10,7 +10,7 @@ export default function CFNewsComponent({ content }: any) {
 	return (
 		<>
 			<hr />
-			<section className="container news">
+			<section className="container section-container">
 				<p className="small-grey">
 					Udgivet d. {content.sys.createdAt.substring(0, 10)}
 				</p>
