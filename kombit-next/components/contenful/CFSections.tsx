@@ -13,13 +13,13 @@ import CFReferencer from "./CFReferencer";
 import CFsektionLinksAndLeader from "./Sections/CFSectionLinksAndLeader";
 
 export default function CFSections({ sections }: any) {
-	console.log(sections);
+	//console.log(sections);
 	return (
 		<>
 			{sections && sections.length > 0 && (
 				<div>
 					{sections.map((sektion: any, i: number) => {
-						console.log(sektion.sys.contentType.sys.id);
+						//console.log(sektion.sys.contentType.sys.id);
 
 						if (sektion.sys.contentType.sys.id == "sektionCards") {
 							return (
