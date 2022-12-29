@@ -28,7 +28,7 @@ export default function CFSectionCards({ cards }: any) {
 				<div className="cardContainer my-4">
 					{referencer.map((item: any, index: any) => {
 						return (
-							<div className={styles.card + ` container`} key={index}>
+							<div className={styles.card} key={index}>
 								<div className={styles.cardHeader}>
 									<h4 className="lh-base">{item.fields.titel}</h4>
 								</div>

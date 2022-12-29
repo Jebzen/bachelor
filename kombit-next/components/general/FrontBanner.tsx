@@ -5,7 +5,7 @@ interface prop {
 	banners: BannerImage[] | BannerVideo[];
 }
 
-export default function FrontBanner({ banners }: prop) {
+export default function FrontBanner({ banners, themeDark }: prop) {
 	//console.log("Banners", banners);
 	return (
 		<>
@@ -15,11 +15,13 @@ export default function FrontBanner({ banners }: prop) {
 					banners.map((banner: BannerImage | BannerVideo, i: number) => {
 						return (
 							<Carousel.Item key={i}>
-								<img
-									className="d-block w-100"
-									src={banner.media}
-									alt={banner.title}
-								/>
+								{!themeDark ? (
+									<img
+										className="d-block w-100"
+										src={banner.media}
+										alt={banner.title}
+									/>
+								) : null}
 								<div className="overlay"></div>
 								<div className="arrowdiv">
 									<a href="#slide">

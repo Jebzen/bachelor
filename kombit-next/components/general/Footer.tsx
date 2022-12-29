@@ -17,8 +17,7 @@ export default function Footer({ footerLinks }: prop) {
 						<div className="mt-auto">
 							<a
 								href="https://www.linkedin.com/company/kombit-a-s"
-								className="fs-4"
-							>
+								className="fs-4">
 								<i className="bi bi-linkedin"></i>
 							</a>
 							<a href="https://twitter.com/kombitdk" className="fs-4 mx-2">
@@ -38,7 +37,7 @@ export default function Footer({ footerLinks }: prop) {
 						</p>
 					</div>
 					<div className="col-12 col-md-6">
-						<h4 className="fw-bold">Inhold</h4>
+						<h4 className="fw-bold">Indhold</h4>
 						<div className="indhold-sider">
 							<a href="/kontakt">Kontakt</a>
 							{footerLinks &&

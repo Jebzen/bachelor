@@ -62,13 +62,20 @@ export default function Home({
 	setWhiteColor,
 	whiteColor,
 }: any) {
+	// prevents image in banner to be loaded
+	const [themeDark, setThemeDark] = useState(false);
+	useEffect(() => {
+		if (localStorage.getItem("Climate-friendly") == "true") {
+			setThemeDark(true);
+		}
+	}, []);
 	return (
 		<>
 			<Head>
 				<title>KOMBIT APP</title>
 				<meta name="description" content="KOMBIT HEADLESS NEXTJS APPLICATION" />
 			</Head>
-			<FrontBanner banners={banners} />
+			<FrontBanner banners={banners} themeDark={themeDark} />
 			<section className="container section-container">
 				<h2 id="slide">FORRETNINGSFÆLLSSKABER I KOMBIT</h2>
 				<div className={styles.CardOverviewContaier}>
