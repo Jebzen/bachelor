@@ -26,6 +26,10 @@ export async function getServerSideProps(context: any) {
 
 	const entry = await client.getEntry(slugged.sys.id);
 
+	console.log(
+		"Page data is: " + Buffer.byteLength(JSON.stringify(entry)) / 1024 + " kB"
+	);
+
 	return {
 		props: {
 			content: entry,
