@@ -3,6 +3,7 @@ import { BannerImage, BannerVideo } from "../../interfaces/banner";
 
 interface prop {
 	banners: BannerImage[] | BannerVideo[];
+	themeDark: any;
 }
 
 export default function FrontBanner({ banners, themeDark }: prop) {
@@ -27,7 +28,8 @@ export default function FrontBanner({ banners, themeDark }: prop) {
 									<a href="#slide">
 										<span
 											aria-hidden="true"
-											className="carousel-control-next-icon"></span>
+											className="carousel-control-next-icon"
+										></span>
 									</a>
 								</div>
 								{/* <Carousel.Caption> */}
