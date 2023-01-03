@@ -40,15 +40,28 @@ export async function getStaticProps() {
 		});
 	}
 
+	const stuff = response.fields.banners.map((banner: any) => {
+		return {
+			media: banner.fields.bannerBillede.fields.file.url,
+			type: "Image",
+			title: banner.fields.cta,
+		} as BannerImage;
+	}) as BannerImage[];
+
+	/*
+	console.log(
+		"Page data is: " +
+			(Buffer.byteLength(JSON.stringify(stuff)) +
+				Buffer.byteLength(JSON.stringify(news)) +
+				Buffer.byteLength(JSON.stringify(projects))) /
+				1024 +
+			" kB"
+	);
+	*/
+
 	return {
 		props: {
-			banners: response.fields.banners.map((banner: any) => {
-				return {
-					media: banner.fields.bannerBillede.fields.file.url,
-					type: "Image",
-					title: banner.fields.cta,
-				} as BannerImage;
-			}) as BannerImage[],
+			banners: stuff,
 			news: news,
 			projects: projects,
 		},
