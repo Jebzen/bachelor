@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 interface prop {
 	projekt: CFEntryProjekt;
-	tag: any;
-	showTag: any;
-	showTagHover: any;
+	tag?: any;
+	showTag?: any;
+	showTagHover?: any;
 }
 
 const CFCardOverview = ({ projekt, tag, showTag, showTagHover }: prop) => {

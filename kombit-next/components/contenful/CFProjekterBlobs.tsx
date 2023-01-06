@@ -17,19 +17,12 @@ export default function CFProjectBlobs({ projects }: any) {
 				projects.items.map((item: any, i: number) => {
 					//console.log(item);
 
-					return item.metadata.tags.map((tag: any, i: number) => {
-						return (
-							<div className={styles.cardBody} key={i}>
-								{/* <h3> {tag.sys.id}</h3> */}
-								<CFCardOverview
-									projekt={item}
-									tag={tag}
-									showTag={showTag}
-									showTagHover={showTagHover}
-								/>
-							</div>
-						);
-					});
+					return (
+						<div className={styles.cardBody} key={i}>
+							{/* <h3> {tag.sys.id}</h3> */}
+							<CFCardOverview projekt={item} />
+						</div>
+					);
 				})}
 		</>
 	);
