@@ -28,11 +28,11 @@ export default function NavLinks({
 				<Navbar.Toggle aria-controls="basic-navbar-nav" className="me-2" />
 				<Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 					<Nav>
-						{/* <div className="text-end nav-item">
+						<div className="text-end nav-item d-lg-none">
 							<a href="/" data-rr-ui-event-key="/" className="nav-link">
 								Forside
 							</a>
-						</div> */}
+						</div>
 
 						{pageLinks &&
 							pageLinks.length > 0 &&
@@ -45,7 +45,8 @@ export default function NavLinks({
 												router.pathname == `/${type.slug}`
 													? "activeNavLink"
 													: ""
-											}>
+											}
+										>
 											{type.title}
 										</Nav.Link>
 									</Nav.Item>
@@ -56,7 +57,8 @@ export default function NavLinks({
 							<a
 								href="/kontakt"
 								data-rr-ui-event-key="/kontakt"
-								className="nav-link">
+								className="nav-link"
+							>
 								Kontakt
 							</a>
 						</div>
@@ -73,7 +75,8 @@ export default function NavLinks({
 								/>
 								<label
 									className="form-check-label"
-									htmlFor="flexSwitchCheckDefault">
+									htmlFor="flexSwitchCheckDefault"
+								>
 									Climate Friendly
 								</label>
 							</div>
@@ -82,7 +85,8 @@ export default function NavLinks({
 						<form
 							className="input-group d-lg-none"
 							action="/soeg"
-							id="nav-search">
+							id="nav-search"
+						>
 							<input
 								type="text"
 								className="form-control"
@@ -96,7 +100,8 @@ export default function NavLinks({
 							<button
 								className="input-group-text"
 								type="submit"
-								id="SearchButton">
+								id="SearchButton"
+							>
 								<i className="bi bi-search"></i>
 							</button>
 						</form>
