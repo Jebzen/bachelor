@@ -25,6 +25,9 @@ export default function NavLinks({
 	return (
 		<>
 			<Navbar collapseOnSelect expand="lg" className="justify-content-end">
+				<Navbar.Brand href="/" className="d-block d-lg-none ms-2 me-auto">
+					<img className="logo p-1" src="/logo-2.png" alt="Kombit Logo" />
+				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" className="me-2" />
 				<Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 					<Nav>

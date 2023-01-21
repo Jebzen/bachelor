@@ -37,6 +37,7 @@ const CFCardOverview = ({ projekt, tag, showTag, showTagHover }: prop) => {
 			<div className={styles.cardImg}>
 				<img src={"https:" + featuredImage.fields.file.url}></img>
 			</div>
+
 			<div className={styles.cardText}>
 				<h3>{title}</h3>
 

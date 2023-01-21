@@ -2,7 +2,6 @@ import { expect, jest } from "@jest/globals";
 import { GraphCatcher } from "../data/GraphQL";
 import { client } from "../components/contenful/main";
 
-//Broken test
 describe("Wordpress GraphCatcher", () => {
 	it("getAllCategories", async () => {
 		const response = await GraphCatcher.getAllCategories();

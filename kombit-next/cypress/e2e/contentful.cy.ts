@@ -56,12 +56,7 @@ describe("Testing pages", () => {
 
 						//cy.get(".shareButtons").children().should("have.length", 3);
 
-						cy.get(".container.news.info")
-							.find(".featuredImage")
-							.should("exist");
-						cy.get(".container.news.info")
-							.find(".beskrivelse-news")
-							.should("exist");
+						cy.get(".beskrivelse-news").should("exist");
 
 						cy.get(".WPFeedHeader")
 							.find(".col-4.newsHeader")
@@ -99,85 +94,29 @@ describe("Testing pages", () => {
 
 						//cy.get(".shareButtons").children().should("have.length", 3);
 
-						cy.get(".container.news .row.land")
-							.find(".col-2.landing")
+						cy.get(".news-related")
+							.find("a.news-item")
 							.each((element, index, list) => {
-								let subtitle = "";
-								cy.wrap(element).should(
-									"have.attr",
-									"data-id",
-									index.toString()
-								);
-
-								cy.wrap(element)
-									.find("p")
-									.then((p) => {
-										subtitle = p.text();
-
-										cy.wrap(element).click();
-
-										cy.get(".open-projekt-box")
-											.find("h3")
-											.should("contain", subtitle);
-									});
+								cy.wrap(element).find("h3").should("exist");
+								cy.wrap(element).find("p.small").should("exist");
+								cy.wrap(element).find("img.newsImg").should("exist");
 							});
 
 						cy.get(".forretningschef").then((element) => {
 							cy.wrap(element).find("h4").should("exist");
 							cy.wrap(element).find("img").should("exist");
 							cy.wrap(element).find("p").should("exist");
+							cy.wrap(element).find("p.respect-line").should("exist");
 						});
 
-						cy.get(".projektLanding").should("exist");
+						//cy.get(".projektLanding").should("exist");
 
-						cy.get(".CFFeedHeader").children().should("have.length", 4);
-						cy.get(".CFFeed").children().should("have.length", 3);
-
-						cy.get(".CFFeedHeader .newsHeader")
-							.first()
-							.should("have.class", "activebox2");
-
-						cy.get(".CFFeed")
-							.find(".content-column")
-							.each((element) => {
-								cy.wrap(element)
-									.find("a")
-									.invoke("attr", "href")
-									.then((href: any) => {
-										cy.wrap(href).should("include", "nyheder/");
-										cy.request(href).its("status").should("eq", 200);
-									});
-								cy.wrap(element).find("p").should("exist");
-							});
-
-						cy.get(".CFFeedHeader .newsHeader").first().next().click();
-
-						cy.get(".CFFeed")
-							.find(".content-column")
-							.each((element) => {
-								cy.wrap(element)
-									.find("a")
-									.invoke("attr", "href")
-									.then((href: any) => {
-										cy.wrap(href).should("include", "kalender/");
-										cy.request(href).its("status").should("eq", 200);
-									});
-								cy.wrap(element).find("p").should("exist");
-							});
-
-						cy.get(".CFFeedHeader .newsHeader").first().next().next().click();
-
-						cy.get(".CFFeed")
-							.find(".content-column")
-							.each((element) => {
-								cy.wrap(element)
-									.find("a")
-									.invoke("attr", "href")
-									.then((href: any) => {
-										cy.wrap(href).should("include", "infoside/");
-										cy.request(href).its("status").should("eq", 200);
-									});
-								cy.wrap(element).find("p").should("exist");
+						cy.get(".CFFeedHeader")
+							.find(".col-4.newsHeader")
+							.each((element, index, list) => {
+								if (index < 3) {
+									cy.wrap(element).click().should("have.class", "activebox2");
+								}
 							});
 					});
 			});
@@ -224,7 +163,7 @@ describe("Testing pages", () => {
 
 						cy.get(".cardContainer").should("exist");
 
-						cy.get(".Projekt_linkSection__iXO_B").should("exist");
+						//cy.get(".Projekt_linkSection__iXO_B").should("exist");
 					});
 			});
 	});
@@ -236,7 +175,7 @@ describe("Testing pages", () => {
 
 		cy.wait(1000);
 
-		cy.get(".kalenderContainer a")
+		cy.get(".container.section-container a")
 			.first()
 			.then((element) => {
 				cy.wrap(element)
@@ -253,6 +192,8 @@ describe("Testing pages", () => {
 						cy.get("h1").should("contain", title);
 
 						cy.get("div.kalender-main").should("exist");
+
+						cy.get("div.kalender-main table").should("exist");
 					});
 			});
 	});

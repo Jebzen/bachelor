@@ -52,7 +52,7 @@ export default function Header({ pageLinks, whiteColor, setWhiteColor }: any) {
 	return (
 		<>
 			<header className="pt-0 pt-lg-2 container d-flex flex-column">
-				<div className="justify-content-between mb-3 d-none d-none d-lg-flex">
+				<div className="justify-content-between mb-3 d-none d-lg-flex">
 					<div className="d-flex align-items-center">
 						<a href="/">
 							<img className="logo" src="/logo-2.png" alt="Kombit Logo" />

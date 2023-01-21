@@ -82,6 +82,7 @@ export default function Home({
 			setThemeDark(true);
 		}
 	}, []);
+
 	return (
 		<>
 			<Head>

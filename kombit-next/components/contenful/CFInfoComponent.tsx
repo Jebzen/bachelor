@@ -61,7 +61,7 @@ export default function CFInfoComponent({ content }: prop) {
 							</div>
 						)}
 					</div>
-					<div className="beskrivelse-news ">
+					<div className="beskrivelse-news">
 						{documentToReactComponents(
 							content.fields.beskrivelse,
 							renderOption
