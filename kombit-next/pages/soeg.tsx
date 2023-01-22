@@ -17,24 +17,29 @@ export async function getServerSideProps(context: any) {
 		});
 		response.items = response.items.filter((entry: any) => {
 			return (
-				entry.sys.contentType.sys.id != "cardEmbeddedEntry" &&
-				entry.sys.contentType.sys.id != "card" &&
-				entry.sys.contentType.sys.id != "bannerCarousel" &&
-				entry.sys.contentType.sys.id != "forside"
+				entry.sys.contentType.sys.id == "kalender" ||
+				entry.sys.contentType.sys.id == "landingpage" ||
+				entry.sys.contentType.sys.id == "projekt" ||
+				entry.sys.contentType.sys.id == "infoside" ||
+				entry.sys.contentType.sys.id == "nyheder"
 			);
 		});
 	}
 
 	let reduced = response?.items?.map((item: any) => {
+		console.log(item.sys.contentType.sys.id);
 		return {
 			slug: item?.sys?.contentType?.sys?.id
 				? item.sys.contentType.sys.id + "/" + item.fields.slug
 				: item.fields.slug,
+
 			title: item.fields.title,
+
 			abstrakt: item.fields.abstrakt,
+
 			abstrakt_type:
-				item.fields.abstrakt.nodeType != undefined
-					? item.fields.abstrakt.nodeType
+				item.fields.abstrakt?.nodeType != undefined
+					? item.fields.abstrakt?.nodeType
 					: null,
 		};
 	});
