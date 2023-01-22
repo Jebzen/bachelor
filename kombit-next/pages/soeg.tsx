@@ -27,7 +27,6 @@ export async function getServerSideProps(context: any) {
 	}
 
 	let reduced = response?.items?.map((item: any) => {
-		console.log(item.sys.contentType.sys.id);
 		return {
 			slug: item?.sys?.contentType?.sys?.id
 				? item.sys.contentType.sys.id + "/" + item.fields.slug
