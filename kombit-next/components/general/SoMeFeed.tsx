@@ -42,7 +42,8 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("soMe")}>
+				onClick={() => setSlide("soMe")}
+			>
 				<h4>Sociale medier</h4>
 			</div>
 			<div
@@ -51,7 +52,8 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("presse")}>
+				onClick={() => setSlide("presse")}
+			>
 				<h4>Presse</h4>
 			</div>
 			<div
@@ -60,28 +62,31 @@ export default function SoMeFeed({ version }: prop) {
 						? "col-4 newsHeader active activebox2 news"
 						: "col-4 newsHeader"
 				}
-				onClick={() => setSlide("kontakt")}>
+				onClick={() => setSlide("kontakt")}
+			>
 				<h4>Kontakt</h4>
 			</div>
 			<div className="col-12">
 				<div className="row">
 					<div className={slide == "soMe" ? "p-5 row" : "p-5 row d-none"}>
-						<div className="col">
+						<div className="col twitter-some">
 							<div className="p-2">
 								<a
 									className="twitter-timeline"
 									data-height="825"
-									href="https://twitter.com/Jebzen_tweet?ref_src=twsrc%5Etfw">
+									href="https://twitter.com/Jebzen_tweet?ref_src=twsrc%5Etfw"
+								>
 									Tweets by Jebzen_tweet
 								</a>{" "}
 								<script
 									async
 									src="https://platform.twitter.com/widgets.js"
 									charSet="utf-8"
-									defer={true}></script>
+									defer={true}
+								></script>
 							</div>
 						</div>
-						<div className="col">
+						<div className="col linkedin-some">
 							<div className="p-2">
 								<iframe
 									src="https://www.linkedin.com/embed/feed/update/urn:li:share:7001876340761075712"
@@ -89,7 +94,8 @@ export default function SoMeFeed({ version }: prop) {
 									title="Embedded post"
 									width="504"
 									height="825"
-									frameBorder="5"></iframe>
+									frameBorder="5"
+								></iframe>
 							</div>
 						</div>
 					</div>

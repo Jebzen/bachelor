@@ -1195,7 +1195,10 @@ section.kombit-section:nth-child(odd) .tb-section .KcolOne {
 			margin-bottom: 0;
 		}
 	}
-	.twitter-timeline {
+	.twitter-some {
+		display: none !important;
+	}
+	.linkedin-some {
 		display: none !important;
 	}
 }
